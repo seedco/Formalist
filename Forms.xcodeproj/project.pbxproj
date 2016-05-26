@@ -22,6 +22,9 @@
 		7276FECB1CF6B2B500C3B4E4 /* BooleanElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FECA1CF6B2B500C3B4E4 /* BooleanElementView.swift */; };
 		7276FEDC1CF6B3AF00C3B4E4 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FED41CF6B34E00C3B4E4 /* StackViewController.framework */; };
 		7276FEE01CF6B42900C3B4E4 /* BooleanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEDF1CF6B42900C3B4E4 /* BooleanElement.swift */; };
+		7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE11CF6B86E00C3B4E4 /* SegmentElementView.swift */; };
+		7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE31CF6B87400C3B4E4 /* Segment.swift */; };
+		7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE51CF6B92B00C3B4E4 /* SegmentElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +105,9 @@
 		7276FECA1CF6B2B500C3B4E4 /* BooleanElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooleanElementView.swift; sourceTree = "<group>"; };
 		7276FECD1CF6B34E00C3B4E4 /* StackViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StackViewController.xcodeproj; path = External/StackViewController/StackViewController.xcodeproj; sourceTree = "<group>"; };
 		7276FEDF1CF6B42900C3B4E4 /* BooleanElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooleanElement.swift; sourceTree = "<group>"; };
+		7276FEE11CF6B86E00C3B4E4 /* SegmentElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentElementView.swift; sourceTree = "<group>"; };
+		7276FEE31CF6B87400C3B4E4 /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		7276FEE51CF6B92B00C3B4E4 /* SegmentElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,9 @@
 				7276FEC61CF6A9D700C3B4E4 /* FormElement.swift */,
 				7276FECA1CF6B2B500C3B4E4 /* BooleanElementView.swift */,
 				7276FEDF1CF6B42900C3B4E4 /* BooleanElement.swift */,
+				7276FEE11CF6B86E00C3B4E4 /* SegmentElementView.swift */,
+				7276FEE31CF6B87400C3B4E4 /* Segment.swift */,
+				7276FEE51CF6B92B00C3B4E4 /* SegmentElement.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -379,6 +388,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */,
+				7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */,
+				7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */,
 				7276FEC71CF6A9D700C3B4E4 /* FormElement.swift in Sources */,
 				7276FEE01CF6B42900C3B4E4 /* BooleanElement.swift in Sources */,
 				7276FECB1CF6B2B500C3B4E4 /* BooleanElementView.swift in Sources */,
