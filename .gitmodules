@@ -1,0 +1,3 @@
+[submodule "External/StackViewController"]
+	path = External/StackViewController
+	url = https://github.com/seedco/StackViewController.git
