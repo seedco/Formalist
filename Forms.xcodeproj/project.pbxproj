@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7276FE8F1CF67DD800C3B4E4 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7276FE8E1CF67DD800C3B4E4 /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7276FE961CF67DD800C3B4E4 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FE8B1CF67DD800C3B4E4 /* Forms.framework */; };
-		7276FE9B1CF67DD800C3B4E4 /* FormsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FE9A1CF67DD800C3B4E4 /* FormsTests.swift */; };
 		7276FEAC1CF67DEB00C3B4E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEAB1CF67DEB00C3B4E4 /* AppDelegate.swift */; };
 		7276FEAE1CF67DEB00C3B4E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEAD1CF67DEB00C3B4E4 /* ViewController.swift */; };
 		7276FEB11CF67DEB00C3B4E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7276FEAF1CF67DEB00C3B4E4 /* Main.storyboard */; };
@@ -17,6 +16,8 @@
 		7276FEB61CF67DEB00C3B4E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7276FEB41CF67DEB00C3B4E4 /* LaunchScreen.storyboard */; };
 		7276FEBB1CF67DF200C3B4E4 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FE8B1CF67DD800C3B4E4 /* Forms.framework */; };
 		7276FEBC1CF67DF200C3B4E4 /* Forms.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FE8B1CF67DD800C3B4E4 /* Forms.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7276FEC11CF68C2C00C3B4E4 /* FormValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEC01CF68C2C00C3B4E4 /* FormValue.swift */; };
+		7276FEC51CF6963500C3B4E4 /* FormValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEC41CF6963500C3B4E4 /* FormValueTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,6 @@
 		7276FE8E1CF67DD800C3B4E4 /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		7276FE901CF67DD800C3B4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7276FE951CF67DD800C3B4E4 /* FormsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7276FE9A1CF67DD800C3B4E4 /* FormsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsTests.swift; sourceTree = "<group>"; };
 		7276FE9C1CF67DD800C3B4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7276FEA91CF67DEB00C3B4E4 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7276FEAB1CF67DEB00C3B4E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +64,8 @@
 		7276FEB21CF67DEB00C3B4E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7276FEB51CF67DEB00C3B4E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7276FEB71CF67DEB00C3B4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7276FEC01CF68C2C00C3B4E4 /* FormValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValue.swift; sourceTree = "<group>"; };
+		7276FEC41CF6963500C3B4E4 /* FormValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				7276FE8E1CF67DD800C3B4E4 /* Forms.h */,
 				7276FE901CF67DD800C3B4E4 /* Info.plist */,
+				7276FEC01CF68C2C00C3B4E4 /* FormValue.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -125,8 +128,8 @@
 		7276FE991CF67DD800C3B4E4 /* FormsTests */ = {
 			isa = PBXGroup;
 			children = (
-				7276FE9A1CF67DD800C3B4E4 /* FormsTests.swift */,
 				7276FE9C1CF67DD800C3B4E4 /* Info.plist */,
+				7276FEC41CF6963500C3B4E4 /* FormValueTests.swift */,
 			);
 			path = FormsTests;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7276FEC11CF68C2C00C3B4E4 /* FormValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7276FE9B1CF67DD800C3B4E4 /* FormsTests.swift in Sources */,
+				7276FEC51CF6963500C3B4E4 /* FormValueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +439,7 @@
 		7276FEA01CF67DD800C3B4E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -445,12 +450,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.seed.Forms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7276FEA11CF67DD800C3B4E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -488,6 +495,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.seed.Example;
@@ -499,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.seed.Example;
