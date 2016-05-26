@@ -12,7 +12,7 @@ public class FormValue<ValueType> {
     private var observerTokens = [ObserverToken<ValueType>]()
     
     /// The underlying value.
-    public var value: ValueType {
+    internal(set) public var value: ValueType {
         didSet {
             for token in observerTokens {
                 token.observer(value)
