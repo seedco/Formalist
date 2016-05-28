@@ -14,7 +14,7 @@ public protocol FormElement {
     /// involves the following steps:
     ///     1. Create the view
     ///     2. Configure default options
-    ///     3. Setup target-action or another callback mechanism to be notified
+    ///     3. Set up target-action or another callback mechanism to be notified
     ///        when the value changes and update the `FormValue` instance bound
     ///        to the element.
     ///     4. Allow custom configuration using a block that can be optionally
