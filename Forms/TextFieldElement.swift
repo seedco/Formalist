@@ -52,7 +52,9 @@ public final class TextFieldElement: FormElement {
     // MARK: Actions
     
     @objc private func textChanged(notification: NSNotification) {
-        guard let textField = notification.object as? UITextField else { return }
+        guard let textField = notification.object as? UITextField else {
+            fatalError("Unexpected notification object: \(notification.object)")
+        }
         value.value = textField.text ?? ""
     }
 }
