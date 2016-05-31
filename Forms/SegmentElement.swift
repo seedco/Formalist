@@ -10,7 +10,7 @@ import UIKit
 
 /// An element used to display a segmented control with configurable segments
 /// and a title displayed above it.
-public class SegmentElement<ValueType: Equatable>: FormElement {
+public final class SegmentElement<ValueType: Equatable>: FormElement {
     public typealias ViewConfigurator = SegmentElementView -> Void
     
     private let title: String

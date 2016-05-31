@@ -9,7 +9,7 @@
 import UIKit
 
 /// A form element that displays a toggle switch for setting a boolean value.
-public class BooleanElement: FormElement {
+public final class BooleanElement: FormElement {
     public typealias ViewConfigurator = BooleanElementView -> Void
     
     private let title: String
