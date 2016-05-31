@@ -9,7 +9,7 @@
 import UIKit
 
 /// An element used to display static text
-public class StaticTextElement: FormElement {
+public final class StaticTextElement: FormElement {
     public typealias ViewConfigurator = UILabel -> Void
     
     private let text: String
