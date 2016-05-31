@@ -9,7 +9,7 @@
 import UIKit
 
 /// An element that wraps a view. Useful for one-off custom elements.
-public class ViewElement<ValueType>: FormElement {
+public final class ViewElement<ValueType>: FormElement {
     public typealias ViewConfigurator = FormValue<ValueType> -> UIView
     
     private let viewConfigurator: ViewConfigurator

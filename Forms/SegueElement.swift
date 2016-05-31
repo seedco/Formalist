@@ -10,7 +10,7 @@ import Foundation
 
 /// An element containing an image view and a label that invokes an action
 /// when tapped on.
-public class SegueElement: FormElement {
+public final class SegueElement: FormElement {
     public typealias ViewConfigurator = SegueElementView -> Void
     
     private let icon: UIImage?

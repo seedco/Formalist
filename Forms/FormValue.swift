@@ -8,7 +8,7 @@
 
 /// A reference type that wraps a value used by a form element and allows for
 /// observation of changes to the value.
-public class FormValue<ValueType> {
+public final class FormValue<ValueType> {
     private var observerTokens = [ObserverToken<ValueType>]()
     
     /// The underlying value.
