@@ -10,6 +10,8 @@
 		724715241CFE119A00BD2549 /* ViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715231CFE119A00BD2549 /* ViewElement.swift */; };
 		724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715271CFE156B00BD2549 /* TextFieldElement.swift */; };
 		7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715291CFEAC1400BD2549 /* ValidationRule.swift */; };
+		7247152D1CFEB00400BD2549 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7247152C1CFEB00400BD2549 /* Validatable.swift */; };
+		724715311CFEB4AE00BD2549 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715301CFEB4AE00BD2549 /* Box.swift */; };
 		7276FE8F1CF67DD800C3B4E4 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7276FE8E1CF67DD800C3B4E4 /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7276FE961CF67DD800C3B4E4 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FE8B1CF67DD800C3B4E4 /* Forms.framework */; };
 		7276FEAC1CF67DEB00C3B4E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEAB1CF67DEB00C3B4E4 /* AppDelegate.swift */; };
@@ -96,6 +98,8 @@
 		724715231CFE119A00BD2549 /* ViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewElement.swift; sourceTree = "<group>"; };
 		724715271CFE156B00BD2549 /* TextFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldElement.swift; sourceTree = "<group>"; };
 		724715291CFEAC1400BD2549 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
+		7247152C1CFEB00400BD2549 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		724715301CFEB4AE00BD2549 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		7276FE8B1CF67DD800C3B4E4 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7276FE8E1CF67DD800C3B4E4 /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		7276FE901CF67DD800C3B4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				724715231CFE119A00BD2549 /* ViewElement.swift */,
 				724715271CFE156B00BD2549 /* TextFieldElement.swift */,
 				724715291CFEAC1400BD2549 /* ValidationRule.swift */,
+				7247152C1CFEB00400BD2549 /* Validatable.swift */,
+				724715301CFEB4AE00BD2549 /* Box.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -415,10 +421,12 @@
 				7294406E1CF9254A004DFCB4 /* SegueElement.swift in Sources */,
 				7294406A1CF92321004DFCB4 /* StaticTextElement.swift in Sources */,
 				7276FEE01CF6B42900C3B4E4 /* BooleanElement.swift in Sources */,
+				724715311CFEB4AE00BD2549 /* Box.swift in Sources */,
 				724715241CFE119A00BD2549 /* ViewElement.swift in Sources */,
 				7276FECB1CF6B2B500C3B4E4 /* BooleanElementView.swift in Sources */,
 				7294406C1CF92431004DFCB4 /* SegueElementView.swift in Sources */,
 				7276FEC11CF68C2C00C3B4E4 /* FormValue.swift in Sources */,
+				7247152D1CFEB00400BD2549 /* Validatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
