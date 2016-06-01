@@ -11,7 +11,7 @@ import ObjectiveC
 /// The protocol that is implemented by all form elements that
 /// support validation of their values.
 public protocol Validatable: AnyObject {
-    func validate(completionHandler: ValidationResult -> Void)
+    func validate(queue queue: dispatch_queue_t, completionHandler: ValidationResult -> Void)
 }
 
 public extension Validatable {
@@ -48,8 +48,8 @@ private extension Validatable {
 }
 
 extension Validatable {
-    func validateAndStoreResult(completionHandler: ValidationResult -> Void) {
-        validate { result in
+    func validateAndStoreResult(queue queue: dispatch_queue_t, completionHandler: ValidationResult -> Void) {
+        validate(queue: queue) { result in
             self._validationResult = result
             completionHandler(result)
         }

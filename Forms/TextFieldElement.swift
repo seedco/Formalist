@@ -9,11 +9,12 @@
 import UIKit
 
 /// An element that displays an editable text field
-public final class TextFieldElement: FormElement {
+public final class TextFieldElement: FormElement, Validatable {
     public typealias ViewConfigurator = UITextField -> Void
     
     private let value: FormValue<String>
     private let continuous: Bool
+    private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
     
     /**
@@ -29,9 +30,10 @@ public final class TextFieldElement: FormElement {
      
      - returns: An initialized instance of the receiver
      */
-    public init(value: FormValue<String>, continuous: Bool = false, viewConfigurator: ViewConfigurator? = nil) {
+    public init(value: FormValue<String>, continuous: Bool = false, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.value = value
         self.continuous = continuous
+        self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
     }
     
@@ -56,5 +58,11 @@ public final class TextFieldElement: FormElement {
             fatalError("Unexpected notification object: \(notification.object)")
         }
         value.value = textField.text ?? ""
+    }
+    
+    // MARK: Validatable
+    
+    public func validate(queue queue: dispatch_queue_t, completionHandler: ValidationResult -> Void) {
+        ValidationRule.validateRules(validationRules, forValue: value.value, queue: queue, completionHandler: completionHandler)
     }
 }
