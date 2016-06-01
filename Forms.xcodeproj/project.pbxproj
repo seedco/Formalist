@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		724715241CFE119A00BD2549 /* ViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715231CFE119A00BD2549 /* ViewElement.swift */; };
 		724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715271CFE156B00BD2549 /* TextFieldElement.swift */; };
+		7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715291CFEAC1400BD2549 /* ValidationRule.swift */; };
 		7276FE8F1CF67DD800C3B4E4 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7276FE8E1CF67DD800C3B4E4 /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7276FE961CF67DD800C3B4E4 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FE8B1CF67DD800C3B4E4 /* Forms.framework */; };
 		7276FEAC1CF67DEB00C3B4E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEAB1CF67DEB00C3B4E4 /* AppDelegate.swift */; };
@@ -94,6 +95,7 @@
 /* Begin PBXFileReference section */
 		724715231CFE119A00BD2549 /* ViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewElement.swift; sourceTree = "<group>"; };
 		724715271CFE156B00BD2549 /* TextFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldElement.swift; sourceTree = "<group>"; };
+		724715291CFEAC1400BD2549 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
 		7276FE8B1CF67DD800C3B4E4 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7276FE8E1CF67DD800C3B4E4 /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		7276FE901CF67DD800C3B4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				7294406D1CF9254A004DFCB4 /* SegueElement.swift */,
 				724715231CFE119A00BD2549 /* ViewElement.swift */,
 				724715271CFE156B00BD2549 /* TextFieldElement.swift */,
+				724715291CFEAC1400BD2549 /* ValidationRule.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			files = (
 				724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */,
 				7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */,
+				7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */,
 				7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */,
 				7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */,
 				7276FEC71CF6A9D700C3B4E4 /* FormElement.swift in Sources */,
