@@ -6,6 +6,8 @@
 //  Copyright © 2016 Seed.co. All rights reserved.
 //
 
+import ObjectiveC
+
 /// The protocol that is implemented by all form elements that
 /// support validation of their values.
 public protocol Validatable: AnyObject {
