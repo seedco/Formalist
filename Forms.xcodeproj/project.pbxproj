@@ -31,6 +31,8 @@
 		7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE31CF6B87400C3B4E4 /* Segment.swift */; };
 		7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE51CF6B92B00C3B4E4 /* SegmentElement.swift */; };
 		7292B2551CFFEFBE00FFE97B /* GroupElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2541CFFEFBE00FFE97B /* GroupElement.swift */; };
+		7292B2591D00078700FFE97B /* UIView+FormResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2581D00078700FFE97B /* UIView+FormResponder.swift */; };
+		7292B25E1D0008BC00FFE97B /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B25D1D0008BC00FFE97B /* WeakBox.swift */; };
 		7294406A1CF92321004DFCB4 /* StaticTextElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729440691CF92321004DFCB4 /* StaticTextElement.swift */; };
 		7294406C1CF92431004DFCB4 /* SegueElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294406B1CF92431004DFCB4 /* SegueElementView.swift */; };
 		7294406E1CF9254A004DFCB4 /* SegueElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294406D1CF9254A004DFCB4 /* SegueElement.swift */; };
@@ -123,6 +125,8 @@
 		7276FEE31CF6B87400C3B4E4 /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		7276FEE51CF6B92B00C3B4E4 /* SegmentElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentElement.swift; sourceTree = "<group>"; };
 		7292B2541CFFEFBE00FFE97B /* GroupElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupElement.swift; sourceTree = "<group>"; };
+		7292B2581D00078700FFE97B /* UIView+FormResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FormResponder.swift"; sourceTree = "<group>"; };
+		7292B25D1D0008BC00FFE97B /* WeakBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
 		729440691CF92321004DFCB4 /* StaticTextElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTextElement.swift; sourceTree = "<group>"; };
 		7294406B1CF92431004DFCB4 /* SegueElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElementView.swift; sourceTree = "<group>"; };
 		7294406D1CF9254A004DFCB4 /* SegueElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElement.swift; sourceTree = "<group>"; };
@@ -197,7 +201,9 @@
 				724715291CFEAC1400BD2549 /* ValidationRule.swift */,
 				7247152C1CFEB00400BD2549 /* Validatable.swift */,
 				724715301CFEB4AE00BD2549 /* Box.swift */,
+				7292B25D1D0008BC00FFE97B /* WeakBox.swift */,
 				7292B2541CFFEFBE00FFE97B /* GroupElement.swift */,
+				7292B2581D00078700FFE97B /* UIView+FormResponder.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 				7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */,
 				7292B2551CFFEFBE00FFE97B /* GroupElement.swift in Sources */,
 				7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */,
+				7292B2591D00078700FFE97B /* UIView+FormResponder.swift in Sources */,
 				7276FEC71CF6A9D700C3B4E4 /* FormElement.swift in Sources */,
 				7294406E1CF9254A004DFCB4 /* SegueElement.swift in Sources */,
 				7294406A1CF92321004DFCB4 /* StaticTextElement.swift in Sources */,
@@ -431,6 +438,7 @@
 				7294406C1CF92431004DFCB4 /* SegueElementView.swift in Sources */,
 				7276FEC11CF68C2C00C3B4E4 /* FormValue.swift in Sources */,
 				7247152D1CFEB00400BD2549 /* Validatable.swift in Sources */,
+				7292B25E1D0008BC00FFE97B /* WeakBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
