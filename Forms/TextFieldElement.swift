@@ -62,7 +62,7 @@ public final class TextFieldElement: FormElement, Validatable {
     
     // MARK: Validatable
     
-    public func validate(queue queue: dispatch_queue_t, completionHandler: ValidationResult -> Void) {
-        ValidationRule.validateRules(validationRules, forValue: value.value, queue: queue, completionHandler: completionHandler)
+    public func validate(completionHandler: ValidationResult -> Void) {
+        ValidationRule.validateRules(validationRules, forValue: value.value,  completionHandler: completionHandler)
     }
 }
