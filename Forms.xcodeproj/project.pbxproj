@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		720357431D0130D6006F2542 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720357421D0130D6006F2542 /* FormViewController.swift */; };
 		724715241CFE119A00BD2549 /* ViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715231CFE119A00BD2549 /* ViewElement.swift */; };
 		724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715271CFE156B00BD2549 /* TextFieldElement.swift */; };
 		7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715291CFEAC1400BD2549 /* ValidationRule.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		720357421D0130D6006F2542 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		724715231CFE119A00BD2549 /* ViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewElement.swift; sourceTree = "<group>"; };
 		724715271CFE156B00BD2549 /* TextFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldElement.swift; sourceTree = "<group>"; };
 		724715291CFEAC1400BD2549 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				7292B25D1D0008BC00FFE97B /* WeakBox.swift */,
 				7292B2541CFFEFBE00FFE97B /* GroupElement.swift */,
 				7292B2581D00078700FFE97B /* UIView+FormResponder.swift */,
+				720357421D0130D6006F2542 /* FormViewController.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */,
 				7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */,
 				7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */,
+				720357431D0130D6006F2542 /* FormViewController.swift in Sources */,
 				7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */,
 				7292B2551CFFEFBE00FFE97B /* GroupElement.swift in Sources */,
 				7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */,
