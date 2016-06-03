@@ -81,6 +81,7 @@ public final class GroupElement: FormElement {
     
     public func render() -> UIView {
         var subviews = [UIView]()
+        var responderViews = [UIView]()
         
         func addSeparator(isBorder isBorder: Bool) {
             if let separatorView = separatorViewFactory(style: style, isBorder: isBorder) {
@@ -94,6 +95,13 @@ public final class GroupElement: FormElement {
                 view.backgroundColor = backgroundColor
             }
             subviews.append(view)
+            
+            if element is FormResponder {
+                if let lastResponderView = responderViews.last {
+                    lastResponderView._nextFormResponder = view
+                }
+                responderViews.append(view)
+            }
             
             if let validatable = element as? Validatable, validationResult = validatable.validationResult {
                 if case let .Invalid(message) = validationResult {

@@ -9,7 +9,7 @@
 import UIKit
 
 /// An element that displays an editable text field
-public final class TextFieldElement: FormElement, Validatable {
+@objc public final class TextFieldElement: NSObject, FormElement, Validatable, FormResponder, UITextFieldDelegate {
     public typealias ViewConfigurator = UITextField -> Void
     
     private let value: FormValue<String>
@@ -40,6 +40,8 @@ public final class TextFieldElement: FormElement, Validatable {
     public func render() -> UIView {
         let textField = UITextField(frame: CGRectZero)
         textField.text = value.value
+        textField.delegate = self
+        
         let notificationName = continuous ? UITextFieldTextDidChangeNotification : UITextFieldTextDidEndEditingNotification
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -49,6 +51,17 @@ public final class TextFieldElement: FormElement, Validatable {
         )
         viewConfigurator?(textField)
         return textField
+    }
+    
+    // MARK: UITextFieldDelegate
+    
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if let nextFormResponder = textField.nextFormResponder {
+            nextFormResponder.becomeFirstResponder()
+            return false
+        } else {
+            return true
+        }
     }
     
     // MARK: Actions
