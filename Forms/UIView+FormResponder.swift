@@ -9,6 +9,8 @@
 import UIKit
 import ObjectiveC
 
+public protocol FormResponder {}
+
 private var ObjCNextFormResponderKey: UInt8 = 0
 
 internal extension UIView {
