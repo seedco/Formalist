@@ -31,6 +31,29 @@ public final class GroupElement: FormElement, FormResponder {
             case Grouped(backgroundColor: UIColor)
         }
         
+        /// Describes how each element in the group is laid out
+        public struct Layout {
+            public enum Mode {
+                /// Each element is fixed to a constant height
+                case ConstantHeight(CGFloat)
+                
+                /// The intrinsic content size of each element is used
+                case IntrinsicSize
+            }
+            
+            /// The layout mode used to determine the height to display the
+            /// element view at
+            public let mode: Mode
+            
+            /// Edge insets to use for padding the element view
+            public let edgeInsets: UIEdgeInsets
+            
+            public init(mode: Mode = .IntrinsicSize, edgeInsets: UIEdgeInsets = UIEdgeInsetsZero) {
+                self.mode = mode
+                self.edgeInsets = edgeInsets
+            }
+        }
+        
         /// A block that creates separator views.
         ///
         /// `style` specifies the grouping style and `isBorder` specifies whether
@@ -48,8 +71,8 @@ public final class GroupElement: FormElement, FormResponder {
         /// the `SeparatorViewFactory` type for more information.
         public let separatorViewFactory: SeparatorViewFactory
         
-        /// The edge inset to apply to each element view in the group
-        public let elementViewInset: UIEdgeInsets
+        /// Describes how each element in the group is laid out
+        public let layout: Layout
         
         private struct SeparatorDefaults {
             static let Inset: CGFloat = 15.0
@@ -68,20 +91,37 @@ public final class GroupElement: FormElement, FormResponder {
             return separatorView
         }
         
-        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = Configuration.defaultSeparatorViewFactory, elementViewInset: UIEdgeInsets = UIEdgeInsetsZero) {
+        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = Configuration.defaultSeparatorViewFactory, layout: Layout = Layout()) {
             self.style = style
             self.separatorViewFactory = separatorViewFactory
-            self.elementViewInset = elementViewInset
+            self.layout = layout
         }
         
         private func createSeparatorWithBorder(hasBorder: Bool) -> UIView? {
             return separatorViewFactory(style: style, isBorder: hasBorder)
         }
+        
+        private func arrangedSubviewForElementView(elementView: UIView) -> UIView {
+            switch layout.mode {
+            case .IntrinsicSize: break
+            case let .ConstantHeight(height):
+                let heightConstraint = NSLayoutConstraint(item: elementView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: height)
+                heightConstraint.active = true
+            }
+            
+            if layout.edgeInsets == UIEdgeInsetsZero {
+                return elementView
+            } else {
+                let containerView = UIView(frame: CGRectZero)
+                if case let .Grouped(backgroundColor) = style {
+                    containerView.backgroundColor = backgroundColor
+                }
+                containerView.addSubview(elementView)
+                elementView.activateSuperviewHuggingConstraints(insets: layout.edgeInsets)
+                return containerView
+            }
+        }
     }
-    
-    
-    
-    
     
     private let configuration: Configuration
     private let elements: [FormElement]
@@ -114,7 +154,7 @@ public final class GroupElement: FormElement, FormResponder {
         
         func addChildElement(element: FormElement) -> Bool {
             let elementView = element.render()
-            subviews.append(arrangedSubviewForElementView(elementView))
+            subviews.append(configuration.arrangedSubviewForElementView(elementView))
 
             if element is FormResponder {
                 if let lastResponderView = responderViews.last {
@@ -145,20 +185,6 @@ public final class GroupElement: FormElement, FormResponder {
         }
         
         return createContainerWithSubviews(subviews, responderViews: responderViews)
-    }
-    
-    private func arrangedSubviewForElementView(elementView: UIView) -> UIView {
-        if configuration.elementViewInset == UIEdgeInsetsZero {
-            return elementView
-        } else {
-            let containerView = UIView(frame: CGRectZero)
-            if case let .Grouped(backgroundColor) = configuration.style {
-                containerView.backgroundColor = backgroundColor
-            }
-            containerView.addSubview(elementView)
-            elementView.activateSuperviewHuggingConstraints(insets: configuration.elementViewInset)
-            return containerView
-        }
     }
     
     private func createContainerWithSubviews(subviews: [UIView], responderViews: [UIView]) -> UIView {
