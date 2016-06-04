@@ -26,7 +26,8 @@ class ViewController: UIViewController {
     }
     
     private lazy var formViewController: FormViewController = {
-        FormViewController(rootElement: GroupElement(style: .Grouped(backgroundColor: .whiteColor()), elements: [
+        let configuration = GroupElement.Configuration(style: .Grouped(backgroundColor: .whiteColor()), elementViewInset: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
+        return FormViewController(rootElement: GroupElement(configuration: configuration, elements: [
             BooleanElement(title: "Test Bool", value: self.boolValue),
             BooleanElement(title: "Test Bool 2", value: self.boolValue),
         ]))
