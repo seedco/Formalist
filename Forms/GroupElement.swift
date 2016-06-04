@@ -47,7 +47,7 @@ public final class GroupElement: FormElement {
     
     private static let defaultSeparatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
         guard case let .Grouped(backgroundColor) = style else { return nil }
-        let separatorView = SeparatorView(axis: .Horizontal)
+        let separatorView = SeparatorView(axis: .Vertical)
         separatorView.backgroundColor = backgroundColor
         separatorView.separatorInset = isBorder ? 0 : SeparatorDefaults.Inset
         separatorView.separatorColor = isBorder ? SeparatorDefaults.SeparatorColor : SeparatorDefaults.BorderColor
@@ -135,6 +135,7 @@ public final class GroupElement: FormElement {
         
         let stackView = UIStackView(arrangedSubviews: subviews)
         stackView.axis = .Vertical
+        
         containerView.addSubview(stackView)
         stackView.activateSuperviewHuggingConstraints()
         
