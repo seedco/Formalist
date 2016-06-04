@@ -9,7 +9,7 @@
 import UIKit
 import StackViewController
 
-public final class GroupElement: FormElement {
+public final class GroupElement: FormElement, FormResponder {
     /// The style used to display the grouped elements
     public enum Style {
         /// Does not draw a background color behind the elements
@@ -165,21 +165,44 @@ public final class GroupElement: FormElement {
             addSeparator(isBorder: true)
         }
         
-        return createContainerWithSubviews(subviews)
+        return createContainerWithSubviews(subviews, responderViews: responderViews)
     }
     
-    private func createContainerWithSubviews(subviews: [UIView]) -> UIView {
-        let containerView = UIView(frame: CGRectZero)
+    private func createContainerWithSubviews(subviews: [UIView], responderViews: [UIView]) -> UIView {
+        let containerView =
+            ContainerView(initialFormResponderView: responderViews.first)
         if case let .Grouped(backgroundColor) = configuration.style {
             containerView.backgroundColor = backgroundColor
         }
+        responderViews.last?._nextFormResponder = containerView
         
         let stackView = UIStackView(arrangedSubviews: subviews)
         stackView.axis = .Vertical
-        
         containerView.addSubview(stackView)
         stackView.activateSuperviewHuggingConstraints()
         
         return containerView
+    }
+    
+    private class ContainerView: UIView {
+        private let initialFormResponderView: UIView?
+        
+        init(initialFormResponderView: UIView?) {
+            self.initialFormResponderView = initialFormResponderView
+            super.init(frame: CGRectZero)
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        private override func becomeFirstResponder() -> Bool {
+            var responderView = nextFormResponder
+            while let containerView = responderView as? ContainerView {
+                responderView = containerView.initialFormResponderView
+            }
+            responderView?.becomeFirstResponder()
+            return false
+        }
     }
 }
