@@ -23,11 +23,11 @@ public class FormViewController: UIViewController {
     }
     
     public convenience init(@noescape _ elementsProvider: Void -> [FormElement]) {
-        self.init(rootElement: GroupElement(style: .Plain, elements: elementsProvider()))
+        self.init(rootElement: GroupElement(elements: elementsProvider()))
     }
     
     public convenience init(_ elements: [FormElement]) {
-        self.init(rootElement: GroupElement(style: .Plain, elements: elements))
+        self.init(rootElement: GroupElement(elements: elements))
     }
     
     required public init?(coder aDecoder: NSCoder) {

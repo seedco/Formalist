@@ -29,6 +29,30 @@ public final class GroupElement: FormElement {
         case Grouped(backgroundColor: UIColor)
     }
     
+    /// Stores configuration parameters
+    public struct Configuration {
+        /// The grouping style to use. See the documentation for the `Style`
+        /// enum for more information.
+        public let style: Style
+        
+        /// The block that creates separator views. See the documentation for
+        /// the `SeparatorViewFactory` type for more information.
+        public let separatorViewFactory: SeparatorViewFactory
+        
+        /// The edge inset to apply to each element view in the group
+        public let elementViewInset: UIEdgeInsets
+        
+        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = GroupElement.defaultSeparatorViewFactory, elementViewInset: UIEdgeInsets = UIEdgeInsetsZero) {
+            self.style = style
+            self.separatorViewFactory = separatorViewFactory
+            self.elementViewInset = elementViewInset
+        }
+        
+        private func createSeparatorWithBorder(hasBorder: Bool) -> UIView? {
+            return separatorViewFactory(style: style, isBorder: hasBorder)
+        }
+    }
+    
     /// A block that creates separator views.
     ///
     /// `style` specifies the grouping style and `isBorder` specifies whether
@@ -55,26 +79,36 @@ public final class GroupElement: FormElement {
         return separatorView
     }
     
-    private let style: Style
-    private let separatorViewFactory: SeparatorViewFactory
+    private let configuration: Configuration
     private let elements: [FormElement]
     
     /**
      Designated initializer
      
-     - parameter style:                The grouping style to use. See the
-     documentation for the `Style` enum for more information.
-     - parameter separatorViewFactory: The block that creates separator views.
-     See the documentation for the `SeparatorViewFactory` type for more
-     information.
-     - parameter elements:             The elements to group
+     - parameter configuration: The configuration parameters to use. See the
+     documentation for the `Configuration` struct.
+     - parameter elements:      The elements to group
      
      - returns: An initialized instance of the receiver
      */
-    public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = GroupElement.defaultSeparatorViewFactory, elements: [FormElement]) {
-        self.style = style
-        self.separatorViewFactory = separatorViewFactory
+    public init(configuration: Configuration = Configuration(), elements: [FormElement]) {
+        self.configuration = configuration
         self.elements = elements
+    }
+    
+    /**
+     Convenience initializer that initializes using a custom style but leaves
+     other configuration parameters using their default values.
+     
+     - parameter style:    The grouping style to use. See the documentation for the `Style`
+       enum for more information.
+     - parameter elements: The elements to group
+     
+     - returns: An initialized instance of the receiver
+     */
+    public convenience init(style: Style, elements: [FormElement]) {
+        let configuration = Configuration(style: style, separatorViewFactory: self.dynamicType.defaultSeparatorViewFactory, elementViewInset: UIEdgeInsetsZero)
+        self.init(configuration: configuration, elements: elements)
     }
     
     // MARK: FormElement
@@ -84,23 +118,30 @@ public final class GroupElement: FormElement {
         var responderViews = [UIView]()
         
         func addSeparator(isBorder isBorder: Bool) {
-            if let separatorView = separatorViewFactory(style: style, isBorder: isBorder) {
+            if let separatorView = configuration.createSeparatorWithBorder(isBorder) {
                 subviews.append(separatorView)
             }
         }
         
         func addChildElement(element: FormElement) -> Bool {
-            let view = element.render()
-            if case let .Grouped(backgroundColor) = style {
-                view.backgroundColor = backgroundColor
+            let elementView = element.render()
+            if configuration.elementViewInset == UIEdgeInsetsZero {
+                subviews.append(elementView)
+            } else {
+                let containerView = UIView(frame: CGRectZero)
+                if case let .Grouped(backgroundColor) = configuration.style {
+                    containerView.backgroundColor = backgroundColor
+                }
+                containerView.addSubview(elementView)
+                elementView.activateSuperviewHuggingConstraints(insets: configuration.elementViewInset)
+                subviews.append(containerView)
             }
-            subviews.append(view)
             
             if element is FormResponder {
                 if let lastResponderView = responderViews.last {
-                    lastResponderView._nextFormResponder = view
+                    lastResponderView._nextFormResponder = elementView
                 }
-                responderViews.append(view)
+                responderViews.append(elementView)
             }
             
             if let validatable = element as? Validatable, validationResult = validatable.validationResult {
@@ -129,7 +170,7 @@ public final class GroupElement: FormElement {
     
     private func createContainerWithSubviews(subviews: [UIView]) -> UIView {
         let containerView = UIView(frame: CGRectZero)
-        if case let .Grouped(backgroundColor) = style {
+        if case let .Grouped(backgroundColor) = configuration.style {
             containerView.backgroundColor = backgroundColor
         }
         
