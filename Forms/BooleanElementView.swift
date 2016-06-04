@@ -33,7 +33,6 @@ public class BooleanElementView: UIView {
         super.init(frame: CGRectZero)
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, toggle])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .Horizontal
         stackView.alignment = .Center
         stackView.spacing = Layout.MinimumTextSwitchSpacing
