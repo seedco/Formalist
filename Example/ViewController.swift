@@ -11,9 +11,10 @@ import Forms
 import StackViewController
 
 class ViewController: UIViewController {
-    private let field1Value = FormValue("")
-    private let field2Value = FormValue("")
-    private let boolValue = FormValue(false)
+    private let stringValue1 = FormValue("")
+    private let stringValue2 = FormValue("")
+    private let segmentValue = FormValue("Segment 1")
+    private let booleanValue = FormValue(false)
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -26,15 +27,35 @@ class ViewController: UIViewController {
     }
     
     private lazy var formViewController: FormViewController = {
-        let configuration = GroupElement.Configuration(style: .Grouped(backgroundColor: .whiteColor()), elementViewInset: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
-        return FormViewController(rootElement: GroupElement(configuration: configuration, elements: [
-            BooleanElement(title: "Test Bool", value: self.boolValue),
-            BooleanElement(title: "Test Bool 2", value: self.boolValue),
-        ]))
+        var configuration = GroupElement.Configuration()
+        configuration.style = .Grouped(backgroundColor: .whiteColor())
+        configuration.layout.mode = .IntrinsicSize
+        configuration.layout.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+        
+        return FormViewController([
+            GroupElement(configuration: configuration, elements: [
+                BooleanElement(title: "Boolean Element", value: self.booleanValue),
+                TextFieldElement(value: self.stringValue1) { textField in
+                    textField.placeholder = "Text Element 1"
+                },
+                SegmentElement(title: "Test Segment", segments: [
+                    Segment(content: .Title("Segment 1"), value: "Segment 1"),
+                    Segment(content: .Title("Segment 2"), value: "Segment 2")
+                ], selectedValue: self.segmentValue),
+            ]),
+            StaticTextElement(text: "This is a static text element with some text in it"),
+            SpacerElement(height: 50.0, backgroundColor: .redColor()),
+            GroupElement(configuration: configuration, elements: [
+                TextFieldElement(value: self.stringValue2) { textField in
+                    textField.placeholder = "Text Element 2"
+                }
+            ])
+        ])
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
 
         addChildViewController(formViewController)
         view.addSubview(formViewController.view)
@@ -42,4 +63,3 @@ class ViewController: UIViewController {
         formViewController.didMoveToParentViewController(self)
     }
 }
-
