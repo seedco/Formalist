@@ -63,17 +63,6 @@ public final class GroupElement: FormElement, FormResponder {
         /// an inset or not.
         public typealias SeparatorViewFactory = (style: Style, isBorder: Bool) -> UIView?
         
-        /// The grouping style to use. See the documentation for the `Style`
-        /// enum for more information.
-        public var style = Style.Plain
-        
-        /// The block that creates separator views. See the documentation for
-        /// the `SeparatorViewFactory` type for more information.
-        public var separatorViewFactory = Configuration.defaultSeparatorViewFactory
-        
-        /// Describes how each element in the group is laid out
-        public var layout = Layout()
-        
         private struct SeparatorDefaults {
             static let Inset: CGFloat = 15.0
             static let BorderColor = UIColor(red: 0.83, green: 0.84, blue: 0.85, alpha: 1.0)
@@ -81,9 +70,20 @@ public final class GroupElement: FormElement, FormResponder {
             static let Thickness: CGFloat = 1.0
         }
         
-        public init() {}
+        /// A block that creates a view to display validation errors
+        ///
+        /// `message` specifies the message text to display in the view. The default
+        /// `validationErrorViewFactory` implementation provides a simple view
+        /// that uses a label to display the message text.
+        public typealias ValidationErrorViewFactory = (message: String) -> UIView?
         
-        private static let defaultSeparatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
+        /// The grouping style to use. See the documentation for the `Style`
+        /// enum for more information.
+        public var style = Style.Plain
+        
+        /// The block that creates separator views. See the documentation for
+        /// the `SeparatorViewFactory` type for more information.
+        public var separatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
             guard case let .Grouped(backgroundColor) = style else { return nil }
             let separatorView = SeparatorView(axis: .Vertical)
             separatorView.backgroundColor = backgroundColor
@@ -93,8 +93,25 @@ public final class GroupElement: FormElement, FormResponder {
             return separatorView
         }
         
+        /// The block that creates validation error views. See the documentation
+        /// for the `ValidationErrorViewFactory` type for more information.
+        public var validationErrorViewFactory: ValidationErrorViewFactory = { message in
+            let errorView = ValidationErrorView(frame: CGRectZero)
+            errorView.label.text = message
+            return errorView
+        }
+        
+        /// Describes how each element in the group is laid out
+        public var layout = Layout()
+        
+        public init() {}
+        
         private func createSeparatorWithBorder(hasBorder: Bool) -> UIView? {
             return separatorViewFactory(style: style, isBorder: hasBorder)
+        }
+        
+        private func createValidationErrorViewWithMessage(message: String) -> UIView? {
+            return validationErrorViewFactory(message: message)
         }
         
         private func arrangedSubviewForElementView(elementView: UIView) -> UIView {
@@ -160,8 +177,10 @@ public final class GroupElement: FormElement, FormResponder {
             }
             
             if let validatable = element as? Validatable, validationResult = validatable.validationResult {
-                if case let .Invalid(message) = validationResult {
-                    // TODO: Add error view
+                if case let .Invalid(message) = validationResult,
+                    let errorView = configuration.createValidationErrorViewWithMessage(message) {
+                    addSeparator(isBorder: true)
+                    subviews.append(errorView)
                     return false
                 } else {
                     return true
@@ -172,8 +191,8 @@ public final class GroupElement: FormElement, FormResponder {
         
         addSeparator(isBorder: true)
         for element in elements.dropLast() {
-            let valid = addChildElement(element)
-            addSeparator(isBorder: !valid)
+            let showingErrorView = addChildElement(element)
+            addSeparator(isBorder: !showingErrorView)
         }
         if let lastElement = elements.last {
             addChildElement(lastElement)
