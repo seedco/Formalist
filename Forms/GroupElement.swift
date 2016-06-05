@@ -91,10 +91,15 @@ public final class GroupElement: FormElement, FormResponder {
             return separatorView
         }
         
-        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = Configuration.defaultSeparatorViewFactory, layout: Layout = Layout()) {
+        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = Configuration.defaultSeparatorViewFactory, layout: Layout) {
             self.style = style
             self.separatorViewFactory = separatorViewFactory
             self.layout = layout
+        }
+        
+        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = Configuration.defaultSeparatorViewFactory, layoutMode: Layout.Mode = .IntrinsicSize, edgeInsets: UIEdgeInsets = UIEdgeInsetsZero) {
+            let layout = Layout(mode: layoutMode, edgeInsets: edgeInsets)
+            self.init(style: style, separatorViewFactory: separatorViewFactory, layout: layout)
         }
         
         private func createSeparatorWithBorder(hasBorder: Bool) -> UIView? {
