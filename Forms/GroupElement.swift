@@ -9,7 +9,7 @@
 import UIKit
 import StackViewController
 
-public final class GroupElement: FormElement, FormResponder {
+public final class GroupElement: FormElement {
     /// Stores configuration parameters
     public struct Configuration {
         /// The style used to display the grouped elements
@@ -169,7 +169,7 @@ public final class GroupElement: FormElement, FormResponder {
             let elementView = element.render()
             subviews.append(configuration.arrangedSubviewForElementView(elementView))
 
-            if element is FormResponder {
+            if elementView.canBecomeFirstResponder() {
                 if let lastResponderView = responderViews.last {
                     lastResponderView._nextFormResponder = elementView
                 }
@@ -228,6 +228,10 @@ public final class GroupElement: FormElement, FormResponder {
         
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
+        }
+        
+        private override func canBecomeFirstResponder() -> Bool {
+            return true
         }
         
         private override func becomeFirstResponder() -> Bool {
