@@ -45,6 +45,8 @@ public class FormViewController: UIViewController {
     
     private func reloadElementViews() {
         let rootElementView = rootElement.render()
+        rootElementView.translatesAutoresizingMaskIntoConstraints = false
+        
         autoscrollView.contentView = rootElementView
         let widthConstraint = NSLayoutConstraint(item: autoscrollView, attribute: .Width, relatedBy: .Equal, toItem: rootElementView, attribute: .Width, multiplier: 1.0, constant: 0.0)
         widthConstraint.active = true
