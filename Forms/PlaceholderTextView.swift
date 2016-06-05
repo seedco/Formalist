@@ -109,6 +109,12 @@ public class PlaceholderTextView: UITextView {
         get { return _showPlaceholder }
         set {
             guard _showPlaceholder != newValue else { return }
+            
+            // Not sure why this property needs to be manually cleared, but
+            // it appears that simply setting `attributedText` doesn't do it.
+            // Might be a UIKit bug.
+            super.textColor = nil
+            
             if newValue {
                 originalTextAttributes = defaultTextAttributes
                 super.attributedText = attributedPlaceholder
