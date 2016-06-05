@@ -13,6 +13,7 @@ import StackViewController
 class ViewController: UIViewController {
     private let stringValue1 = FormValue("")
     private let stringValue2 = FormValue("")
+    private let stringValue3 = FormValue("")
     private let segmentValue = FormValue("Segment 1")
     private let booleanValue = FormValue(false)
     
@@ -48,6 +49,9 @@ class ViewController: UIViewController {
             GroupElement(configuration: configuration, elements: [
                 TextFieldElement(value: self.stringValue2) { textField in
                     textField.placeholder = "Text Element 2"
+                },
+                TextViewElement(value: self.stringValue3) { textView in
+                    textView.placeholder = "Text View Element"
                 }
             ])
         ])

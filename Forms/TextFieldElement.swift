@@ -9,7 +9,7 @@
 import UIKit
 
 /// An element that displays an editable text field
-@objc public final class TextFieldElement: NSObject, FormElement, Validatable, FormResponder, UITextFieldDelegate {
+@objc public final class TextFieldElement: NSObject, FormElement, Validatable,  UITextFieldDelegate {
     public typealias ViewConfigurator = UITextField -> Void
     
     private let value: FormValue<String>
@@ -36,6 +36,8 @@ import UIKit
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
     }
+    
+    // MARK: FormElement
     
     public func render() -> UIView {
         let textField = UITextField(frame: CGRectZero)

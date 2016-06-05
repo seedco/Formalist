@@ -25,7 +25,7 @@ public class PlaceholderTextView: UITextView {
             }
         }
     }
-    private var _placeholderColor: UIColor?
+    private var _placeholderColor: UIColor? = UIColor(white: 0.78, alpha: 1.0)
     
     /// The placeholder text to display when there is no text in the view and
     /// it isn't being edited.
