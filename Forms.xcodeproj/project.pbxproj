@@ -36,6 +36,7 @@
 		7294406A1CF92321004DFCB4 /* StaticTextElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729440691CF92321004DFCB4 /* StaticTextElement.swift */; };
 		7294406C1CF92431004DFCB4 /* SegueElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294406B1CF92431004DFCB4 /* SegueElementView.swift */; };
 		7294406E1CF9254A004DFCB4 /* SegueElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294406D1CF9254A004DFCB4 /* SegueElement.swift */; };
+		72B7DEBE1D03D9EF00CFAEBE /* SpacerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		729440691CF92321004DFCB4 /* StaticTextElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTextElement.swift; sourceTree = "<group>"; };
 		7294406B1CF92431004DFCB4 /* SegueElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElementView.swift; sourceTree = "<group>"; };
 		7294406D1CF9254A004DFCB4 /* SegueElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElement.swift; sourceTree = "<group>"; };
+		72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacerElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				7292B2541CFFEFBE00FFE97B /* GroupElement.swift */,
 				7292B2581D00078700FFE97B /* UIView+FormResponder.swift */,
 				720357421D0130D6006F2542 /* FormViewController.swift */,
+				72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			files = (
 				724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */,
 				7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */,
+				72B7DEBE1D03D9EF00CFAEBE /* SpacerElement.swift in Sources */,
 				7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */,
 				720357431D0130D6006F2542 /* FormViewController.swift in Sources */,
 				7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */,
