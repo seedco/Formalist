@@ -43,10 +43,10 @@ public final class GroupElement: FormElement, FormResponder {
             
             /// The layout mode used to determine the height to display the
             /// element view at
-            public let mode: Mode
+            public var mode: Mode
             
             /// Edge insets to use for padding the element view
-            public let edgeInsets: UIEdgeInsets
+            public var edgeInsets: UIEdgeInsets
             
             public init(mode: Mode = .IntrinsicSize, edgeInsets: UIEdgeInsets = UIEdgeInsetsZero) {
                 self.mode = mode
@@ -65,14 +65,14 @@ public final class GroupElement: FormElement, FormResponder {
         
         /// The grouping style to use. See the documentation for the `Style`
         /// enum for more information.
-        public let style: Style
+        public var style = Style.Plain
         
         /// The block that creates separator views. See the documentation for
         /// the `SeparatorViewFactory` type for more information.
-        public let separatorViewFactory: SeparatorViewFactory
+        public var separatorViewFactory = Configuration.defaultSeparatorViewFactory
         
         /// Describes how each element in the group is laid out
-        public let layout: Layout
+        public var layout = Layout()
         
         private struct SeparatorDefaults {
             static let Inset: CGFloat = 15.0
@@ -80,6 +80,8 @@ public final class GroupElement: FormElement, FormResponder {
             static let SeparatorColor = UIColor(white: 0.9, alpha: 1.0)
             static let Thickness: CGFloat = 1.0
         }
+        
+        public init() {}
         
         private static let defaultSeparatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
             guard case let .Grouped(backgroundColor) = style else { return nil }
@@ -89,17 +91,6 @@ public final class GroupElement: FormElement, FormResponder {
             separatorView.separatorColor = isBorder ? SeparatorDefaults.SeparatorColor : SeparatorDefaults.BorderColor
             separatorView.separatorThickness = SeparatorDefaults.Thickness
             return separatorView
-        }
-        
-        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = Configuration.defaultSeparatorViewFactory, layout: Layout) {
-            self.style = style
-            self.separatorViewFactory = separatorViewFactory
-            self.layout = layout
-        }
-        
-        public init(style: Style = .Plain, separatorViewFactory: SeparatorViewFactory = Configuration.defaultSeparatorViewFactory, layoutMode: Layout.Mode = .IntrinsicSize, edgeInsets: UIEdgeInsets = UIEdgeInsetsZero) {
-            let layout = Layout(mode: layoutMode, edgeInsets: edgeInsets)
-            self.init(style: style, separatorViewFactory: separatorViewFactory, layout: layout)
         }
         
         private func createSeparatorWithBorder(hasBorder: Bool) -> UIView? {
