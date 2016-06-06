@@ -58,11 +58,11 @@ import UIKit
     // MARK: UITextFieldDelegate
     
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if let nextFormResponder = textField.nextFormResponder {
-            nextFormResponder.becomeFirstResponder()
+        if let nextFormResponder = textField.nextFormResponder where nextFormResponder.becomeFirstResponder() {
             return false
         } else {
-            return true
+            textField.resignFirstResponder()
+            return false
         }
     }
     
