@@ -63,12 +63,12 @@ import Foundation
     public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         // http://stackoverflow.com/a/23779209
         if let _ = text.rangeOfCharacterFromSet(NSCharacterSet.newlineCharacterSet(), options: NSStringCompareOptions.BackwardsSearch) where text.characters.count == 1 {
-            if let nextFormResponder = textView.nextFormResponder {
-                nextFormResponder.becomeFirstResponder()
+            if let nextFormResponder = textView.nextFormResponder where nextFormResponder.becomeFirstResponder() {
+                return false
             } else {
                 textView.resignFirstResponder()
+                return false
             }
-            return false
         } else {
             return true
         }
