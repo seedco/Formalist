@@ -30,6 +30,7 @@
 		7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE11CF6B86E00C3B4E4 /* SegmentElementView.swift */; };
 		7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE31CF6B87400C3B4E4 /* Segment.swift */; };
 		7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEE51CF6B92B00C3B4E4 /* SegmentElement.swift */; };
+		72856B9C1D075C1600836DED /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72856B911D075BF100836DED /* FBSnapshotTestCase.framework */; };
 		7292B2551CFFEFBE00FFE97B /* GroupElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2541CFFEFBE00FFE97B /* GroupElement.swift */; };
 		7292B2591D00078700FFE97B /* UIView+FormResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2581D00078700FFE97B /* UIView+FormResponder.swift */; };
 		7292B25E1D0008BC00FFE97B /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B25D1D0008BC00FFE97B /* WeakBox.swift */; };
@@ -85,6 +86,41 @@
 			remoteGlobalIDString = 72D193E31CC3576A00645F83;
 			remoteInfo = StackViewController;
 		};
+		72856B901D075BF100836DED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B31987F01AB782D000B0A900;
+			remoteInfo = "FBSnapshotTestCase iOS";
+		};
+		72856B921D075BF100836DED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B31987FB1AB782D100B0A900;
+			remoteInfo = "FBSnapshotTestCase iOS Tests";
+		};
+		72856B941D075BF100836DED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8271377A1C63AB6F00354E42;
+			remoteInfo = "FBSnapshotTestCase tvOS";
+		};
+		72856B961D075BF100836DED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 827137831C63AB7000354E42;
+			remoteInfo = "FBSnapshotTestCase tvOS Tests";
+		};
+		72856B9A1D075C0F00836DED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B31987EF1AB782D000B0A900;
+			remoteInfo = "FBSnapshotTestCase iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -128,6 +164,7 @@
 		7276FEE11CF6B86E00C3B4E4 /* SegmentElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentElementView.swift; sourceTree = "<group>"; };
 		7276FEE31CF6B87400C3B4E4 /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		7276FEE51CF6B92B00C3B4E4 /* SegmentElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentElement.swift; sourceTree = "<group>"; };
+		72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBSnapshotTestCase.xcodeproj; path = External/FBSnapshotTestCase/FBSnapshotTestCase.xcodeproj; sourceTree = "<group>"; };
 		7292B2541CFFEFBE00FFE97B /* GroupElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupElement.swift; sourceTree = "<group>"; };
 		7292B2581D00078700FFE97B /* UIView+FormResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FormResponder.swift"; sourceTree = "<group>"; };
 		7292B25D1D0008BC00FFE97B /* WeakBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
@@ -153,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72856B9C1D075C1600836DED /* FBSnapshotTestCase.framework in Frameworks */,
 				7276FE961CF67DD800C3B4E4 /* Forms.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +283,7 @@
 		7276FECC1CF6B34100C3B4E4 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */,
 				7276FECD1CF6B34E00C3B4E4 /* StackViewController.xcodeproj */,
 			);
 			name = External;
@@ -256,6 +295,17 @@
 				7276FED41CF6B34E00C3B4E4 /* StackViewController.framework */,
 				7276FED61CF6B34E00C3B4E4 /* StackViewControllerTests.xctest */,
 				7276FED81CF6B34E00C3B4E4 /* Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		72856B8A1D075BF100836DED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72856B911D075BF100836DED /* FBSnapshotTestCase.framework */,
+				72856B931D075BF100836DED /* FBSnapshotTestCase iOS Tests.xctest */,
+				72856B951D075BF100836DED /* FBSnapshotTestCase.framework */,
+				72856B971D075BF100836DED /* FBSnapshotTestCase tvOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +354,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				72856B9B1D075C0F00836DED /* PBXTargetDependency */,
 				7276FE981CF67DD800C3B4E4 /* PBXTargetDependency */,
 			);
 			name = FormsTests;
@@ -364,6 +415,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 72856B8A1D075BF100836DED /* Products */;
+					ProjectRef = 72856B891D075BF100836DED /* FBSnapshotTestCase.xcodeproj */;
+				},
+				{
 					ProductGroup = 7276FECE1CF6B34E00C3B4E4 /* Products */;
 					ProjectRef = 7276FECD1CF6B34E00C3B4E4 /* StackViewController.xcodeproj */;
 				},
@@ -397,6 +452,34 @@
 			fileType = wrapper.application;
 			path = Example.app;
 			remoteRef = 7276FED71CF6B34E00C3B4E4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		72856B911D075BF100836DED /* FBSnapshotTestCase.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FBSnapshotTestCase.framework;
+			remoteRef = 72856B901D075BF100836DED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		72856B931D075BF100836DED /* FBSnapshotTestCase iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "FBSnapshotTestCase iOS Tests.xctest";
+			remoteRef = 72856B921D075BF100836DED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		72856B951D075BF100836DED /* FBSnapshotTestCase.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FBSnapshotTestCase.framework;
+			remoteRef = 72856B941D075BF100836DED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		72856B971D075BF100836DED /* FBSnapshotTestCase tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "FBSnapshotTestCase tvOS Tests.xctest";
+			remoteRef = 72856B961D075BF100836DED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -492,6 +575,11 @@
 			isa = PBXTargetDependency;
 			name = StackViewController;
 			targetProxy = 7276FEDD1CF6B3B300C3B4E4 /* PBXContainerItemProxy */;
+		};
+		72856B9B1D075C0F00836DED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "FBSnapshotTestCase iOS";
+			targetProxy = 72856B9A1D075C0F00836DED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
