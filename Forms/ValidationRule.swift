@@ -22,6 +22,13 @@ public enum ValidationResult {
     case Cancelled
 }
 
+private let EmailRegex: NSRegularExpression = {
+    // Same regular expression used by Mail.app
+    // From: http://stackoverflow.com/a/8863823
+    let pattern = "^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*@[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$"
+    return try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+}()
+
 /// A validation rule for a value of type `ValueType`. This type is used to
 /// wrap the validator because typealiases do not currently support
 /// generics.
@@ -41,11 +48,21 @@ public struct ValidationRule<ValueType> {
     /// A string validation rule to check whether the string is
     /// a valid email address
     public static var Email: ValidationRule<String> {
+        return fromRegex(EmailRegex, failureMessage: "The email address is invalid")
+    }
+
+    /**
+     A validation rule that uses a regular expression to verify the
+     validity of a string
+     
+     - parameter regex:          Regex used to find matches in the string
+     - parameter failureMessage: The failure message to invoke the completion
+     handler with if the validation fails.
+     
+     - returns: The validation rule
+     */
+    public static func fromRegex(regex: NSRegularExpression, failureMessage: String) -> ValidationRule<String> {
         return ValidationRule<String> { str, completion in
-            // Same regular expression used by Mail.app
-            // From: http://stackoverflow.com/a/8863823
-            let pattern = "^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*@[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$"
-            let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
             if regex.firstMatchInString(str, options: NSMatchingOptions.Anchored, range: NSMakeRange(0, str.characters.count)) == nil {
                 completion(.Invalid(message: "The email address is invalid"))
             } else {
