@@ -23,7 +23,7 @@ public class SegueElementView: UIView {
     
     init(icon: UIImage?, title: String) {
         label = UILabel(frame: CGRectZero)
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         label.text = title
         
         imageView = UIImageView(image: icon)
