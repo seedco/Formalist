@@ -50,6 +50,7 @@
 		72ABFFF31D07AC9400280A73 /* PlaceholderTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFF21D07AC9400280A73 /* PlaceholderTextViewTests.swift */; };
 		72ABFFF51D07AEAA00280A73 /* ValidationErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFF41D07AEAA00280A73 /* ValidationErrorViewTests.swift */; };
 		72ABFFF71D07B21000280A73 /* GroupElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFF61D07B21000280A73 /* GroupElementTests.swift */; };
+		72ABFFF91D07CA6900280A73 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFF81D07CA6900280A73 /* Convenience.swift */; };
 		72B7DEBE1D03D9EF00CFAEBE /* SpacerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */; };
 		72B7DEC21D03E0D400CFAEBE /* ValidationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEC11D03E0D400CFAEBE /* ValidationErrorView.swift */; };
 		72B7DEC41D03F4CA00CFAEBE /* TextViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEC31D03F4CA00CFAEBE /* TextViewElement.swift */; };
@@ -197,6 +198,7 @@
 		72ABFFF21D07AC9400280A73 /* PlaceholderTextViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextViewTests.swift; sourceTree = "<group>"; };
 		72ABFFF41D07AEAA00280A73 /* ValidationErrorViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorViewTests.swift; sourceTree = "<group>"; };
 		72ABFFF61D07B21000280A73 /* GroupElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupElementTests.swift; sourceTree = "<group>"; };
+		72ABFFF81D07CA6900280A73 /* Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacerElement.swift; sourceTree = "<group>"; };
 		72B7DEC11D03E0D400CFAEBE /* ValidationErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorView.swift; sourceTree = "<group>"; };
 		72B7DEC31D03F4CA00CFAEBE /* TextViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewElement.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				720357421D0130D6006F2542 /* FormViewController.swift */,
 				72B7DEC11D03E0D400CFAEBE /* ValidationErrorView.swift */,
 				72B7DEC51D03F63700CFAEBE /* PlaceholderTextView.swift */,
+				72ABFFF81D07CA6900280A73 /* Convenience.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */,
+				72ABFFF91D07CA6900280A73 /* Convenience.swift in Sources */,
 				7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */,
 				72B7DEC61D03F63700CFAEBE /* PlaceholderTextView.swift in Sources */,
 				72B7DEBE1D03D9EF00CFAEBE /* SpacerElement.swift in Sources */,
