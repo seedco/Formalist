@@ -152,6 +152,20 @@ public final class GroupElement: FormElement {
         self.configuration = configuration
         self.elements = elements
     }
+    
+    /**
+     Convenience initializer for configuring the element using a block.
+     
+     - parameter configurator: Block used to set up configuration properties
+     - parameter elements:     The elements to group
+     
+     - returns: An initialized instance of the receiver
+     */
+    public convenience init(configurator: (inout Configuration) -> Void, elements: [FormElement]) {
+        var configuration = Configuration()
+        configurator(&configuration)
+        self.init(configuration: configuration, elements: elements)
+    }
 
     // MARK: FormElement
     

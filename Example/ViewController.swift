@@ -36,8 +36,8 @@ class ViewController: UIViewController {
         return FormViewController([
             GroupElement(configuration: configuration, elements: [
                 BooleanElement(title: "Boolean Element", value: self.booleanValue),
-                TextFieldElement(value: self.stringValue1) { textField in
-                    textField.placeholder = "Text Element 1"
+                TextFieldElement(value: self.stringValue1) {
+                    $0.placeholder = "Text Element 1"
                 },
                 SegmentElement(title: "Test Segment", segments: [
                     Segment(content: .Title("Segment 1"), value: "Segment 1"),
@@ -45,13 +45,15 @@ class ViewController: UIViewController {
                 ], selectedValue: self.segmentValue),
             ]),
             StaticTextElement(text: "This is a static text element with some text in it"),
-            SpacerElement(height: 50.0, backgroundColor: .redColor()),
+            SpacerElement(height: 50.0) {
+                $0.backgroundColor = .redColor()
+            },
             GroupElement(configuration: configuration, elements: [
-                TextFieldElement(value: self.stringValue2) { textField in
-                    textField.placeholder = "Text Element 2"
+                TextFieldElement(value: self.stringValue2) {
+                    $0.placeholder = "Text Element 2"
                 },
-                TextViewElement(value: self.stringValue3, validationRules: [.Email]) { textView in
-                    textView.placeholder = "Text View Element"
+                TextViewElement(value: self.stringValue3, validationRules: [.Email]) {
+                    $0.placeholder = "Text View Element"
                 }
             ])
         ])
