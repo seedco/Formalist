@@ -45,6 +45,7 @@ import Foundation
         textView.textContainerInset = UIEdgeInsetsZero
         textView.textContainer.lineFragmentPadding = 0
         textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.backgroundColor = .clearColor()
         textView.text = value.value
         
         let notificationName = continuous ? UITextViewTextDidChangeNotification : UITextViewTextDidEndEditingNotification
