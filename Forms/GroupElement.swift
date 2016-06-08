@@ -85,7 +85,7 @@ public final class GroupElement: FormElement {
         /// the `SeparatorViewFactory` type for more information.
         public var separatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
             guard case let .Grouped(backgroundColor) = style else { return nil }
-            let separatorView = SeparatorView(axis: .Vertical)
+            let separatorView = SeparatorView(axis: .Horizontal)
             separatorView.backgroundColor = backgroundColor
             separatorView.separatorInset = isBorder ? 0 : SeparatorDefaults.Inset
             separatorView.separatorColor = isBorder ? SeparatorDefaults.SeparatorColor : SeparatorDefaults.BorderColor
