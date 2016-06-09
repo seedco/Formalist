@@ -38,6 +38,8 @@
 		7294406E1CF9254A004DFCB4 /* SegueElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294406D1CF9254A004DFCB4 /* SegueElement.swift */; };
 		72B7DEBE1D03D9EF00CFAEBE /* SpacerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */; };
 		72B7DEC21D03E0D400CFAEBE /* ValidationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEC11D03E0D400CFAEBE /* ValidationErrorView.swift */; };
+		72B7DEC41D03F4CA00CFAEBE /* TextViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEC31D03F4CA00CFAEBE /* TextViewElement.swift */; };
+		72B7DEC61D03F63700CFAEBE /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7DEC51D03F63700CFAEBE /* PlaceholderTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		7294406D1CF9254A004DFCB4 /* SegueElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElement.swift; sourceTree = "<group>"; };
 		72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacerElement.swift; sourceTree = "<group>"; };
 		72B7DEC11D03E0D400CFAEBE /* ValidationErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorView.swift; sourceTree = "<group>"; };
+		72B7DEC31D03F4CA00CFAEBE /* TextViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewElement.swift; sourceTree = "<group>"; };
+		72B7DEC51D03F63700CFAEBE /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,8 @@
 				720357421D0130D6006F2542 /* FormViewController.swift */,
 				72B7DEBD1D03D9EF00CFAEBE /* SpacerElement.swift */,
 				72B7DEC11D03E0D400CFAEBE /* ValidationErrorView.swift */,
+				72B7DEC31D03F4CA00CFAEBE /* TextViewElement.swift */,
+				72B7DEC51D03F63700CFAEBE /* PlaceholderTextView.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -428,12 +434,14 @@
 			files = (
 				724715281CFE156B00BD2549 /* TextFieldElement.swift in Sources */,
 				7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */,
+				72B7DEC61D03F63700CFAEBE /* PlaceholderTextView.swift in Sources */,
 				72B7DEBE1D03D9EF00CFAEBE /* SpacerElement.swift in Sources */,
 				7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */,
 				72B7DEC21D03E0D400CFAEBE /* ValidationErrorView.swift in Sources */,
 				720357431D0130D6006F2542 /* FormViewController.swift in Sources */,
 				7276FEE61CF6B92B00C3B4E4 /* SegmentElement.swift in Sources */,
 				7292B2551CFFEFBE00FFE97B /* GroupElement.swift in Sources */,
+				72B7DEC41D03F4CA00CFAEBE /* TextViewElement.swift in Sources */,
 				7276FEE41CF6B87400C3B4E4 /* Segment.swift in Sources */,
 				7292B2591D00078700FFE97B /* UIView+FormResponder.swift in Sources */,
 				7276FEC71CF6A9D700C3B4E4 /* FormElement.swift in Sources */,
