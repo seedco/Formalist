@@ -65,8 +65,7 @@ public final class GroupElement: FormElement {
         
         private struct SeparatorDefaults {
             static let Inset: CGFloat = 15.0
-            static let BorderColor = UIColor(red: 0.83, green: 0.84, blue: 0.85, alpha: 1.0)
-            static let SeparatorColor = UIColor(white: 0.9, alpha: 1.0)
+            static let SeparatorColor = UIColor(white: 0.78, alpha: 1.0)
             static let Thickness: CGFloat = 1.0
         }
         
@@ -85,10 +84,10 @@ public final class GroupElement: FormElement {
         /// the `SeparatorViewFactory` type for more information.
         public var separatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
             guard case let .Grouped(backgroundColor) = style else { return nil }
-            let separatorView = SeparatorView(axis: .Vertical)
+            let separatorView = SeparatorView(axis: .Horizontal)
             separatorView.backgroundColor = backgroundColor
             separatorView.separatorInset = isBorder ? 0 : SeparatorDefaults.Inset
-            separatorView.separatorColor = isBorder ? SeparatorDefaults.SeparatorColor : SeparatorDefaults.BorderColor
+            separatorView.separatorColor = SeparatorDefaults.SeparatorColor
             separatorView.separatorThickness = SeparatorDefaults.Thickness
             return separatorView
         }
@@ -151,6 +150,20 @@ public final class GroupElement: FormElement {
     public init(configuration: Configuration = Configuration(), elements: [FormElement]) {
         self.configuration = configuration
         self.elements = elements
+    }
+    
+    /**
+     Convenience initializer for configuring the element using a block.
+     
+     - parameter configurator: Block used to set up configuration properties
+     - parameter elements:     The elements to group
+     
+     - returns: An initialized instance of the receiver
+     */
+    public convenience init(configurator: (inout Configuration) -> Void, elements: [FormElement]) {
+        var configuration = Configuration()
+        configurator(&configuration)
+        self.init(configuration: configuration, elements: elements)
     }
 
     // MARK: FormElement

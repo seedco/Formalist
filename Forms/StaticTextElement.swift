@@ -35,6 +35,7 @@ public final class StaticTextElement: FormElement {
         label.numberOfLines = 0
         label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         label.text = text
+        viewConfigurator?(label)
         return label
     }
 }

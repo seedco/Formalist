@@ -1,3 +1,6 @@
 [submodule "External/StackViewController"]
 	path = External/StackViewController
 	url = https://github.com/seedco/StackViewController.git
+[submodule "External/FBSnapshotTestCase"]
+	path = External/FBSnapshotTestCase
+	url = https://github.com/facebook/ios-snapshot-test-case.git
