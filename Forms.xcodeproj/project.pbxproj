@@ -13,6 +13,7 @@
 		7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715291CFEAC1400BD2549 /* ValidationRule.swift */; };
 		7247152D1CFEB00400BD2549 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7247152C1CFEB00400BD2549 /* Validatable.swift */; };
 		724715311CFEB4AE00BD2549 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724715301CFEB4AE00BD2549 /* Box.swift */; };
+		725DD97E1D0A975D00320990 /* ValidationRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */; };
 		7276FE8F1CF67DD800C3B4E4 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7276FE8E1CF67DD800C3B4E4 /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7276FE961CF67DD800C3B4E4 /* Forms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FE8B1CF67DD800C3B4E4 /* Forms.framework */; };
 		7276FEAC1CF67DEB00C3B4E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276FEAB1CF67DEB00C3B4E4 /* AppDelegate.swift */; };
@@ -176,6 +177,7 @@
 		724715291CFEAC1400BD2549 /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
 		7247152C1CFEB00400BD2549 /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 		724715301CFEB4AE00BD2549 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleTests.swift; sourceTree = "<group>"; };
 		7276FE8B1CF67DD800C3B4E4 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7276FE8E1CF67DD800C3B4E4 /* Forms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Forms.h; sourceTree = "<group>"; };
 		7276FE901CF67DD800C3B4E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				72ABFFF41D07AEAA00280A73 /* ValidationErrorViewTests.swift */,
 				72ABFFF61D07B21000280A73 /* GroupElementTests.swift */,
 				72856B9F1D075D6E00836DED /* TestUtilities.swift */,
+				725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */,
 				72856BA11D075FE400836DED /* Assets.xcassets */,
 			);
 			path = FormsTests;
@@ -662,6 +665,7 @@
 			files = (
 				72ABFFF51D07AEAA00280A73 /* ValidationErrorViewTests.swift in Sources */,
 				72ABFFE01D079F4700280A73 /* SegmentElementTests.swift in Sources */,
+				725DD97E1D0A975D00320990 /* ValidationRuleTests.swift in Sources */,
 				72ABFFEF1D07A89600280A73 /* TextViewElementTests.swift in Sources */,
 				72856BA01D075D6E00836DED /* TestUtilities.swift in Sources */,
 				72ABFFE91D07A1B400280A73 /* SegueElementTests.swift in Sources */,
