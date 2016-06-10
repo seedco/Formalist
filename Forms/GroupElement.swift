@@ -9,7 +9,7 @@
 import UIKit
 import StackViewController
 
-public final class GroupElement: FormElement {
+public final class GroupElement: FormElement, Validatable {
     /// Stores configuration parameters
     public struct Configuration {
         /// The style used to display the grouped elements
@@ -230,6 +230,15 @@ public final class GroupElement: FormElement {
         
         return containerView
     }
+    
+    // MARK: Validatable
+    
+    public func validate(completionHandler: ValidationResult -> Void) {
+        let validatables = elements.flatMap { $0 as? Validatable }
+        self.dynamicType.validate(validatables, completionHandler: completionHandler)
+    }
+    
+    // MARK: ContainerView
     
     private class ContainerView: UIView {
         private let initialFormResponderView: UIView?
