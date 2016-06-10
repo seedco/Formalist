@@ -40,6 +40,9 @@
 		7294406A1CF92321004DFCB4 /* StaticTextElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729440691CF92321004DFCB4 /* StaticTextElement.swift */; };
 		7294406C1CF92431004DFCB4 /* SegueElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294406B1CF92431004DFCB4 /* SegueElementView.swift */; };
 		7294406E1CF9254A004DFCB4 /* SegueElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294406D1CF9254A004DFCB4 /* SegueElement.swift */; };
+		72AB00111D07D83400280A73 /* FormsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB00101D07D83400280A73 /* FormsUITests.swift */; };
+		72AB001D1D07D86000280A73 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FED41CF6B34E00C3B4E4 /* StackViewController.framework */; };
+		72AB001E1D07D86000280A73 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7276FED41CF6B34E00C3B4E4 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72ABFFE01D079F4700280A73 /* SegmentElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFDF1D079F4700280A73 /* SegmentElementTests.swift */; };
 		72ABFFE71D07A12300280A73 /* StaticTextElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFE61D07A12300280A73 /* StaticTextElementTests.swift */; };
 		72ABFFE91D07A1B400280A73 /* SegueElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFE81D07A1B400280A73 /* SegueElementTests.swift */; };
@@ -135,6 +138,20 @@
 			remoteGlobalIDString = B31987EF1AB782D000B0A900;
 			remoteInfo = "FBSnapshotTestCase iOS";
 		};
+		72AB00131D07D83400280A73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7276FE821CF67DD800C3B4E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7276FEA81CF67DEB00C3B4E4;
+			remoteInfo = Example;
+		};
+		72AB001F1D07D86000280A73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7276FECD1CF6B34E00C3B4E4 /* StackViewController.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 72D193E31CC3576A00645F83;
+			remoteInfo = StackViewController;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -144,6 +161,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				72AB001E1D07D86000280A73 /* StackViewController.framework in Embed Frameworks */,
 				7276FEBC1CF67DF200C3B4E4 /* Forms.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -188,6 +206,9 @@
 		729440691CF92321004DFCB4 /* StaticTextElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTextElement.swift; sourceTree = "<group>"; };
 		7294406B1CF92431004DFCB4 /* SegueElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElementView.swift; sourceTree = "<group>"; };
 		7294406D1CF9254A004DFCB4 /* SegueElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElement.swift; sourceTree = "<group>"; };
+		72AB000E1D07D83400280A73 /* FormsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72AB00101D07D83400280A73 /* FormsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormsUITests.swift; sourceTree = "<group>"; };
+		72AB00121D07D83400280A73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72ABFFDF1D079F4700280A73 /* SegmentElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentElementTests.swift; sourceTree = "<group>"; };
 		72ABFFE61D07A12300280A73 /* StaticTextElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTextElementTests.swift; sourceTree = "<group>"; };
 		72ABFFE81D07A1B400280A73 /* SegueElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElementTests.swift; sourceTree = "<group>"; };
@@ -227,7 +248,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72AB001D1D07D86000280A73 /* StackViewController.framework in Frameworks */,
 				7276FEBB1CF67DF200C3B4E4 /* Forms.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72AB000B1D07D83400280A73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +269,7 @@
 				7276FECC1CF6B34100C3B4E4 /* External */,
 				7276FE8D1CF67DD800C3B4E4 /* Forms */,
 				7276FE991CF67DD800C3B4E4 /* FormsTests */,
+				72AB000F1D07D83400280A73 /* FormsUITests */,
 				7276FEAA1CF67DEB00C3B4E4 /* Example */,
 				7276FE8C1CF67DD800C3B4E4 /* Products */,
 			);
@@ -251,6 +281,7 @@
 				7276FE8B1CF67DD800C3B4E4 /* Forms.framework */,
 				7276FE951CF67DD800C3B4E4 /* FormsTests.xctest */,
 				7276FEA91CF67DEB00C3B4E4 /* Example.app */,
+				72AB000E1D07D83400280A73 /* FormsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,6 +383,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		72AB000F1D07D83400280A73 /* FormsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				72AB00101D07D83400280A73 /* FormsUITests.swift */,
+				72AB00121D07D83400280A73 /* Info.plist */,
+			);
+			path = FormsUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -417,11 +457,30 @@
 			);
 			dependencies = (
 				7276FEBE1CF67DF200C3B4E4 /* PBXTargetDependency */,
+				72AB00201D07D86000280A73 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
 			productReference = 7276FEA91CF67DEB00C3B4E4 /* Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		72AB000D1D07D83400280A73 /* FormsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72AB001C1D07D83400280A73 /* Build configuration list for PBXNativeTarget "FormsUITests" */;
+			buildPhases = (
+				72AB000A1D07D83400280A73 /* Sources */,
+				72AB000B1D07D83400280A73 /* Frameworks */,
+				72AB000C1D07D83400280A73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72AB00141D07D83400280A73 /* PBXTargetDependency */,
+			);
+			name = FormsUITests;
+			productName = FormsUITests;
+			productReference = 72AB000E1D07D83400280A73 /* FormsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -441,6 +500,10 @@
 					};
 					7276FEA81CF67DEB00C3B4E4 = {
 						CreatedOnToolsVersion = 7.3.1;
+					};
+					72AB000D1D07D83400280A73 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 7276FEA81CF67DEB00C3B4E4;
 					};
 				};
 			};
@@ -470,6 +533,7 @@
 				7276FE8A1CF67DD800C3B4E4 /* Forms */,
 				7276FE941CF67DD800C3B4E4 /* FormsTests */,
 				7276FEA81CF67DEB00C3B4E4 /* Example */,
+				72AB000D1D07D83400280A73 /* FormsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -551,6 +615,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72AB000C1D07D83400280A73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -614,6 +685,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72AB000A1D07D83400280A73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72AB00111D07D83400280A73 /* FormsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -636,6 +715,16 @@
 			isa = PBXTargetDependency;
 			name = "FBSnapshotTestCase iOS";
 			targetProxy = 72856B9A1D075C0F00836DED /* PBXContainerItemProxy */;
+		};
+		72AB00141D07D83400280A73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7276FEA81CF67DEB00C3B4E4 /* Example */;
+			targetProxy = 72AB00131D07D83400280A73 /* PBXContainerItemProxy */;
+		};
+		72AB00201D07D86000280A73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = StackViewController;
+			targetProxy = 72AB001F1D07D86000280A73 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -821,6 +910,28 @@
 			};
 			name = Release;
 		};
+		72AB00151D07D83400280A73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FormsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.seed.FormsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Example;
+			};
+			name = Debug;
+		};
+		72AB00161D07D83400280A73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FormsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.seed.FormsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Example;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -856,6 +967,15 @@
 			buildConfigurations = (
 				7276FEB91CF67DEB00C3B4E4 /* Debug */,
 				7276FEBA1CF67DEB00C3B4E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72AB001C1D07D83400280A73 /* Build configuration list for PBXNativeTarget "FormsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72AB00151D07D83400280A73 /* Debug */,
+				72AB00161D07D83400280A73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

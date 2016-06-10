@@ -45,6 +45,7 @@ class ViewController: UIViewController {
                 BooleanElement(title: "Boolean Element", value: self.booleanValue),
                 TextViewElement(value: self.textViewValue) {
                     $0.placeholder = "Text View Element"
+                    $0.accessibilityIdentifier = "textView"
                 },
                 SegmentElement(title: "Segment Element", segments: [
                     Segment(content: .Title("Segment 1"), value: "Segment 1"),
@@ -59,7 +60,9 @@ class ViewController: UIViewController {
                     $0.spellCheckingType = .No
                     $0.placeholder = "Text Field Element (Email)"
                 },
-                SegueElement(icon: UIImage(named: "circle")!, title: "Segue Element") { [unowned self] in
+                SegueElement(icon: UIImage(named: "circle")!, title: "Segue Element", viewConfigurator: {
+                    $0.accessibilityIdentifier = "segueView"
+                }) { [unowned self] in
                     self.displayAlertWithTitle("Segue Element", message: "Tapped the element.")
                 },
             ]),
