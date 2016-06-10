@@ -91,6 +91,8 @@ class ViewController: UIViewController {
         formViewController.view.activateSuperviewHuggingConstraints()
         formViewController.didMoveToParentViewController(self)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Validate", style: .Plain, target: self, action: #selector(ViewController.validateForm(_:)))
+        
         addFormObservers()
     }
     
@@ -117,5 +119,14 @@ class ViewController: UIViewController {
         let dismissAction = UIAlertAction(title: "Dismiss", style: .Default, handler: { _ in })
         alertController.addAction(dismissAction)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @objc private func validateForm(sender: UIBarButtonItem) {
+        formViewController.validate { result in
+            if case .Valid = result {
+                self.displayAlertWithTitle("Validation", message: "The form contents are valid.")
+            }
+            print("Validation result: \(result)")
+        }
     }
 }

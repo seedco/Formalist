@@ -41,7 +41,7 @@ public extension Validatable {
                     return
                 }
                 remainingObjects.removeFirst()
-                nextObject.validate { result in
+                nextObject.validateAndStoreResult { result in
                     switch result {
                     case .Valid:
                         validateNext()
@@ -81,10 +81,12 @@ private extension Validatable {
 }
 
 extension Validatable {
-    func validateAndStoreResult(queue queue: dispatch_queue_t, completionHandler: ValidationResult -> Void) {
+    func validateAndStoreResult(queue queue: dispatch_queue_t = dispatch_get_main_queue(), completionHandler: ValidationResult -> Void) {
         validate { result in
-            self._validationResult = result
-            completionHandler(result)
+            dispatch_async(queue) {
+                self._validationResult = result
+                completionHandler(result)
+            }
         }
     }
 }

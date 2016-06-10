@@ -189,16 +189,16 @@ public final class GroupElement: FormElement, Validatable {
                 responderViews.append(elementView)
             }
             
-            if let validatable = element as? Validatable, validationResult = validatable.validationResult {
-                if case let .Invalid(message) = validationResult,
-                    let errorView = configuration.createValidationErrorViewWithMessage(message) {
-                    addSeparator(isBorder: true)
-                    subviews.append(errorView)
-                    return false
-                } else {
-                    return true
-                }
+            if !(element is GroupElement),
+               let validationResult = (element as? Validatable)?.validationResult,
+               case let .Invalid(message) = validationResult,
+               let errorView = configuration.createValidationErrorViewWithMessage(message) {
+                
+                addSeparator(isBorder: true)
+                subviews.append(errorView)
+                return false
             }
+            
             return true
         }
         
