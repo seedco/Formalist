@@ -76,4 +76,22 @@ class FormsUITests: XCTestCase {
         app.scrollViews.otherElements.staticTexts["Segue Element"].tap()
         app.alerts["Segue Element"].collectionViews.buttons["Dismiss"].tap()
     }
+    
+    func testFailedValidation() {
+        let app = XCUIApplication()
+        app.navigationBars["Example"].buttons["Validate"].tap()
+        XCTAssert(app.staticTexts["The email address is invalid"].exists)
+    }
+    
+    func testSuccessfulValidation() {
+        let app = XCUIApplication()
+        let elementsQuery = app.scrollViews.otherElements
+        let textField = elementsQuery.textFields["Text Field Element (Email)"]
+        
+        textField.tap()
+        app.typeText("test@test.com")
+        
+        app.navigationBars["test@test.com"].buttons["Validate"].tap()
+        app.alerts["Validation"].collectionViews.buttons["Dismiss"].tap()
+    }
 }
