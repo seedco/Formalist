@@ -10,6 +10,15 @@ import XCTest
 @testable import Forms
 
 class ValidationRuleTests: XCTestCase {
+    func testValidateWithNoRules() {
+        let expectation = expectationWithDescription("validate rules")
+        ValidationRule.validateRules([], forValue: "") { result in
+            XCTAssert(result == .Valid)
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(1.0, handler: nil)
+    }
+    
     func testValidateWithAllValidRules() {
         var evaluated1 = false, evaluated2 = false
         let rule1 = ValidationRule<String> { _, completion in
