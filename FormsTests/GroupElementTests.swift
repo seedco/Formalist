@@ -90,7 +90,7 @@ class GroupElementTests: FBSnapshotTestCase {
     func testRenderValidationErrorWithDefaultFactory() {
         let expectation = expectationWithDescription("Text field element validation")
 
-        validatableElement.validateAndStoreResult(queue: dispatch_get_main_queue()) { _ in
+        validatableElement.validateAndStoreResult { _ in
             let element = GroupElement(elements: self.childElements)
             let elementView = renderElementForTesting(element)
             self.FBSnapshotVerifyView(elementView)
@@ -104,7 +104,7 @@ class GroupElementTests: FBSnapshotTestCase {
     func testRenderValidationErrorWithNoopFactory() {
         let expectation = expectationWithDescription("Text field element validation")
         
-        validatableElement.validateAndStoreResult(queue: dispatch_get_main_queue()) { _ in
+        validatableElement.validateAndStoreResult { _ in
             var configuration = GroupElement.Configuration()
             configuration.validationErrorViewFactory = { _ in return nil }
             

@@ -13,6 +13,8 @@ public class FormViewController: UIViewController {
     private let rootElement: FormElement
     private lazy var autoscrollView = AutoScrollView(frame: CGRectZero)
     
+    // MARK: Lifecycle
+    
     public init(rootElement: FormElement) {
         self.rootElement = rootElement
         super.init(nibName: nil, bundle: nil)
@@ -42,6 +44,21 @@ public class FormViewController: UIViewController {
         super.viewDidLoad()
         reloadElementViews()
     }
+    
+    // MARK: Validation
+    
+    public func validate(completionHandler: ValidationResult -> Void) {
+        if let validatableElement = rootElement as? Validatable {
+            validatableElement.validateAndStoreResult { result in
+                self.reloadElementViews()
+                completionHandler(result)
+            }
+        } else {
+            completionHandler(.Valid)
+        }
+    }
+    
+    // MARK: Private
     
     private func reloadElementViews() {
         let rootElementView = rootElement.render()
