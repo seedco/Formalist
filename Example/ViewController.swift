@@ -50,7 +50,7 @@ class ViewController: UIViewController {
                 TextFieldElement(value: self.stringValue2) { textField in
                     textField.placeholder = "Text Element 2"
                 },
-                TextViewElement(value: self.stringValue3) { textView in
+                TextViewElement(value: self.stringValue3, validationRules: [.Email]) { textView in
                     textView.placeholder = "Text View Element"
                 }
             ])
