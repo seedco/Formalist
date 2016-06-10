@@ -9,7 +9,7 @@
 import Foundation
 
 /// The result from validating a form value
-public enum ValidationResult {
+public enum ValidationResult: Equatable {
     /// The value is valid
     case Valid
     
@@ -20,6 +20,17 @@ public enum ValidationResult {
     /// if a validator presents a user interface to accept a necessary change
     /// to the form value that the user rejects.
     case Cancelled
+}
+
+public func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
+    switch (lhs, rhs) {
+    case (.Valid, .Valid), (.Cancelled, .Cancelled):
+        return true
+    case let (.Invalid(lhsMessage), .Invalid(rhsMessage)):
+        return lhsMessage == rhsMessage
+    default:
+        return false
+    }
 }
 
 private let EmailRegex: NSRegularExpression = {

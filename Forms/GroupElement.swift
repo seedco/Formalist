@@ -9,7 +9,7 @@
 import UIKit
 import StackViewController
 
-public final class GroupElement: FormElement {
+public final class GroupElement: FormElement, Validatable {
     /// Stores configuration parameters
     public struct Configuration {
         /// The style used to display the grouped elements
@@ -189,16 +189,16 @@ public final class GroupElement: FormElement {
                 responderViews.append(elementView)
             }
             
-            if let validatable = element as? Validatable, validationResult = validatable.validationResult {
-                if case let .Invalid(message) = validationResult,
-                    let errorView = configuration.createValidationErrorViewWithMessage(message) {
-                    addSeparator(isBorder: true)
-                    subviews.append(errorView)
-                    return false
-                } else {
-                    return true
-                }
+            if !(element is GroupElement),
+               let validationResult = (element as? Validatable)?.validationResult,
+               case let .Invalid(message) = validationResult,
+               let errorView = configuration.createValidationErrorViewWithMessage(message) {
+                
+                addSeparator(isBorder: true)
+                subviews.append(errorView)
+                return false
             }
+            
             return true
         }
         
@@ -230,6 +230,15 @@ public final class GroupElement: FormElement {
         
         return containerView
     }
+    
+    // MARK: Validatable
+    
+    public func validate(completionHandler: ValidationResult -> Void) {
+        let validatables = elements.flatMap { $0 as? Validatable }
+        validateObjects(validatables, completionHandler: completionHandler)
+    }
+    
+    // MARK: ContainerView
     
     private class ContainerView: UIView {
         private let initialFormResponderView: UIView?
