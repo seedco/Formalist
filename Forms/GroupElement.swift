@@ -235,7 +235,7 @@ public final class GroupElement: FormElement, Validatable {
     
     public func validate(completionHandler: ValidationResult -> Void) {
         let validatables = elements.flatMap { $0 as? Validatable }
-        self.dynamicType.validate(validatables, completionHandler: completionHandler)
+        validateObjects(validatables, completionHandler: completionHandler)
     }
     
     // MARK: ContainerView

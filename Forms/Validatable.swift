@@ -20,39 +20,39 @@ public extension Validatable {
     var validationResult: ValidationResult? {
         return _validationResult
     }
-    
-    /**
-     Validates an array of validatable objects. If one of the validations
-     fails, the `completionHandler` is called with the failing validation
-     result and the remaining objects are not validated.
-     
-     - parameter objects:           The objects to validate
-     - parameter queue:             The queue to call the completion handler on
-     - parameter completionHandler: The completion handler to call when
-     validation completes (success or failure)
-     */
-    static func validate(objects: [Validatable], queue: dispatch_queue_t = dispatch_get_main_queue(), completionHandler: ValidationResult -> Void) {
-        var remainingObjects = objects
-        var validateNext: Void -> Void = {}
-        validateNext = {
-            dispatch_async(queue) {
-                guard let nextObject = remainingObjects.first else {
-                    completionHandler(.Valid)
-                    return
-                }
-                remainingObjects.removeFirst()
-                nextObject.validateAndStoreResult { result in
-                    switch result {
-                    case .Valid:
-                        validateNext()
-                    case .Invalid, .Cancelled:
-                        dispatch_async(queue) { completionHandler(result) }
-                    }
+}
+
+/**
+ Validates an array of validatable objects. If one of the validations
+ fails, the `completionHandler` is called with the failing validation
+ result and the remaining objects are not validated.
+ 
+ - parameter objects:           The objects to validate
+ - parameter queue:             The queue to call the completion handler on
+ - parameter completionHandler: The completion handler to call when
+ validation completes (success or failure)
+ */
+public func validateObjects(objects: [Validatable], queue: dispatch_queue_t = dispatch_get_main_queue(), completionHandler: ValidationResult -> Void) {
+    var remainingObjects = objects
+    var validateNext: Void -> Void = {}
+    validateNext = {
+        dispatch_async(queue) {
+            guard let nextObject = remainingObjects.first else {
+                completionHandler(.Valid)
+                return
+            }
+            remainingObjects.removeFirst()
+            nextObject.validateAndStoreResult { result in
+                switch result {
+                case .Valid:
+                    validateNext()
+                case .Invalid, .Cancelled:
+                    dispatch_async(queue) { completionHandler(result) }
                 }
             }
         }
-        validateNext()
     }
+    validateNext()
 }
 
 private var ObjCValidationResultKey: UInt8 = 0
