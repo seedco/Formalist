@@ -48,7 +48,7 @@ class ViewController: UIViewController {
                     $0.placeholder = "Text View Element"
                     $0.accessibilityIdentifier = "textView"
                 },
-                FloatLabelElement(name: "Header", value: self.floatLabelValue) {
+                FloatLabelElement(name: "Float Label Element", value: self.floatLabelValue) {
                     $0.bodyTextView.accessibilityIdentifier = "floatLabel"
                 },
                 SegmentElement(title: "Segment Element", segments: [
