@@ -40,6 +40,7 @@
 		729076861D0FAA6900904653 /* FloatLabelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076851D0FAA6900904653 /* FloatLabelElement.swift */; };
 		729076881D0FC75700904653 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076871D0FC75700904653 /* TextViewDelegate.swift */; };
 		7290768A1D0FD0BC00904653 /* FloatLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076891D0FD0BC00904653 /* FloatLabelTests.swift */; };
+		7290768C1D0FD30E00904653 /* FloatLabelElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */; };
 		7292B2551CFFEFBE00FFE97B /* GroupElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2541CFFEFBE00FFE97B /* GroupElement.swift */; };
 		7292B2591D00078700FFE97B /* UIView+FormResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2581D00078700FFE97B /* UIView+FormResponder.swift */; };
 		7292B25E1D0008BC00FFE97B /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B25D1D0008BC00FFE97B /* WeakBox.swift */; };
@@ -212,6 +213,7 @@
 		729076851D0FAA6900904653 /* FloatLabelElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelElement.swift; sourceTree = "<group>"; };
 		729076871D0FC75700904653 /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		729076891D0FD0BC00904653 /* FloatLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTests.swift; sourceTree = "<group>"; };
+		7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelElementTests.swift; sourceTree = "<group>"; };
 		7292B2541CFFEFBE00FFE97B /* GroupElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupElement.swift; sourceTree = "<group>"; };
 		7292B2581D00078700FFE97B /* UIView+FormResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FormResponder.swift"; sourceTree = "<group>"; };
 		7292B25D1D0008BC00FFE97B /* WeakBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */,
 				725DD9841D0AA00400320990 /* ValidatableTests.swift */,
 				729076891D0FD0BC00904653 /* FloatLabelTests.swift */,
+				7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */,
 				72856BA11D075FE400836DED /* Assets.xcassets */,
 			);
 			path = FormsTests;
@@ -689,6 +692,7 @@
 				72856BA01D075D6E00836DED /* TestUtilities.swift in Sources */,
 				72ABFFE91D07A1B400280A73 /* SegueElementTests.swift in Sources */,
 				72ABFFE71D07A12300280A73 /* StaticTextElementTests.swift in Sources */,
+				7290768C1D0FD30E00904653 /* FloatLabelElementTests.swift in Sources */,
 				72ABFFED1D07A74900280A73 /* TextFieldElementTests.swift in Sources */,
 				7290768A1D0FD0BC00904653 /* FloatLabelTests.swift in Sources */,
 				72ABFFF71D07B21000280A73 /* GroupElementTests.swift in Sources */,

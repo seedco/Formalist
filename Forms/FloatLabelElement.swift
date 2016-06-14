@@ -57,11 +57,8 @@ public final class FloatLabelElement: FormElement, Validatable {
         let floatLabel = FloatLabel(name: name)
         floatLabel.bodyTextView.text = value.value
         floatLabel.bodyTextView.delegate = textViewDelegate
-        
-        if let viewConfigurator = viewConfigurator {
-            viewConfigurator(floatLabel)
-            floatLabel.recomputeMinimumHeight()
-        }
+        viewConfigurator?(floatLabel)
+        floatLabel.recomputeMinimumHeight()
         
         let notificationName = continuous ? UITextViewTextDidChangeNotification : UITextViewTextDidEndEditingNotification
         NSNotificationCenter.defaultCenter().addObserver(

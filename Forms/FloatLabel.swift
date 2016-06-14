@@ -111,12 +111,14 @@ public class FloatLabel: UIView {
      the height of the view constant between states.
      */
     public func recomputeMinimumHeight() {
-        guard let previousState = state else {
-            fatalError("Cannot call this method without a valid starting state")
-        }
         transitionToState(.LabelShown, animated: false)
         heightConstraint.constant = systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-        transitionToState(previousState, animated: false)
+        updateCurrentState()
+    }
+
+    private func updateCurrentState() {
+        let state: State = bodyTextView.text.isEmpty ? .LabelHidden : .LabelShown
+        transitionToState(state, animated: false)
     }
     
     // MARK: Notifications
@@ -135,7 +137,7 @@ public class FloatLabel: UIView {
     
     @objc private func textViewTextDidChange(notification: NSNotification) {
         if !textViewEditing {
-            transitionToState(bodyTextView.text.isEmpty ? .LabelHidden : .LabelShown, animated: false)
+            updateCurrentState()
         }
     }
     
