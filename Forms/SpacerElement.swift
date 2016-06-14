@@ -9,7 +9,7 @@
 import UIKit
 
 /// An element that displays a spacer of a fixed height
-public class SpacerElement: FormElement {
+public final class SpacerElement: FormElement {
     public typealias ViewConfigurator = UIView -> Void
     
     private let height: CGFloat

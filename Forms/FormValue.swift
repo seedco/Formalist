@@ -8,17 +8,21 @@
 
 /// A reference type that wraps a value used by a form element and allows for
 /// observation of changes to the value.
-public final class FormValue<ValueType> {
+public final class FormValue<ValueType: Equatable> {
     private var observerTokens = [ObserverToken<ValueType>]()
     
     /// The underlying value.
     internal(set) public var value: ValueType {
-        didSet {
+        get { return _value }
+        set {
+            guard _value != newValue else { return }
+            _value = newValue
             for token in observerTokens {
                 token.observer(value)
             }
         }
     }
+    private var _value: ValueType
     
     /**
      Initializes the receiver with an initial value
@@ -28,7 +32,7 @@ public final class FormValue<ValueType> {
      - returns: An initialized instance of the receiver
      */
     public init(_ initialValue: ValueType) {
-        self.value = initialValue
+        self._value = initialValue
     }
     
     /**

@@ -6,15 +6,17 @@
 //  Copyright © 2016 Seed.co. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@objc public final class TextViewElement: NSObject, FormElement, Validatable,  UITextViewDelegate {
+public final class TextViewElement: FormElement, Validatable {
     public typealias ViewConfigurator = PlaceholderTextView -> Void
     
     private let value: FormValue<String>
     private let continuous: Bool
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
+    
+    private let textViewDelegate: TextViewDelegate
     
     /**
      Designated initializer
@@ -24,6 +26,7 @@ import Foundation
      continuously updated as text is typed into the view. If this is `false`,
      the value will only be updated when the text view has finished editing.
      Defaults to `false`
+     - parameter validationRules:  Rules used for validating the input
      - parameter viewConfigurator: An optional block used to configure the
      appearance of the text view
      
@@ -34,13 +37,14 @@ import Foundation
         self.continuous = continuous
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
+        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: false)
     }
     
     // MARK: FormElement
     
     public func render() -> UIView {
         let textView = PlaceholderTextView(frame: CGRectZero)
-        textView.delegate = self
+        textView.delegate = textViewDelegate
         textView.scrollEnabled = false
         textView.textContainerInset = UIEdgeInsetsZero
         textView.textContainer.lineFragmentPadding = 0
@@ -57,22 +61,6 @@ import Foundation
         )
         viewConfigurator?(textView)
         return textView
-    }
-    
-    // MARK: UITextViewDelegate
-    
-    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        // http://stackoverflow.com/a/23779209
-        if let _ = text.rangeOfCharacterFromSet(NSCharacterSet.newlineCharacterSet(), options: NSStringCompareOptions.BackwardsSearch) where text.characters.count == 1 {
-            if let nextFormResponder = textView.nextFormResponder where nextFormResponder.becomeFirstResponder() {
-                return false
-            } else {
-                textView.resignFirstResponder()
-                return false
-            }
-        } else {
-            return true
-        }
     }
     
     // MARK: Actions

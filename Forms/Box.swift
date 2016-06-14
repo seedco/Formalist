@@ -6,7 +6,7 @@
 //  Copyright © 2016 Seed.co. All rights reserved.
 //
 
-class Box<ValueType> {
+final class Box<ValueType> {
     let value: ValueType
     
     init(_ value: ValueType) {
