@@ -10,7 +10,7 @@ import UIKit
 
 /// An element that implements the float label pattern:
 /// http://bradfrost.com/blog/post/float-label-pattern/
-public class FloatLabelElement: FormElement {
+public class FloatLabelElement: FormElement, Validatable {
     public typealias ViewConfigurator = FloatLabel -> Void
     
     private let name: String
