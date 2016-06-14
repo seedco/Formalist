@@ -16,36 +16,47 @@ public class FloatLabelElement: FormElement, Validatable {
     private let name: String
     private let value: FormValue<String>
     private let continuous: Bool
+    private let resignFirstResponderOnReturn: Bool
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
+    
+    private let textViewDelegate: TextViewDelegate
     
     /**
      Designated initializer
      
-     - parameter name:             The name of the field, to display over the
-     editable field
-     - parameter value:            The value to bind to this element
-     - parameter continuous:       If this is `true`, the value will be
-     continuously updated as text is typed into the view. If this is `false`,
-     the value will only be updated when the text view has finished editing.
-     Defaults to `false`
-     - parameter validationRules:  Rules used for validating the input
-     - parameter viewConfigurator: An optional block used to configure the
-     appearance of the float label
+     - parameter name:                         The name of the field, to 
+     display over the editable field
+     - parameter value:                        The value to bind to this element
+     - parameter continuous:                   If this is `true`, the value 
+     will be continuously updated as text is typed into the view. If this is 
+     `false`, the value will only be updated when the text view has finished 
+     editing. Defaults to `false`
+     - parameter resignFirstResponderOnReturn: Whether the text view should
+     resign first responder status and activate the next first responder
+     upon the user pressing the "Return" key on the keyboard. Defaults to
+     `true`.
+     - parameter validationRules:              Rules used for validating the
+     input
+     - parameter viewConfigurator:             An optional block used to
+     configure the appearance of the float label
      
      - returns: An initialized instance of the receiver
      */
-    public init(name: String, value: FormValue<String>, continuous: Bool = false, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
+    public init(name: String, value: FormValue<String>, continuous: Bool = false, resignFirstResponderOnReturn: Bool = true, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.name = name
         self.value = value
         self.continuous = continuous
+        self.resignFirstResponderOnReturn = resignFirstResponderOnReturn
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
+        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: resignFirstResponderOnReturn)
     }
     
     public func render() -> UIView {
         let floatLabel = FloatLabel(name: name)
         floatLabel.bodyTextView.text = value.value
+        floatLabel.bodyTextView.delegate = textViewDelegate
         
         if let viewConfigurator = viewConfigurator {
             viewConfigurator(floatLabel)
