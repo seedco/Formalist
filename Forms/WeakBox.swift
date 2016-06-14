@@ -6,7 +6,7 @@
 //  Copyright © 2016 Seed Platform, Inc. All rights reserved.
 //
 
-class WeakBox<ValueType: AnyObject> {
+final class WeakBox<ValueType: AnyObject> {
     private(set) weak var value: ValueType?
     
     init(_ value: ValueType) {

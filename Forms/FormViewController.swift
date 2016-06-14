@@ -9,7 +9,7 @@
 import UIKit
 import StackViewController
 
-public class FormViewController: UIViewController {
+public final class FormViewController: UIViewController {
     private let rootElement: FormElement
     private lazy var autoscrollView = AutoScrollView(frame: CGRectZero)
     
