@@ -36,11 +36,23 @@ class FormsUITests: XCTestCase {
         let app = XCUIApplication()
         let elementsQuery = app.scrollViews.otherElements
         let textView = elementsQuery.textViews["textView"]
+        let textField = elementsQuery.textFields["Text Field Element (Email)"]
         
         textView.tap()
         app.typeText("Hello World")
-        app.buttons["Return"].tap()
+        textField.tap()
         app.alerts["Text View Element"].collectionViews.buttons["Dismiss"].tap()
+    }
+    
+    func testFloatLabelElement() {
+        let app = XCUIApplication()
+        let elementsQuery = app.scrollViews.otherElements
+        let floatLabelTextView = elementsQuery.textViews["floatLabel"]
+
+        floatLabelTextView.tap()
+        app.typeText("Hello World")
+        app.buttons["Return"].tap()
+        app.alerts["Float Label Element"].collectionViews.buttons["Dismiss"].tap()
     }
     
     func testSegmentElement() {

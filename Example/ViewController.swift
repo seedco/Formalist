@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     private let segmentValue = FormValue("Segment 1")
     private let booleanValue = FormValue(false)
     private let textViewValue = FormValue("")
+    private let floatLabelValue = FormValue("")
     private let emailValue = FormValue("")
     private let stringValue3 = FormValue("")
     
@@ -46,6 +47,9 @@ class ViewController: UIViewController {
                 TextViewElement(value: self.textViewValue) {
                     $0.placeholder = "Text View Element"
                     $0.accessibilityIdentifier = "textView"
+                },
+                FloatLabelElement(name: "Float Label Element", value: self.floatLabelValue) {
+                    $0.bodyTextView.accessibilityIdentifier = "floatLabel"
                 },
                 SegmentElement(title: "Segment Element", segments: [
                     Segment(content: .Title("Segment 1"), value: "Segment 1"),
@@ -106,7 +110,11 @@ class ViewController: UIViewController {
         }
         
         textViewValue.addObserver { [unowned self] in
-            self.displayAlertWithTitle("Text View Element", message: "The value changed to \($0).")
+            self.displayAlertWithTitle("Text View Element", message: "The value changed to \"\($0)\".")
+        }
+        
+        floatLabelValue.addObserver { [unowned self] in
+            self.displayAlertWithTitle("Float Label Element", message: "The value changed to \"\($0)\".")
         }
         
         emailValue.addObserver { [unowned self] in
