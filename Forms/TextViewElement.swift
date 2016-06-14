@@ -6,7 +6,7 @@
 //  Copyright © 2016 Seed.co. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 @objc public final class TextViewElement: NSObject, FormElement, Validatable,  UITextViewDelegate {
     public typealias ViewConfigurator = PlaceholderTextView -> Void
@@ -24,6 +24,7 @@ import Foundation
      continuously updated as text is typed into the view. If this is `false`,
      the value will only be updated when the text view has finished editing.
      Defaults to `false`
+     - parameter validationRules:  Rules used for validating the input
      - parameter viewConfigurator: An optional block used to configure the
      appearance of the text view
      
