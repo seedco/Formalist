@@ -15,7 +15,7 @@ public class FloatLabel: UIView {
         static let LabelTextViewSpacing: CGFloat = 4.0
     }
     
-    private enum State {
+    enum State {
         case LabelHidden
         case LabelShown
     }
@@ -187,7 +187,7 @@ public class FloatLabel: UIView {
         }
     }
     
-    private func transitionToState(state: State, animated: Bool) {
+    func transitionToState(state: State, animated: Bool) {
         guard state != self.state else { return }
         
         let animation = Animation(state: state)
