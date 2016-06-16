@@ -3,7 +3,34 @@
 
 [NAME] is a Swift framework for building forms on iOS using a simple, declarative, and readable syntax.
 
-### Example
+## Table of Contents
+
+- [Example](#example)
+- [Documentation](#documentation)
+	- [`FormValue`](#formvalue)
+	- [`FormElement`](#formelement)
+		- [Responder Chain](#responder-chain)
+	- [`ValidationRule`](#validationrule)
+	- [`Validatable`](#validatable)
+	- [`GroupElement`](#groupelement)
+		- [Examples](#examples)
+			- [Using constant height form elements](#using-constant-height-form-elements)
+			- [Using intrinsically sized form elements with padding](#using-intrinsically-sized-form-elements-with-padding)
+			- [Using a custom separator view](#using-a-custom-separator-view)
+			- [Using a custom valiation error view](#using-a-custom-valiation-error-view)
+	- [`BooleanElement`](#booleanelement)
+	- [`SegmentElement`](#segmentelement)
+	- [`SpacerElement`](#spacerelement)
+	- [`SegueElement`](#segueelement)
+	- [`StaticTextElement`](#statictextelement)
+	- [`TextFieldElement`](#textfieldelement)
+	- [`TextViewElement`](#textviewelement)
+	- [`FloatLabelElement`](#floatlabelelement)
+	- [`ViewElement`](#viewelement)
+- [Testing](#testing)
+- [License](#license)
+
+## Example
 
 <img src="images/example.png" alt="Forms example app" width="375" height="667" />
 
