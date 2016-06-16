@@ -17,7 +17,7 @@ class GroupElementTests: FBSnapshotTestCase {
     override func setUp() {
         super.setUp()
         recordMode = false
-        validatableElement = TextFieldElement(value: FormValue(""), validationRules: [.Email]) { textField in
+        validatableElement = TextFieldElement(value: FormValue(""), validationRules: [.email]) { textField in
             textField.placeholder = "Text Element 1"
         }
         childElements = [

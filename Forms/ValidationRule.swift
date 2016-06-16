@@ -46,10 +46,10 @@ private let EmailRegex: NSRegularExpression = {
 public struct ValidationRule<ValueType> {
     /// A string validation rule to check for the existence of
     /// required value
-    public static var Required: ValidationRule<String> {
+    public static var required: ValidationRule<String> {
         return ValidationRule<String> { str, completion in
             if str.isEmpty {
-                completion(.Invalid(message: "This field is required"))
+                completion(.Invalid(message: NSLocalizedString("This field is required", comment: "Required field error message")))
             } else {
                 completion(.Valid)
             }
@@ -58,8 +58,8 @@ public struct ValidationRule<ValueType> {
     
     /// A string validation rule to check whether the string is
     /// a valid email address
-    public static var Email: ValidationRule<String> {
-        return fromRegex(EmailRegex, failureMessage: "The email address is invalid")
+    public static var email: ValidationRule<String> {
+        return regex(EmailRegex, failureMessage: NSLocalizedString("The email address is invalid", comment: "Invalid email error message"))
     }
 
     /**
@@ -72,12 +72,72 @@ public struct ValidationRule<ValueType> {
      
      - returns: The validation rule
      */
-    public static func fromRegex(regex: NSRegularExpression, failureMessage: String) -> ValidationRule<String> {
+    public static func regex(regex: NSRegularExpression, matchingOptions: NSMatchingOptions = .Anchored, failureMessage: String) -> ValidationRule<String> {
         return ValidationRule<String> { str, completion in
-            if regex.firstMatchInString(str, options: NSMatchingOptions.Anchored, range: NSMakeRange(0, str.characters.count)) == nil {
-                completion(.Invalid(message: "The email address is invalid"))
+            if regex.firstMatchInString(str, options: matchingOptions, range: NSMakeRange(0, str.characters.count)) == nil {
+                completion(.Invalid(message: failureMessage))
             } else {
                 completion(.Valid)
+            }
+        }
+    }
+    
+    /**
+     A validation rule that verifies that a string only contains characters
+     from a specified character set.
+     
+     - parameter characterSet: The whitelist character set. If the string
+     contains any characters that are not in this set, the validation will
+     fail.
+     
+     - returns: The validation rule
+     */
+    public static func characterSet(characterSet: NSCharacterSet) -> ValidationRule<String> {
+        return ValidationRule<String> { str, completion in
+            if let range = str.rangeOfCharacterFromSet(characterSet.invertedSet) {
+                let errorFormat = NSLocalizedString("\"%@\" is not an allowed character", comment: "Invalid character error message")
+                let message = String(format: errorFormat, str.substringWithRange(range))
+                completion(.Invalid(message: message))
+            } else {
+                completion(.Valid)
+            }
+        }
+    }
+    
+    /**
+     A validation rule that checks to make sure that a string length does 
+     not exceed a specified maximum length.
+     
+     - parameter length: The maximum length of the string
+     
+     - returns: The validation rule
+     */
+    public static func maximumLength(length: Int) -> ValidationRule<String> {
+        return ValidationRule<String> { str, completion in
+            if str.characters.count <= length {
+                completion(.Valid)
+            } else {
+                let errorFormat = NSLocalizedString("Cannot exceed %d characters", comment: "Maximum length error message")
+                completion(.Invalid(message: String(format: errorFormat, length)))
+            }
+        }
+    }
+    
+    /**
+     A validation rule that checks to make sure that a string length is
+     at least a specified minimum length.
+     
+     - parameter length: The minimum length of the string
+     
+     - returns: The validation rule
+     */
+    public static func minimumLength(length: Int) -> ValidationRule<String> {
+        return ValidationRule<String> { str, completion in
+            if str.characters.count >= length {
+                completion(.Valid)
+            } else {
+                let errorFormat = NSLocalizedString("Must be at least %d characters long", comment: "Minimum length error message")
+                completion(.Invalid(message: String(format: errorFormat, length)))
             }
         }
     }

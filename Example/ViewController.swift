@@ -58,7 +58,7 @@ class ViewController: UIViewController {
             ]),
             SpacerElement(height: 20.0),
             GroupElement(configuration: groupedConfiguration, elements: [
-                TextFieldElement(value: self.emailValue, continuous: true, validationRules: [.Email]) {
+                TextFieldElement(value: self.emailValue, continuous: true, validationRules: [.email]) {
                     $0.autocapitalizationType = .None
                     $0.autocorrectionType = .No
                     $0.spellCheckingType = .No
