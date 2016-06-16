@@ -62,9 +62,9 @@ The framework consumer can maintain a reference to a `FormValue` instance to acc
 
 ### `FormElement`
 
-The `FormElement` protocol, as its name suggests, is the protocol that all form elements must correspond to. It contains a single method with the signature `func render() -> UIView`, which is called to render the view for that form element.
+The `FormElement` protocol, as its name suggests, is the protocol that all form elements must implement. It contains a single method with the signature `func render() -> UIView`, which is called to render the view for that form element.
 
-A typical implementation of a `FormElement` subclass does the following:
+A typical implementation of `FormElement` does the following:
 
 * **Initializer**
 	* Accepts one or more `FormValue` parameters, which are bound to the UI controls
@@ -81,7 +81,7 @@ A typical implementation of a `FormElement` subclass does the following:
 
 The framework implements support for chaining form element views using a responder chain-like construct. This is currently used to implement the built-in tabbing behaviour to switch between text fields in a form by pressing the "return" key on the keyboard.
 
-This behaviour is simple to opt-in to in custom form elements, using the following two steps:
+This behaviour can be supported in custom form elements using the following two steps:
 
 1. Ensure that the view being returned from the `render()` function returns `true` for `canBecomeFirstResponder()`
 2. When the view needs to shift focus to the next form view that supports first responder status, it should access the next responder via the `nextFormResponder` property (added in a `UIView` extension by the framework) and call `becomeFirstResponder()` on it. For example, in `TextFieldElement`, this happens as a result of a delegate method being called that indicates that the return key has been pressed.
