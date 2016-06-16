@@ -14,6 +14,7 @@ import UIKit
     
     private let value: FormValue<String>
     private let continuous: Bool
+    private let maximumLength: Int?
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
     
@@ -25,14 +26,18 @@ import UIKit
      continuously updated as text is typed into the field. If this is `false`, 
      the value will only be updated when the text field has finished editing.
      Defaults to `false`
+     - parameter maximumLength:    Restricts the length of the text entered into
+     the field, such that a user cannot enter any more text after the limit has
+     been reached.
      - parameter viewConfigurator: An optional block used to configure the
      appearance of the text field
      
      - returns: An initialized instance of the receiver
      */
-    public init(value: FormValue<String>, continuous: Bool = false, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
+    public init(value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.value = value
         self.continuous = continuous
+        self.maximumLength = maximumLength
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
     }
@@ -56,6 +61,15 @@ import UIKit
     }
     
     // MARK: UITextFieldDelegate
+    
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if let maximumLength = maximumLength, text = textField.text {
+            let newLength = text.characters.count + string.characters.count - range.length
+            return newLength <= maximumLength
+        } else {
+            return true
+        }
+    }
     
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let nextFormResponder = textField.nextFormResponder where nextFormResponder.becomeFirstResponder() {
