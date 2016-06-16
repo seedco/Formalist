@@ -11,7 +11,7 @@ The example app (shown above) demonstrates how to build a simple form using the 
 
 This code snippet from the example app is used to render the first section of the form:
 
-```
+```swift
 GroupElement(configuration: groupedConfiguration, elements: [
     BooleanElement(title: "Boolean Element", value: self.booleanValue),
     TextViewElement(value: self.textViewValue) {
@@ -87,7 +87,7 @@ The `GroupElement.Configuration` object passed into the initializer can be used 
 
 ##### Using constant height form elements
 
-```
+```swift
 var configuration = GroupElement.Configuration()
 configuration.layout.mode = .ConstantHeight(44)
 
@@ -96,7 +96,7 @@ let groupElement = GroupElement(configuration: configuration, elements: [...])
 
 ##### Using intrinsically sized form elements with padding
 
-```
+```swift
 var configuration = GroupElement.Configuration()
 configuration.style = .Grouped(backgroundColor: .whiteColor())
 configuration.layout.edgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
@@ -106,7 +106,7 @@ let groupElement = GroupElement(configuration: configuration, elements: [...])
 
 ##### Using a custom separator view
 
-```
+```swift
 var configuration = GroupElement.Configuration()
 configuration.separatorViewFactory = { (style, isBorder) in
     let separatorView = SeparatorView(axis: .Horizontal)
@@ -121,7 +121,7 @@ let groupElement = GroupElement(configuration: configuration, elements: [...])
 
 ##### Using a custom valiation error view
 
-```
+```swift
 var configuration = GroupElement.Configuration()
 configuration.validationErrorViewFactory = { message in
     let label = UILabel(frame: CGRectZero)
@@ -140,7 +140,7 @@ let groupElement = GroupElement(configuration: configuration, elements: [...])
 
 `BooleanElement` displays a `UILabel` and a `UISwitch` that is bound to a `Bool` value.
 
-```
+```swift
 BooleanElement(title: "Boolean Element", value: self.booleanValue)
 ```
 
@@ -150,7 +150,7 @@ BooleanElement(title: "Boolean Element", value: self.booleanValue)
 
 `SegmentElement` displays a `UILabel` and a `UISegmentedControl` that is bound to a `Segment<ValueType>` value. `ValueType` is a type parameter the type of the value that the segment represents, which must be consistent for all of the segments. Each segment can have either a title or an image.
 
-```
+```swift
 SegmentElement(title: "Segment Element", segments: [
     Segment(content: .Title("Segment 1"), value: "Segment 1"),
     Segment(content: .Title("Segment 2"), value: "Segment 2")
@@ -161,7 +161,7 @@ SegmentElement(title: "Segment Element", segments: [
 
 `SpacerElement` displays an empty `UIView` of a fixed height. The view is configurable using all standard `UIView` properties (`backgroundColor`, etc.)
 
-```
+```swift
 SpacerElement(height: 20.0)
 ```
 
@@ -177,7 +177,7 @@ SpacerElement(height: 20.0)
 
 `StaticTextElement` displays static, non-editable text using a `UILabel`.
 
-```
+```swift
 StaticTextElement(text: "Welcome to the Forms Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
     $0.textAlignment = .Center
     $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
@@ -190,7 +190,7 @@ StaticTextElement(text: "Welcome to the Forms Catalog app. This text is an examp
 
 `TextFieldElement` displays a `UITextField` for a single line of editable text, bound to a `String` value. This element supports tabbing behaviour between fields and optional validation of the string value.
 
-```
+```swift
 TextFieldElement(value: self.emailValue, continuous: true, validationRules: [.Email]) {
     $0.autocapitalizationType = .None
     $0.autocorrectionType = .No
@@ -205,7 +205,7 @@ TextFieldElement(value: self.emailValue, continuous: true, validationRules: [.Em
 
 `TextFieldElement` displays a `UITextView` for multiple lines of editable text, bound to a `String` value. The text view is actually an instance of `PlaceholderTextView`, which is a `UITextView` subclass that adds support for a placeholder string using the same API as `UITextField`. This element also supports optional validation of the string value.
 
-```
+```swift
 TextViewElement(value: self.textViewValue) {
     $0.placeholder = "Text View Element"
 }
@@ -217,7 +217,7 @@ TextViewElement(value: self.textViewValue) {
 
 `FloatLabelElement` implements a native iOS version of the [float label pattern](http://bradfrost.com/blog/post/float-label-pattern/). This concept is excellent for maintaining the context of the field label regardless of whether text has been entered in the field or not, unlike a traditional placeholder. It supports multiple lines of editable text and is bound to a `String` value. This element supports tabbing behaviour if the `resignFirstResponderOnReturn` parameter in the initializer is `true` (default) and optional validation of the string value.
 
-```
+```swift
 FloatLabelElement(name: "Float Label Element", value: self.floatLabelValue)
 ```
 
@@ -225,7 +225,7 @@ FloatLabelElement(name: "Float Label Element", value: self.floatLabelValue)
 
 `ViewElement` provides an easy way to wrap an existing view to create a one-off custom form element without any subclassing. It is used to implement the activity indicator element shown in the example application. It has to be initialized with a `FormValue` instance, which is then passed into the block that creates the custom view. However, if the view is not bound to a value (like in the activity indicator), you may simply pass a dummy value and ignore it inside the block.
 
-```
+```swift
 ViewElement(value: FormValue("")) { _ in
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     activityIndicator.startAnimating()
