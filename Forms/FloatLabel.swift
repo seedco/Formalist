@@ -8,18 +8,16 @@
 
 import UIKit
 
+public protocol FloatLabelTextEntryView: AnyObject {
+    var placeholder: String? { get set }
+}
+
+extension UITextField: FloatLabelTextEntryView {}
+extension PlaceholderTextView: FloatLabelTextEntryView {}
+
 /// Native UIKit implementation of the float label pattern:
 /// http://bradfrost.com/blog/post/float-label-pattern/
-public class FloatLabel: UIView {
-    private struct Layout {
-        static let LabelTextViewSpacing: CGFloat = 4.0
-    }
-    
-    enum State {
-        case LabelHidden
-        case LabelShown
-    }
-    
+public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewType: FloatLabelTextEntryView>: UIView, TextEditorAdapterDelegate {
     /// The label used to display the field name
     public let nameLabel: UILabel = {
         let nameLabel = UILabel(frame: CGRectZero)
@@ -34,60 +32,52 @@ public class FloatLabel: UIView {
     }()
     
     /// The text view that contains the field's body text
-    public let bodyTextView: PlaceholderTextView = {
-        let bodyTextView = PlaceholderTextView(frame: CGRectZero)
-        bodyTextView.translatesAutoresizingMaskIntoConstraints = false
-        bodyTextView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        bodyTextView.scrollEnabled = false
-        bodyTextView.textContainerInset = UIEdgeInsetsZero
-        bodyTextView.textContainer.lineFragmentPadding = 0
-        bodyTextView.backgroundColor = .clearColor()
-        return bodyTextView
-    }()
+    public var textEntryView: AdapterType.ViewType {
+        return self.adapter.view
+    }
     
     private lazy var labelShownConstraints: [NSLayoutConstraint] = [
-        NSLayoutConstraint(item: self.bodyTextView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
-        NSLayoutConstraint(item: self.bodyTextView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
     ]
     
     private lazy var labelHiddenConstraints: [NSLayoutConstraint] = [
-        NSLayoutConstraint(item: self.bodyTextView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.bodyTextView, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.bodyTextView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint(item: self.textEntryView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
     ]
     
     private lazy var heightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0.0)
     
-    private var textViewEditing = false
+    private let adapter: AdapterType
+    private var editing = false
     private var state: State?
     
-    init(name: String) {
+    init(adapter: AdapterType, name: String) {
+        self.adapter = adapter
+
         super.init(frame: CGRectZero)
+
         translatesAutoresizingMaskIntoConstraints = false
         
         nameLabel.text = name
-        bodyTextView.placeholder = name
+        textEntryView.placeholder = name
         
         addSubview(nameLabel)
-        addSubview(bodyTextView)
+        addSubview(textEntryView)
         
         heightConstraint.active = true
         
-        let views = ["nameLabel": nameLabel, "bodyTextView": bodyTextView]
+        let views = ["nameLabel": nameLabel, "textEntryView": textEntryView]
         let nameLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[nameLabel]", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(nameLabelHConstraints)
         
-        let bodyTextViewHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[bodyTextView]|", options: [], metrics: nil, views: views)
+        let bodyTextViewHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[textEtnryView]|", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(bodyTextViewHConstraints)
         
         let nameLabelTopConstraint = NSLayoutConstraint(item: nameLabel, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
         nameLabelTopConstraint.active = true
-        
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(FloatLabel.textViewDidBeginEditing(_:)), name: UITextViewTextDidBeginEditingNotification, object: bodyTextView)
-        nc.addObserver(self, selector: #selector(FloatLabel.textViewDidEndEditing(_:)), name: UITextViewTextDidEndEditingNotification, object: bodyTextView)
-        nc.addObserver(self, selector: #selector(FloatLabel.textViewTextDidChange(_:)), name: UITextViewTextDidChangeNotification, object: bodyTextView)
-        
+
         transitionToState(.LabelHidden, animated: false)
         
         // We don't want the height of the view to change between states.
@@ -98,10 +88,6 @@ public class FloatLabel: UIView {
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     /**
@@ -117,26 +103,26 @@ public class FloatLabel: UIView {
     }
 
     private func updateCurrentState() {
-        let state: State = bodyTextView.text.isEmpty ? .LabelHidden : .LabelShown
+        let state: State = adapter.text.isEmpty ? .LabelHidden : .LabelShown
         transitionToState(state, animated: false)
     }
     
     // MARK: Notifications
     
-    @objc private func textViewDidBeginEditing(notification: NSNotification) {
-        textViewEditing = true
+    public func textEditorAdapterTextDidBeginEditing(adapter: _TextEditorAdapter) {
+        editing = true
         transitionToState(.LabelShown, animated: true)
     }
     
-    @objc private func textViewDidEndEditing(notification: NSNotification) {
-        textViewEditing = false
-        if bodyTextView.text.isEmpty {
+    public func textEditorAdapterTextDidEndEditing(adapter: _TextEditorAdapter) {
+        editing = false
+        if adapter.text.isEmpty {
             transitionToState(.LabelHidden, animated: true)
         }
     }
     
-    @objc private func textViewTextDidChange(notification: NSNotification) {
-        if !textViewEditing {
+    public func textEditorAdapterTextDidChange(adapter: _TextEditorAdapter) {
+        if !editing {
             updateCurrentState()
         }
     }
@@ -148,46 +134,11 @@ public class FloatLabel: UIView {
     }
     
     public override func becomeFirstResponder() -> Bool {
-        bodyTextView.becomeFirstResponder()
+        textEntryView.becomeFirstResponder()
         return false
     }
     
     // MARK: Animation
-    
-    private enum Animation {
-        case Forward
-        case Reverse
-        
-        init(state: State) {
-            switch state {
-            case .LabelShown:
-                self = Forward
-            case .LabelHidden:
-                self = Reverse
-            }
-        }
-        
-        var speed: Float {
-            switch self {
-            case .Forward: return 1.0
-            case .Reverse: return -1.0
-            }
-        }
-        
-        var labelOpacity: CGFloat {
-            switch self {
-            case .Forward: return 1.0
-            case .Reverse: return 0.0
-            }
-        }
-        
-        var key: String {
-            switch self {
-            case .Forward: return "ForwardLabelAnimation"
-            case .Reverse: return "ReverseLabelAnimation"
-            }
-        }
-    }
     
     func transitionToState(state: State, animated: Bool) {
         guard state != self.state else { return }
@@ -244,5 +195,49 @@ public class FloatLabel: UIView {
             nameLabel.layer.opacity = presentationLayer.opacity
         }
         nameLabel.layer.removeAllAnimations()
+    }
+}
+
+private struct Layout {
+    static let LabelTextViewSpacing: CGFloat = 4.0
+}
+
+enum State {
+    case LabelHidden
+    case LabelShown
+}
+
+private enum Animation {
+    case Forward
+    case Reverse
+    
+    init(state: State) {
+        switch state {
+        case .LabelShown:
+            self = Forward
+        case .LabelHidden:
+            self = Reverse
+        }
+    }
+    
+    var speed: Float {
+        switch self {
+        case .Forward: return 1.0
+        case .Reverse: return -1.0
+        }
+    }
+    
+    var labelOpacity: CGFloat {
+        switch self {
+        case .Forward: return 1.0
+        case .Reverse: return 0.0
+        }
+    }
+    
+    var key: String {
+        switch self {
+        case .Forward: return "ForwardLabelAnimation"
+        case .Reverse: return "ReverseLabelAnimation"
+        }
     }
 }
