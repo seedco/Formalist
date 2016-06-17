@@ -10,9 +10,11 @@ import UIKit
 
 @objc final class TextViewDelegate: NSObject, UITextViewDelegate {
     private let resignFirstResponderOnReturn: Bool
+    private let maximumLength: Int?
     
-    init(resignFirstResponderOnReturn: Bool) {
+    init(resignFirstResponderOnReturn: Bool, maximumLength: Int?) {
         self.resignFirstResponderOnReturn = resignFirstResponderOnReturn
+        self.maximumLength = maximumLength
     }
     
     // MARK: UITextViewDelegate
@@ -26,6 +28,9 @@ import UIKit
                 textView.resignFirstResponder()
                 return false
             }
+        } else if let maximumLength = maximumLength {
+            let newLength = textView.text.characters.count + text.characters.count - range.length
+            return newLength <= maximumLength
         } else {
             return true
         }

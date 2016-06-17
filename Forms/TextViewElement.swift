@@ -26,18 +26,21 @@ public final class TextViewElement: FormElement, Validatable {
      continuously updated as text is typed into the view. If this is `false`,
      the value will only be updated when the text view has finished editing.
      Defaults to `false`
+     - parameter maximumLength:    Restricts the length of the text entered into
+     the field, such that a user cannot enter any more text after the limit has
+     been reached.
      - parameter validationRules:  Rules used for validating the input
      - parameter viewConfigurator: An optional block used to configure the
      appearance of the text view
      
      - returns: An initialized instance of the receiver
      */
-    public init(value: FormValue<String>, continuous: Bool = false, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
+    public init(value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.value = value
         self.continuous = continuous
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
-        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: false)
+        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: false, maximumLength: maximumLength)
     }
     
     // MARK: FormElement
