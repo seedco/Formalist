@@ -11,7 +11,7 @@ import UIKit
 @objc final class UITextViewTextEditorAdapter: NSObject, TextEditorAdapter, UITextViewDelegate {
     typealias TextChangedObserver = String -> Void
     
-    private lazy var textView: UITextView = {
+    private(set) lazy var textView: PlaceholderTextView = {
         let textView = PlaceholderTextView(frame: CGRectZero)
         textView.delegate = self
         textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)

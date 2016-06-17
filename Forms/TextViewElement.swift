@@ -11,49 +11,34 @@ import UIKit
 public final class TextViewElement: FormElement, Validatable {
     public typealias ViewConfigurator = PlaceholderTextView -> Void
     
+    private let adapter: UITextViewTextEditorAdapter
     private let value: FormValue<String>
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
     
-    private let textViewDelegate: TextViewDelegate
-    
     /**
      Designated initializer
      
-     - parameter value:            The value to bind to this element
-     - parameter continuous:       If this is `true`, the value will be
-     continuously updated as text is typed into the view. If this is `false`,
-     the value will only be updated when the text view has finished editing.
-     Defaults to `false`
-     - parameter maximumLength:    Restricts the length of the text entered into
-     the field, such that a user cannot enter any more text after the limit has
-     been reached.
-     - parameter validationRules:  Rules used for validating the input
-     - parameter viewConfigurator: An optional block used to configure the
-     appearance of the text view
+     - parameter value:            The string value to bind to the text field
+     - parameter configuration:    Configuration options for the text field
+     - parameter validationRules:  Rules used to validate the string value
+     - parameter viewConfigurator: An optional block used to perform additional
+     customization of the text field
      
      - returns: An initialized instance of the receiver
      */
-    public init(value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
+    public init(value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(), validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.value = value
+        self.adapter = UITextViewTextEditorAdapter(configuration: configuration) { value.value = $0 }
+        self.adapter.text = value.value
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
-        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: false, continuous: continuous, maximumLength: maximumLength) {
-            value.value = $0
-        }
     }
     
     // MARK: FormElement
     
     public func render() -> UIView {
-        let textView = PlaceholderTextView(frame: CGRectZero)
-        textView.delegate = textViewDelegate
-        textView.scrollEnabled = false
-        textView.textContainerInset = UIEdgeInsetsZero
-        textView.textContainer.lineFragmentPadding = 0
-        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        textView.backgroundColor = .clearColor()
-        textView.text = value.value
+        let textView = adapter.textView
         viewConfigurator?(textView)
         return textView
     }
