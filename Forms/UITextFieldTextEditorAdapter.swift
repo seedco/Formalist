@@ -11,7 +11,7 @@ import UIKit
 @objc final class UITextFieldTextEditorAdapter: NSObject, TextEditorAdapter, UITextFieldDelegate {
     typealias TextChangedObserver = String -> Void
     
-    private lazy var textField: UITextField = {
+    private(set) lazy var textField: UITextField = {
         let textField = UITextField(frame: CGRectZero)
         textField.delegate = self
         return textField
