@@ -8,39 +8,35 @@
 
 import UIKit
 
-@objc final class UITextFieldTextEditorAdapter: NSObject, TextEditorAdapter, UITextFieldDelegate {
-    typealias TextChangedObserver = String -> Void
-    
-    private(set) lazy var textField: UITextField = {
+@objc public final class UITextFieldTextEditorAdapter: NSObject, TextEditorAdapter, UITextFieldDelegate {
+    public private(set) lazy var view: UITextField = {
         let textField = UITextField(frame: CGRectZero)
         textField.delegate = self
         return textField
     }()
     
-    var view: UIView { return textField }
-    
-    var text: String {
-        get { return textField.text ?? "" }
-        set { textField.text = newValue }
+    public var text: String {
+        get { return view.text ?? "" }
+        set { view.text = newValue }
     }
     
-    weak var delegate: TextEditorAdapterDelegate?
+    public weak var delegate: TextEditorAdapterDelegate?
     
     private let configuration: TextEditorConfiguration
     private let textChangedObserver: TextChangedObserver
     
-    init(configuration: TextEditorConfiguration, textChangedObserver: TextChangedObserver) {
+    public init(configuration: TextEditorConfiguration, textChangedObserver: TextChangedObserver) {
         self.configuration = configuration
         self.textChangedObserver = textChangedObserver
     }
     
     // MARK: UITextFieldDelegate
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    public func textFieldDidBeginEditing(textField: UITextField) {
         delegate?.textEditorAdapterTextDidBeginEditing(self)
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    public func textFieldDidEndEditing(textField: UITextField) {
         delegate?.textEditorAdapterTextDidEndEditing(self)
         if !configuration.continuouslyUpdatesValue {
             textChangedObserver(textField.text ?? "")
@@ -50,11 +46,11 @@ import UIKit
     @objc private func textFieldTextDidChange(notification: NSNotification) {
         delegate?.textEditorAdapterTextDidChange(self)
         if configuration.continuouslyUpdatesValue {
-            textChangedObserver(textField.text ?? "")
+            textChangedObserver(view.text ?? "")
         }
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if let maximumLength = configuration.maximumLength, text = textField.text {
             let newLength = text.characters.count + string.characters.count - range.length
             return newLength <= maximumLength
@@ -63,7 +59,7 @@ import UIKit
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
         switch configuration.returnKeyAction {
         case .None: return true
         case .ActivateNextResponder:

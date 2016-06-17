@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias TextChangedObserver = String -> Void
+
 public protocol TextEditorAdapterDelegate: AnyObject {
     func textEditorAdapterTextDidBeginEditing(adapter: _TextEditorAdapter)
     func textEditorAdapterTextDidEndEditing(adapter: _TextEditorAdapter)
@@ -21,6 +23,7 @@ public protocol TextEditorAdapter: _TextEditorAdapter {
 }
 
 public protocol _TextEditorAdapter: AnyObject {
+    init(configuration: TextEditorConfiguration, textChangedObserver: TextChangedObserver)
     var text: String { get set }
     weak var delegate: TextEditorAdapterDelegate? { get set }
 }
