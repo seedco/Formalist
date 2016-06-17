@@ -10,10 +10,11 @@ import UIKit
 
 /// An element that implements the float label pattern:
 /// http://bradfrost.com/blog/post/float-label-pattern/
-public final class FloatLabelElement: FormElement, Validatable {
-    public typealias ViewConfigurator = FloatLabel -> Void
+public final class FloatLabelElement<AdapterType: TextEditorAdapter where AdapterType.ViewType: FloatLabelTextEntryView>: FormElement, Validatable {
+    public typealias ViewConfigurator = FloatLabel<AdapterType> -> Void
     
     private let name: String
+    private let adapter: AdapterType
     private let value: FormValue<String>
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
@@ -44,8 +45,10 @@ public final class FloatLabelElement: FormElement, Validatable {
      
      - returns: An initialized instance of the receiver
      */
-    public init(name: String, value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, resignFirstResponderOnReturn: Bool = true, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
+    public init(name: String, adapter: AdapterType, value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, resignFirstResponderOnReturn: Bool = true, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.name = name
+        self.adapter = adapter
+        adapter.text = value.value
         self.value = value
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
@@ -55,9 +58,8 @@ public final class FloatLabelElement: FormElement, Validatable {
     }
     
     public func render() -> UIView {
-        let floatLabel = FloatLabel(name: name)
-        floatLabel.bodyTextView.text = value.value
-        floatLabel.bodyTextView.delegate = textViewDelegate
+        let floatLabel = FloatLabel(adapter: adapter, name: name)
+        //floatLabel.bodyTextView.delegate = textViewDelegate
         viewConfigurator?(floatLabel)
         floatLabel.recomputeMinimumHeight()
         return floatLabel
