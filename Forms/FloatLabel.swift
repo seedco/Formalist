@@ -58,7 +58,8 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
 
         super.init(frame: CGRectZero)
 
-        translatesAutoresizingMaskIntoConstraints = false
+        adapter.delegate = self
+        textEntryView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(nameLabel)
         addSubview(textEntryView)
@@ -69,7 +70,7 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         let nameLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[nameLabel]", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(nameLabelHConstraints)
         
-        let bodyTextViewHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[textEtnryView]|", options: [], metrics: nil, views: views)
+        let bodyTextViewHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[textEntryView]|", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(bodyTextViewHConstraints)
         
         let nameLabelTopConstraint = NSLayoutConstraint(item: nameLabel, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)

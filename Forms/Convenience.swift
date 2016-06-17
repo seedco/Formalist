@@ -44,6 +44,26 @@ public func textView(value value: FormValue<String>, configuration: TextEditorCo
 
 /**
  Creates a "float label" (http://bradfrost.com/blog/post/float-label-pattern/)
+ that uses an adapter typed by `InnerAdapterType` to render the editor view.
+ 
+ - parameter name:             The field name to display on the float label
+ - parameter configuration:    Configuration options for the text field
+ - parameter validationRules:  Rules used to validate the string value
+ - parameter viewConfigurator: An optional block used to perform additional
+ customization of the float label
+ 
+ - returns: An editable text elemen
+ */
+public func floatLabel<InnerAdapterType: TextEditorAdapter where InnerAdapterType.ViewType: FloatLabelTextEntryView>(name name: String, value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(), validationRules: [ValidationRule<String>] = [], viewConfigurator: (FloatLabel<InnerAdapterType> -> Void)? = nil) -> EditableTextElement<FloatLabelTextEditorAdapter<InnerAdapterType>> {
+    return EditableTextElement(value: value, configuration: configuration, validationRules: validationRules) {
+        $0.setFieldName(name)
+        viewConfigurator?($0)
+        $0.recomputeMinimumHeight()
+    }
+}
+
+/**
+ Creates a "float label" (http://bradfrost.com/blog/post/float-label-pattern/)
  that uses a `UITextField` as its editor view for a single editable line of text.
  
  - parameter name:             The field name to display on the float label
@@ -55,10 +75,7 @@ public func textView(value value: FormValue<String>, configuration: TextEditorCo
  - returns: An editable text elemen
  */
 public func singleLineFloatLabel(name name: String, value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(), validationRules: [ValidationRule<String>] = [], viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter> -> Void)? = nil) -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter>> {
-    return EditableTextElement(value: value, configuration: configuration, validationRules: validationRules) {
-        $0.setFieldName(name)
-        viewConfigurator?($0)
-    }
+    return floatLabel(name: name, value: value, configuration: configuration, validationRules: validationRules, viewConfigurator: viewConfigurator)
 }
 
 /**
@@ -75,8 +92,5 @@ public func singleLineFloatLabel(name name: String, value: FormValue<String>, co
  - returns: An editable text elemen
  */
 public func multiLineFloatLabel(name name: String, value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None), validationRules: [ValidationRule<String>] = [], viewConfigurator: (FloatLabel<UITextViewTextEditorAdapter> -> Void)? = nil) -> EditableTextElement<FloatLabelTextEditorAdapter<UITextViewTextEditorAdapter>> {
-    return EditableTextElement(value: value, configuration: configuration, validationRules: validationRules) {
-        $0.setFieldName(name)
-        viewConfigurator?($0)
-    }
+    return floatLabel(name: name, value: value, configuration: configuration, validationRules: validationRules, viewConfigurator: viewConfigurator)
 }
