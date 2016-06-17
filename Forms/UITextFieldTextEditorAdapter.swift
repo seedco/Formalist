@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Adapts a `UITextField` to a generic interface used by
+/// form elements that perform text editing.
 @objc public final class UITextFieldTextEditorAdapter: NSObject, TextEditorAdapter, UITextFieldDelegate {
     public private(set) lazy var view: UITextField = {
         let textField = UITextField(frame: CGRectZero)
