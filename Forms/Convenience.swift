@@ -21,10 +21,10 @@ public func inset(insets: UIEdgeInsets, elements: [FormElement]) -> GroupElement
  - parameter viewConfigurator: An optional block used to perform additional
  customization of the text field.
  
- - returns: An initialized instance of the receiver
+ - returns: An editable text element
  */
 public func textField(value value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(), validationRules: [ValidationRule<String>] = [], viewConfigurator: (UITextField -> Void)? = nil) -> EditableTextElement<UITextFieldTextEditorAdapter> {
-    return EditableTextElement<UITextFieldTextEditorAdapter>(value: value, configuration: configuration, validationRules: validationRules, viewConfigurator: viewConfigurator)
+    return EditableTextElement(value: value, configuration: configuration, validationRules: validationRules, viewConfigurator: viewConfigurator)
 }
 
 /**
@@ -36,8 +36,47 @@ public func textField(value value: FormValue<String>, configuration: TextEditorC
  - parameter viewConfigurator: An optional block used to perform additional
  customization of the text view.
  
- - returns: An initialized instance of the receiver
+ - returns: An editable text element
  */
-public func textView(configuration configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None), value: FormValue<String>, validationRules: [ValidationRule<String>] = [], viewConfigurator: (PlaceholderTextView -> Void)? = nil) -> EditableTextElement<UITextViewTextEditorAdapter> {
-    return EditableTextElement<UITextViewTextEditorAdapter>(value: value, configuration: configuration, validationRules: validationRules, viewConfigurator: viewConfigurator)
+public func textView(value value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None), validationRules: [ValidationRule<String>] = [], viewConfigurator: (PlaceholderTextView -> Void)? = nil) -> EditableTextElement<UITextViewTextEditorAdapter> {
+    return EditableTextElement(value: value, configuration: configuration, validationRules: validationRules, viewConfigurator: viewConfigurator)
+}
+
+/**
+ Creates a "float label" (http://bradfrost.com/blog/post/float-label-pattern/)
+ that uses a `UITextField` as its editor view for a single editable line of text.
+ 
+ - parameter name:             The field name to display on the float label
+ - parameter configuration:    Configuration options for the text field
+ - parameter validationRules:  Rules used to validate the string value
+ - parameter viewConfigurator: An optional block used to perform additional
+ customization of the float label
+ 
+ - returns: An editable text elemen
+ */
+public func singleLineFloatLabel(name name: String, value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(), validationRules: [ValidationRule<String>] = [], viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter> -> Void)? = nil) -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter>> {
+    return EditableTextElement(value: value, configuration: configuration, validationRules: validationRules) {
+        $0.setFieldName(name)
+        viewConfigurator?($0)
+    }
+}
+
+/**
+ Creates a "float label" (http://bradfrost.com/blog/post/float-label-pattern/)
+ that uses a `UITextView` as its editor view for multiple editable lines
+ of text
+ 
+ - parameter name:             The field name to display on the float label
+ - parameter configuration:    Configuration options for the text field
+ - parameter validationRules:  Rules used to validate the string value
+ - parameter viewConfigurator: An optional block used to perform additional
+ customization of the float label
+ 
+ - returns: An editable text elemen
+ */
+public func multiLineFloatLabel(name name: String, value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None), validationRules: [ValidationRule<String>] = [], viewConfigurator: (FloatLabel<UITextViewTextEditorAdapter> -> Void)? = nil) -> EditableTextElement<FloatLabelTextEditorAdapter<UITextViewTextEditorAdapter>> {
+    return EditableTextElement(value: value, configuration: configuration, validationRules: validationRules) {
+        $0.setFieldName(name)
+        viewConfigurator?($0)
+    }
 }

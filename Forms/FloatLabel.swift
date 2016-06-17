@@ -53,15 +53,12 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     private var editing = false
     private var state: State?
     
-    init(adapter: AdapterType, name: String) {
+    public init(adapter: AdapterType) {
         self.adapter = adapter
 
         super.init(frame: CGRectZero)
 
         translatesAutoresizingMaskIntoConstraints = false
-        
-        nameLabel.text = name
-        textEntryView.placeholder = name
         
         addSubview(nameLabel)
         addSubview(textEntryView)
@@ -88,6 +85,16 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /**
+     Sets the field name displayed above the text editing area
+     
+     - parameter name: The field name to display
+     */
+    public func setFieldName(name: String) {
+        nameLabel.text = name
+        textEntryView.placeholder = name
     }
     
     /**

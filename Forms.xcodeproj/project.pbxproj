@@ -17,6 +17,7 @@
 		72479EBF1D13898E00B37B44 /* UITextFieldTextEditorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EBE1D13898E00B37B44 /* UITextFieldTextEditorAdapter.swift */; };
 		72479EC11D13923600B37B44 /* TextEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EC01D13923600B37B44 /* TextEditorConfiguration.swift */; };
 		72479EC31D13AF8C00B37B44 /* EditableTextElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EC21D13AF8C00B37B44 /* EditableTextElement.swift */; };
+		72479EC51D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EC41D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift */; };
 		725DD97E1D0A975D00320990 /* ValidationRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */; };
 		725DD9851D0AA00400320990 /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725DD9841D0AA00400320990 /* ValidatableTests.swift */; };
 		7276FE8F1CF67DD800C3B4E4 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7276FE8E1CF67DD800C3B4E4 /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,7 +42,6 @@
 		72856BA01D075D6E00836DED /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72856B9F1D075D6E00836DED /* TestUtilities.swift */; };
 		72856BA21D075FE400836DED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72856BA11D075FE400836DED /* Assets.xcassets */; };
 		7290767F1D0F8B8500904653 /* FloatLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290767E1D0F8B8500904653 /* FloatLabel.swift */; };
-		729076861D0FAA6900904653 /* FloatLabelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076851D0FAA6900904653 /* FloatLabelElement.swift */; };
 		729076881D0FC75700904653 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076871D0FC75700904653 /* TextViewDelegate.swift */; };
 		7290768A1D0FD0BC00904653 /* FloatLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076891D0FD0BC00904653 /* FloatLabelTests.swift */; };
 		7290768C1D0FD30E00904653 /* FloatLabelElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */; };
@@ -190,6 +190,7 @@
 		72479EBE1D13898E00B37B44 /* UITextFieldTextEditorAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldTextEditorAdapter.swift; sourceTree = "<group>"; };
 		72479EC01D13923600B37B44 /* TextEditorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorConfiguration.swift; sourceTree = "<group>"; };
 		72479EC21D13AF8C00B37B44 /* EditableTextElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTextElement.swift; sourceTree = "<group>"; };
+		72479EC41D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextEditorAdapter.swift; sourceTree = "<group>"; };
 		725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleTests.swift; sourceTree = "<group>"; };
 		725DD9841D0AA00400320990 /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
 		7276FE8B1CF67DD800C3B4E4 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,7 +218,6 @@
 		72856B9F1D075D6E00836DED /* TestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
 		72856BA11D075FE400836DED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7290767E1D0F8B8500904653 /* FloatLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabel.swift; sourceTree = "<group>"; };
-		729076851D0FAA6900904653 /* FloatLabelElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelElement.swift; sourceTree = "<group>"; };
 		729076871D0FC75700904653 /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		729076891D0FD0BC00904653 /* FloatLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTests.swift; sourceTree = "<group>"; };
 		7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelElementTests.swift; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 				72479EC01D13923600B37B44 /* TextEditorConfiguration.swift */,
 				72479EBA1D137DEE00B37B44 /* UITextViewTextEditorAdapter.swift */,
 				72479EBE1D13898E00B37B44 /* UITextFieldTextEditorAdapter.swift */,
-				729076851D0FAA6900904653 /* FloatLabelElement.swift */,
+				72479EC41D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift */,
 				729076871D0FC75700904653 /* TextViewDelegate.swift */,
 				72479EC21D13AF8C00B37B44 /* EditableTextElement.swift */,
 			);
@@ -659,10 +659,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				729076861D0FAA6900904653 /* FloatLabelElement.swift in Sources */,
 				72479EB41D137CE200B37B44 /* TextEditorAdapter.swift in Sources */,
 				72ABFFF91D07CA6900280A73 /* Convenience.swift in Sources */,
 				7276FEE21CF6B86E00C3B4E4 /* SegmentElementView.swift in Sources */,
+				72479EC51D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift in Sources */,
 				72B7DEC61D03F63700CFAEBE /* PlaceholderTextView.swift in Sources */,
 				72B7DEBE1D03D9EF00CFAEBE /* SpacerElement.swift in Sources */,
 				7247152A1CFEAC1400BD2549 /* ValidationRule.swift in Sources */,
