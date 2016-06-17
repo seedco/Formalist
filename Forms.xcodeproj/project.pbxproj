@@ -18,6 +18,7 @@
 		72479EC11D13923600B37B44 /* TextEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EC01D13923600B37B44 /* TextEditorConfiguration.swift */; };
 		72479EC31D13AF8C00B37B44 /* EditableTextElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EC21D13AF8C00B37B44 /* EditableTextElement.swift */; };
 		72479EC51D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EC41D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift */; };
+		72479EC71D13C71800B37B44 /* EditableTextElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72479EC61D13C71800B37B44 /* EditableTextElementTests.swift */; };
 		725DD97E1D0A975D00320990 /* ValidationRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */; };
 		725DD9851D0AA00400320990 /* ValidatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725DD9841D0AA00400320990 /* ValidatableTests.swift */; };
 		7276FE8F1CF67DD800C3B4E4 /* Forms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7276FE8E1CF67DD800C3B4E4 /* Forms.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,7 +45,6 @@
 		7290767F1D0F8B8500904653 /* FloatLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290767E1D0F8B8500904653 /* FloatLabel.swift */; };
 		729076881D0FC75700904653 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076871D0FC75700904653 /* TextViewDelegate.swift */; };
 		7290768A1D0FD0BC00904653 /* FloatLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729076891D0FD0BC00904653 /* FloatLabelTests.swift */; };
-		7290768C1D0FD30E00904653 /* FloatLabelElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */; };
 		7292B2551CFFEFBE00FFE97B /* GroupElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2541CFFEFBE00FFE97B /* GroupElement.swift */; };
 		7292B2591D00078700FFE97B /* UIView+FormResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B2581D00078700FFE97B /* UIView+FormResponder.swift */; };
 		7292B25E1D0008BC00FFE97B /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292B25D1D0008BC00FFE97B /* WeakBox.swift */; };
@@ -58,8 +58,6 @@
 		72ABFFE71D07A12300280A73 /* StaticTextElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFE61D07A12300280A73 /* StaticTextElementTests.swift */; };
 		72ABFFE91D07A1B400280A73 /* SegueElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFE81D07A1B400280A73 /* SegueElementTests.swift */; };
 		72ABFFEB1D07A4CC00280A73 /* SpacerElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFEA1D07A4CC00280A73 /* SpacerElementTests.swift */; };
-		72ABFFED1D07A74900280A73 /* TextFieldElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFEC1D07A74900280A73 /* TextFieldElementTests.swift */; };
-		72ABFFEF1D07A89600280A73 /* TextViewElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFEE1D07A89600280A73 /* TextViewElementTests.swift */; };
 		72ABFFF11D07AADB00280A73 /* ViewElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFF01D07AADB00280A73 /* ViewElementTests.swift */; };
 		72ABFFF31D07AC9400280A73 /* PlaceholderTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFF21D07AC9400280A73 /* PlaceholderTextViewTests.swift */; };
 		72ABFFF51D07AEAA00280A73 /* ValidationErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ABFFF41D07AEAA00280A73 /* ValidationErrorViewTests.swift */; };
@@ -191,6 +189,7 @@
 		72479EC01D13923600B37B44 /* TextEditorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorConfiguration.swift; sourceTree = "<group>"; };
 		72479EC21D13AF8C00B37B44 /* EditableTextElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTextElement.swift; sourceTree = "<group>"; };
 		72479EC41D13BCCF00B37B44 /* FloatLabelTextEditorAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextEditorAdapter.swift; sourceTree = "<group>"; };
+		72479EC61D13C71800B37B44 /* EditableTextElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTextElementTests.swift; sourceTree = "<group>"; };
 		725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRuleTests.swift; sourceTree = "<group>"; };
 		725DD9841D0AA00400320990 /* ValidatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatableTests.swift; sourceTree = "<group>"; };
 		7276FE8B1CF67DD800C3B4E4 /* Forms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Forms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +219,6 @@
 		7290767E1D0F8B8500904653 /* FloatLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabel.swift; sourceTree = "<group>"; };
 		729076871D0FC75700904653 /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		729076891D0FD0BC00904653 /* FloatLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTests.swift; sourceTree = "<group>"; };
-		7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelElementTests.swift; sourceTree = "<group>"; };
 		7292B2541CFFEFBE00FFE97B /* GroupElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupElement.swift; sourceTree = "<group>"; };
 		7292B2581D00078700FFE97B /* UIView+FormResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FormResponder.swift"; sourceTree = "<group>"; };
 		7292B25D1D0008BC00FFE97B /* WeakBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
@@ -234,8 +232,6 @@
 		72ABFFE61D07A12300280A73 /* StaticTextElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTextElementTests.swift; sourceTree = "<group>"; };
 		72ABFFE81D07A1B400280A73 /* SegueElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueElementTests.swift; sourceTree = "<group>"; };
 		72ABFFEA1D07A4CC00280A73 /* SpacerElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacerElementTests.swift; sourceTree = "<group>"; };
-		72ABFFEC1D07A74900280A73 /* TextFieldElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldElementTests.swift; sourceTree = "<group>"; };
-		72ABFFEE1D07A89600280A73 /* TextViewElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewElementTests.swift; sourceTree = "<group>"; };
 		72ABFFF01D07AADB00280A73 /* ViewElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewElementTests.swift; sourceTree = "<group>"; };
 		72ABFFF21D07AC9400280A73 /* PlaceholderTextViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextViewTests.swift; sourceTree = "<group>"; };
 		72ABFFF41D07AEAA00280A73 /* ValidationErrorViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorViewTests.swift; sourceTree = "<group>"; };
@@ -355,8 +351,6 @@
 				72ABFFE61D07A12300280A73 /* StaticTextElementTests.swift */,
 				72ABFFE81D07A1B400280A73 /* SegueElementTests.swift */,
 				72ABFFEA1D07A4CC00280A73 /* SpacerElementTests.swift */,
-				72ABFFEC1D07A74900280A73 /* TextFieldElementTests.swift */,
-				72ABFFEE1D07A89600280A73 /* TextViewElementTests.swift */,
 				72ABFFF01D07AADB00280A73 /* ViewElementTests.swift */,
 				72ABFFF21D07AC9400280A73 /* PlaceholderTextViewTests.swift */,
 				72ABFFF41D07AEAA00280A73 /* ValidationErrorViewTests.swift */,
@@ -365,7 +359,7 @@
 				725DD97D1D0A975D00320990 /* ValidationRuleTests.swift */,
 				725DD9841D0AA00400320990 /* ValidatableTests.swift */,
 				729076891D0FD0BC00904653 /* FloatLabelTests.swift */,
-				7290768B1D0FD30E00904653 /* FloatLabelElementTests.swift */,
+				72479EC61D13C71800B37B44 /* EditableTextElementTests.swift */,
 				72856BA11D075FE400836DED /* Assets.xcassets */,
 			);
 			path = FormsTests;
@@ -697,15 +691,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				72ABFFF51D07AEAA00280A73 /* ValidationErrorViewTests.swift in Sources */,
+				72479EC71D13C71800B37B44 /* EditableTextElementTests.swift in Sources */,
 				72ABFFE01D079F4700280A73 /* SegmentElementTests.swift in Sources */,
 				725DD97E1D0A975D00320990 /* ValidationRuleTests.swift in Sources */,
 				725DD9851D0AA00400320990 /* ValidatableTests.swift in Sources */,
-				72ABFFEF1D07A89600280A73 /* TextViewElementTests.swift in Sources */,
 				72856BA01D075D6E00836DED /* TestUtilities.swift in Sources */,
 				72ABFFE91D07A1B400280A73 /* SegueElementTests.swift in Sources */,
 				72ABFFE71D07A12300280A73 /* StaticTextElementTests.swift in Sources */,
-				7290768C1D0FD30E00904653 /* FloatLabelElementTests.swift in Sources */,
-				72ABFFED1D07A74900280A73 /* TextFieldElementTests.swift in Sources */,
 				7290768A1D0FD0BC00904653 /* FloatLabelTests.swift in Sources */,
 				72ABFFF71D07B21000280A73 /* GroupElementTests.swift in Sources */,
 				72ABFFF31D07AC9400280A73 /* PlaceholderTextViewTests.swift in Sources */,

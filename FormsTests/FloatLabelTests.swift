@@ -11,28 +11,30 @@ import FBSnapshotTestCase
 @testable import Forms
 
 class FloatLabelTests: FBSnapshotTestCase {
+    private var floatLabel: FloatLabel<UITextFieldTextEditorAdapter>!
+    
     override func setUp() {
         super.setUp()
         recordMode = false
+        let adapter = UITextFieldTextEditorAdapter(configuration: TextEditorConfiguration(), textChangedObserver: { _ in })
+        floatLabel = FloatLabel(adapter: adapter)
+        floatLabel.setFieldName("Test")
     }
     
     func testRenderWithLabelHidden() {
-        let floatLabel = FloatLabel(name: "Test")
         floatLabel.transitionToState(.LabelHidden, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }
     
     func testRenderWithLabelShown() {
-        let floatLabel = FloatLabel(name: "Test")
         floatLabel.transitionToState(.LabelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }
     
-    func testRenderWithTextAndLabelShown() {
-        let floatLabel = FloatLabel(name: "Test")
-        floatLabel.bodyTextView.text = "This is some text"
+    func testRenderWithSingleLineTextAndLabelShown() {
+        floatLabel.textEntryView.text = "This is some text"
         floatLabel.transitionToState(.LabelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
