@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Adapts a `UITextView` to a generic interface used by
+/// form elements that perform text editing.
 @objc public final class UITextViewTextEditorAdapter: NSObject, TextEditorAdapter, UITextViewDelegate {
     public private(set) lazy var view: PlaceholderTextView = {
         let textView = PlaceholderTextView(frame: CGRectZero)

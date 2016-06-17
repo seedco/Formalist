@@ -6,6 +6,8 @@
 //  Copyright © 2016 Seed Platform, Inc. All rights reserved.
 //
 
+/// Adapts a `FloatLabel` to a generic interface used by
+/// form elements that perform text editing.
 public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapter where InnerAdapterType.ViewType: FloatLabelTextEntryView>: TextEditorAdapter {
     
     public private(set) lazy var view: FloatLabel<InnerAdapterType> = FloatLabel(adapter: self.innerAdapter)
