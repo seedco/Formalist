@@ -34,7 +34,16 @@ class FloatLabelTests: FBSnapshotTestCase {
     }
     
     func testRenderWithSingleLineTextAndLabelShown() {
-        floatLabel.textEntryView.text = "This is some text"
+        floatLabel.textEntryView.text = "Dapibus Consectetur Aenean Ligula Vestibulum"
+        floatLabel.transitionToState(.LabelShown, animated: false)
+        sizeViewForTesting(floatLabel)
+        FBSnapshotVerifyView(floatLabel)
+    }
+    
+    func testRenderWithMultiLineTextAndLabelShown() {
+        let adapter = UITextViewTextEditorAdapter(configuration: TextEditorConfiguration(), textChangedObserver: { _ in })
+        let floatLabel = FloatLabel(adapter: adapter)
+        floatLabel.textEntryView.text = "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue."
         floatLabel.transitionToState(.LabelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
