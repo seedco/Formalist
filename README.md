@@ -220,7 +220,7 @@ This element supports a number of different configuration options specified usin
 
 #### Text Field
 
-<img src="images/textfield.png" alt="Text Field Element" width="370" height="45" />
+<img src="images/textfield.png" alt="Text Field" width="370" height="45" />
 
 Displays a `UITextField` for a single line of editable text.
 
@@ -235,7 +235,7 @@ textField(value: self.emailValue, configuration: TextEditorConfiguration(continu
 
 #### Text View
 
-<img src="images/textview.png" alt="Text View Element" width="365" height="72" />
+<img src="images/textview.png" alt="Text View" width="365" height="72" />
 
 Displays a `UITextView` for multiple lines of editable text. The text view is actually an instance of `PlaceholderTextView`, which is a `UITextView` subclass that adds support for a placeholder string using the same API as `UITextField`.
 
@@ -247,11 +247,11 @@ textView(value: self.textViewValue) {
 
 #### Float Label
 
-<img src="images/floatlabel.png" alt="Float Label Element" width="365" height="63" />
+<img src="images/floatlabel.png" alt="Float Label" width="365" height="63" />
 
 Implements a native iOS version of the [float label pattern](http://bradfrost.com/blog/post/float-label-pattern/). This concept is excellent for maintaining the context of the field label regardless of whether text has been entered in the field or not, unlike a traditional placeholder.
 
-It comes in two flavors: single line (instantiated using the `singleLineFloatLabel` function) and multi-line (instantiated using the `multiLineFloatLabel` function). The single line variant uses a `UITextField` as its underlying editor view, and the multi-line variant uses a `PlaceholderTextView` (`UITextView subclass`). In both cases, the underlying editor view can be accessed via the `FloatLabel.textEntryView` property inside the optional view configurator block.
+Float Label comes in two flavors: single line (instantiated using the `singleLineFloatLabel` function) and multi-line (instantiated using the `multiLineFloatLabel` function). The single line variant uses a `UITextField` as its underlying editor view, and the multi-line variant uses a `PlaceholderTextView` (`UITextView subclass`). In both cases, the underlying editor view can be accessed via the `FloatLabel.textEntryView` property inside the optional view configurator block.
 
 
 ```swift
