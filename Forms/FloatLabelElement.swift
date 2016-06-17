@@ -15,8 +15,6 @@ public final class FloatLabelElement: FormElement, Validatable {
     
     private let name: String
     private let value: FormValue<String>
-    private let continuous: Bool
-    private let resignFirstResponderOnReturn: Bool
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
     
@@ -49,11 +47,11 @@ public final class FloatLabelElement: FormElement, Validatable {
     public init(name: String, value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, resignFirstResponderOnReturn: Bool = true, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.name = name
         self.value = value
-        self.continuous = continuous
-        self.resignFirstResponderOnReturn = resignFirstResponderOnReturn
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
-        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: resignFirstResponderOnReturn, maximumLength: maximumLength)
+        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: resignFirstResponderOnReturn, continuous: continuous, maximumLength: maximumLength) {
+            value.value = $0
+        }
     }
     
     public func render() -> UIView {
@@ -62,27 +60,9 @@ public final class FloatLabelElement: FormElement, Validatable {
         floatLabel.bodyTextView.delegate = textViewDelegate
         viewConfigurator?(floatLabel)
         floatLabel.recomputeMinimumHeight()
-        
-        let notificationName = continuous ? UITextViewTextDidChangeNotification : UITextViewTextDidEndEditingNotification
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(FloatLabelElement.textChanged(_:)),
-            name: notificationName,
-            object: floatLabel.bodyTextView
-        )
-        
         return floatLabel
     }
-    
-    // MARK: Actions
-    
-    @objc private func textChanged(notification: NSNotification) {
-        guard let textView = notification.object as? UITextView else {
-            fatalError("Unexpected notification object: \(notification.object)")
-        }
-        value.value = textView.text ?? ""
-    }
-    
+
     // MARK: Validatable
     
     public func validate(completionHandler: ValidationResult -> Void) {
