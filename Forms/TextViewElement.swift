@@ -12,7 +12,6 @@ public final class TextViewElement: FormElement, Validatable {
     public typealias ViewConfigurator = PlaceholderTextView -> Void
     
     private let value: FormValue<String>
-    private let continuous: Bool
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
     
@@ -26,18 +25,22 @@ public final class TextViewElement: FormElement, Validatable {
      continuously updated as text is typed into the view. If this is `false`,
      the value will only be updated when the text view has finished editing.
      Defaults to `false`
+     - parameter maximumLength:    Restricts the length of the text entered into
+     the field, such that a user cannot enter any more text after the limit has
+     been reached.
      - parameter validationRules:  Rules used for validating the input
      - parameter viewConfigurator: An optional block used to configure the
      appearance of the text view
      
      - returns: An initialized instance of the receiver
      */
-    public init(value: FormValue<String>, continuous: Bool = false, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
+    public init(value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.value = value
-        self.continuous = continuous
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
-        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: false)
+        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: false, continuous: continuous, maximumLength: maximumLength) {
+            value.value = $0
+        }
     }
     
     // MARK: FormElement
@@ -51,25 +54,8 @@ public final class TextViewElement: FormElement, Validatable {
         textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         textView.backgroundColor = .clearColor()
         textView.text = value.value
-        
-        let notificationName = continuous ? UITextViewTextDidChangeNotification : UITextViewTextDidEndEditingNotification
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(TextViewElement.textChanged(_:)),
-            name: notificationName,
-            object: textView
-        )
         viewConfigurator?(textView)
         return textView
-    }
-    
-    // MARK: Actions
-    
-    @objc private func textChanged(notification: NSNotification) {
-        guard let textView = notification.object as? UITextView else {
-            fatalError("Unexpected notification object: \(notification.object)")
-        }
-        value.value = textView.text ?? ""
     }
     
     // MARK: Validatable

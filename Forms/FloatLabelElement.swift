@@ -15,8 +15,6 @@ public final class FloatLabelElement: FormElement, Validatable {
     
     private let name: String
     private let value: FormValue<String>
-    private let continuous: Bool
-    private let resignFirstResponderOnReturn: Bool
     private let validationRules: [ValidationRule<String>]
     private let viewConfigurator: ViewConfigurator?
     
@@ -32,6 +30,9 @@ public final class FloatLabelElement: FormElement, Validatable {
      will be continuously updated as text is typed into the view. If this is 
      `false`, the value will only be updated when the text view has finished 
      editing. Defaults to `false`
+     - parameter maximumLength:                Restricts the length of the text 
+     entered into the field, such that a user cannot enter any more text after 
+     the limit has been reached.
      - parameter resignFirstResponderOnReturn: Whether the text view should
      resign first responder status and activate the next first responder
      upon the user pressing the "Return" key on the keyboard. Defaults to
@@ -43,14 +44,14 @@ public final class FloatLabelElement: FormElement, Validatable {
      
      - returns: An initialized instance of the receiver
      */
-    public init(name: String, value: FormValue<String>, continuous: Bool = false, resignFirstResponderOnReturn: Bool = true, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
+    public init(name: String, value: FormValue<String>, continuous: Bool = false, maximumLength: Int? = nil, resignFirstResponderOnReturn: Bool = true, validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.name = name
         self.value = value
-        self.continuous = continuous
-        self.resignFirstResponderOnReturn = resignFirstResponderOnReturn
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
-        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: resignFirstResponderOnReturn)
+        self.textViewDelegate = TextViewDelegate(resignFirstResponderOnReturn: resignFirstResponderOnReturn, continuous: continuous, maximumLength: maximumLength) {
+            value.value = $0
+        }
     }
     
     public func render() -> UIView {
@@ -59,27 +60,9 @@ public final class FloatLabelElement: FormElement, Validatable {
         floatLabel.bodyTextView.delegate = textViewDelegate
         viewConfigurator?(floatLabel)
         floatLabel.recomputeMinimumHeight()
-        
-        let notificationName = continuous ? UITextViewTextDidChangeNotification : UITextViewTextDidEndEditingNotification
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: #selector(FloatLabelElement.textChanged(_:)),
-            name: notificationName,
-            object: floatLabel.bodyTextView
-        )
-        
         return floatLabel
     }
-    
-    // MARK: Actions
-    
-    @objc private func textChanged(notification: NSNotification) {
-        guard let textView = notification.object as? UITextView else {
-            fatalError("Unexpected notification object: \(notification.object)")
-        }
-        value.value = textView.text ?? ""
-    }
-    
+
     // MARK: Validatable
     
     public func validate(completionHandler: ValidationResult -> Void) {

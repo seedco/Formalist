@@ -9,13 +9,33 @@
 import UIKit
 
 @objc final class TextViewDelegate: NSObject, UITextViewDelegate {
-    private let resignFirstResponderOnReturn: Bool
+    typealias TextChangedObserver = String -> Void
     
-    init(resignFirstResponderOnReturn: Bool) {
+    private let resignFirstResponderOnReturn: Bool
+    private let continuous: Bool
+    private let maximumLength: Int?
+    private let textChangedObserver: TextChangedObserver
+    
+    init(resignFirstResponderOnReturn: Bool, continuous: Bool = false, maximumLength: Int?, textChangedObserver: TextChangedObserver) {
         self.resignFirstResponderOnReturn = resignFirstResponderOnReturn
+        self.continuous = continuous
+        self.maximumLength = maximumLength
+        self.textChangedObserver = textChangedObserver
     }
     
     // MARK: UITextViewDelegate
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if !continuous {
+            textChangedObserver(textView.text)
+        }
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        if continuous {
+            textChangedObserver(textView.text)
+        }
+    }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         // http://stackoverflow.com/a/23779209
@@ -26,6 +46,9 @@ import UIKit
                 textView.resignFirstResponder()
                 return false
             }
+        } else if let maximumLength = maximumLength {
+            let newLength = textView.text.characters.count + text.characters.count - range.length
+            return newLength <= maximumLength
         } else {
             return true
         }
