@@ -23,9 +23,10 @@
 	- [`SpacerElement`](#spacerelement)
 	- [`SegueElement`](#segueelement)
 	- [`StaticTextElement`](#statictextelement)
-	- [`TextFieldElement`](#textfieldelement)
-	- [`TextViewElement`](#textviewelement)
-	- [`FloatLabelElement`](#floatlabelelement)
+	- [`EditableTextElement`](#editabletextelement)
+		- [Text Field](#text-field)
+		- [Text View](#text-view)
+		- [Float Label](#float-label)
 	- [`ViewElement`](#viewelement)
 - [Testing](#testing)
 - [License](#license)
@@ -41,10 +42,10 @@ This code snippet from the example app is used to render the first section of th
 ```swift
 GroupElement(configuration: groupedConfiguration, elements: [
     BooleanElement(title: "Boolean Element", value: self.booleanValue),
-    TextViewElement(value: self.textViewValue) {
+    textView(value: self.textViewValue) {
         $0.placeholder = "Text View Element"
     },
-    FloatLabelElement(name: "Float Label Element", value: self.floatLabelValue),
+    singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue),
     SegmentElement(title: "Segment Element", segments: [
         Segment(content: .Title("Segment 1"), value: "Segment 1"),
         Segment(content: .Title("Segment 2"), value: "Segment 2")
@@ -211,14 +212,20 @@ StaticTextElement(text: "Welcome to the Forms Catalog app. This text is an examp
 }
 ```
 
-### `TextFieldElement`
+### `EditableTextElement`
+
+`EditableTextElement` is an element that is bound to a `String` value and is capable of rendering several different controls for editable text. While these elements can be created by instantiating `EditableTextElement` directly, it is much simpler to use the convenience functions as shown in the code snippets below.
+
+This element supports a number of different configuration options specified using the `TextEditorConfiguration` struct, including custom Return key behaviours (in addition to the standard tabbing behaviour between fields), as well as validation of the `String` value.
+
+#### Text Field
 
 <img src="images/textfield.png" alt="Text Field Element" width="370" height="45" />
 
-`TextFieldElement` displays a `UITextField` for a single line of editable text, bound to a `String` value. This element supports tabbing behaviour between fields and optional validation of the string value.
+Displays a `UITextField` for a single line of editable text.
 
 ```swift
-TextFieldElement(value: self.emailValue, continuous: true, validationRules: [.Email]) {
+textField(value: self.emailValue, configuration: TextEditorConfiguration(continuouslyUpdatesValue: true), validationRules: [.email]) {
     $0.autocapitalizationType = .None
     $0.autocorrectionType = .No
     $0.spellCheckingType = .No
@@ -226,26 +233,29 @@ TextFieldElement(value: self.emailValue, continuous: true, validationRules: [.Em
 }
 ```
 
-### `TextViewElement`
+#### Text View
 
 <img src="images/textview.png" alt="Text View Element" width="365" height="72" />
 
-`TextFieldElement` displays a `UITextView` for multiple lines of editable text, bound to a `String` value. The text view is actually an instance of `PlaceholderTextView`, which is a `UITextView` subclass that adds support for a placeholder string using the same API as `UITextField`. This element also supports optional validation of the string value.
+Displays a `UITextView` for multiple lines of editable text. The text view is actually an instance of `PlaceholderTextView`, which is a `UITextView` subclass that adds support for a placeholder string using the same API as `UITextField`.
 
 ```swift
-TextViewElement(value: self.textViewValue) {
+textView(value: self.textViewValue) {
     $0.placeholder = "Text View Element"
 }
 ```
 
-### `FloatLabelElement`
+#### Float Label
 
 <img src="images/floatlabel.png" alt="Float Label Element" width="365" height="63" />
 
-`FloatLabelElement` implements a native iOS version of the [float label pattern](http://bradfrost.com/blog/post/float-label-pattern/). This concept is excellent for maintaining the context of the field label regardless of whether text has been entered in the field or not, unlike a traditional placeholder. It supports multiple lines of editable text and is bound to a `String` value. This element supports tabbing behaviour if the `resignFirstResponderOnReturn` parameter in the initializer is `true` (default) and optional validation of the string value.
+Implements a native iOS version of the [float label pattern](http://bradfrost.com/blog/post/float-label-pattern/). This concept is excellent for maintaining the context of the field label regardless of whether text has been entered in the field or not, unlike a traditional placeholder.
+
+It comes in two flavors: single line (instantiated using the `singleLineFloatLabel` function) and multi-line (instantiated using the `multiLineFloatLabel` function). The single line variant uses a `UITextField` as its underlying editor view, and the multi-line variant uses a `PlaceholderTextView` (`UITextView subclass`). In both cases, the underlying editor view can be accessed via the `FloatLabel.textEntryView` property inside the optional view configurator block.
+
 
 ```swift
-FloatLabelElement(name: "Float Label Element", value: self.floatLabelValue)
+singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue)
 ```
 
 ### `ViewElement`
