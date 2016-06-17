@@ -63,12 +63,10 @@ import UIKit
             switch configuration.returnKeyAction {
             case .None: return true
             case .ActivateNextResponder:
-                if let nextFormResponder = textView.nextFormResponder where nextFormResponder.becomeFirstResponder() {
-                    return false
-                } else {
+                if !(textView.nextFormResponder?.becomeFirstResponder() ?? false) {
                     textView.resignFirstResponder()
-                    return false
                 }
+                return false
             case let .Custom(action):
                 action(textView.text)
                 return false
