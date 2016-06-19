@@ -40,18 +40,20 @@ The example app (shown above) demonstrates how to build a simple form using the 
 This code snippet from the example app is used to render the first section of the form:
 
 ```swift
-GroupElement(configuration: groupedConfiguration, elements: [
-    BooleanElement(title: "Boolean Element", value: self.booleanValue),
+group(configuration: groupedConfiguration, elements: [
+    toggle(title: "Boolean Element", value: self.booleanValue),
     textView(value: self.textViewValue) {
         $0.placeholder = "Text View Element"
     },
     singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue),
-    SegmentElement(title: "Segment Element", segments: [
+    segments(title: "Segment Element", segments: [
         Segment(content: .Title("Segment 1"), value: "Segment 1"),
         Segment(content: .Title("Segment 2"), value: "Segment 2")
     ], selectedValue: self.segmentValue),
 ])
 ```
+
+Note that the above code example uses the built-in convenience functions for constructing each form element, which are syntactic sugar for improving readability over the standard class initializers.
 
 ## Documentation
 
@@ -169,7 +171,7 @@ let groupElement = GroupElement(configuration: configuration, elements: [...])
 `BooleanElement` displays a `UILabel` and a `UISwitch` that is bound to a `Bool` value.
 
 ```swift
-BooleanElement(title: "Boolean Element", value: self.booleanValue)
+toggle(title: "Boolean Element", value: self.booleanValue)
 ```
 
 ### `SegmentElement`
@@ -179,7 +181,7 @@ BooleanElement(title: "Boolean Element", value: self.booleanValue)
 `SegmentElement` displays a `UILabel` and a `UISegmentedControl` that is bound to a `Segment<ValueType>` value. `ValueType` is a type parameter the type of the value that the segment represents, which must be consistent for all of the segments. Each segment can have either a title or an image.
 
 ```swift
-SegmentElement(title: "Segment Element", segments: [
+segments(title: "Segment Element", segments: [
     Segment(content: .Title("Segment 1"), value: "Segment 1"),
     Segment(content: .Title("Segment 2"), value: "Segment 2")
 ], selectedValue: self.segmentValue)
@@ -190,7 +192,7 @@ SegmentElement(title: "Segment Element", segments: [
 `SpacerElement` displays an empty `UIView` of a fixed height. The view is configurable using all standard `UIView` properties (`backgroundColor`, etc.)
 
 ```swift
-SpacerElement(height: 20.0)
+spacer(height: 20.0)
 ```
 
 ### `SegueElement`
@@ -206,7 +208,7 @@ SpacerElement(height: 20.0)
 `StaticTextElement` displays static, non-editable text using a `UILabel`.
 
 ```swift
-StaticTextElement(text: "Welcome to the Forms Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
+staticText("Welcome to the Forms Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
     $0.textAlignment = .Center
     $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
 }
@@ -263,7 +265,7 @@ singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue)
 `ViewElement` provides an easy way to wrap an existing view to create a one-off custom form element without any subclassing. It is used to implement the activity indicator element shown in the example application. It has to be initialized with a `FormValue` instance, which is then passed into the block that creates the custom view. However, if the view is not bound to a value (like in the activity indicator), you may simply pass a dummy value and ignore it inside the block.
 
 ```swift
-ViewElement(value: FormValue("")) { _ in
+customView(value: FormValue("")) { _ in
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     activityIndicator.startAnimating()
     return activityIndicator
