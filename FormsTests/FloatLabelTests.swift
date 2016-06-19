@@ -11,28 +11,39 @@ import FBSnapshotTestCase
 @testable import Forms
 
 class FloatLabelTests: FBSnapshotTestCase {
+    private var floatLabel: FloatLabel<UITextFieldTextEditorAdapter>!
+    
     override func setUp() {
         super.setUp()
         recordMode = false
+        let adapter = UITextFieldTextEditorAdapter(configuration: TextEditorConfiguration(), textChangedObserver: { _ in })
+        floatLabel = FloatLabel(adapter: adapter)
+        floatLabel.setFieldName("Test")
     }
     
     func testRenderWithLabelHidden() {
-        let floatLabel = FloatLabel(name: "Test")
         floatLabel.transitionToState(.LabelHidden, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }
     
     func testRenderWithLabelShown() {
-        let floatLabel = FloatLabel(name: "Test")
         floatLabel.transitionToState(.LabelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }
     
-    func testRenderWithTextAndLabelShown() {
-        let floatLabel = FloatLabel(name: "Test")
-        floatLabel.bodyTextView.text = "This is some text"
+    func testRenderWithSingleLineTextAndLabelShown() {
+        floatLabel.textEntryView.text = "Dapibus Consectetur Aenean Ligula Vestibulum"
+        floatLabel.transitionToState(.LabelShown, animated: false)
+        sizeViewForTesting(floatLabel)
+        FBSnapshotVerifyView(floatLabel)
+    }
+    
+    func testRenderWithMultiLineTextAndLabelShown() {
+        let adapter = UITextViewTextEditorAdapter(configuration: TextEditorConfiguration(), textChangedObserver: { _ in })
+        let floatLabel = FloatLabel(adapter: adapter)
+        floatLabel.textEntryView.text = "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue."
         floatLabel.transitionToState(.LabelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)

@@ -44,12 +44,12 @@ class ViewController: UIViewController {
             ]),
             GroupElement(configuration: groupedConfiguration, elements: [
                 BooleanElement(title: "Boolean Element", value: self.booleanValue),
-                TextViewElement(value: self.textViewValue) {
+                textView(value: self.textViewValue) {
                     $0.placeholder = "Text View Element"
                     $0.accessibilityIdentifier = "textView"
                 },
-                FloatLabelElement(name: "Float Label Element", value: self.floatLabelValue) {
-                    $0.bodyTextView.accessibilityIdentifier = "floatLabel"
+                singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue) {
+                    $0.textEntryView.accessibilityIdentifier = "floatLabel"
                 },
                 SegmentElement(title: "Segment Element", segments: [
                     Segment(content: .Title("Segment 1"), value: "Segment 1"),
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
             ]),
             SpacerElement(height: 20.0),
             GroupElement(configuration: groupedConfiguration, elements: [
-                TextFieldElement(value: self.emailValue, continuous: true, validationRules: [.email]) {
+                textField(value: self.emailValue, configuration: TextEditorConfiguration(continuouslyUpdatesValue: true), validationRules: [.email]) {
                     $0.autocapitalizationType = .None
                     $0.autocorrectionType = .No
                     $0.spellCheckingType = .No
