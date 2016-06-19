@@ -514,7 +514,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = Seed Platform, Inc;
+				ORGANIZATIONNAME = "Seed Platform, Inc";
 				TargetAttributes = {
 					7276FE8A1CF67DD800C3B4E4 = {
 						CreatedOnToolsVersion = 7.3.1;
