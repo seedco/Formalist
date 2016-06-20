@@ -37,13 +37,13 @@ class ViewController: UIViewController {
         
         return FormViewController([
             inset(edgeInsets, elements: [
-                StaticTextElement(text: "Welcome to the Forms Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
+                staticText("Welcome to the Forms Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
                     $0.textAlignment = .Center
                     $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
                 }
             ]),
-            GroupElement(configuration: groupedConfiguration, elements: [
-                BooleanElement(title: "Boolean Element", value: self.booleanValue),
+            group(configuration: groupedConfiguration, elements: [
+                toggle(title: "Boolean Element", value: self.booleanValue),
                 textView(value: self.textViewValue) {
                     $0.placeholder = "Text View Element"
                     $0.accessibilityIdentifier = "textView"
@@ -51,20 +51,20 @@ class ViewController: UIViewController {
                 singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue) {
                     $0.textEntryView.accessibilityIdentifier = "floatLabel"
                 },
-                SegmentElement(title: "Segment Element", segments: [
+                segments(title: "Segment Element", segments: [
                     Segment(content: .Title("Segment 1"), value: "Segment 1"),
                     Segment(content: .Title("Segment 2"), value: "Segment 2")
                 ], selectedValue: self.segmentValue),
             ]),
-            SpacerElement(height: 20.0),
-            GroupElement(configuration: groupedConfiguration, elements: [
+            spacer(height: 20.0),
+            group(configuration: groupedConfiguration, elements: [
                 textField(value: self.emailValue, configuration: TextEditorConfiguration(continuouslyUpdatesValue: true), validationRules: [.email]) {
                     $0.autocapitalizationType = .None
                     $0.autocorrectionType = .No
                     $0.spellCheckingType = .No
                     $0.placeholder = "Text Field Element (Email)"
                 },
-                SegueElement(icon: UIImage(named: "circle")!, title: "Segue Element", viewConfigurator: {
+                segue(icon: UIImage(named: "circle")!, title: "Segue Element", viewConfigurator: {
                     $0.accessibilityIdentifier = "segueView"
                 }) { [unowned self] in
                     self.displayAlertWithTitle("Segue Element", message: "Tapped the element.")
@@ -76,8 +76,8 @@ class ViewController: UIViewController {
                     $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
                 }
             ]),
-            GroupElement(configuration: groupedConfiguration, elements: [
-                ViewElement(value: FormValue("")) { _ in
+            group(configuration: groupedConfiguration, elements: [
+                customView(value: FormValue("")) { _ in
                     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
                     activityIndicator.startAnimating()
                     return activityIndicator
