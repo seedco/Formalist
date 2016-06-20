@@ -17,7 +17,7 @@ extension PlaceholderTextView: FloatLabelTextEntryView {}
 
 /// Native UIKit implementation of the float label pattern:
 /// http://bradfrost.com/blog/post/float-label-pattern/
-public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewType: FloatLabelTextEntryView>: UIView, TextEditorAdapterDelegate {
+public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewType: FloatLabelTextEntryView>: UIView {
     /// The label used to display the field name
     public let nameLabel: UILabel = {
         let nameLabel = UILabel(frame: CGRectZero)
@@ -32,9 +32,7 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     }()
     
     /// The text view that contains the field's body text
-    public var textEntryView: AdapterType.ViewType {
-        return self.adapter.view
-    }
+    public private(set) var textEntryView: AdapterType.ViewType!
     
     private lazy var labelShownConstraints: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
@@ -49,21 +47,52 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     
     private lazy var heightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0.0)
     
-    private let adapter: AdapterType
     private var editing = false
     private var state: State?
     
-    public init(adapter: AdapterType) {
-        self.adapter = adapter
-
+    public init(adapter: AdapterType, adapterCallbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
         super.init(frame: CGRectZero)
-
-        adapter.delegate = self
-        textEntryView.translatesAutoresizingMaskIntoConstraints = false
         
+        createTextEntryViewWithAdapter(adapter, adapterCallbacks: adapterCallbacks, textChangedObserver: textChangedObserver)
         addSubview(nameLabel)
         addSubview(textEntryView)
         
+        setupConstraints()
+        transitionToState(.LabelHidden, animated: false)
+        
+        // We don't want the height of the view to change between states.
+        // When there is no text or a single line of text, this has to
+        // be enforced manually using a constraint.
+        recomputeMinimumHeight()
+    }
+    
+    private func createTextEntryViewWithAdapter(adapter: AdapterType, adapterCallbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
+        var callbacks = TextEditorAdapterCallbacks<AdapterType>()
+        callbacks.textDidBeginEditing = { [unowned self] (adapter, view) in
+            self.editing = true
+            self.transitionToState(.LabelShown, animated: true)
+            adapterCallbacks?.textDidBeginEditing?(adapter, view)
+        }
+        callbacks.textDidEndEditing = { [unowned self] (adapter, view) in
+            self.editing = false
+            if adapter.getTextForView(view).isEmpty {
+                self.transitionToState(.LabelHidden, animated: true)
+            }
+            adapterCallbacks?.textDidEndEditing?(adapter, view)
+        }
+        callbacks.textDidChange = { [unowned self] (adapter, view) in
+            if !self.editing {
+                let state: State = adapter.getTextForView(view).isEmpty ? .LabelHidden : .LabelShown
+                self.transitionToState(state, animated: false)
+            }
+            adapterCallbacks?.textDidChange?(adapter, view)
+        }
+        
+        textEntryView = adapter.createViewWithCallbacks(callbacks, textChangedObserver: textChangedObserver)
+        textEntryView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupConstraints() {
         heightConstraint.active = true
         
         let views = ["nameLabel": nameLabel, "textEntryView": textEntryView]
@@ -75,13 +104,6 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         
         let nameLabelTopConstraint = NSLayoutConstraint(item: nameLabel, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
         nameLabelTopConstraint.active = true
-
-        transitionToState(.LabelHidden, animated: false)
-        
-        // We don't want the height of the view to change between states.
-        // When there is no text or a single line of text, this has to
-        // be enforced manually using a constraint.
-        recomputeMinimumHeight()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -105,36 +127,14 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
      the height of the view constant between states.
      */
     public func recomputeMinimumHeight() {
+        guard let previousState = state else {
+            fatalError("Must have initial state before recomputing height")
+        }
         transitionToState(.LabelShown, animated: false)
         heightConstraint.constant = systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-        updateCurrentState()
+        transitionToState(previousState, animated: false)
     }
 
-    private func updateCurrentState() {
-        let state: State = adapter.text.isEmpty ? .LabelHidden : .LabelShown
-        transitionToState(state, animated: false)
-    }
-    
-    // MARK: Notifications
-    
-    public func textEditorAdapterTextDidBeginEditing(adapter: _TextEditorAdapter) {
-        editing = true
-        transitionToState(.LabelShown, animated: true)
-    }
-    
-    public func textEditorAdapterTextDidEndEditing(adapter: _TextEditorAdapter) {
-        editing = false
-        if adapter.text.isEmpty {
-            transitionToState(.LabelHidden, animated: true)
-        }
-    }
-    
-    public func textEditorAdapterTextDidChange(adapter: _TextEditorAdapter) {
-        if !editing {
-            updateCurrentState()
-        }
-    }
-    
     // MARK: UIResponder
     
     public override func canBecomeFirstResponder() -> Bool {

@@ -13,6 +13,7 @@ import ObjectiveC
 /// form elements that perform text editing.
 public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEditorAdapter {
     public typealias ViewType = TextViewType
+    
     private let configuration: TextEditorConfiguration
     
     public init(configuration: TextEditorConfiguration) {

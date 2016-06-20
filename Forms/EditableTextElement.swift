@@ -34,8 +34,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
      */
     public init(value: FormValue<String>, configuration: TextEditorConfiguration = TextEditorConfiguration(), validationRules: [ValidationRule<String>] = [], viewConfigurator: ViewConfigurator? = nil) {
         self.value = value
-        self.adapter = AdapterType(configuration: configuration) { value.value = $0 }
-        self.adapter.text = value.value
+        self.adapter = AdapterType(configuration: configuration)
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
     }
@@ -43,8 +42,21 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
     // MARK: FormElement
     
     public func render() -> UIView {
-        viewConfigurator?(adapter.view)
-        return adapter.view
+        var callbacks = TextEditorAdapterCallbacks<AdapterType>()
+        callbacks.textDidBeginEditing = { (adapter, view) in
+            print("begin: \(adapter.getTextForView(view))")
+        }
+        callbacks.textDidEndEditing = { (adapter, view) in
+            print("end: \(adapter.getTextForView(view))")
+        }
+        callbacks.textDidChange = { (adapter, view) in
+            print("change: \(adapter.getTextForView(view))")
+        }
+        let view = adapter.createViewWithCallbacks(callbacks) { [weak self] in
+            self?.value.value = $0
+        }
+        viewConfigurator?(view)
+        return view
     }
     
     // MARK: Validatable

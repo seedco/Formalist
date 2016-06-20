@@ -9,25 +9,41 @@
 /// Adapts a `FloatLabel` to a generic interface used by
 /// form elements that perform text editing.
 public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapter where InnerAdapterType.ViewType: FloatLabelTextEntryView>: TextEditorAdapter {
-    
-    public private(set) lazy var view: FloatLabel<InnerAdapterType> = FloatLabel(adapter: self.innerAdapter)
-    
-    public var text: String {
-        get { return innerAdapter.text }
-        set { innerAdapter.text = newValue }
-    }
-    
-    public var delegate: TextEditorAdapterDelegate? {
-        get { return innerAdapter.delegate }
-        set { innerAdapter.delegate = newValue }
-    }
+    public typealias ViewType = FloatLabel<InnerAdapterType>
     
     private let configuration: TextEditorConfiguration
-    private let textChangedObserver: TextChangedObserver
-    private lazy var innerAdapter: InnerAdapterType = InnerAdapterType(configuration: self.configuration, textChangedObserver: self.textChangedObserver)
+    private lazy var innerAdapter: InnerAdapterType = InnerAdapterType(configuration: self.configuration)
     
-    public init(configuration: TextEditorConfiguration, textChangedObserver: TextChangedObserver) {
+    public init(configuration: TextEditorConfiguration) {
         self.configuration = configuration
-        self.textChangedObserver = textChangedObserver
+    }
+    
+    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<FloatLabelTextEditorAdapter<InnerAdapterType>>?, textChangedObserver: TextChangedObserver) -> ViewType {
+        var innerCallbacks = TextEditorAdapterCallbacks<InnerAdapterType>()
+        var floatLabel: FloatLabel<InnerAdapterType>?
+        if let callbacks = callbacks {
+            innerCallbacks.textDidBeginEditing = { [weak floatLabel] _ in
+                guard let floatLabel = floatLabel else { return }
+                callbacks.textDidBeginEditing?(self, floatLabel)
+            }
+            innerCallbacks.textDidEndEditing = { [weak floatLabel] _ in
+                guard let floatLabel = floatLabel else { return }
+                callbacks.textDidEndEditing?(self, floatLabel)
+            }
+            innerCallbacks.textDidChange = { [weak floatLabel] _ in
+                guard let floatLabel = floatLabel else { return }
+                callbacks.textDidChange?(self, floatLabel)
+            }
+        }
+        floatLabel = FloatLabel(adapter: innerAdapter, adapterCallbacks: innerCallbacks, textChangedObserver: textChangedObserver)
+        return floatLabel!
+    }
+    
+    public func getTextForView(view: ViewType) -> String {
+        return innerAdapter.getTextForView(view.textEntryView)
+    }
+    
+    public func setText(text: String, forView view: ViewType) {
+        innerAdapter.setText(text, forView: view.textEntryView)
     }
 }

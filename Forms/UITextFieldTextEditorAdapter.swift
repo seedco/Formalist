@@ -12,6 +12,7 @@ import UIKit
 /// form elements that perform text editing.
 public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: TextEditorAdapter {
     public typealias ViewType = TextFieldType
+    
     private let configuration: TextEditorConfiguration
     
     public init(configuration: TextEditorConfiguration) {
