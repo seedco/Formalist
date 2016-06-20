@@ -42,7 +42,16 @@ public final class FormViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        reloadElementViews()
+        reload()
+    }
+    
+    public func reload() {
+        let rootElementView = rootElement.render()
+        rootElementView.translatesAutoresizingMaskIntoConstraints = false
+        
+        autoscrollView.contentView = rootElementView
+        let widthConstraint = NSLayoutConstraint(item: autoscrollView, attribute: .Width, relatedBy: .Equal, toItem: rootElementView, attribute: .Width, multiplier: 1.0, constant: 0.0)
+        widthConstraint.active = true
     }
     
     // MARK: Validation
@@ -50,22 +59,11 @@ public final class FormViewController: UIViewController {
     public func validate(completionHandler: ValidationResult -> Void) {
         if let validatableElement = rootElement as? Validatable {
             validatableElement.validateAndStoreResult { result in
-                self.reloadElementViews()
+                self.reload()
                 completionHandler(result)
             }
         } else {
             completionHandler(.Valid)
         }
-    }
-    
-    // MARK: Private
-    
-    private func reloadElementViews() {
-        let rootElementView = rootElement.render()
-        rootElementView.translatesAutoresizingMaskIntoConstraints = false
-        
-        autoscrollView.contentView = rootElementView
-        let widthConstraint = NSLayoutConstraint(item: autoscrollView, attribute: .Width, relatedBy: .Equal, toItem: rootElementView, attribute: .Width, multiplier: 1.0, constant: 0.0)
-        widthConstraint.active = true
     }
 }
