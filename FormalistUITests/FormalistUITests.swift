@@ -47,9 +47,9 @@ class FormalistUITests: XCTestCase {
     func testFloatLabelElement() {
         let app = XCUIApplication()
         let elementsQuery = app.scrollViews.otherElements
-        let floatLabelTextView = elementsQuery.textViews["floatLabel"]
+        let floatLabelTextField = elementsQuery.textFields["floatLabel"]
         
-        floatLabelTextView.tap()
+        floatLabelTextField.tap()
         app.typeText("Hello World")
         app.buttons["Return"].tap()
         app.alerts["Float Label Element"].collectionViews.buttons["Dismiss"].tap()
@@ -91,7 +91,14 @@ class FormalistUITests: XCTestCase {
     
     func testFailedValidation() {
         let app = XCUIApplication()
-        app.navigationBars["Example"].buttons["Validate"].tap()
+        let elementsQuery = app.scrollViews.otherElements
+        let textField = elementsQuery.textFields["Text Field Element (Email)"]
+        
+        textField.tap()
+        app.typeText("foo")
+        app.buttons["Return"].tap()
+        
+        app.navigationBars["foo"].buttons["Validate"].tap()
         XCTAssert(app.staticTexts["The email address is invalid"].exists)
     }
     
