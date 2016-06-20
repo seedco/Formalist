@@ -20,8 +20,15 @@ public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: Tex
     }
     
     public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextFieldTextEditorAdapter<ViewType>>?, textChangedObserver: TextChangedObserver) -> ViewType {
-        let delegate = TextFieldDelegate(adapter: self, configuration: configuration, callbacks: callbacks, textChangedObserver: textChangedObserver)
         let textField = TextFieldType(frame: CGRectZero)
+        let delegate = TextFieldDelegate(
+            textField: textField,
+            adapter: self,
+            configuration: configuration,
+            callbacks: callbacks,
+            textChangedObserver: textChangedObserver
+        )
+        
         (textField as UITextField).delegate = delegate
         textField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         objc_setAssociatedObject(textField, &ObjCTextFieldDelegateKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -47,11 +54,24 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
     private let callbacks: TextEditorAdapterCallbacks<AdapterType>?
     private let textChangedObserver: TextChangedObserver
     
-    init(adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
+    init(textField: TextFieldType, adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
         self.adapter = adapter
         self.configuration = configuration
         self.callbacks = callbacks
         self.textChangedObserver = textChangedObserver
+        
+        super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(TextFieldDelegate.textFieldTextDidChange(_:)),
+            name: UITextFieldTextDidChangeNotification,
+            object: textField
+        )
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: UITextFieldDelegate
@@ -77,6 +97,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         guard let textField = notification.object as? TextFieldType else {
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
+        callbacks?.textDidChange?(adapter, textField)
         if configuration.continuouslyUpdatesValue {
             textChangedObserver(textField.text ?? "")
         }

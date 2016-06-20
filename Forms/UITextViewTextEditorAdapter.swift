@@ -21,7 +21,12 @@ public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEd
     }
     
     public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<ViewType>>?, textChangedObserver: TextChangedObserver) -> ViewType {
-        let delegate = TextViewDelegate(adapter: self, configuration: configuration, callbacks: callbacks, textChangedObserver: textChangedObserver)
+        let delegate = TextViewDelegate(
+            adapter: self,
+            configuration: configuration,
+            callbacks: callbacks,
+            textChangedObserver: textChangedObserver
+        )
         let textView = TextViewType(frame: CGRectZero, textContainer: nil)
         (textView as UITextView).delegate = delegate
         textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
