@@ -42,7 +42,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
     // MARK: FormElement
     
     public func render() -> UIView {
-        let view = adapter.createViewWithCallbacks(nil) { [weak self] in
+        let view = adapter.createViewWithCallbacks(TextEditorAdapterCallbacks()) { [weak self] in
             self?.value.value = $0
         }
         viewConfigurator?(view)

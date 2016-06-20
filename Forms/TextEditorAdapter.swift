@@ -41,7 +41,7 @@ public protocol TextEditorAdapter: AnyObject {
      
      - returns: A new text editing view
      */
-    func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<Self>?, textChangedObserver: TextChangedObserver) -> ViewType
+    func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<Self>, textChangedObserver: TextChangedObserver) -> ViewType
     
     /**
      Gets the text in the specified view

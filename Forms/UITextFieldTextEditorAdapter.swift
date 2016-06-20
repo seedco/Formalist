@@ -19,7 +19,7 @@ public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: Tex
         self.configuration = configuration
     }
     
-    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextFieldTextEditorAdapter<ViewType>>?, textChangedObserver: TextChangedObserver) -> ViewType {
+    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextFieldTextEditorAdapter<ViewType>>, textChangedObserver: TextChangedObserver) -> ViewType {
         let textField = TextFieldType(frame: CGRectZero)
         let delegate = TextFieldDelegate(
             textField: textField,
@@ -51,10 +51,10 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
     
     private let adapter: AdapterType
     private let configuration: TextEditorConfiguration
-    private let callbacks: TextEditorAdapterCallbacks<AdapterType>?
+    private let callbacks: TextEditorAdapterCallbacks<AdapterType>
     private let textChangedObserver: TextChangedObserver
     
-    init(textField: TextFieldType, adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
+    init(textField: TextFieldType, adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>, textChangedObserver: TextChangedObserver) {
         self.adapter = adapter
         self.configuration = configuration
         self.callbacks = callbacks
@@ -80,14 +80,14 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         guard let textField = textField as? TextFieldType else {
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
-        callbacks?.textDidBeginEditing?(adapter, textField)
+        callbacks.textDidBeginEditing?(adapter, textField)
     }
     
     @objc private func textFieldDidEndEditing(textField: UITextField) {
         guard let textField = textField as? TextFieldType else {
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
-        callbacks?.textDidEndEditing?(adapter, textField)
+        callbacks.textDidEndEditing?(adapter, textField)
         if !configuration.continuouslyUpdatesValue {
             textChangedObserver(textField.text ?? "")
         }
@@ -97,7 +97,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         guard let textField = notification.object as? TextFieldType else {
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
-        callbacks?.textDidChange?(adapter, textField)
+        callbacks.textDidChange?(adapter, textField)
         if configuration.continuouslyUpdatesValue {
             textChangedObserver(textField.text ?? "")
         }

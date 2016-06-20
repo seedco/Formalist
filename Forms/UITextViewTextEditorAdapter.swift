@@ -20,7 +20,7 @@ public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEd
         self.configuration = configuration
     }
     
-    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<ViewType>>?, textChangedObserver: TextChangedObserver) -> ViewType {
+    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<ViewType>>, textChangedObserver: TextChangedObserver) -> ViewType {
         let delegate = TextViewDelegate(
             adapter: self,
             configuration: configuration,
@@ -54,10 +54,10 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
     
     private let adapter: AdapterType
     private let configuration: TextEditorConfiguration
-    private let callbacks: TextEditorAdapterCallbacks<AdapterType>?
+    private let callbacks: TextEditorAdapterCallbacks<AdapterType>
     private let textChangedObserver: TextChangedObserver
     
-    init(adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
+    init(adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>, textChangedObserver: TextChangedObserver) {
         self.adapter = adapter
         self.configuration = configuration
         self.callbacks = callbacks
@@ -70,14 +70,14 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
         guard let textView = textView as? TextViewType else {
             fatalError("Expected text view of type \(TextViewType.self)")
         }
-        callbacks?.textDidBeginEditing?(adapter, textView)
+        callbacks.textDidBeginEditing?(adapter, textView)
     }
     
     @objc private func textViewDidEndEditing(textView: UITextView) {
         guard let textView = textView as? TextViewType else {
             fatalError("Expected text view of type \(TextViewType.self)")
         }
-        callbacks?.textDidEndEditing?(adapter, textView)
+        callbacks.textDidEndEditing?(adapter, textView)
         if !configuration.continuouslyUpdatesValue {
             textChangedObserver(textView.text)
         }
@@ -87,7 +87,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
         guard let textView = textView as? TextViewType else {
             fatalError("Expected text view of type \(TextViewType.self)")
         }
-        callbacks?.textDidChange?(adapter, textView)
+        callbacks.textDidChange?(adapter, textView)
         if configuration.continuouslyUpdatesValue {
             textChangedObserver(textView.text)
         }
