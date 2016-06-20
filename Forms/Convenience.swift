@@ -169,7 +169,7 @@ public func textField(value value: FormValue<String>,
                             configuration: TextEditorConfiguration = TextEditorConfiguration(),
                             validationRules: [ValidationRule<String>] = [],
                             viewConfigurator: (UITextField -> Void)? = nil)
-    -> EditableTextElement<UITextFieldTextEditorAdapter> {
+    -> EditableTextElement<UITextFieldTextEditorAdapter<UITextField>> {
     return EditableTextElement(
         value: value,
         configuration: configuration,
@@ -193,7 +193,7 @@ public func textView(value value: FormValue<String>,
                            configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None),
                            validationRules: [ValidationRule<String>] = [],
                            viewConfigurator: (PlaceholderTextView -> Void)? = nil)
-    -> EditableTextElement<UITextViewTextEditorAdapter> {
+    -> EditableTextElement<UITextViewTextEditorAdapter<PlaceholderTextView>> {
     return EditableTextElement(
         value: value,
         configuration: configuration,
@@ -247,8 +247,8 @@ public func singleLineFloatLabel(name name: String,
                                       value: FormValue<String>,
                                       configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                       validationRules: [ValidationRule<String>] = [],
-                                      viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter> -> Void)? = nil)
-    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter>> {
+                                      viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<UITextField>> -> Void)? = nil)
+    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<UITextField>>> {
     return floatLabel(
         name: name,
         value: value,
@@ -275,8 +275,8 @@ public func multiLineFloatLabel(name name: String,
                                      value: FormValue<String>,
                                      configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None),
                                      validationRules: [ValidationRule<String>] = [],
-                                     viewConfigurator: (FloatLabel<UITextViewTextEditorAdapter> -> Void)? = nil)
-    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextViewTextEditorAdapter>> {
+                                     viewConfigurator: (FloatLabel<UITextViewTextEditorAdapter<PlaceholderTextView>> -> Void)? = nil)
+    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextViewTextEditorAdapter<PlaceholderTextView>>> {
     return floatLabel(
         name: name,
         value: value,
