@@ -7,57 +7,78 @@
 //
 
 import UIKit
+import ObjectiveC
 
 /// Adapts a `UITextView` to a generic interface used by
 /// form elements that perform text editing.
-@objc public final class UITextViewTextEditorAdapter: NSObject, TextEditorAdapter, UITextViewDelegate {
-    public private(set) lazy var view: PlaceholderTextView = {
-        let textView = PlaceholderTextView(frame: CGRectZero)
-        textView.delegate = self
+public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEditorAdapter {
+    public typealias ViewType = TextViewType
+    private let configuration: TextEditorConfiguration
+    
+    public init(configuration: TextEditorConfiguration) {
+        self.configuration = configuration
+    }
+    
+    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<TextViewType>>?, textChangedObserver: TextChangedObserver) -> TextViewType {
+        let delegate = TextViewDelegate(adapter: self, configuration: configuration, callbacks: callbacks, textChangedObserver: textChangedObserver)
+        let textView = TextViewType(frame: CGRectZero, textContainer: nil)
+        (textView as UITextView).delegate = delegate
         textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         textView.scrollEnabled = false
         textView.textContainerInset = UIEdgeInsetsZero
         textView.textContainer.lineFragmentPadding = 0
         textView.backgroundColor = .clearColor()
+        objc_setAssociatedObject(textView, &ObjCTextViewDelegateKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return textView
-    }()
-    
-    public var text: String {
-        get { return view.text }
-        set { view.text = newValue }
     }
+
+    public func getTextForView(view: ViewType) -> String {
+        return view.text
+    }
+
+    public func setText(text: String, forView view: ViewType) {
+        view.text = text
+    }
+}
+
+private var ObjCTextViewDelegateKey: UInt8 = 0
+
+private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UITextViewDelegate {
+    private typealias AdapterType = UITextViewTextEditorAdapter<TextViewType>
     
-    public weak var delegate: TextEditorAdapterDelegate?
-    
+    private let adapter: AdapterType
     private let configuration: TextEditorConfiguration
+    private let callbacks: TextEditorAdapterCallbacks<AdapterType>?
     private let textChangedObserver: TextChangedObserver
     
-    public init(configuration: TextEditorConfiguration, textChangedObserver: TextChangedObserver) {
+    init(adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
+        self.adapter = adapter
         self.configuration = configuration
+        self.callbacks = callbacks
         self.textChangedObserver = textChangedObserver
     }
     
     // MARK: UITextViewDelegate
     
-    public func textViewDidBeginEditing(textView: UITextView) {
-        delegate?.textEditorAdapterTextDidBeginEditing(self)
+    @objc private func textViewDidBeginEditing(textView: UITextView) {
+        callbacks?.textDidBeginEditing?(adapter, textView as! TextViewType)
     }
     
-    public func textViewDidEndEditing(textView: UITextView) {
-        delegate?.textEditorAdapterTextDidEndEditing(self)
+    @objc private func textViewDidEndEditing(textView: UITextView) {
+        callbacks?.textDidEndEditing?(adapter, textView as! TextViewType)
         if !configuration.continuouslyUpdatesValue {
             textChangedObserver(textView.text)
         }
     }
     
-    public func textViewDidChange(textView: UITextView) {
-        delegate?.textEditorAdapterTextDidChange(self)
+    @objc private func textViewDidChange(textView: UITextView) {
+        callbacks?.textDidChange?(adapter, textView as! TextViewType)
         if configuration.continuouslyUpdatesValue {
             textChangedObserver(textView.text)
         }
     }
     
-    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    @objc private func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         // http://stackoverflow.com/a/23779209
         if let _ = text.rangeOfCharacterFromSet(NSCharacterSet.newlineCharacterSet(), options: NSStringCompareOptions.BackwardsSearch) where text.characters.count == 1 {
             switch configuration.returnKeyAction {

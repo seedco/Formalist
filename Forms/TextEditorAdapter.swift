@@ -10,20 +10,18 @@ import UIKit
 
 public typealias TextChangedObserver = String -> Void
 
-public protocol TextEditorAdapterDelegate: AnyObject {
-    func textEditorAdapterTextDidBeginEditing(adapter: _TextEditorAdapter)
-    func textEditorAdapterTextDidEndEditing(adapter: _TextEditorAdapter)
-    func textEditorAdapterTextDidChange(adapter: _TextEditorAdapter)
-}
-
-public protocol TextEditorAdapter: _TextEditorAdapter {
+public protocol TextEditorAdapter: AnyObject {
     associatedtype ViewType: UIView
     
-    var view: ViewType { get }
+    init(configuration: TextEditorConfiguration)
+    func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<Self>?, textChangedObserver: TextChangedObserver) -> ViewType
+    func getTextForView(view: ViewType) -> String
+    func setText(text: String, forView view: ViewType)
 }
 
-public protocol _TextEditorAdapter: AnyObject {
-    init(configuration: TextEditorConfiguration, textChangedObserver: TextChangedObserver)
-    var text: String { get set }
-    weak var delegate: TextEditorAdapterDelegate? { get set }
+public struct TextEditorAdapterCallbacks<AdapterType: TextEditorAdapter> {
+    public typealias Callback = (AdapterType, AdapterType.ViewType) -> Void
+    public var textDidBeginEditing: Callback?
+    public var textDidEndEditing: Callback?
+    public var textDidChange: Callback?
 }
