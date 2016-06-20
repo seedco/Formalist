@@ -17,6 +17,7 @@ class GroupElementTests: FBSnapshotTestCase {
     override func setUp() {
         super.setUp()
         recordMode = false
+        
         validatableElement = textField(value: FormValue("<invalid>"), validationRules: [.email]) { textField in
             textField.placeholder = "Text Element 1"
         }

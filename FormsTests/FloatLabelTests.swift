@@ -16,6 +16,7 @@ class FloatLabelTests: FBSnapshotTestCase {
     override func setUp() {
         super.setUp()
         recordMode = false
+        
         let adapter = UITextFieldTextEditorAdapter(configuration: TextEditorConfiguration())
         floatLabel = FloatLabel(adapter: adapter, textChangedObserver: { _ in })
         floatLabel.setFieldName("Test")
