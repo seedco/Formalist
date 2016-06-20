@@ -293,35 +293,9 @@
 			children = (
 				7285A7091D17CB7000718D23 /* Formalist.h */,
 				7285A70B1D17CB7000718D23 /* Info.plist */,
-				7285A7201D17CBCA00718D23 /* BooleanElement.swift */,
-				7285A7211D17CBCA00718D23 /* BooleanElementView.swift */,
-				7285A7221D17CBCA00718D23 /* Box.swift */,
-				7285A7231D17CBCA00718D23 /* Convenience.swift */,
-				7285A7241D17CBCA00718D23 /* EditableTextElement.swift */,
-				7285A7251D17CBCA00718D23 /* FloatLabel.swift */,
-				7285A7261D17CBCA00718D23 /* FloatLabelTextEditorAdapter.swift */,
-				7285A7271D17CBCA00718D23 /* FormElement.swift */,
-				7285A7281D17CBCA00718D23 /* FormValue.swift */,
-				7285A7291D17CBCA00718D23 /* FormViewController.swift */,
-				7285A72A1D17CBCA00718D23 /* GroupElement.swift */,
-				7285A72B1D17CBCA00718D23 /* PlaceholderTextView.swift */,
-				7285A72C1D17CBCA00718D23 /* Segment.swift */,
-				7285A72D1D17CBCA00718D23 /* SegmentElement.swift */,
-				7285A72E1D17CBCA00718D23 /* SegmentElementView.swift */,
-				7285A72F1D17CBCA00718D23 /* SegueElement.swift */,
-				7285A7301D17CBCA00718D23 /* SegueElementView.swift */,
-				7285A7311D17CBCA00718D23 /* SpacerElement.swift */,
-				7285A7321D17CBCA00718D23 /* StaticTextElement.swift */,
-				7285A7331D17CBCA00718D23 /* TextEditorAdapter.swift */,
-				7285A7341D17CBCA00718D23 /* TextEditorConfiguration.swift */,
-				7285A7351D17CBCA00718D23 /* UITextFieldTextEditorAdapter.swift */,
-				7285A7361D17CBCA00718D23 /* UITextViewTextEditorAdapter.swift */,
-				7285A7371D17CBCA00718D23 /* UIView+FormResponder.swift */,
-				7285A7381D17CBCA00718D23 /* Validatable.swift */,
-				7285A7391D17CBCA00718D23 /* ValidationErrorView.swift */,
-				7285A73A1D17CBCA00718D23 /* ValidationRule.swift */,
-				7285A73B1D17CBCA00718D23 /* ViewElement.swift */,
-				7285A73C1D17CBCA00718D23 /* WeakBox.swift */,
+				7285A7F31D17D1D900718D23 /* Core */,
+				7285A7EA1D17D11200718D23 /* Elements */,
+				7285A7F21D17D1C700718D23 /* Utility */,
 			);
 			path = Formalist;
 			sourceTree = "<group>";
@@ -399,6 +373,96 @@
 				7285A7DD1D17CDAC00718D23 /* Example.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7285A7EA1D17D11200718D23 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				7285A7311D17CBCA00718D23 /* SpacerElement.swift */,
+				7285A7321D17CBCA00718D23 /* StaticTextElement.swift */,
+				7285A73B1D17CBCA00718D23 /* ViewElement.swift */,
+				7285A7F41D17D1F900718D23 /* Group */,
+				7285A7EB1D17D11E00718D23 /* Boolean */,
+				7285A7EC1D17D12700718D23 /* Segment */,
+				7285A7ED1D17D13500718D23 /* Segue */,
+				7285A7EE1D17D15A00718D23 /* Editable Text */,
+			);
+			name = Elements;
+			sourceTree = "<group>";
+		};
+		7285A7EB1D17D11E00718D23 /* Boolean */ = {
+			isa = PBXGroup;
+			children = (
+				7285A7201D17CBCA00718D23 /* BooleanElement.swift */,
+				7285A7211D17CBCA00718D23 /* BooleanElementView.swift */,
+			);
+			name = Boolean;
+			sourceTree = "<group>";
+		};
+		7285A7EC1D17D12700718D23 /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				7285A72C1D17CBCA00718D23 /* Segment.swift */,
+				7285A72D1D17CBCA00718D23 /* SegmentElement.swift */,
+				7285A72E1D17CBCA00718D23 /* SegmentElementView.swift */,
+			);
+			name = Segment;
+			sourceTree = "<group>";
+		};
+		7285A7ED1D17D13500718D23 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				7285A72F1D17CBCA00718D23 /* SegueElement.swift */,
+				7285A7301D17CBCA00718D23 /* SegueElementView.swift */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
+		7285A7EE1D17D15A00718D23 /* Editable Text */ = {
+			isa = PBXGroup;
+			children = (
+				7285A7241D17CBCA00718D23 /* EditableTextElement.swift */,
+				7285A7331D17CBCA00718D23 /* TextEditorAdapter.swift */,
+				7285A7341D17CBCA00718D23 /* TextEditorConfiguration.swift */,
+				7285A7351D17CBCA00718D23 /* UITextFieldTextEditorAdapter.swift */,
+				7285A7361D17CBCA00718D23 /* UITextViewTextEditorAdapter.swift */,
+				7285A7251D17CBCA00718D23 /* FloatLabel.swift */,
+				7285A7261D17CBCA00718D23 /* FloatLabelTextEditorAdapter.swift */,
+				7285A72B1D17CBCA00718D23 /* PlaceholderTextView.swift */,
+			);
+			name = "Editable Text";
+			sourceTree = "<group>";
+		};
+		7285A7F21D17D1C700718D23 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7285A7221D17CBCA00718D23 /* Box.swift */,
+				7285A73C1D17CBCA00718D23 /* WeakBox.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		7285A7F31D17D1D900718D23 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7285A7231D17CBCA00718D23 /* Convenience.swift */,
+				7285A7271D17CBCA00718D23 /* FormElement.swift */,
+				7285A7281D17CBCA00718D23 /* FormValue.swift */,
+				7285A7291D17CBCA00718D23 /* FormViewController.swift */,
+				7285A7381D17CBCA00718D23 /* Validatable.swift */,
+				7285A73A1D17CBCA00718D23 /* ValidationRule.swift */,
+				7285A7371D17CBCA00718D23 /* UIView+FormResponder.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		7285A7F41D17D1F900718D23 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				7285A72A1D17CBCA00718D23 /* GroupElement.swift */,
+				7285A7391D17CBCA00718D23 /* ValidationErrorView.swift */,
+			);
+			name = Group;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
