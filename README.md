@@ -1,7 +1,7 @@
-## [NAME]
+# Formalist
 ## Swift framework for building forms on iOS
 
-[NAME] is a Swift framework for building forms on iOS using a simple, declarative, and readable syntax.
+**Formalist** is a Swift framework for building forms on iOS using a simple, declarative, and readable syntax.
 
 ## Table of Contents
 
