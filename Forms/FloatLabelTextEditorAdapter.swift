@@ -19,24 +19,21 @@ public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapt
     }
     
     public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<FloatLabelTextEditorAdapter<InnerAdapterType>>?, textChangedObserver: TextChangedObserver) -> ViewType {
-        var innerCallbacks = TextEditorAdapterCallbacks<InnerAdapterType>()
-        var floatLabel: FloatLabel<InnerAdapterType>?
+        let floatLabel = FloatLabel(adapter: innerAdapter, textChangedObserver: textChangedObserver)
         if let callbacks = callbacks {
-            innerCallbacks.textDidBeginEditing = { [weak floatLabel] _ in
-                guard let floatLabel = floatLabel else { return }
+            var innerCallbacks = TextEditorAdapterCallbacks<InnerAdapterType>()
+            innerCallbacks.textDidBeginEditing = { [unowned floatLabel] _ in
                 callbacks.textDidBeginEditing?(self, floatLabel)
             }
-            innerCallbacks.textDidEndEditing = { [weak floatLabel] _ in
-                guard let floatLabel = floatLabel else { return }
+            innerCallbacks.textDidEndEditing = { [unowned floatLabel] _ in
                 callbacks.textDidEndEditing?(self, floatLabel)
             }
-            innerCallbacks.textDidChange = { [weak floatLabel] _ in
-                guard let floatLabel = floatLabel else { return }
+            innerCallbacks.textDidChange = { [unowned floatLabel] _ in
                 callbacks.textDidChange?(self, floatLabel)
             }
+            floatLabel.adapterCallbacks = innerCallbacks
         }
-        floatLabel = FloatLabel(adapter: innerAdapter, adapterCallbacks: innerCallbacks, textChangedObserver: textChangedObserver)
-        return floatLabel!
+        return floatLabel
     }
     
     public func getTextForView(view: ViewType) -> String {

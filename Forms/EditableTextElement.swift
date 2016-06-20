@@ -42,17 +42,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
     // MARK: FormElement
     
     public func render() -> UIView {
-        var callbacks = TextEditorAdapterCallbacks<AdapterType>()
-        callbacks.textDidBeginEditing = { (adapter, view) in
-            print("begin: \(adapter.getTextForView(view))")
-        }
-        callbacks.textDidEndEditing = { (adapter, view) in
-            print("end: \(adapter.getTextForView(view))")
-        }
-        callbacks.textDidChange = { (adapter, view) in
-            print("change: \(adapter.getTextForView(view))")
-        }
-        let view = adapter.createViewWithCallbacks(callbacks) { [weak self] in
+        let view = adapter.createViewWithCallbacks(nil) { [weak self] in
             self?.value.value = $0
         }
         viewConfigurator?(view)

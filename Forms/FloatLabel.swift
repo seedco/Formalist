@@ -34,6 +34,10 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     /// The text view that contains the field's body text
     public private(set) var textEntryView: AdapterType.ViewType!
     
+    /// Callbacks to call when the adapter for the text entry view receives
+    /// a text editing event.
+    public var adapterCallbacks: TextEditorAdapterCallbacks<AdapterType>?
+    
     private lazy var labelShownConstraints: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
         NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
@@ -50,10 +54,10 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     private var editing = false
     private var state: State?
     
-    public init(adapter: AdapterType, adapterCallbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
+    public init(adapter: AdapterType, textChangedObserver: TextChangedObserver) {
         super.init(frame: CGRectZero)
         
-        createTextEntryViewWithAdapter(adapter, adapterCallbacks: adapterCallbacks, textChangedObserver: textChangedObserver)
+        createTextEntryViewWithAdapter(adapter, textChangedObserver: textChangedObserver)
         addSubview(nameLabel)
         addSubview(textEntryView)
         
@@ -66,26 +70,26 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         recomputeMinimumHeight()
     }
     
-    private func createTextEntryViewWithAdapter(adapter: AdapterType, adapterCallbacks: TextEditorAdapterCallbacks<AdapterType>?, textChangedObserver: TextChangedObserver) {
+    private func createTextEntryViewWithAdapter(adapter: AdapterType, textChangedObserver: TextChangedObserver) {
         var callbacks = TextEditorAdapterCallbacks<AdapterType>()
         callbacks.textDidBeginEditing = { [unowned self] (adapter, view) in
             self.editing = true
             self.transitionToState(.LabelShown, animated: true)
-            adapterCallbacks?.textDidBeginEditing?(adapter, view)
+            self.adapterCallbacks?.textDidBeginEditing?(adapter, view)
         }
         callbacks.textDidEndEditing = { [unowned self] (adapter, view) in
             self.editing = false
             if adapter.getTextForView(view).isEmpty {
                 self.transitionToState(.LabelHidden, animated: true)
             }
-            adapterCallbacks?.textDidEndEditing?(adapter, view)
+            self.adapterCallbacks?.textDidEndEditing?(adapter, view)
         }
         callbacks.textDidChange = { [unowned self] (adapter, view) in
             if !self.editing {
                 let state: State = adapter.getTextForView(view).isEmpty ? .LabelHidden : .LabelShown
                 self.transitionToState(state, animated: false)
             }
-            adapterCallbacks?.textDidChange?(adapter, view)
+            self.adapterCallbacks?.textDidChange?(adapter, view)
         }
         
         textEntryView = adapter.createViewWithCallbacks(callbacks, textChangedObserver: textChangedObserver)
