@@ -19,7 +19,7 @@ public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEd
         self.configuration = configuration
     }
     
-    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<TextViewType>>?, textChangedObserver: TextChangedObserver) -> TextViewType {
+    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<ViewType>>?, textChangedObserver: TextChangedObserver) -> ViewType {
         let delegate = TextViewDelegate(adapter: self, configuration: configuration, callbacks: callbacks, textChangedObserver: textChangedObserver)
         let textView = TextViewType(frame: CGRectZero, textContainer: nil)
         (textView as UITextView).delegate = delegate
@@ -61,18 +61,27 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
     // MARK: UITextViewDelegate
     
     @objc private func textViewDidBeginEditing(textView: UITextView) {
-        callbacks?.textDidBeginEditing?(adapter, textView as! TextViewType)
+        guard let textView = textView as? TextViewType else {
+            fatalError("Expected text view of type \(TextViewType.self)")
+        }
+        callbacks?.textDidBeginEditing?(adapter, textView)
     }
     
     @objc private func textViewDidEndEditing(textView: UITextView) {
-        callbacks?.textDidEndEditing?(adapter, textView as! TextViewType)
+        guard let textView = textView as? TextViewType else {
+            fatalError("Expected text view of type \(TextViewType.self)")
+        }
+        callbacks?.textDidEndEditing?(adapter, textView)
         if !configuration.continuouslyUpdatesValue {
             textChangedObserver(textView.text)
         }
     }
     
     @objc private func textViewDidChange(textView: UITextView) {
-        callbacks?.textDidChange?(adapter, textView as! TextViewType)
+        guard let textView = textView as? TextViewType else {
+            fatalError("Expected text view of type \(TextViewType.self)")
+        }
+        callbacks?.textDidChange?(adapter, textView)
         if configuration.continuouslyUpdatesValue {
             textChangedObserver(textView.text)
         }
