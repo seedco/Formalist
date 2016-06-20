@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         groupedConfiguration.style = .Grouped(backgroundColor: .whiteColor())
         groupedConfiguration.layout.edgeInsets = edgeInsets
         
-        return FormViewController([
+        return FormViewController(elements: [
             inset(edgeInsets, elements: [
                 staticText("Welcome to the Forms Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
                     $0.textAlignment = .Center
