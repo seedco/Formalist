@@ -272,6 +272,24 @@ customView(value: FormValue("")) { _ in
 }
 ```
 
+### `FormViewController`
+
+`FormViewController` is a `UIViewController` subclass that can be used standalone or embedded inside a parent view controller using [view controller containment](https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html) to display form content in your app.
+
+```swift
+let formViewController = FormViewController(elements: [
+    singleLineFloatLabel(name: "Name", value: self.nameValue),
+    singleLineFloatLabel(name: "Email", value: self.emailValue, validationRules: [.email]) {
+        $0.textEntryView.secureTextEntry = true
+    }
+])
+
+addChildViewController(formViewController)
+view.addSubview(formViewController.view)
+formViewController.view.activateSuperviewHuggingConstraints()
+formViewController.didMoveToParentViewController(self)
+```
+
 ## Testing
 
 The framework is tested using a combination of snapshot tests via [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case) and automated UI testing in Xcode.
