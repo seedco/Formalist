@@ -28,6 +28,7 @@
 		- [Text View](#text-view)
 		- [Float Label](#float-label)
 	- [`ViewElement`](#viewelement)
+	- [`FormViewController`](#formviewcontroller)
 - [Testing](#testing)
 - [License](#license)
 
