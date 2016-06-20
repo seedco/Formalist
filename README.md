@@ -282,7 +282,8 @@ customView(value: FormValue("")) { _ in
 ```swift
 let formViewController = FormViewController(elements: [
     singleLineFloatLabel(name: "Name", value: self.nameValue),
-    singleLineFloatLabel(name: "Email", value: self.emailValue, validationRules: [.email]) {
+    singleLineFloatLabel(name: "Email", value: self.emailValue, validationRules: [.email]),
+    singleLineFloatLabel(name: "Password", value: self.passwordValue) {
         $0.textEntryView.secureTextEntry = true
     }
 ])
