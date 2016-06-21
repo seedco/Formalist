@@ -70,7 +70,7 @@ In addition to manually integrating the framework into your Xcode project, the f
 Add the following line to your `Podfile`:
 
 ```ruby
-pod 'Formalist', '~> 0.1.0'
+pod 'Formalist', '~> 0.1.0', :submodules => true
 ```
 
 ### Carthage
