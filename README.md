@@ -34,6 +34,7 @@
 	- [`FormViewController`](#formviewcontroller)
 - [Testing](#testing)
 - [License](#license)
+- [Acknowledgements](#acknowledgements)
 
 ## Example
 
@@ -324,3 +325,7 @@ The framework is tested using a combination of snapshot tests via [FBSnapshotTes
 ## License
 
 This project is licensed under the MIT license. See `LICENSE.md` for more details.
+
+## Acknowledgements
+
+Formalist uses [StackViewController](https://github.com/seedco/StackViewController) and [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case).
