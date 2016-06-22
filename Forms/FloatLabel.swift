@@ -51,13 +51,16 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     
     private lazy var heightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0.0)
     
+    private let adapter: AdapterType
     private var editing = false
     private var state: State?
     
     public init(adapter: AdapterType, textChangedObserver: TextChangedObserver) {
+        self.adapter = adapter
+        
         super.init(frame: CGRectZero)
         
-        createTextEntryViewWithAdapter(adapter, textChangedObserver: textChangedObserver)
+        createTextEntryView(textChangedObserver)
         addSubview(nameLabel)
         addSubview(textEntryView)
         
@@ -70,7 +73,7 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         recomputeMinimumHeight()
     }
     
-    private func createTextEntryViewWithAdapter(adapter: AdapterType, textChangedObserver: TextChangedObserver) {
+    private func createTextEntryView(textChangedObserver: TextChangedObserver) {
         var callbacks = TextEditorAdapterCallbacks<AdapterType>()
         callbacks.textDidBeginEditing = { [unowned self] (adapter, view) in
             self.editing = true
@@ -86,8 +89,7 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         }
         callbacks.textDidChange = { [unowned self] (adapter, view) in
             if !self.editing {
-                let state: State = adapter.getTextForView(view).isEmpty ? .LabelHidden : .LabelShown
-                self.transitionToState(state, animated: false)
+                self.updateCurrentState()
             }
             self.adapterCallbacks?.textDidChange?(adapter, view)
         }
@@ -131,12 +133,14 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
      the height of the view constant between states.
      */
     public func recomputeMinimumHeight() {
-        guard let previousState = state else {
-            fatalError("Must have initial state before recomputing height")
-        }
         transitionToState(.LabelShown, animated: false)
         heightConstraint.constant = systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-        transitionToState(previousState, animated: false)
+        updateCurrentState()
+    }
+    
+    private func updateCurrentState() {
+        let state: State = adapter.getTextForView(textEntryView).isEmpty ? .LabelHidden : .LabelShown
+        self.transitionToState(state, animated: false)
     }
 
     // MARK: UIResponder

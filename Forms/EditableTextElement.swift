@@ -45,6 +45,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
         let view = adapter.createViewWithCallbacks(TextEditorAdapterCallbacks()) { [weak self] in
             self?.value.value = $0
         }
+        adapter.setText(value.value, forView: view)
         viewConfigurator?(view)
         return view
     }

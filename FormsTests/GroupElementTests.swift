@@ -11,13 +11,14 @@ import FBSnapshotTestCase
 @testable import Forms
 
 class GroupElementTests: FBSnapshotTestCase {
-    private var validatableElement: EditableTextElement<UITextFieldTextEditorAdapter>!
+    private var validatableElement: EditableTextElement<UITextFieldTextEditorAdapter<UITextField>>!
     private var childElements: [FormElement]!
     
     override func setUp() {
         super.setUp()
         recordMode = false
-        validatableElement = textField(value: FormValue(""), validationRules: [.email]) { textField in
+        
+        validatableElement = textField(value: FormValue("<invalid>"), validationRules: [.email]) { textField in
             textField.placeholder = "Text Element 1"
         }
         childElements = [
