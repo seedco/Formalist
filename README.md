@@ -6,6 +6,9 @@
 ## Table of Contents
 
 - [Example](#example)
+- [Installation](#installation)
+	- [CocoaPods](#cocoapods)
+	- [Carthage](#carthage)
 - [Documentation](#documentation)
 	- [`FormValue`](#formvalue)
 	- [`FormElement`](#formelement)
@@ -31,6 +34,7 @@
 	- [`FormViewController`](#formviewcontroller)
 - [Testing](#testing)
 - [License](#license)
+- [Acknowledgements](#acknowledgements)
 
 ## Example
 
@@ -57,6 +61,26 @@ group(configuration: groupedConfiguration, elements: [
 ```
 
 Note that the above code example uses the built-in convenience functions for constructing each form element, which are syntactic sugar for improving readability over the standard class initializers.
+
+## Installation
+
+In addition to manually integrating the framework into your Xcode project, the following package managers are supported:
+
+### CocoaPods
+
+Add the following line to your `Podfile`:
+
+```ruby
+pod 'Formalist', '~> 0.1.0', :submodules => true
+```
+
+### Carthage
+
+Add the following line to your `Cartfile`:
+
+```
+github "seedco/Formalist" ~> 0.1.0
+```
 
 ## Documentation
 
@@ -301,3 +325,7 @@ The framework is tested using a combination of snapshot tests via [FBSnapshotTes
 ## License
 
 This project is licensed under the MIT license. See `LICENSE.md` for more details.
+
+## Acknowledgements
+
+Formalist uses [StackViewController](https://github.com/seedco/StackViewController) and [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case).
