@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Forms
+import Formalist
 import StackViewController
 
 class ViewController: UIViewController {
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
         return FormViewController(elements: [
             inset(edgeInsets, elements: [
-                staticText("Welcome to the Forms Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
+                staticText("Welcome to the Formalist Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
                     $0.textAlignment = .Center
                     $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
                 }

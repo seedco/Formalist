@@ -1,7 +1,7 @@
-## [NAME]
+# Formalist
 ## Swift framework for building forms on iOS
 
-[NAME] is a Swift framework for building forms on iOS using a simple, declarative, and readable syntax.
+**Formalist** is a Swift framework for building forms on iOS using a simple, declarative, and readable syntax.
 
 ## Table of Contents
 
@@ -28,12 +28,15 @@
 		- [Text View](#text-view)
 		- [Float Label](#float-label)
 	- [`ViewElement`](#viewelement)
+	- [`FormViewController`](#formviewcontroller)
 - [Testing](#testing)
 - [License](#license)
 
 ## Example
 
-<img src="images/example.png" alt="Forms example app" width="375" height="667" />
+<p align="center">
+<img src="images/example.png" width="290" height="594" alt="Formalist Example App" />
+</p>
 
 The example app (shown above) demonstrates how to build a simple form using the included form elements.
 
@@ -279,7 +282,8 @@ customView(value: FormValue("")) { _ in
 ```swift
 let formViewController = FormViewController(elements: [
     singleLineFloatLabel(name: "Name", value: self.nameValue),
-    singleLineFloatLabel(name: "Email", value: self.emailValue, validationRules: [.email]) {
+    singleLineFloatLabel(name: "Email", value: self.emailValue, validationRules: [.email]),
+    singleLineFloatLabel(name: "Password", value: self.passwordValue) {
         $0.textEntryView.secureTextEntry = true
     }
 ])
