@@ -121,11 +121,21 @@ class ValidationRuleTests: XCTestCase {
     func testRegexRuleWithInvalidInput() {
         let expectation = expectationWithDescription("validate rule")
         let rule = ValidationRule<String>.regex(TestRegex, failureMessage: "Regex validation failed")
-        rule.validate("") { result in
+        rule.validate("01") { result in
             if case .Invalid = result {
             } else {
                 XCTFail("Expected validation result to be invalid")
             }
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(1.0, handler: nil)
+    }
+    
+    func testRegexRuleWithEmptyInput() {
+        let expectation = expectationWithDescription("validate rule")
+        let rule = ValidationRule<String>.regex(TestRegex, failureMessage: "Regex validation failed")
+        rule.validate("") { result in
+            XCTAssert(result == .Valid)
             expectation.fulfill()
         }
         waitForExpectationsWithTimeout(1.0, handler: nil)

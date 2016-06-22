@@ -74,6 +74,11 @@ public struct ValidationRule<ValueType> {
      */
     public static func regex(regex: NSRegularExpression, matchingOptions: NSMatchingOptions = .Anchored, failureMessage: String) -> ValidationRule<String> {
         return ValidationRule<String> { str, completion in
+            guard !str.isEmpty else {
+                completion(.Valid)
+                return
+            }
+            
             if regex.firstMatchInString(str, options: matchingOptions, range: NSMakeRange(0, str.characters.count)) == nil {
                 completion(.Invalid(message: failureMessage))
             } else {
