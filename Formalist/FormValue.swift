@@ -12,7 +12,7 @@ public final class FormValue<ValueType: Equatable> {
     private var observerTokens = [ObserverToken<ValueType>]()
     
     /// The underlying value.
-    internal(set) public var value: ValueType {
+    public var value: ValueType {
         get { return _value }
         set {
             guard _value != newValue else { return }
