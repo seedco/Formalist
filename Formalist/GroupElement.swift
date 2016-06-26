@@ -69,6 +69,10 @@ public final class GroupElement: FormElement, Validatable {
             static let Thickness: CGFloat = 1.0
         }
         
+        private struct ValidationErrorViewDefaults {
+            static let Height: CGFloat = 30.0
+        }
+        
         /// A block that creates a view to display validation errors
         ///
         /// `message` specifies the message text to display in the view. The default
@@ -97,6 +101,16 @@ public final class GroupElement: FormElement, Validatable {
         public var validationErrorViewFactory: ValidationErrorViewFactory = { message in
             let errorView = ValidationErrorView(frame: CGRectZero)
             errorView.label.text = message
+            let heightConstraint = NSLayoutConstraint(
+                item: errorView,
+                attribute: .Height,
+                relatedBy: .Equal,
+                toItem: nil,
+                attribute: .NotAnAttribute,
+                multiplier: 1.0,
+                constant: ValidationErrorViewDefaults.Height
+            )
+            heightConstraint.active = true
             return errorView
         }
         

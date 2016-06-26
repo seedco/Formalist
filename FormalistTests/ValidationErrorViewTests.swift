@@ -20,6 +20,17 @@ class ValidationErrorViewTests: FBSnapshotTestCase {
         let view = ValidationErrorView(frame: CGRectZero)
         view.label.text = "Error message"
         
+        let heightConstraint = NSLayoutConstraint(
+            item: view,
+            attribute: .Height,
+            relatedBy: .Equal,
+            toItem: nil,
+            attribute: .NotAnAttribute,
+            multiplier: 1.0,
+            constant: 30.0
+        )
+        heightConstraint.active = true
+        
         sizeViewForTesting(view)
         FBSnapshotVerifyView(view)
     }
