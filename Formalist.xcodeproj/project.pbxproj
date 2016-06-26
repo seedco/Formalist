@@ -66,6 +66,7 @@
 		7285A7E51D17CDFD00718D23 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; };
 		7285A7E61D17CF4F00718D23 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		7285A7BC1D17CD0800718D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBSnapshotTestCase.xcodeproj; path = External/FBSnapshotTestCase/FBSnapshotTestCase.xcodeproj; sourceTree = "<group>"; };
 		7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StackViewController.xcodeproj; path = External/StackViewController/StackViewController.xcodeproj; sourceTree = "<group>"; };
+		72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +431,7 @@
 				7285A7251D17CBCA00718D23 /* FloatLabel.swift */,
 				7285A7261D17CBCA00718D23 /* FloatLabelTextEditorAdapter.swift */,
 				7285A72B1D17CBCA00718D23 /* PlaceholderTextView.swift */,
+				72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */,
 			);
 			name = "Editable Text";
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				7285A74C1D17CBCA00718D23 /* SegueElement.swift in Sources */,
 				7285A7411D17CBCA00718D23 /* EditableTextElement.swift in Sources */,
 				7285A7591D17CBCA00718D23 /* WeakBox.swift in Sources */,
+				72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */,
 				7285A7491D17CBCA00718D23 /* Segment.swift in Sources */,
 				7285A7431D17CBCA00718D23 /* FloatLabelTextEditorAdapter.swift in Sources */,
 				7285A7561D17CBCA00718D23 /* ValidationErrorView.swift in Sources */,

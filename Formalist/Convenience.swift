@@ -247,8 +247,8 @@ public func singleLineFloatLabel(name name: String,
                                       value: FormValue<String>,
                                       configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                       validationRules: [ValidationRule<String>] = [],
-                                      viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<UITextField>> -> Void)? = nil)
-    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<UITextField>>> {
+                                      viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<FloatLabelTextField>> -> Void)? = nil)
+    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<FloatLabelTextField>>> {
     return floatLabel(
         name: name,
         value: value,
