@@ -38,6 +38,12 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     /// a text editing event.
     public var adapterCallbacks: TextEditorAdapterCallbacks<AdapterType>?
     
+    public override var nextFormResponder: UIView? {
+        didSet {
+            textEntryView.nextFormResponder = nextFormResponder
+        }
+    }
+    
     private lazy var labelShownConstraints: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
         NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
