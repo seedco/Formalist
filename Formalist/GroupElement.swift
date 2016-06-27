@@ -184,7 +184,7 @@ public final class GroupElement: FormElement, Validatable {
 
             if elementView.canBecomeFirstResponder() {
                 if let lastResponderView = responderViews.last {
-                    lastResponderView._nextFormResponder = elementView
+                    lastResponderView.nextFormResponder = elementView
                 }
                 responderViews.append(elementView)
             }
@@ -221,7 +221,7 @@ public final class GroupElement: FormElement, Validatable {
         if case let .Grouped(backgroundColor) = configuration.style {
             containerView.backgroundColor = backgroundColor
         }
-        responderViews.last?._nextFormResponder = containerView
+        responderViews.last?.nextFormResponder = containerView
         
         let stackView = UIStackView(arrangedSubviews: subviews)
         stackView.axis = .Vertical
