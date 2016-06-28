@@ -13,7 +13,6 @@ public class ValidationErrorView: UIView {
     private struct Appearance {
         static let TextColor = UIColor(red: 0.945, green: 0.333, blue: 0.361, alpha: 1.0)
         static let BackgroundColor = UIColor(red: 1.0, green: 0.973, blue: 0.969, alpha: 1.0)
-        static let Height: CGFloat = 30.0
     }
     
     /// The label used to display the message
@@ -40,15 +39,6 @@ public class ValidationErrorView: UIView {
             attribute: .CenterY,
             multiplier: 1.0,
             constant: 0.0
-        ))
-        constraints.append(NSLayoutConstraint(
-            item: self,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1.0,
-            constant: Appearance.Height
         ))
         NSLayoutConstraint.activateConstraints(constraints)
     }
