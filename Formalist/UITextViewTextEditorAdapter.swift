@@ -104,6 +104,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
                 }
                 return false
             case let .Custom(action):
+                textView.resignFirstResponder()
                 action(textView.text)
                 return false
             }

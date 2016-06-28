@@ -121,6 +121,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
             }
             return false
         case let .Custom(action):
+            textField.resignFirstResponder()
             action(textField.text ?? "")
             return false
         }
