@@ -11,13 +11,13 @@ import FBSnapshotTestCase
 @testable import Formalist
 
 class FloatLabelTests: FBSnapshotTestCase {
-    private var floatLabel: FloatLabel<UITextFieldTextEditorAdapter<UITextField>>!
+    private var floatLabel: FloatLabel<UITextFieldTextEditorAdapter<FloatLabelTextField>>!
     
     override func setUp() {
         super.setUp()
         recordMode = false
         
-        let adapter = UITextFieldTextEditorAdapter(configuration: TextEditorConfiguration())
+        let adapter = UITextFieldTextEditorAdapter<FloatLabelTextField>(configuration: TextEditorConfiguration())
         floatLabel = FloatLabel(adapter: adapter, textChangedObserver: { _ in })
         floatLabel.setFieldName("Test")
     }
