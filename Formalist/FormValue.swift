@@ -70,7 +70,7 @@ public final class FormValue<ValueType: Equatable> {
 
 /// A token that represents an observer. This is returned from `FormValue.addObserver(_:)`
 /// and passed into `FormValue.removeObserverWithToken(_:)`
-public class ObserverToken<ValueType>: Equatable {
+public final class ObserverToken<ValueType>: Equatable {
     private typealias Observer = ValueType -> Void
     private let observer: Observer
     
