@@ -21,4 +21,12 @@ class BooleanElementTests: FBSnapshotTestCase {
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
+    
+    func testUpdateViewByUpdatingValue() {
+        let value = FormValue(false)
+        let element = BooleanElement(title: "Test Boolean Element", value: value)
+        let elementView = element.render() as! BooleanElementView
+        value.value = true
+        XCTAssertTrue(elementView.toggle.on)
+    }
 }
