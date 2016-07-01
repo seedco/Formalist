@@ -18,7 +18,7 @@ class FloatLabelTests: FBSnapshotTestCase {
         recordMode = false
         
         let adapter = UITextFieldTextEditorAdapter<FloatLabelTextField>(configuration: TextEditorConfiguration())
-        floatLabel = FloatLabel(adapter: adapter, textChangedObserver: { _ in })
+        floatLabel = FloatLabel(adapter: adapter)
         floatLabel.setFieldName("Test")
     }
     
@@ -43,7 +43,7 @@ class FloatLabelTests: FBSnapshotTestCase {
     
     func testRenderWithMultiLineTextAndLabelShown() {
         let adapter = UITextViewTextEditorAdapter<PlaceholderTextView>(configuration: TextEditorConfiguration())
-        let floatLabel = FloatLabel(adapter: adapter, textChangedObserver: { _ in})
+        let floatLabel = FloatLabel(adapter: adapter)
         floatLabel.textEntryView.text = "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue."
         floatLabel.transitionToState(.LabelShown, animated: false)
         sizeViewForTesting(floatLabel)

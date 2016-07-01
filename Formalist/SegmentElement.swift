@@ -38,16 +38,15 @@ public final class SegmentElement<ValueType: Equatable>: FormElement {
     }
     
     public func render() -> UIView {
-        let items = self.segments.map { $0.content }
+        let items = segments.map { $0.content }
         let segmentView = SegmentElementView(title: title, items: items)
         segmentView.segmentedControl.addTarget(
             self,
             action: #selector(SegmentElement.selectedSegmentChanged(_:)),
             forControlEvents: .ValueChanged
         )
-        let segments = self.segments
-        let updateView: ValueType -> Void = { [weak segmentView] selectedValue in
-            guard let segmentView = segmentView else { return }
+        let updateView: ValueType -> Void = { [weak segmentView, weak self] selectedValue in
+            guard let segmentView = segmentView, segments = self?.segments else { return }
             if !segmentView.shouldIgnoreFormValueChanges {
                 segmentView.segmentedControl.selectedSegmentIndex = {
                     for (index, value) in segments.map({ $0.value }).enumerate() {

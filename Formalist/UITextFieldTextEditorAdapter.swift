@@ -12,6 +12,7 @@ import UIKit
 /// form elements that perform text editing.
 public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: TextEditorAdapter {
     public typealias ViewType = TextFieldType
+    public typealias TextChangedObserver = (UITextFieldTextEditorAdapter<ViewType>, ViewType) -> Void
     
     private let configuration: TextEditorConfiguration
     
@@ -48,6 +49,7 @@ private var ObjCTextFieldDelegateKey: UInt8 = 0
 
 private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UITextFieldDelegate {
     private typealias AdapterType = UITextFieldTextEditorAdapter<TextFieldType>
+    private typealias TextChangedObserver = (AdapterType, TextFieldType) -> Void
     
     private let adapter: AdapterType
     private let configuration: TextEditorConfiguration
@@ -89,7 +91,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         }
         callbacks.textDidEndEditing?(adapter, textField)
         if !configuration.continuouslyUpdatesValue {
-            textChangedObserver(textField.text ?? "")
+            textChangedObserver(adapter, textField)
         }
     }
     
@@ -99,8 +101,12 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         }
         callbacks.textDidChange?(adapter, textField)
         if configuration.continuouslyUpdatesValue {
-            textChangedObserver(textField.text ?? "")
+            textChangedObserver(adapter, textField)
         }
+    }
+    
+    private func notifyTextChangedObserverWithTextField(textField: UITextField) {
+        textField.shouldIgnoreFormValueChanges = true
     }
     
     @objc private func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

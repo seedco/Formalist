@@ -10,6 +10,7 @@
 /// form elements that perform text editing.
 public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapter where InnerAdapterType.ViewType: FloatLabelTextEntryView>: TextEditorAdapter {
     public typealias ViewType = FloatLabel<InnerAdapterType>
+    public typealias TextChangedObserver = (FloatLabelTextEditorAdapter<InnerAdapterType>, ViewType) -> Void
     
     private let configuration: TextEditorConfiguration
     private lazy var innerAdapter: InnerAdapterType = InnerAdapterType(configuration: self.configuration)
@@ -19,19 +20,25 @@ public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapt
     }
     
     public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<FloatLabelTextEditorAdapter<InnerAdapterType>>, textChangedObserver: TextChangedObserver) -> ViewType {
-        let floatLabel = FloatLabel(adapter: innerAdapter, textChangedObserver: textChangedObserver)
+        let floatLabel = FloatLabel(adapter: innerAdapter)
         
-        var innerCallbacks = TextEditorAdapterCallbacks<InnerAdapterType>()
-        innerCallbacks.textDidBeginEditing = { [unowned floatLabel] _ in
-            callbacks.textDidBeginEditing?(self, floatLabel)
+        floatLabel.textChangedObserver = { [unowned floatLabel] (adapter, view) in
+            textChangedObserver(self, floatLabel)
         }
-        innerCallbacks.textDidEndEditing = { [unowned floatLabel] _ in
-            callbacks.textDidEndEditing?(self, floatLabel)
-        }
-        innerCallbacks.textDidChange = { [unowned floatLabel] _ in
-            callbacks.textDidChange?(self, floatLabel)
-        }
-        floatLabel.adapterCallbacks = innerCallbacks
+        
+        floatLabel.adapterCallbacks = { [unowned floatLabel] in
+            var innerCallbacks = TextEditorAdapterCallbacks<InnerAdapterType>()
+            innerCallbacks.textDidBeginEditing = { [unowned floatLabel] _ in
+                callbacks.textDidBeginEditing?(self, floatLabel)
+            }
+            innerCallbacks.textDidEndEditing = { [unowned floatLabel] _ in
+                callbacks.textDidEndEditing?(self, floatLabel)
+            }
+            innerCallbacks.textDidChange = { [unowned floatLabel] _ in
+                callbacks.textDidChange?(self, floatLabel)
+            }
+            return innerCallbacks
+        }()
         
         return floatLabel
     }
