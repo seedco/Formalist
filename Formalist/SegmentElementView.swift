@@ -21,13 +21,12 @@ public class SegmentElementView: UIView {
     /// The segmented control that displays the segments
     public let segmentedControl: UISegmentedControl
     
-    init(title: String, items: [SegmentContent], selectedIndex: Int) {
+    init(title: String, items: [SegmentContent]) {
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         titleLabel.text = title
         
         segmentedControl = UISegmentedControl(items: items.map { $0.objectValue })
-        segmentedControl.selectedSegmentIndex = selectedIndex
         
         super.init(frame: CGRectZero)
         
