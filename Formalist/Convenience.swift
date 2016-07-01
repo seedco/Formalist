@@ -62,6 +62,20 @@ public func staticText(text: String, viewConfigurator: StaticTextElement.ViewCon
 }
 
 /**
+ Creates a form element that displays static text.
+ Convenience function for initializing a `StaticTextElement`
+ 
+ - parameter value:            The text value to bind to the label
+ - parameter viewConfigurator: An optional block used to configure the appearance
+ of the view
+ 
+ - returns: A static text form element
+ */
+public func staticText(value: FormValue<String>, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
+    return StaticTextElement(value: value, viewConfigurator: viewConfigurator)
+}
+
+/**
  Creates a form element that displays a cell that invokes an action when tapped
  Convenience function for initializing a `SegueElement`
  
