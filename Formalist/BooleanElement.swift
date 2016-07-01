@@ -33,17 +33,27 @@ public final class BooleanElement: FormElement {
     }
     
     public func render() -> UIView {
-        let booleanView = BooleanElementView(title: title, value: value.value)
+        let booleanView = BooleanElementView(title: title)
         booleanView.toggle.addTarget(
             self,
             action: #selector(BooleanElement.valueChanged(_:)),
             forControlEvents: .ValueChanged
         )
+        let updateView: Bool -> Void = { [weak booleanView] in
+            guard let booleanView = booleanView else { return }
+            if !booleanView.shouldIgnoreFormValueChanges {
+                booleanView.toggle.on = $0
+            }
+        }
+        updateView(value.value)
+        value.addObserver(updateView)
         viewConfigurator?(booleanView)
         return booleanView
     }
     
     @objc private func valueChanged(sender: UISwitch) {
+        sender.shouldIgnoreFormValueChanges = true
         value.value = sender.on
+        sender.shouldIgnoreFormValueChanges = false
     }
 }
