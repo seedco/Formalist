@@ -61,6 +61,10 @@ public protocol TextEditorAdapter: AnyObject {
     func setText(text: String, forView view: ViewType)
 }
 
+public extension TextEditorAdapter {
+    public typealias TextChangedObserver = (Self, ViewType) -> Void
+}
+
 /// Contains callback functions that are executed when a text editing
 /// event occurs.
 public struct TextEditorAdapterCallbacks<AdapterType: TextEditorAdapter> {
@@ -75,7 +79,3 @@ public struct TextEditorAdapterCallbacks<AdapterType: TextEditorAdapter> {
     /// Called when any change is made to the text
     public var textDidChange: Callback?
 }
-
-/// Type definition for a block that is called with a `String` argument when
-/// text in a text editing view has changed.
-public typealias TextChangedObserver = String -> Void

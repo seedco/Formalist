@@ -17,11 +17,20 @@ class StaticTextElementTests: FBSnapshotTestCase {
     }
     
     func testRender() {
-        let element = StaticTextElement(text: "Static Text Element") {
+        let element = staticText("Static Text Element") {
             $0.textAlignment = .Center
             $0.textColor = .redColor()
         }
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
+    }
+    
+    func testUpdateViewByUpdatingValue() {
+        let value = FormValue("foo")
+        let element = staticText(value)
+        let elementView = element.render() as! UILabel
+        
+        value.value = "bar"
+        XCTAssertEqual("bar", elementView.text)
     }
 }

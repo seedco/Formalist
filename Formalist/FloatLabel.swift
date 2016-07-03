@@ -44,6 +44,13 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         }
     }
     
+    public typealias TextChangedObserver = (AdapterType, AdapterType.ViewType) -> Void
+    
+    /// Callback to call when the text in the text entry view is changed
+    /// See the documentation for `TextEditorAdapter` for details on
+    /// the exact behaviour.
+    public var textChangedObserver: TextChangedObserver?
+    
     private lazy var labelShownConstraints: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
         NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
@@ -61,12 +68,13 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     private var editing = false
     private var state: State?
     
-    public init(adapter: AdapterType, textChangedObserver: TextChangedObserver) {
+    public init(adapter: AdapterType) {
         self.adapter = adapter
         
         super.init(frame: CGRectZero)
         
-        createTextEntryView(textChangedObserver)
+        textEntryView = createTextEntryView()
+        textEntryView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(nameLabel)
         addSubview(textEntryView)
         
@@ -79,7 +87,7 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         recomputeMinimumHeight()
     }
     
-    private func createTextEntryView(textChangedObserver: TextChangedObserver) {
+    private func createTextEntryView() -> AdapterType.ViewType {
         var callbacks = TextEditorAdapterCallbacks<AdapterType>()
         callbacks.textDidBeginEditing = { [unowned self] (adapter, view) in
             self.editing = true
@@ -100,8 +108,9 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
             self.adapterCallbacks?.textDidChange?(adapter, view)
         }
         
-        textEntryView = adapter.createViewWithCallbacks(callbacks, textChangedObserver: textChangedObserver)
-        textEntryView.translatesAutoresizingMaskIntoConstraints = false
+        return adapter.createViewWithCallbacks(callbacks, textChangedObserver: { [weak self] (adapter, view) in
+            self?.textChangedObserver?(adapter, view)
+        })
     }
     
     private func setupConstraints() {

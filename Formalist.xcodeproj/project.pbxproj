@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72239FEB1D25B9E800A157D9 /* UIView+ChangeObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72239FEA1D25B9E800A157D9 /* UIView+ChangeObservation.swift */; };
 		7285A70A1D17CB7000718D23 /* Formalist.h in Headers */ = {isa = PBXBuildFile; fileRef = 7285A7091D17CB7000718D23 /* Formalist.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7285A7111D17CB7000718D23 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		7285A73D1D17CBCA00718D23 /* BooleanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7201D17CBCA00718D23 /* BooleanElement.swift */; };
@@ -165,6 +166,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		72239FEA1D25B9E800A157D9 /* UIView+ChangeObservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ChangeObservation.swift"; sourceTree = "<group>"; };
 		7285A7061D17CB7000718D23 /* Formalist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Formalist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7285A7091D17CB7000718D23 /* Formalist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Formalist.h; sourceTree = "<group>"; };
 		7285A70B1D17CB7000718D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				7285A7381D17CBCA00718D23 /* Validatable.swift */,
 				7285A73A1D17CBCA00718D23 /* ValidationRule.swift */,
 				7285A7371D17CBCA00718D23 /* UIView+FormResponder.swift */,
+				72239FEA1D25B9E800A157D9 /* UIView+ChangeObservation.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				7285A74B1D17CBCA00718D23 /* SegmentElementView.swift in Sources */,
 				7285A7541D17CBCA00718D23 /* UIView+FormResponder.swift in Sources */,
 				7285A74D1D17CBCA00718D23 /* SegueElementView.swift in Sources */,
+				72239FEB1D25B9E800A157D9 /* UIView+ChangeObservation.swift in Sources */,
 				7285A7421D17CBCA00718D23 /* FloatLabel.swift in Sources */,
 				7285A7511D17CBCA00718D23 /* TextEditorConfiguration.swift in Sources */,
 				7285A74F1D17CBCA00718D23 /* StaticTextElement.swift in Sources */,

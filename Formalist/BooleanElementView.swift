@@ -21,14 +21,13 @@ public class BooleanElementView: UIView {
     /// The toggle used to change the boolean value
     public let toggle: UISwitch
     
-    init(title: String, value: Bool = false) {
+    init(title: String) {
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         titleLabel.text = title
         titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
         
         toggle = UISwitch(frame: CGRectZero)
-        toggle.on = value
         
         super.init(frame: CGRectZero)
         

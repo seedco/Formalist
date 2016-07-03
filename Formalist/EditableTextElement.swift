@@ -42,10 +42,19 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
     // MARK: FormElement
     
     public func render() -> UIView {
-        let view = adapter.createViewWithCallbacks(TextEditorAdapterCallbacks()) { [weak self] in
-            self?.value.value = $0
+        let view = adapter.createViewWithCallbacks(TextEditorAdapterCallbacks()) { [weak self] (adapter, view) in
+            view.shouldIgnoreFormValueChanges = true
+            self?.value.value = adapter.getTextForView(view)
+            view.shouldIgnoreFormValueChanges = false
         }
-        adapter.setText(value.value, forView: view)
+        let updateView: String -> Void = { [weak view, weak self] in
+            guard let view = view, adapter = self?.adapter else { return }
+            if !view.shouldIgnoreFormValueChanges {
+                adapter.setText($0, forView: view)
+            }
+        }
+        updateView(value.value)
+        value.addObserver(updateView)
         viewConfigurator?(view)
         return view
     }

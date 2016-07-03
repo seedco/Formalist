@@ -39,24 +39,27 @@ public final class SegmentElement<ValueType: Equatable>: FormElement {
     
     public func render() -> UIView {
         let items = segments.map { $0.content }
-        let selectedIndex: Int = {
-            for (index, value) in segments.map({ $0.value }).enumerate() {
-                if (value == selectedValue.value) {
-                    return index
-                }
-            }
-            fatalError("\(selectedValue) does not exist in \(segments)")
-        }()
-        let segmentView = SegmentElementView(
-            title: title,
-            items: items,
-            selectedIndex: selectedIndex
-        )
+        let segmentView = SegmentElementView(title: title, items: items)
         segmentView.segmentedControl.addTarget(
             self,
             action: #selector(SegmentElement.selectedSegmentChanged(_:)),
             forControlEvents: .ValueChanged
         )
+        let updateView: ValueType -> Void = { [weak segmentView, weak self] selectedValue in
+            guard let segmentView = segmentView, segments = self?.segments else { return }
+            if !segmentView.shouldIgnoreFormValueChanges {
+                segmentView.segmentedControl.selectedSegmentIndex = {
+                    for (index, value) in segments.map({ $0.value }).enumerate() {
+                        if (value == selectedValue) {
+                            return index
+                        }
+                    }
+                    fatalError("\(selectedValue) does not exist in \(segments)")
+                }()
+            }
+        }
+        updateView(selectedValue.value)
+        selectedValue.addObserver(updateView)
         viewConfigurator?(segmentView)
         return segmentView
     }

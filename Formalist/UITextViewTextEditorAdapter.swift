@@ -13,6 +13,7 @@ import ObjectiveC
 /// form elements that perform text editing.
 public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEditorAdapter {
     public typealias ViewType = TextViewType
+    public typealias TextChangedObserver = (UITextViewTextEditorAdapter<ViewType>, ViewType) -> Void
     
     private let configuration: TextEditorConfiguration
     
@@ -51,6 +52,7 @@ private var ObjCTextViewDelegateKey: UInt8 = 0
 
 private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UITextViewDelegate {
     private typealias AdapterType = UITextViewTextEditorAdapter<TextViewType>
+    private typealias TextChangedObserver = (AdapterType, TextViewType) -> Void
     
     private let adapter: AdapterType
     private let configuration: TextEditorConfiguration
@@ -79,7 +81,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
         }
         callbacks.textDidEndEditing?(adapter, textView)
         if !configuration.continuouslyUpdatesValue {
-            textChangedObserver(textView.text)
+            textChangedObserver(adapter, textView)
         }
     }
     
@@ -89,7 +91,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
         }
         callbacks.textDidChange?(adapter, textView)
         if configuration.continuouslyUpdatesValue {
-            textChangedObserver(textView.text)
+            textChangedObserver(adapter, textView)
         }
     }
     

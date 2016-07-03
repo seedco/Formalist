@@ -57,4 +57,40 @@ class EditableTextElementTests: FBSnapshotTestCase {
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
+    
+    func testUpdateTextFieldByUpdatingValue() {
+        let value = FormValue("foo")
+        let element = textField(value: value)
+        let elementView = element.render() as! UITextField
+        
+        value.value = "bar"
+        XCTAssertEqual("bar", elementView.text)
+    }
+    
+    func testUpdateTextViewByUpdatingValue() {
+        let value = FormValue("foo")
+        let element = textView(value: value)
+        let elementView = element.render() as! UITextView
+        
+        value.value = "bar"
+        XCTAssertEqual("bar", elementView.text)
+    }
+    
+    func testUpdateSingleLineFloatLabelByUpdatingValue() {
+        let value = FormValue("foo")
+        let element = singleLineFloatLabel(name: "Float Label", value: value)
+        let elementView = element.render() as! FloatLabel<UITextFieldTextEditorAdapter<FloatLabelTextField>>
+        
+        value.value = "bar"
+        XCTAssertEqual("bar", elementView.textEntryView.text)
+    }
+    
+    func testUpdateMultiLineFloatLabelByUpdatingValue() {
+        let value = FormValue("foo")
+        let element = multiLineFloatLabel(name: "Float Label", value: value)
+        let elementView = element.render() as! FloatLabel<UITextViewTextEditorAdapter<PlaceholderTextView>>
+        
+        value.value = "bar"
+        XCTAssertEqual("bar", elementView.textEntryView.text)
+    }
 }
