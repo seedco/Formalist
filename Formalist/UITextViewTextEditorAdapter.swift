@@ -102,11 +102,15 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
             case .None: return true
             case .ActivateNextResponder:
                 if !(textView.nextFormResponder?.becomeFirstResponder() ?? false) {
-                    textView.resignFirstResponder()
+                    if configuration.shouldResignFirstResponderWhenFinished {
+                        textView.resignFirstResponder()
+                    }
                 }
                 return false
             case let .Custom(action):
-                textView.resignFirstResponder()
+                if configuration.shouldResignFirstResponderWhenFinished {
+                    textView.resignFirstResponder()
+                }
                 action(textView.text)
                 return false
             }

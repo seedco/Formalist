@@ -28,6 +28,7 @@ public struct TextEditorConfiguration {
     public let returnKeyAction: ReturnKeyAction
     public let continuouslyUpdatesValue: Bool
     public let maximumLength: Int?
+    public let shouldResignFirstResponderWhenFinished: Bool
     
     /**
      Designated initializer
@@ -43,9 +44,10 @@ public struct TextEditorConfiguration {
      
      - returns: An initialized instance of the receiver
      */
-    public init(returnKeyAction: ReturnKeyAction = .ActivateNextResponder, continuouslyUpdatesValue: Bool = false, maximumLength: Int? = nil) {
+    public init(returnKeyAction: ReturnKeyAction = .ActivateNextResponder, continuouslyUpdatesValue: Bool = false, maximumLength: Int? = nil, shouldResignFirstResponderWhenFinished: Bool = true) {
         self.returnKeyAction = returnKeyAction
         self.continuouslyUpdatesValue = continuouslyUpdatesValue
         self.maximumLength = maximumLength
+        self.shouldResignFirstResponderWhenFinished = shouldResignFirstResponderWhenFinished
     }
 }
