@@ -123,11 +123,15 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         case .None: return true
         case .ActivateNextResponder:
             if !(textField.nextFormResponder?.becomeFirstResponder() ?? false) {
-                textField.resignFirstResponder()
+                if configuration.shouldResignFirstResponderWhenFinished {
+                    textField.resignFirstResponder()
+                }
             }
             return false
         case let .Custom(action):
-            textField.resignFirstResponder()
+            if configuration.shouldResignFirstResponderWhenFinished {
+                textField.resignFirstResponder()
+            }
             action(textField.text ?? "")
             return false
         }
