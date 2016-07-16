@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     private let booleanValue = FormValue(false)
     private let textViewValue = FormValue("")
     private let floatLabelValue = FormValue("")
+    private let multiLineFloatLabelValue = FormValue("")
     private let emailValue = FormValue("")
     private let stringValue3 = FormValue("")
     
@@ -50,6 +51,9 @@ class ViewController: UIViewController {
                 },
                 singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue) {
                     $0.textEntryView.accessibilityIdentifier = "floatLabel"
+                },
+                multiLineFloatLabel(name: "Float MultiLine Element", value: self.multiLineFloatLabelValue) {
+                    $0.textEntryView.accessibilityIdentifier = "multiLineFloatLabel"
                 },
                 segments(title: "Segment Element", segments: [
                     Segment(content: .Title("Segment 1"), value: "Segment 1"),
