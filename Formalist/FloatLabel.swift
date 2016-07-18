@@ -31,6 +31,7 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         return nameLabel
     }()
     
+    /// The container view used for adding spacing to textEntryView.
     public let containerView: UIView =  {
         let containerView = UIView()
         return containerView
@@ -57,7 +58,7 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     public var textChangedObserver: TextChangedObserver?
     
     private lazy var labelShownConstraints: [NSLayoutConstraint] = [
-        NSLayoutConstraint(item: self.containerView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
+        NSLayoutConstraint(item: self.containerView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.containerView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.containerView, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: self.textEntryView, attribute: .Height, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.containerView, attribute: .Top, multiplier: 1.0, constant: Layout.InnerTextInputTopSpacing),
@@ -70,7 +71,8 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         NSLayoutConstraint(item: self.containerView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.containerView, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: self.textEntryView, attribute: .Height, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.containerView, attribute: .Top, multiplier: 1.0, constant: Layout.InnerTextInputTopSpacing),
-        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self.containerView, attribute: .Bottom, multiplier: 1.0, constant: Layout.InnerTextInputBottomSpacing)
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self.containerView, attribute: .Bottom, multiplier: 1.0, constant: Layout.InnerTextInputBottomSpacing),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .CenterY, relatedBy: .Equal, toItem: self.containerView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
     ]
     
     private lazy var heightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0.0)
@@ -253,9 +255,8 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
 }
 
 private struct Layout {
-    static let LabelTextViewSpacing: CGFloat = 4.0
-    static let InnerTextInputTopSpacing: CGFloat = 12
-    static let InnerTextInputBottomSpacing: CGFloat = -12
+    static let InnerTextInputTopSpacing: CGFloat = 10
+    static let InnerTextInputBottomSpacing: CGFloat = -10
 }
 
 enum State {
