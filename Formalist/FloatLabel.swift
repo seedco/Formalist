@@ -31,6 +31,12 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         return nameLabel
     }()
     
+    /// The container view used for adding spacing to textEntryView.
+    public let containerView: UIView =  {
+        let containerView = UIView()
+        return containerView
+    }()
+
     /// The text view that contains the field's body text
     public private(set) var textEntryView: AdapterType.ViewType!
     
@@ -52,14 +58,21 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     public var textChangedObserver: TextChangedObserver?
     
     private lazy var labelShownConstraints: [NSLayoutConstraint] = [
-        NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.nameLabel, attribute: .Bottom, multiplier: 1.0, constant: Layout.LabelTextViewSpacing),
-        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint(item: self.containerView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: self.textEntryView, attribute: .Height, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.containerView, attribute: .Top, multiplier: 1.0, constant: Layout.TextInputTopSpacing + Layout.TextInputTopShownSpacing),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self.containerView, attribute: .Bottom, multiplier: 1.0, constant: Layout.TextInputBottomSpacing)
     ]
     
     private lazy var labelHiddenConstraints: [NSLayoutConstraint] = [
-        NSLayoutConstraint(item: self.textEntryView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint(item: self.containerView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: self.textEntryView, attribute: .Height, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Top, relatedBy: .Equal, toItem: self.containerView, attribute: .Top, multiplier: 1.0, constant: Layout.TextInputTopSpacing),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .Bottom, relatedBy: .Equal, toItem: self.containerView, attribute: .Bottom, multiplier: 1.0, constant: Layout.TextInputBottomSpacing),
+        NSLayoutConstraint(item: self.textEntryView, attribute: .CenterY, relatedBy: .Equal, toItem: self.containerView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
     ]
     
     private lazy var heightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0.0)
@@ -73,10 +86,15 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         
         super.init(frame: CGRectZero)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.containerViewDidTap))
+        containerView.addGestureRecognizer(tapGesture)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
         textEntryView = createTextEntryView()
         textEntryView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(nameLabel)
-        addSubview(textEntryView)
+        addSubview(containerView)
+        containerView.addSubview(nameLabel)
+        containerView.addSubview(textEntryView)
         
         setupConstraints()
         transitionToState(.LabelHidden, animated: false)
@@ -116,14 +134,17 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
     private func setupConstraints() {
         heightConstraint.active = true
         
-        let views = ["nameLabel": nameLabel, "textEntryView": textEntryView]
+        let views = ["nameLabel": nameLabel, "textEntryView": textEntryView, "containerView": containerView]
         let nameLabelHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[nameLabel]", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(nameLabelHConstraints)
+        
+        let containerViewHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[containerView]|", options: [], metrics: nil, views: views)
+        NSLayoutConstraint.activateConstraints(containerViewHConstraints)
         
         let bodyTextViewHConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[textEntryView]|", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activateConstraints(bodyTextViewHConstraints)
         
-        let nameLabelTopConstraint = NSLayoutConstraint(item: nameLabel, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let nameLabelTopConstraint = NSLayoutConstraint(item: nameLabel, attribute: .Top, relatedBy: .Equal, toItem: containerView, attribute: .Top, multiplier: 1.0, constant: 0.0)
         nameLabelTopConstraint.active = true
     }
     
@@ -158,6 +179,10 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
         self.transitionToState(state, animated: false)
     }
 
+    func containerViewDidTap() {
+        self.textEntryView.becomeFirstResponder()
+    }
+    
     // MARK: UIResponder
     
     public override func canBecomeFirstResponder() -> Bool {
@@ -230,7 +255,10 @@ public class FloatLabel<AdapterType: TextEditorAdapter where AdapterType.ViewTyp
 }
 
 private struct Layout {
-    static let LabelTextViewSpacing: CGFloat = 4.0
+    static let TextInputTopSpacing: CGFloat = 12
+    static let TextInputTopShownSpacing: CGFloat = 8
+    static let TopSpacing: CGFloat = 16
+    static let TextInputBottomSpacing: CGFloat = -12
 }
 
 enum State {
