@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Formalist
 
 public class DataPickerTextField<TypeValue: Equatable>: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
 
