@@ -1,5 +1,5 @@
 //
-//  DataPickerTextField.swift
+//  PickerField.swift
 //  Formalist
 //
 //  Created by Viktor Radchenko on 7/6/16.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-public class DataPickerTextField<TypeValue: Equatable>: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
+/// An element used to display a float label, and input type as a picker view
+public class PickerField<TypeValue: Equatable>: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    public var items = [DataPickerValue<TypeValue>]() {
+    public var items = [PickerValue<TypeValue>]() {
         didSet {
             pickerView?.reloadAllComponents()
             if let selectedValue = selectedValue {
@@ -88,7 +89,7 @@ public class DataPickerTextField<TypeValue: Equatable>: FloatLabelTextField, UIP
     }
 }
 
-public struct DataPickerValue<ValueType: Equatable> {
+public struct PickerValue<ValueType: Equatable> {
     public let title: String
     public let value: ValueType
 
