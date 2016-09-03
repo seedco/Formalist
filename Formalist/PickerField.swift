@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// An element used to display a float label, and input type as a picker view
+/// An element used to display a float label with input type as a picker view
 public class PickerField<TypeValue: Equatable>: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
 
     public var items = [PickerValue<TypeValue>]() {
