@@ -68,6 +68,7 @@
 		7285A7E61D17CF4F00718D23 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */; };
+		77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3050A1D7B6C7300F17EEF /* PickerField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBSnapshotTestCase.xcodeproj; path = External/FBSnapshotTestCase/FBSnapshotTestCase.xcodeproj; sourceTree = "<group>"; };
 		7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StackViewController.xcodeproj; path = External/StackViewController/StackViewController.xcodeproj; sourceTree = "<group>"; };
 		72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
+		77A3050A1D7B6C7300F17EEF /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +436,7 @@
 				7285A7261D17CBCA00718D23 /* FloatLabelTextEditorAdapter.swift */,
 				7285A72B1D17CBCA00718D23 /* PlaceholderTextView.swift */,
 				72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */,
+				77A3050A1D7B6C7300F17EEF /* PickerField.swift */,
 			);
 			name = "Editable Text";
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				7285A74B1D17CBCA00718D23 /* SegmentElementView.swift in Sources */,
 				7285A7541D17CBCA00718D23 /* UIView+FormResponder.swift in Sources */,
 				7285A74D1D17CBCA00718D23 /* SegueElementView.swift in Sources */,
+				77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */,
 				72239FEB1D25B9E800A157D9 /* UIView+ChangeObservation.swift in Sources */,
 				7285A7421D17CBCA00718D23 /* FloatLabel.swift in Sources */,
 				7285A7511D17CBCA00718D23 /* TextEditorConfiguration.swift in Sources */,
