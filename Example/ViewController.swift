@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     private let multiLineFloatLabelValue = FormValue("")
     private let emailValue = FormValue("")
     private let stringValue3 = FormValue("")
+    private let pickerFieldValue = FormValue("")
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -54,6 +55,13 @@ class ViewController: UIViewController {
                 },
                 multiLineFloatLabel(name: "Float MultiLine Element", value: self.multiLineFloatLabelValue) {
                     $0.textEntryView.accessibilityIdentifier = "multiLineFloatLabel"
+                },
+                pickerField(name: "Picker Field Element", value: self.pickerFieldValue, items: [
+                    PickerValue(title: "Value #1", value: "value1"),
+                    PickerValue(title: "Value #2", value: "value2"),
+                    PickerValue(title: "Value #3", value: "value3")
+                ]) {
+                    $0.textEntryView.accessibilityIdentifier = "pickerField"
                 },
                 segments(title: "Segment Element", segments: [
                     Segment(content: .Title("Segment 1"), value: "Segment 1"),

@@ -83,6 +83,20 @@ class FormalistUITests: XCTestCase {
         XCTAssert(app.staticTexts["test@test.com"].exists)
     }
     
+    func testPickerField() {
+        let app = XCUIApplication()
+        let elementsQuery = app.scrollViews.otherElements
+        let pickerField = elementsQuery.textFields["pickerField"]
+        
+        pickerField.tap()
+        app.pickerWheels.element.adjustToPickerWheelValue("Value #3")
+        
+        guard let value = pickerField.value as? String else {
+            return XCTAssert(false)
+        }
+        XCTAssert(value == "Value #3")
+    }
+    
     func testSegueElement() {
         let app = XCUIApplication()
         app.scrollViews.otherElements.staticTexts["Segue Element"].tap()

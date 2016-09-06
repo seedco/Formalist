@@ -299,3 +299,31 @@ public func multiLineFloatLabel(name name: String,
         viewConfigurator: viewConfigurator
     )
 }
+/**
+ Creates a "float label" (http://bradfrost.com/blog/post/float-label-pattern/)
+ that uses a `UIPickerView` as its editor view
+ 
+ - parameter name:             The field name to display on the float label
+ - parameter value:            The string value to bind to the text view
+ - parameter items:            The items to display in the picker view
+ - parameter configuration:    Configuration options for the text field
+ - parameter validationRules:  Rules used to validate the string value
+ - parameter viewConfigurator: An optional block used to perform additional
+ customization of the float label
+ 
+ - returns: An editable text element
+ */
+public func pickerField<ValueType: Equatable>(name name: String, value: FormValue<String>, items: [PickerValue<ValueType>],
+                                configuration: TextEditorConfiguration = TextEditorConfiguration(),
+                                validationRules: [ValidationRule<String>] = [],
+                                viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<PickerField<ValueType>>> -> Void)? = nil)
+    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<PickerField<ValueType>>>> {
+        return floatLabel(name: name,
+                          value: value,
+                          configuration: configuration,
+                          validationRules: validationRules) {
+                            $0.textEntryView.selectedValue = value
+                            $0.textEntryView.items = items
+                            viewConfigurator?($0)
+        }
+}
