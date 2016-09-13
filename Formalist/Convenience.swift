@@ -313,11 +313,11 @@ public func multiLineFloatLabel(name name: String,
  
  - returns: An editable text element
  */
-public func pickerField<ValueType: Equatable>(name name: String, value: FormValue<String>, items: [PickerValue<ValueType>],
+public func pickerField(name name: String, value: FormValue<String>, items: [PickerValue],
                                 configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                 validationRules: [ValidationRule<String>] = [],
-                                viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<PickerField<ValueType>>> -> Void)? = nil)
-    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<PickerField<ValueType>>>> {
+                                viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<PickerField>> -> Void)? = nil)
+    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<PickerField>>> {
         return floatLabel(name: name,
                           value: value,
                           configuration: configuration,
