@@ -9,9 +9,9 @@
 import UIKit
 
 /// An element used to display a float label with input type as a picker view
-public class PickerField<TypeValue: Equatable>: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
+public class PickerField: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    public var items = [PickerValue<TypeValue>]() {
+    public var items = [PickerValue]() {
         didSet {
             pickerView?.reloadAllComponents()
             if let selectedValue = selectedValue {
@@ -89,11 +89,11 @@ public class PickerField<TypeValue: Equatable>: FloatLabelTextField, UIPickerVie
     }
 }
 
-public struct PickerValue<ValueType: Equatable> {
+public struct PickerValue {
     public let title: String
-    public let value: ValueType
+    public let value: String
 
-    public init(title: String, value: ValueType) {
+    public init(title: String, value: String) {
         self.title = title
         self.value = value
     }
