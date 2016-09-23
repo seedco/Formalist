@@ -44,7 +44,7 @@ public struct TextEditorConfiguration {
      
      - returns: An initialized instance of the receiver
      */
-    public init(returnKeyAction: ReturnKeyAction = .ActivateNextResponder, continuouslyUpdatesValue: Bool = false, maximumLength: Int? = nil, shouldResignFirstResponderWhenFinished: Bool = true) {
+    public init(returnKeyAction: ReturnKeyAction = .ActivateNextResponder, continuouslyUpdatesValue: Bool = true, maximumLength: Int? = nil, shouldResignFirstResponderWhenFinished: Bool = true) {
         self.returnKeyAction = returnKeyAction
         self.continuouslyUpdatesValue = continuouslyUpdatesValue
         self.maximumLength = maximumLength
