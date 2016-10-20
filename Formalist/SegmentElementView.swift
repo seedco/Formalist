@@ -11,8 +11,12 @@ import StackViewController
 
 /// The view used to render a `SegmentElement`
 public class SegmentElementView: UIView {
-    private struct Layout {
-        static let TitleSegmentedControlSpacing: CGFloat = 12
+    public struct Layout {
+        let titleSegmentedControlSpacing: CGFloat
+
+        init(titleSegmentedControlSpacing: CGFloat = 12) {
+            self.titleSegmentedControlSpacing = titleSegmentedControlSpacing
+        }
     }
     
     /// The label that displays the title above the segmented control
@@ -21,7 +25,7 @@ public class SegmentElementView: UIView {
     /// The segmented control that displays the segments
     public let segmentedControl: UISegmentedControl
     
-    init(title: String, items: [SegmentContent]) {
+    init(title: String, items: [SegmentContent], layout: Layout = Layout()) {
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         titleLabel.text = title
@@ -33,7 +37,7 @@ public class SegmentElementView: UIView {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, segmentedControl])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .Vertical
-        stackView.spacing = Layout.TitleSegmentedControlSpacing
+        stackView.spacing = layout.titleSegmentedControlSpacing
         
         addSubview(stackView)
         stackView.activateSuperviewHuggingConstraints()
