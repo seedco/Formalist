@@ -104,7 +104,7 @@ public class PlaceholderTextView: UITextView {
         didSet { showPlaceholder = !editing && text.isEmpty }
     }
     
-    private var _showPlaceholder: Bool = true
+    private var _showPlaceholder: Bool = false
     private var showPlaceholder: Bool {
         get { return _showPlaceholder }
         set {
@@ -119,6 +119,7 @@ public class PlaceholderTextView: UITextView {
                 originalTextAttributes = defaultTextAttributes
                 super.attributedText = attributedPlaceholder
             } else {
+                super.textColor = originalTextAttributes?[NSForegroundColorAttributeName] as? UIColor
                 super.attributedText = NSAttributedString(string: "", attributes: originalTextAttributes ?? [:])
                 originalTextAttributes = nil
             }
@@ -183,6 +184,8 @@ public class PlaceholderTextView: UITextView {
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidBeginEditing(_:)), name: UITextViewTextDidBeginEditingNotification, object: self)
         nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidEndEditing(_:)), name: UITextViewTextDidEndEditingNotification, object: self)
+
+        showPlaceholder = true
     }
     
     deinit {
