@@ -150,7 +150,11 @@ public final class GroupElement: FormElement, Validatable {
     }
     
     private let configuration: Configuration
-    private let elements: [FormElement]
+
+    /**
+     The elements that make up the group.
+    */
+    public let elements: [FormElement]
     
     /**
      Designated initializer
