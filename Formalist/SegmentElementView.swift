@@ -12,37 +12,52 @@ import StackViewController
 /// The view used to render a `SegmentElement`
 public class SegmentElementView: UIView {
     public struct Layout {
-        let titleSegmentedControlSpacing: CGFloat
+        public let titleSegmentedControlSpacing: CGFloat
 
-        init(titleSegmentedControlSpacing: CGFloat = 12) {
+        public init(titleSegmentedControlSpacing: CGFloat = 12) {
             self.titleSegmentedControlSpacing = titleSegmentedControlSpacing
         }
     }
-    
+
     /// The label that displays the title above the segmented control
     public let titleLabel: UILabel
-    
+
     /// The segmented control that displays the segments
     public let segmentedControl: UISegmentedControl
-    
+
+    public var layout: Layout {
+        didSet {
+            applyLayout(layout)
+        }
+    }
+
+    private let stackView: UIStackView
+
     init(title: String, items: [SegmentContent], layout: Layout = Layout()) {
+        self.layout = layout
+
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         titleLabel.text = title
-        
+
         segmentedControl = UISegmentedControl(items: items.map { $0.objectValue })
-        
+
+        stackView = UIStackView(arrangedSubviews: [titleLabel, segmentedControl])
+
         super.init(frame: CGRectZero)
-        
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, segmentedControl])
+
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .Vertical
-        stackView.spacing = layout.titleSegmentedControlSpacing
-        
+
         addSubview(stackView)
         stackView.activateSuperviewHuggingConstraints()
+        applyLayout(layout)
     }
-    
+
+    func applyLayout(_ layout: Layout) {
+        stackView.spacing = layout.titleSegmentedControlSpacing
+    }
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
