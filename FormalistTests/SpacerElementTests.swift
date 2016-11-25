@@ -15,10 +15,10 @@ class SpacerElementTests: FBSnapshotTestCase {
         super.setUp()
         recordMode = false
     }
-    
+
     func testRender() {
         let element = SpacerElement(height: 50.0) {
-            $0.backgroundColor = .redColor()
+            $0.backgroundColor = .red
         }
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)

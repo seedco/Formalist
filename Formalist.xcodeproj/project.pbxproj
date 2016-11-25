@@ -46,7 +46,6 @@
 		7285A76D1D17CC1D00718D23 /* GroupElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A75E1D17CC1D00718D23 /* GroupElementTests.swift */; };
 		7285A76E1D17CC1D00718D23 /* PlaceholderTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A75F1D17CC1D00718D23 /* PlaceholderTextViewTests.swift */; };
 		7285A76F1D17CC1D00718D23 /* SegmentElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7601D17CC1D00718D23 /* SegmentElementTests.swift */; };
-		7285A7701D17CC1D00718D23 /* SegueElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7611D17CC1D00718D23 /* SegueElementTests.swift */; };
 		7285A7711D17CC1D00718D23 /* SpacerElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7621D17CC1D00718D23 /* SpacerElementTests.swift */; };
 		7285A7721D17CC1D00718D23 /* StaticTextElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7631D17CC1D00718D23 /* StaticTextElementTests.swift */; };
 		7285A7731D17CC1D00718D23 /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7641D17CC1D00718D23 /* TestUtilities.swift */; };
@@ -750,7 +749,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7285A7701D17CC1D00718D23 /* SegueElementTests.swift in Sources */,
 				7285A76B1D17CC1D00718D23 /* FloatLabelTests.swift in Sources */,
 				7285A7771D17CC1D00718D23 /* ViewElementTests.swift in Sources */,
 				7285A7761D17CC1D00718D23 /* ValidationRuleTests.swift in Sources */,

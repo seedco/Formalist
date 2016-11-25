@@ -18,14 +18,14 @@ class SegmentElementTests: FBSnapshotTestCase {
     
     fileprivate func segmentElementWithSelectedIndex(_ index: Int, value: FormValue<Int> = FormValue(0)) -> SegmentElement<Int> {
         let segments = [
-            Segment(content: .Title("Segment 1"), value: 0),
-            Segment(content: .Image(imageWithName("circle")), value: 1)
+            Segment(content: .title("Segment 1"), value: 0),
+            Segment(content: .image(imageWithName("circle")), value: 1)
         ]
         value.value = index
         let element = SegmentElement(title: "Segment Element", segments: segments, selectedValue: value) {
-            $0.titleLabel.textAlignment = .Center
-            $0.titleLabel.textColor = .redColor()
-            $0.segmentedControl.tintColor = .greenColor()
+            $0.titleLabel.textAlignment = .center
+            $0.titleLabel.textColor = .red
+            $0.segmentedControl.tintColor = .green
         }
         return element
     }

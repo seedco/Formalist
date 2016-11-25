@@ -18,8 +18,8 @@ class ViewElementTests: FBSnapshotTestCase {
     
     func testRenderActivityIndicator() {
         let element = ViewElement(value: FormValue("")) { _ in
-            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-            activityIndicator.color = .blueColor()
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator.color = .blue
             activityIndicator.hidesWhenStopped = false
             return activityIndicator
         }

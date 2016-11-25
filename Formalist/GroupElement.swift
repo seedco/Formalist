@@ -88,7 +88,7 @@ public final class GroupElement: FormElement, Validatable {
         /// the `SeparatorViewFactory` type for more information.
         public var separatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
             guard case let .grouped(backgroundColor) = style else { return nil }
-            let separatorView = SeparatorView(axis: .Horizontal)
+            let separatorView = SeparatorView(axis: .horizontal)
             separatorView.backgroundColor = backgroundColor
             separatorView.separatorInset = isBorder ? 0 : SeparatorDefaults.Inset
             separatorView.separatorColor = SeparatorDefaults.SeparatorColor
@@ -143,7 +143,7 @@ public final class GroupElement: FormElement, Validatable {
                     containerView.backgroundColor = backgroundColor
                 }
                 containerView.addSubview(elementView)
-                elementView.activateSuperviewHuggingConstraints(insets: layout.edgeInsets)
+                let _ = elementView.activateSuperviewHuggingConstraints(insets: layout.edgeInsets)
                 return containerView
             }
         }
@@ -226,7 +226,7 @@ public final class GroupElement: FormElement, Validatable {
             addSeparator(isBorder: !showingErrorView)
         }
         if let lastElement = elements.last {
-            addChildElement(lastElement)
+            let _ = addChildElement(lastElement)
             addSeparator(isBorder: true)
         }
         
@@ -244,14 +244,14 @@ public final class GroupElement: FormElement, Validatable {
         let stackView = UIStackView(arrangedSubviews: subviews)
         stackView.axis = .vertical
         containerView.addSubview(stackView)
-        stackView.activateSuperviewHuggingConstraints()
+        let _ = stackView.activateSuperviewHuggingConstraints()
         
         return containerView
     }
     
     // MARK: Validatable
     
-    public func validate(_ completionHandler: (ValidationResult) -> Void) {
+    public func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
         let validatables = elements.flatMap { $0 as? Validatable }
         validateObjects(validatables, completionHandler: completionHandler)
     }

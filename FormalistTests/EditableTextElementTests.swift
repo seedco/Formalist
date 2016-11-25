@@ -18,8 +18,8 @@ class EditableTextElementTests: FBSnapshotTestCase {
     
     func testRenderTextFieldElement() {
         let element = textField(value: FormValue("Text Field Element")) {
-            $0.textColor = .redColor()
-            $0.textAlignment = .Center
+            $0.textColor = .red
+            $0.textAlignment = .center
         }
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
@@ -27,8 +27,8 @@ class EditableTextElementTests: FBSnapshotTestCase {
     
     func testRenderTextViewElement() {
         let element = textView(value: FormValue("Text View Element")) {
-            $0.textColor = .redColor()
-            $0.textAlignment = .Center
+            $0.textColor = .red
+            $0.textAlignment = .center
         }
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)

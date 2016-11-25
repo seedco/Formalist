@@ -54,14 +54,14 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
             }
         }
         updateView(value.value)
-        value.addObserver(updateView)
+        let _ = value.addObserver(updateView)
         viewConfigurator?(view)
         return view
     }
     
     // MARK: Validatable
     
-    public func validate(_ completionHandler: (ValidationResult) -> Void) {
+    public func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
         ValidationRule.validateRules(validationRules, forValue: value.value,  completionHandler: completionHandler)
     }
 }

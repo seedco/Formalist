@@ -14,9 +14,9 @@ class FormValueTests: XCTestCase {
         let value = FormValue("")
         var count = 0
         
-        value.addObserver { _ in count += 1 }
+        let _ = value.addObserver { _ in count += 1 }
         value.value = "foo"
-        value.addObserver { _ in count += 1 }
+        let _ = value.addObserver { _ in count += 1 }
         value.value = "bar"
         
         XCTAssertEqual(3, count)
@@ -27,9 +27,9 @@ class FormValueTests: XCTestCase {
         var count = 0
         
         let token = value.addObserver { _ in count += 1 }
-        value.addObserver { _ in count += 1 }
+        let _ = value.addObserver { _ in count += 1 }
         value.value = "foo"
-        value.removeObserverWithToken(token)
+        let _ = value.removeObserverWithToken(token)
         value.value = "bar"
         
         XCTAssertEqual(3, count)

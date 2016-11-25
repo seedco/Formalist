@@ -22,14 +22,14 @@ class ValidationErrorViewTests: FBSnapshotTestCase {
         
         let heightConstraint = NSLayoutConstraint(
             item: view,
-            attribute: .Height,
-            relatedBy: .Equal,
+            attribute: .height,
+            relatedBy: .equal,
             toItem: nil,
-            attribute: .NotAnAttribute,
+            attribute: .notAnAttribute,
             multiplier: 1.0,
             constant: 30.0
         )
-        heightConstraint.active = true
+        heightConstraint.isActive = true
         
         sizeViewForTesting(view)
         FBSnapshotVerifyView(view)

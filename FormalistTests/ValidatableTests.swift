@@ -16,19 +16,19 @@ private class TestValidatable: Validatable {
         self.result = result
     }
     
-    fileprivate func validate(_ completionHandler: (ValidationResult) -> Void) {
+    fileprivate func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
         completionHandler(result)
     }
 }
 
 class ValidatableTests: XCTestCase {
     func testValidateAndStoreResult() {
-        let validatable = TestValidatable(result: .Valid)
+        let validatable = TestValidatable(result: .valid)
         XCTAssertNil(validatable.validationResult)
         
         let expectation = self.expectation(description: "validation")
         validatable.validateAndStoreResult { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             XCTAssert(validatable.validationResult == result)
             expectation.fulfill()
         }
@@ -38,19 +38,19 @@ class ValidatableTests: XCTestCase {
     func testValidateObjectsWithNoObjects() {
         let expectation = self.expectation(description: "validate objects")
         validateObjects([]) { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testValidateObjectsWithAllValid() {
-        let validatable1 = TestValidatable(result: .Valid)
-        let validatable2 = TestValidatable(result: .Valid)
+        let validatable1 = TestValidatable(result: .valid)
+        let validatable2 = TestValidatable(result: .valid)
         
         let expectation = self.expectation(description: "validate objects")
         validateObjects([validatable1, validatable2]) { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             XCTAssert(validatable1.validationResult == result)
             XCTAssert(validatable2.validationResult == result)
             expectation.fulfill()
@@ -59,9 +59,9 @@ class ValidatableTests: XCTestCase {
     }
     
     func testValidateObjectsWithOneInvalidObject() {
-        let invalidResult = ValidationResult.Invalid(message: "Validation failed")
+        let invalidResult = ValidationResult.invalid(message: "Validation failed")
         let validatable1 = TestValidatable(result: invalidResult)
-        let validatable2 = TestValidatable(result: .Valid)
+        let validatable2 = TestValidatable(result: .valid)
         
         let expectation = self.expectation(description: "validate objects")
         validateObjects([validatable1, validatable2]) { result in
@@ -74,12 +74,12 @@ class ValidatableTests: XCTestCase {
     }
     
     func testValidateObjectsWithOneCancelledObject() {
-        let validatable1 = TestValidatable(result: .Cancelled)
-        let validatable2 = TestValidatable(result: .Valid)
+        let validatable1 = TestValidatable(result: .cancelled)
+        let validatable2 = TestValidatable(result: .valid)
         
         let expectation = self.expectation(description: "validate objects")
         validateObjects([validatable1, validatable2]) { result in
-            XCTAssert(result == .Cancelled)
+            XCTAssert(result == .cancelled)
             XCTAssert(validatable1.validationResult == result)
             XCTAssertNil(validatable2.validationResult)
             expectation.fulfill()

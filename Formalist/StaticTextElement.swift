@@ -49,7 +49,7 @@ public final class StaticTextElement: FormElement {
         label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         label.text = value.value
-        value.addObserver { [weak label] in
+        let _ = value.addObserver { [weak label] in
             label?.text = $0
         }
         viewConfigurator?(label)

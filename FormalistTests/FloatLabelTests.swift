@@ -23,20 +23,20 @@ class FloatLabelTests: FBSnapshotTestCase {
     }
     
     func testRenderWithLabelHidden() {
-        floatLabel.transitionToState(.LabelHidden, animated: false)
+        floatLabel.transitionToState(.labelHidden, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }
     
     func testRenderWithLabelShown() {
-        floatLabel.transitionToState(.LabelShown, animated: false)
+        floatLabel.transitionToState(.labelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }
     
     func testRenderWithSingleLineTextAndLabelShown() {
         floatLabel.textEntryView.text = "Dapibus Consectetur Aenean Ligula Vestibulum"
-        floatLabel.transitionToState(.LabelShown, animated: false)
+        floatLabel.transitionToState(.labelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }
@@ -45,7 +45,7 @@ class FloatLabelTests: FBSnapshotTestCase {
         let adapter = UITextViewTextEditorAdapter<PlaceholderTextView>(configuration: TextEditorConfiguration())
         let floatLabel = FloatLabel(adapter: adapter)
         floatLabel.textEntryView.text = "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue."
-        floatLabel.transitionToState(.LabelShown, animated: false)
+        floatLabel.transitionToState(.labelShown, animated: false)
         sizeViewForTesting(floatLabel)
         FBSnapshotVerifyView(floatLabel)
     }

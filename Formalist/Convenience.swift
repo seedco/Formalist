@@ -90,7 +90,7 @@ public func staticText(_ value: FormValue<String>, viewConfigurator: StaticTextE
 public func segue(icon: UIImage?,
                        title: String,
                        viewConfigurator: SegueElement.ViewConfigurator? = nil,
-                       action: (Void) -> Void) -> SegueElement {
+                       action: @escaping (Void) -> Void) -> SegueElement {
     return SegueElement(
         icon: icon,
         title: title,
@@ -123,7 +123,10 @@ public func spacer(height: CGFloat, viewConfigurator: SpacerElement.ViewConfigur
  
  - returns: A view element
  */
-public func customView<ValueType: Equatable>(value: FormValue<ValueType>, viewConfigurator: ViewElement<ValueType>.ViewConfigurator) -> ViewElement<ValueType> {
+public func customView<ValueType: Equatable>(
+  value: FormValue<ValueType>,
+  viewConfigurator: @escaping ViewElement<ValueType>.ViewConfigurator
+) -> ViewElement<ValueType> {
     return ViewElement(value: value, viewConfigurator: viewConfigurator)
 }
 

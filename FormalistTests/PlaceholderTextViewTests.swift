@@ -17,12 +17,12 @@ class PlaceholderTextViewTests: FBSnapshotTestCase {
         super.setUp()
         recordMode = false
         textView = PlaceholderTextView(frame: CGRect.zero)
-        textView.scrollEnabled = false
+        textView.isScrollEnabled = false
     }
     
     func testShowsPlaceholderBySettingPlaceholder() {
         textView.placeholder = "Placeholder"
-        textView.placeholderColor = .redColor()
+        textView.placeholderColor = .red
         
         sizeViewForTesting(textView)
         FBSnapshotVerifyView(textView)
@@ -30,8 +30,8 @@ class PlaceholderTextViewTests: FBSnapshotTestCase {
     
     func testShowsPlaceholderBySettingAttributedPlaceholder() {
         textView.attributedPlaceholder = NSAttributedString(string: "Placeholder", attributes: [
-            NSForegroundColorAttributeName: UIColor.redColor(),
-            NSBackgroundColorAttributeName: UIColor.lightGrayColor()
+            NSForegroundColorAttributeName: UIColor.red,
+            NSBackgroundColorAttributeName: UIColor.lightGray
         ])
         
         sizeViewForTesting(textView)
@@ -40,7 +40,7 @@ class PlaceholderTextViewTests: FBSnapshotTestCase {
     
     func testHidesPlaceholderWhenTextExists() {
         textView.placeholder = "Placeholder"
-        textView.placeholderColor = .redColor()
+        textView.placeholderColor = .red
         textView.text = "Text View Text"
         
         sizeViewForTesting(textView)

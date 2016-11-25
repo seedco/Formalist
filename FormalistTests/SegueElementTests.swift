@@ -18,8 +18,8 @@ class SegueElementTests: FBSnapshotTestCase {
     
     func testRenderWithoutIcon() {
         let element = SegueElement(icon: nil, title: "Segue Element",viewConfigurator: {
-            $0.label.textAlignment = .Center
-            $0.label.textColor = .redColor()
+            $0.label.textAlignment = .center
+            $0.label.textColor = .red
         }, action: {})
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)

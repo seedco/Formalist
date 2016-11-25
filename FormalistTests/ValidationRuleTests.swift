@@ -13,7 +13,7 @@ class ValidationRuleTests: XCTestCase {
     func testValidateWithNoRules() {
         let expectation = self.expectation(description: "validate rules")
         ValidationRule.validateRules([], forValue: "") { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -23,18 +23,18 @@ class ValidationRuleTests: XCTestCase {
         var evaluated1 = false, evaluated2 = false
         let rule1 = ValidationRule<String> { _, completion in
             evaluated1 = true
-            completion(.Valid)
+            completion(.valid)
         }
         let rule2 = ValidationRule<String> { _, completion in
             evaluated2 = true
-            completion(.Valid)
+            completion(.valid)
         }
         
         let expectation = self.expectation(description: "validate rules")
         ValidationRule.validateRules([rule1, rule2], forValue: "") { result in
             XCTAssert(evaluated1)
             XCTAssert(evaluated2)
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -42,14 +42,14 @@ class ValidationRuleTests: XCTestCase {
     
     func testValidateWithOneInvalidRule() {
         var evaluated1 = false, evaluated2 = false
-        let invalidResult = ValidationResult.Invalid(message: "Validation failed")
+        let invalidResult = ValidationResult.invalid(message: "Validation failed")
         let rule1 = ValidationRule<String> { _, completion in
             evaluated1 = true
             completion(invalidResult)
         }
         let rule2 = ValidationRule<String> { _, completion in
             evaluated2 = true
-            completion(.Valid)
+            completion(.valid)
         }
         
         let expectation = self.expectation(description: "validate rules")
@@ -66,18 +66,18 @@ class ValidationRuleTests: XCTestCase {
         var evaluated1 = false, evaluated2 = false
         let rule1 = ValidationRule<String> { _, completion in
             evaluated1 = true
-            completion(.Cancelled)
+            completion(.cancelled)
         }
         let rule2 = ValidationRule<String> { _, completion in
             evaluated2 = true
-            completion(.Valid)
+            completion(.valid)
         }
         
         let expectation = self.expectation(description: "validate rules")
         ValidationRule.validateRules([rule1, rule2], forValue: "") { result in
             XCTAssert(evaluated1)
             XCTAssertFalse(evaluated2)
-            XCTAssert(result == .Cancelled)
+            XCTAssert(result == .cancelled)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -86,7 +86,7 @@ class ValidationRuleTests: XCTestCase {
     func testRequiredRuleWithValidInput() {
         let expectation = self.expectation(description: "validate rule")
         ValidationRule<String>.required.validate("foo") { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -95,7 +95,7 @@ class ValidationRuleTests: XCTestCase {
     func testRequiredRuleWithInvalidInput() {
         let expectation = self.expectation(description: "validate rule")
         ValidationRule<String>.required.validate("") { result in
-            if case .Invalid = result {
+            if case .invalid = result {
             } else {
                 XCTFail("Expected validation result to be invalid")
             }
@@ -112,7 +112,7 @@ class ValidationRuleTests: XCTestCase {
         let expectation = self.expectation(description: "validate rule")
         let rule = ValidationRule<String>.regex(TestRegex, failureMessage: "Regex validation failed")
         rule.validate("012") { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -122,7 +122,7 @@ class ValidationRuleTests: XCTestCase {
         let expectation = self.expectation(description: "validate rule")
         let rule = ValidationRule<String>.regex(TestRegex, failureMessage: "Regex validation failed")
         rule.validate("01") { result in
-            if case .Invalid = result {
+            if case .invalid = result {
             } else {
                 XCTFail("Expected validation result to be invalid")
             }
@@ -135,7 +135,7 @@ class ValidationRuleTests: XCTestCase {
         let expectation = self.expectation(description: "validate rule")
         let rule = ValidationRule<String>.regex(TestRegex, failureMessage: "Regex validation failed")
         rule.validate("") { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -143,9 +143,9 @@ class ValidationRuleTests: XCTestCase {
     
     func testCharacterSetRuleWithValidInput() {
         let expectation = self.expectation(description: "validate rule")
-        let rule = ValidationRule<String>.characterSet(.alphanumericCharacterSet())
+        let rule = ValidationRule<String>.characterSet(.alphanumerics)
         rule.validate("abc123") { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -153,9 +153,9 @@ class ValidationRuleTests: XCTestCase {
     
     func testCharacterSetRuleWithInvalidInput() {
         let expectation = self.expectation(description: "validate rule")
-        let rule = ValidationRule<String>.characterSet(.alphanumericCharacterSet())
+        let rule = ValidationRule<String>.characterSet(.alphanumerics)
         rule.validate("$$$") { result in
-            if case .Invalid = result {
+            if case .invalid = result {
             } else {
                 XCTFail("Expected validation result to be invalid")
             }
@@ -168,7 +168,7 @@ class ValidationRuleTests: XCTestCase {
         let expectation = self.expectation(description: "validate rule")
         let rule = ValidationRule<String>.maximumLength(5)
         rule.validate("foo") { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -178,7 +178,7 @@ class ValidationRuleTests: XCTestCase {
         let expectation = self.expectation(description: "validate rule")
         let rule = ValidationRule<String>.maximumLength(5)
         rule.validate("foobar") { result in
-            if case .Invalid = result {
+            if case .invalid = result {
             } else {
                 XCTFail("Expected validation result to be invalid")
             }
@@ -191,7 +191,7 @@ class ValidationRuleTests: XCTestCase {
         let expectation = self.expectation(description: "validate rule")
         let rule = ValidationRule<String>.minimumLength(3)
         rule.validate("foo") { result in
-            XCTAssert(result == .Valid)
+            XCTAssert(result == .valid)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
@@ -201,7 +201,7 @@ class ValidationRuleTests: XCTestCase {
         let expectation = self.expectation(description: "validate rule")
         let rule = ValidationRule<String>.minimumLength(3)
         rule.validate("o") { result in
-            if case .Invalid = result {
+            if case .invalid = result {
             } else {
                 XCTFail("Expected validation result to be invalid")
             }

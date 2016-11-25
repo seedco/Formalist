@@ -59,7 +59,7 @@ public final class SegmentElement<ValueType: Equatable>: FormElement {
             }
         }
         updateView(selectedValue.value)
-        selectedValue.addObserver(updateView)
+        let _ = selectedValue.addObserver(updateView)
         viewConfigurator?(segmentView)
         return segmentView
     }

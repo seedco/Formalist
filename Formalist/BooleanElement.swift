@@ -46,7 +46,7 @@ public final class BooleanElement: FormElement {
             }
         }
         updateView(value.value)
-        value.addObserver(updateView)
+        let _ = value.addObserver(updateView)
         viewConfigurator?(booleanView)
         return booleanView
     }

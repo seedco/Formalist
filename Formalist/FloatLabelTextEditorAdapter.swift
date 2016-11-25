@@ -18,14 +18,17 @@ public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapt
     public init(configuration: TextEditorConfiguration) {
         self.configuration = configuration
     }
-    
-    public func createViewWithCallbacks(_ callbacks: TextEditorAdapterCallbacks<FloatLabelTextEditorAdapter<InnerAdapterType>>, textChangedObserver: @escaping TextChangedObserver) -> ViewType {
+
+    public func createViewWithCallbacks(
+      _ callbacks: TextEditorAdapterCallbacks<FloatLabelTextEditorAdapter<InnerAdapterType>>,
+      textChangedObserver: @escaping (FloatLabelTextEditorAdapter<InnerAdapterType>, FloatLabel<InnerAdapterType>) -> Void
+    ) -> FloatLabel<InnerAdapterType> {
         let floatLabel = FloatLabel(adapter: innerAdapter)
-        
+
         floatLabel.textChangedObserver = { [unowned floatLabel] (adapter, view) in
             textChangedObserver(self, floatLabel)
         }
-        
+
         floatLabel.adapterCallbacks = { [unowned floatLabel] in
             var innerCallbacks = TextEditorAdapterCallbacks<InnerAdapterType>()
             innerCallbacks.textDidBeginEditing = { [unowned floatLabel] _ in
@@ -42,7 +45,7 @@ public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapt
         
         return floatLabel
     }
-    
+
     public func getTextForView(_ view: ViewType) -> String {
         return innerAdapter.getTextForView(view.textEntryView)
     }

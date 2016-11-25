@@ -17,7 +17,9 @@ extension PlaceholderTextView: FloatLabelTextEntryView {}
 
 /// Native UIKit implementation of the float label pattern:
 /// http://bradfrost.com/blog/post/float-label-pattern/
-open class FloatLabel<AdapterType: TextEditorAdapter>: UIView where AdapterType.ViewType: FloatLabelTextEntryView {
+open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelegate
+  where AdapterType.ViewType: FloatLabelTextEntryView {
+
     /// The label used to display the field name
     open let nameLabel: UILabel = {
         let nameLabel = UILabel(frame: CGRect.zero)
@@ -243,15 +245,13 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView where AdapterType.
         guard nameLabel.alpha != animation.labelOpacity else { return }
         nameLabel.layer.add(createLabelAnimation(animation), forKey: animation.key)
     }
-    
-    // MARK: CAAnimationDelegate
-    
-    override open func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if let presentationLayer = nameLabel.layer.presentation() as? CALayer, flag {
-            nameLabel.layer.opacity = presentationLayer.opacity
-        }
-        nameLabel.layer.removeAllAnimations()
+
+  open func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    if let presentationLayer = nameLabel.layer.presentation(), flag {
+      nameLabel.layer.opacity = presentationLayer.opacity
     }
+    nameLabel.layer.removeAllAnimations()
+  }
 }
 
 private struct Layout {

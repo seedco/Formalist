@@ -37,7 +37,7 @@ open class BooleanElementView: UIView {
         stackView.spacing = Layout.MinimumTextSwitchSpacing
         
         addSubview(stackView)
-        stackView.activateSuperviewHuggingConstraints()
+        let _ = stackView.activateSuperviewHuggingConstraints()
     }
     
     required public init?(coder aDecoder: NSCoder) {

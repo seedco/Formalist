@@ -18,8 +18,8 @@ class StaticTextElementTests: FBSnapshotTestCase {
     
     func testRender() {
         let element = staticText("Static Text Element") {
-            $0.textAlignment = .Center
-            $0.textColor = .redColor()
+            $0.textAlignment = .center
+            $0.textColor = .red
         }
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)

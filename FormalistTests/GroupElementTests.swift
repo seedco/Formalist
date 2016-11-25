@@ -25,15 +25,15 @@ class GroupElementTests: FBSnapshotTestCase {
             BooleanElement(title: "Boolean Element", value: FormValue(false)),
             validatableElement,
             SegmentElement(title: "Segment Element", segments: [
-                Segment(content: .Title("Segment 1"), value: 0),
-                Segment(content: .Title("Segment 2"), value: 1)
+                Segment(content: .title("Segment 1"), value: 0),
+                Segment(content: .title("Segment 2"), value: 1)
             ], selectedValue: FormValue(0)),
         ]
     }
     
     func testRenderPlainStyle() {
         var configuration = GroupElement.Configuration()
-        configuration.style = .Plain
+        configuration.style = .plain
         
         let element = GroupElement(configuration: configuration, elements: childElements)
         let elementView = renderElementForTesting(element)
@@ -42,7 +42,7 @@ class GroupElementTests: FBSnapshotTestCase {
     
     func testRenderGroupedStyleWithSeparators() {
         var configuration = GroupElement.Configuration()
-        configuration.style = .Grouped(backgroundColor: .whiteColor())
+        configuration.style = .grouped(backgroundColor: .white)
         
         let element = GroupElement(configuration: configuration, elements: childElements)
         let elementView = renderElementForTesting(element)
@@ -51,7 +51,7 @@ class GroupElementTests: FBSnapshotTestCase {
     
     func testRenderGroupedStyleWithoutSeparators() {
         var configuration = GroupElement.Configuration()
-        configuration.style = .Grouped(backgroundColor: .whiteColor())
+        configuration.style = .grouped(backgroundColor: .white)
         configuration.separatorViewFactory = { _ in return nil }
         
         let element = GroupElement(configuration: configuration, elements: childElements)
@@ -61,7 +61,7 @@ class GroupElementTests: FBSnapshotTestCase {
     
     func testRenderWithConstantHeights() {
         var configuration = GroupElement.Configuration()
-        configuration.layout.mode = .ConstantHeight(44)
+        configuration.layout.mode = .constantHeight(44)
         
         let element = GroupElement(configuration: configuration, elements: childElements)
         let elementView = renderElementForTesting(element)
@@ -70,7 +70,7 @@ class GroupElementTests: FBSnapshotTestCase {
     
     func testRenderWithConstantHeightsAndInsets() {
         var configuration = GroupElement.Configuration()
-        configuration.layout.mode = .ConstantHeight(44)
+        configuration.layout.mode = .constantHeight(44)
         configuration.layout.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
         
         let element = GroupElement(configuration: configuration, elements: childElements)
@@ -80,7 +80,7 @@ class GroupElementTests: FBSnapshotTestCase {
     
     func testRenderWithIntrinsicSizeAndInsets() {
         var configuration = GroupElement.Configuration()
-        configuration.layout.mode = .IntrinsicSize
+        configuration.layout.mode = .intrinsicSize
         configuration.layout.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
         
         let element = GroupElement(configuration: configuration, elements: childElements)
@@ -89,21 +89,21 @@ class GroupElementTests: FBSnapshotTestCase {
     }
     
     func testRenderValidationErrorWithDefaultFactory() {
-        let expectation = expectationWithDescription("Text field element validation")
+        let fieldExpectation = expectation(description: "Text field element validation")
 
         validatableElement.validateAndStoreResult { _ in
             let element = GroupElement(elements: self.childElements)
             let elementView = renderElementForTesting(element)
             self.FBSnapshotVerifyView(elementView)
             
-            expectation.fulfill()
+            fieldExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(1.0, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testRenderValidationErrorWithNoopFactory() {
-        let expectation = expectationWithDescription("Text field element validation")
+        let fieldExpectation = expectation(description: "Text field element validation")
         
         validatableElement.validateAndStoreResult { _ in
             var configuration = GroupElement.Configuration()
@@ -113,9 +113,9 @@ class GroupElementTests: FBSnapshotTestCase {
             let elementView = renderElementForTesting(element)
             self.FBSnapshotVerifyView(elementView)
             
-            expectation.fulfill()
+            fieldExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(1.0, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
 }

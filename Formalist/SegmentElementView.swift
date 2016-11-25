@@ -50,7 +50,7 @@ open class SegmentElementView: UIView {
         stackView.axis = .vertical
 
         addSubview(stackView)
-        stackView.activateSuperviewHuggingConstraints()
+        let _ = stackView.activateSuperviewHuggingConstraints()
         applyLayout(layout)
     }
 

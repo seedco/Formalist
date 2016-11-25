@@ -39,7 +39,7 @@ open class SegueElementView: UIView {
         stackView.spacing = Layout.IconLabelSpacing
         
         addSubview(stackView)
-        stackView.activateSuperviewHuggingConstraints()
+        let _ = stackView.activateSuperviewHuggingConstraints()
     }
     
     required public init?(coder aDecoder: NSCoder) {
