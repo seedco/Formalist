@@ -10,30 +10,30 @@ import UIKit
 import StackViewController
 
 /// The view used to render a `BooleanElement`
-public class BooleanElementView: UIView {
-    private struct Layout {
+open class BooleanElementView: UIView {
+    fileprivate struct Layout {
         static let MinimumTextSwitchSpacing: CGFloat = 10.0
     }
     
     /// The label used to display the title
-    public let titleLabel: UILabel
+    open let titleLabel: UILabel
     
     /// The toggle used to change the boolean value
-    public let toggle: UISwitch
+    open let toggle: UISwitch
     
     init(title: String) {
-        titleLabel = UILabel(frame: CGRectZero)
-        titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        titleLabel = UILabel(frame: CGRect.zero)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         titleLabel.text = title
-        titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
+        titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .horizontal)
         
-        toggle = UISwitch(frame: CGRectZero)
+        toggle = UISwitch(frame: CGRect.zero)
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, toggle])
-        stackView.axis = .Horizontal
-        stackView.alignment = .Center
+        stackView.axis = .horizontal
+        stackView.alignment = .center
         stackView.spacing = Layout.MinimumTextSwitchSpacing
         
         addSubview(stackView)

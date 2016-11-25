@@ -41,7 +41,7 @@ public protocol TextEditorAdapter: AnyObject {
      
      - returns: A new text editing view
      */
-    func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<Self>, textChangedObserver: TextChangedObserver) -> ViewType
+    func createViewWithCallbacks(_ callbacks: TextEditorAdapterCallbacks<Self>, textChangedObserver: TextChangedObserver) -> ViewType
     
     /**
      Gets the text in the specified view
@@ -50,7 +50,7 @@ public protocol TextEditorAdapter: AnyObject {
      
      - returns: The text in the specified view
      */
-    func getTextForView(view: ViewType) -> String
+    func getTextForView(_ view: ViewType) -> String
     
     /**
      Sets the text in the specified view
@@ -58,7 +58,7 @@ public protocol TextEditorAdapter: AnyObject {
      - parameter text: The text to display in the view
      - parameter view: The view to set the text for
      */
-    func setText(text: String, forView view: ViewType)
+    func setText(_ text: String, forView view: ViewType)
 }
 
 public extension TextEditorAdapter {

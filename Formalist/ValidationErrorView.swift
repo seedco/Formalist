@@ -9,20 +9,20 @@
 import UIKit
 
 /// A view that displays a validation error message
-public class ValidationErrorView: UIView {
-    private struct Appearance {
+open class ValidationErrorView: UIView {
+    fileprivate struct Appearance {
         static let TextColor = UIColor(red: 0.945, green: 0.333, blue: 0.361, alpha: 1.0)
         static let BackgroundColor = UIColor(red: 1.0, green: 0.973, blue: 0.969, alpha: 1.0)
     }
     
     /// The label used to display the message
-    public let label: UILabel
+    open let label: UILabel
     
     public override init(frame: CGRect) {
-        label = UILabel(frame: CGRectZero)
+        label = UILabel(frame: CGRect.zero)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption1)
         label.textColor = Appearance.TextColor
         
         super.init(frame: frame)
@@ -30,17 +30,17 @@ public class ValidationErrorView: UIView {
         backgroundColor = Appearance.BackgroundColor
         addSubview(label)
         
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: ["label": label])
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: ["label": label])
         constraints.append(NSLayoutConstraint(
             item: label,
-            attribute: .CenterY,
-            relatedBy: .Equal,
+            attribute: .centerY,
+            relatedBy: .equal,
             toItem: self,
-            attribute: .CenterY,
+            attribute: .centerY,
             multiplier: 1.0,
             constant: 0.0
         ))
-        NSLayoutConstraint.activateConstraints(constraints)
+        NSLayoutConstraint.activate(constraints)
     }
     
     required public init?(coder aDecoder: NSCoder) {

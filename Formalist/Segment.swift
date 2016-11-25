@@ -13,13 +13,13 @@ import UIKit
 /// `UISegmentedControl` allows each segment to have either an image
 /// or a title associated with it, but not both.
 public enum SegmentContent {
-    case Image(UIImage)
-    case Title(String)
+    case image(UIImage)
+    case title(String)
     
     public var objectValue: AnyObject {
         switch self {
-        case let .Image(image): return image
-        case let .Title(title): return title
+        case let .image(image): return image
+        case let .title(title): return title as AnyObject
         }
     }
 }

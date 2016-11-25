@@ -10,12 +10,12 @@ import Foundation
 
 /// An element that displays an editable text field
 public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElement, Validatable {
-    public typealias ViewConfigurator = AdapterType.ViewType -> Void
+    public typealias ViewConfigurator = (AdapterType.ViewType) -> Void
     
-    private let adapter: AdapterType
-    private let value: FormValue<String>
-    private let validationRules: [ValidationRule<String>]
-    private let viewConfigurator: ViewConfigurator?
+    fileprivate let adapter: AdapterType
+    fileprivate let value: FormValue<String>
+    fileprivate let validationRules: [ValidationRule<String>]
+    fileprivate let viewConfigurator: ViewConfigurator?
     
     /**
      Designated initializer
@@ -47,8 +47,8 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
             self?.value.value = adapter.getTextForView(view)
             view.shouldIgnoreFormValueChanges = false
         }
-        let updateView: String -> Void = { [weak view, weak self] in
-            guard let view = view, adapter = self?.adapter else { return }
+        let updateView: (String) -> Void = { [weak view, weak self] in
+            guard let view = view, let adapter = self?.adapter else { return }
             if !view.shouldIgnoreFormValueChanges {
                 adapter.setText($0, forView: view)
             }
@@ -61,7 +61,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
     
     // MARK: Validatable
     
-    public func validate(completionHandler: ValidationResult -> Void) {
+    public func validate(_ completionHandler: (ValidationResult) -> Void) {
         ValidationRule.validateRules(validationRules, forValue: value.value,  completionHandler: completionHandler)
     }
 }

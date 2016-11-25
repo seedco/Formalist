@@ -10,32 +10,32 @@ import UIKit
 import StackViewController
 
 /// The view used to render a `SegueElement`
-public class SegueElementView: UIView {
-    private struct Layout {
+open class SegueElementView: UIView {
+    fileprivate struct Layout {
         static let IconLabelSpacing: CGFloat = 10.0
     }
     
     /// The label used to display the title
-    public let label: UILabel
+    open let label: UILabel
     
     /// The image view used to display the icon
-    public let imageView: UIImageView
+    open let imageView: UIImageView
     
     init(icon: UIImage?, title: String) {
-        label = UILabel(frame: CGRectZero)
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        label = UILabel(frame: CGRect.zero)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         label.text = title
         
         imageView = UIImageView(image: icon)
-        imageView.hidden = (icon == nil)
-        imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
+        imageView.isHidden = (icon == nil)
+        imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         let stackView = UIStackView(arrangedSubviews: [imageView, label])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Horizontal
-        stackView.alignment = .Center
+        stackView.axis = .horizontal
+        stackView.alignment = .center
         stackView.spacing = Layout.IconLabelSpacing
         
         addSubview(stackView)

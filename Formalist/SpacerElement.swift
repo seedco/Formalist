@@ -10,10 +10,10 @@ import UIKit
 
 /// An element that displays a spacer of a fixed height
 public final class SpacerElement: FormElement {
-    public typealias ViewConfigurator = UIView -> Void
+    public typealias ViewConfigurator = (UIView) -> Void
     
-    private let height: CGFloat
-    private let viewConfigurator: ViewConfigurator?
+    fileprivate let height: CGFloat
+    fileprivate let viewConfigurator: ViewConfigurator?
     
     /**
      Designated initializer
@@ -32,11 +32,11 @@ public final class SpacerElement: FormElement {
     // MARK: FormElement
     
     public func render() -> UIView {
-        let view = UIView(frame: CGRectZero)
+        let view = UIView(frame: CGRect.zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: height)
-        heightConstraint.active = true
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height)
+        heightConstraint.isActive = true
         
         viewConfigurator?(view)
         return view

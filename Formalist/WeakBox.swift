@@ -7,7 +7,7 @@
 //
 
 final class WeakBox<ValueType: AnyObject> {
-    private(set) weak var value: ValueType?
+    fileprivate(set) weak var value: ValueType?
     
     init(_ value: ValueType) {
         self.value = value

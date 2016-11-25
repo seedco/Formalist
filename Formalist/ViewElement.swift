@@ -10,10 +10,10 @@ import UIKit
 
 /// An element that wraps a view. Useful for one-off custom elements.
 public final class ViewElement<ValueType: Equatable>: FormElement {
-    public typealias ViewConfigurator = FormValue<ValueType> -> UIView
+    public typealias ViewConfigurator = (FormValue<ValueType>) -> UIView
     
-    private let viewConfigurator: ViewConfigurator
-    private let value: FormValue<ValueType>
+    fileprivate let viewConfigurator: ViewConfigurator
+    fileprivate let value: FormValue<ValueType>
     
     /**
      Designated initializer
@@ -24,7 +24,7 @@ public final class ViewElement<ValueType: Equatable>: FormElement {
      
      - returns: An initialized instance of the receiver
      */
-    public init(value: FormValue<ValueType>, viewConfigurator: ViewConfigurator) {
+    public init(value: FormValue<ValueType>, viewConfigurator: @escaping ViewConfigurator) {
         self.value = value
         self.viewConfigurator = viewConfigurator
     }

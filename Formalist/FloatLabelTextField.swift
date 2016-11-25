@@ -10,15 +10,15 @@ import UIKit
 
 /// `UITextField` subclass that automatically hides the placeholder as soon
 /// as editing begins. Intended to be used with the `FloatLabel` class.
-public class FloatLabelTextField: UITextField {
-    private var originalAttributedPlaceholder: NSAttributedString?
+open class FloatLabelTextField: UITextField {
+    fileprivate var originalAttributedPlaceholder: NSAttributedString?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidBeginEditing(_:)), name: UITextFieldTextDidBeginEditingNotification, object: self)
-        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidEndEditing(_:)), name: UITextFieldTextDidEndEditingNotification, object: self)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidBeginEditing(_:)), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: self)
+        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidEndEditing(_:)), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -26,17 +26,17 @@ public class FloatLabelTextField: UITextField {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: Notifications
     
-    @objc private func textDidBeginEditing(notification: NSNotification) {
+    @objc fileprivate func textDidBeginEditing(_ notification: Notification) {
         originalAttributedPlaceholder = attributedPlaceholder
         attributedPlaceholder = nil
     }
     
-    @objc private func textDidEndEditing(notification: NSNotification) {
+    @objc fileprivate func textDidEndEditing(_ notification: Notification) {
         attributedPlaceholder = originalAttributedPlaceholder
         originalAttributedPlaceholder = nil
     }

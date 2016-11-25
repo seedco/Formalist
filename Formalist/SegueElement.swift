@@ -11,12 +11,12 @@ import Foundation
 /// An element containing an image view and a label that invokes an action
 /// when tapped on.
 public final class SegueElement: FormElement {
-    public typealias ViewConfigurator = SegueElementView -> Void
+    public typealias ViewConfigurator = (SegueElementView) -> Void
     
-    private let icon: UIImage?
-    private let title: String
-    private let viewConfigurator: ViewConfigurator?
-    private let action: Void -> Void
+    fileprivate let icon: UIImage?
+    fileprivate let title: String
+    fileprivate let viewConfigurator: ViewConfigurator?
+    fileprivate let action: (Void) -> Void
     
     /**
      Designated initializer
@@ -29,7 +29,7 @@ public final class SegueElement: FormElement {
      
      - returns: An initialized instance of the receiver
      */
-    public init(icon: UIImage?, title: String, viewConfigurator: ViewConfigurator? = nil, action: Void -> Void) {
+    public init(icon: UIImage?, title: String, viewConfigurator: ViewConfigurator? = nil, action: @escaping (Void) -> Void) {
         self.icon = icon
         self.title = title
         self.viewConfigurator = viewConfigurator
@@ -47,7 +47,7 @@ public final class SegueElement: FormElement {
         return view
     }
     
-    @objc private func performSegueAction(sender: UITapGestureRecognizer) {
+    @objc fileprivate func performSegueAction(_ sender: UITapGestureRecognizer) {
         action()
     }
 }

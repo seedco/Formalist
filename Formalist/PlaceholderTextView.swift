@@ -11,11 +11,11 @@ import UIKit
 /// A text view that can display a placeholder when there is no text in
 /// the view and it isn't being edited (similar to how `UITextField.placeholder`
 /// behaves)
-public class PlaceholderTextView: UITextView {
+open class PlaceholderTextView: UITextView {
     // MARK: Properties
     
     /// The color of the placeholder text
-    public var placeholderColor: UIColor? {
+    open var placeholderColor: UIColor? {
         get { return _placeholderColor }
         set {
             _placeholderColor = newValue
@@ -25,11 +25,11 @@ public class PlaceholderTextView: UITextView {
             }
         }
     }
-    private var _placeholderColor: UIColor? = UIColor(white: 0.78, alpha: 1.0)
+    fileprivate var _placeholderColor: UIColor? = UIColor(white: 0.78, alpha: 1.0)
     
     /// The placeholder text to display when there is no text in the view and
     /// it isn't being edited.
-    public var placeholder: String? {
+    open var placeholder: String? {
         get { return _placeholder }
         set {
             _placeholder = newValue
@@ -41,7 +41,7 @@ public class PlaceholderTextView: UITextView {
             }
         }
     }
-    private var _placeholder: String?
+    fileprivate var _placeholder: String?
     
     /// The attributed placeholder text to display when there is no text in the
     /// view and it isn't being edited.
@@ -51,7 +51,7 @@ public class PlaceholderTextView: UITextView {
     /// `placeholderColor` will be set based on the value of the
     /// `NSForegroundColorAttributeName` attribute at index 0 of the string if
     /// the string has a non-zero length. Otherwise it will be set to `nil`.
-    public var attributedPlaceholder: NSAttributedString? {
+    open var attributedPlaceholder: NSAttributedString? {
         didSet {
             if showPlaceholder {
                 super.attributedText = attributedPlaceholder
@@ -59,7 +59,7 @@ public class PlaceholderTextView: UITextView {
             if let attributedPlaceholder = attributedPlaceholder {
                 _placeholder = attributedPlaceholder.string
                 if attributedPlaceholder.length > 0 {
-                    let attributes = attributedPlaceholder.attributesAtIndex(0, effectiveRange: nil)
+                    let attributes = attributedPlaceholder.attributes(at: 0, effectiveRange: nil)
                     _placeholderColor = attributes[NSForegroundColorAttributeName] as? UIColor
                 } else {
                     _placeholderColor = nil
@@ -71,7 +71,7 @@ public class PlaceholderTextView: UITextView {
         }
     }
     
-    private var defaultTextAttributes: [String: AnyObject] {
+    fileprivate var defaultTextAttributes: [String: AnyObject] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = textAlignment
         paragraphStyle.lineSpacing = 8
@@ -87,11 +87,10 @@ public class PlaceholderTextView: UITextView {
         return attributes
     }
     
-    private var currentTextAttributes: [String: AnyObject] {
+    fileprivate var currentTextAttributes: [String: AnyObject] {
         var attributes: [String: AnyObject]
-        if let attributedPlaceholder = attributedPlaceholder
-            where attributedPlaceholder.length > 0 {
-            attributes = attributedPlaceholder.attributesAtIndex(0, effectiveRange: nil)
+        if let attributedPlaceholder = attributedPlaceholder, attributedPlaceholder.length > 0 {
+            attributes = attributedPlaceholder.attributes(at: 0, effectiveRange: nil) as [String : AnyObject]
         } else {
             attributes = defaultTextAttributes
         }
@@ -99,13 +98,13 @@ public class PlaceholderTextView: UITextView {
         return attributes
     }
     
-    private var originalTextAttributes: [String: AnyObject]?
-    private var editing: Bool = false {
+    fileprivate var originalTextAttributes: [String: AnyObject]?
+    fileprivate var editing: Bool = false {
         didSet { showPlaceholder = !editing && text.isEmpty }
     }
     
-    private var _showPlaceholder: Bool = false
-    private var showPlaceholder: Bool {
+    fileprivate var _showPlaceholder: Bool = false
+    fileprivate var showPlaceholder: Bool {
         get { return _showPlaceholder }
         set {
             guard _showPlaceholder != newValue else { return }
@@ -127,7 +126,7 @@ public class PlaceholderTextView: UITextView {
         }
     }
     
-    override public var text: String! {
+    override open var text: String! {
         get {
             return showPlaceholder ? "" : super.text
         }
@@ -139,7 +138,7 @@ public class PlaceholderTextView: UITextView {
         }
     }
     
-    override public var attributedText: NSAttributedString! {
+    override open var attributedText: NSAttributedString! {
         get {
             return showPlaceholder ? NSAttributedString(string: "") : super.attributedText
         }
@@ -151,7 +150,7 @@ public class PlaceholderTextView: UITextView {
         }
     }
     
-    override public var textColor: UIColor? {
+    override open var textColor: UIColor? {
         get {
             if showPlaceholder {
                 return originalTextAttributes?[NSForegroundColorAttributeName] as? UIColor
@@ -180,25 +179,25 @@ public class PlaceholderTextView: UITextView {
         commonInit()
     }
     
-    private func commonInit() {
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidBeginEditing(_:)), name: UITextViewTextDidBeginEditingNotification, object: self)
-        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidEndEditing(_:)), name: UITextViewTextDidEndEditingNotification, object: self)
+    fileprivate func commonInit() {
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidBeginEditing(_:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
+        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidEndEditing(_:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
 
         showPlaceholder = true
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: Actions
     
-    @objc private func textDidBeginEditing(notification: NSNotification) {
+    @objc fileprivate func textDidBeginEditing(_ notification: Notification) {
         editing = true
     }
     
-    @objc private func textDidEndEditing(notification: NSNotification) {
+    @objc fileprivate func textDidEndEditing(_ notification: Notification) {
         editing = false
     }
 }

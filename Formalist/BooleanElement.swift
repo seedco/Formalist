@@ -10,11 +10,11 @@ import UIKit
 
 /// A form element that displays a toggle switch for setting a boolean value.
 public final class BooleanElement: FormElement {
-    public typealias ViewConfigurator = BooleanElementView -> Void
+    public typealias ViewConfigurator = (BooleanElementView) -> Void
     
-    private let title: String
-    private let value: FormValue<Bool>
-    private let viewConfigurator: ViewConfigurator?
+    fileprivate let title: String
+    fileprivate let value: FormValue<Bool>
+    fileprivate let viewConfigurator: ViewConfigurator?
     
     /**
      Designated initializer
@@ -37,12 +37,12 @@ public final class BooleanElement: FormElement {
         booleanView.toggle.addTarget(
             self,
             action: #selector(BooleanElement.valueChanged(_:)),
-            forControlEvents: .ValueChanged
+            for: .valueChanged
         )
-        let updateView: Bool -> Void = { [weak booleanView] in
+        let updateView: (Bool) -> Void = { [weak booleanView] in
             guard let booleanView = booleanView else { return }
             if !booleanView.shouldIgnoreFormValueChanges {
-                booleanView.toggle.on = $0
+                booleanView.toggle.isOn = $0
             }
         }
         updateView(value.value)
@@ -51,9 +51,9 @@ public final class BooleanElement: FormElement {
         return booleanView
     }
     
-    @objc private func valueChanged(sender: UISwitch) {
+    @objc fileprivate func valueChanged(_ sender: UISwitch) {
         sender.shouldIgnoreFormValueChanges = true
-        value.value = sender.on
+        value.value = sender.isOn
         sender.shouldIgnoreFormValueChanges = false
     }
 }

@@ -10,13 +10,13 @@ import XCTest
 @testable import Formalist
 
 private class TestValidatable: Validatable {
-    private let result: ValidationResult
+    fileprivate let result: ValidationResult
     
     init(result: ValidationResult) {
         self.result = result
     }
     
-    private func validate(completionHandler: ValidationResult -> Void) {
+    fileprivate func validate(_ completionHandler: (ValidationResult) -> Void) {
         completionHandler(result)
     }
 }
@@ -26,36 +26,36 @@ class ValidatableTests: XCTestCase {
         let validatable = TestValidatable(result: .Valid)
         XCTAssertNil(validatable.validationResult)
         
-        let expectation = expectationWithDescription("validation")
+        let expectation = self.expectation(description: "validation")
         validatable.validateAndStoreResult { result in
             XCTAssert(result == .Valid)
             XCTAssert(validatable.validationResult == result)
             expectation.fulfill()
         }
-        waitForExpectationsWithTimeout(1.0, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testValidateObjectsWithNoObjects() {
-        let expectation = expectationWithDescription("validate objects")
+        let expectation = self.expectation(description: "validate objects")
         validateObjects([]) { result in
             XCTAssert(result == .Valid)
             expectation.fulfill()
         }
-        waitForExpectationsWithTimeout(1.0, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testValidateObjectsWithAllValid() {
         let validatable1 = TestValidatable(result: .Valid)
         let validatable2 = TestValidatable(result: .Valid)
         
-        let expectation = expectationWithDescription("validate objects")
+        let expectation = self.expectation(description: "validate objects")
         validateObjects([validatable1, validatable2]) { result in
             XCTAssert(result == .Valid)
             XCTAssert(validatable1.validationResult == result)
             XCTAssert(validatable2.validationResult == result)
             expectation.fulfill()
         }
-        waitForExpectationsWithTimeout(1.0, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testValidateObjectsWithOneInvalidObject() {
@@ -63,27 +63,27 @@ class ValidatableTests: XCTestCase {
         let validatable1 = TestValidatable(result: invalidResult)
         let validatable2 = TestValidatable(result: .Valid)
         
-        let expectation = expectationWithDescription("validate objects")
+        let expectation = self.expectation(description: "validate objects")
         validateObjects([validatable1, validatable2]) { result in
             XCTAssert(result == invalidResult)
             XCTAssert(validatable1.validationResult == result)
             XCTAssertNil(validatable2.validationResult)
             expectation.fulfill()
         }
-        waitForExpectationsWithTimeout(1.0, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testValidateObjectsWithOneCancelledObject() {
         let validatable1 = TestValidatable(result: .Cancelled)
         let validatable2 = TestValidatable(result: .Valid)
         
-        let expectation = expectationWithDescription("validate objects")
+        let expectation = self.expectation(description: "validate objects")
         validateObjects([validatable1, validatable2]) { result in
             XCTAssert(result == .Cancelled)
             XCTAssert(validatable1.validationResult == result)
             XCTAssertNil(validatable2.validationResult)
             expectation.fulfill()
         }
-        waitForExpectationsWithTimeout(1.0, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
 }

@@ -11,24 +11,24 @@ import Formalist
 
 private class DummyClass {}
 
-func renderElementForTesting(element: FormElement) -> UIView {
+func renderElementForTesting(_ element: FormElement) -> UIView {
     let view = element.render()
     sizeViewForTesting(view)
     return view
 }
 
-func sizeViewForTesting(view: UIView) {
-    let widthConstraint = NSLayoutConstraint(item: view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 320.0)
-    widthConstraint.active = true
+func sizeViewForTesting(_ view: UIView) {
+    let widthConstraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 320.0)
+    widthConstraint.isActive = true
     
     view.layoutIfNeeded()
-    let fittingSize = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-    view.frame = CGRect(origin: CGPointZero, size: fittingSize)
+    let fittingSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+    view.frame = CGRect(origin: CGPoint.zero, size: fittingSize)
 }
 
-func imageWithName(name: String) -> UIImage {
-    let bundle = NSBundle(forClass: DummyClass.self)
-    if let image = UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: nil) {
+func imageWithName(_ name: String) -> UIImage {
+    let bundle = Bundle(for: DummyClass.self)
+    if let image = UIImage(named: name, in: bundle, compatibleWith: nil) {
         return image
     } else {
         fatalError("Image with name \(name) not found in asset catalog")

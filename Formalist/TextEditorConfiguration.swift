@@ -14,15 +14,15 @@ public struct TextEditorConfiguration {
     public enum ReturnKeyAction {
         /// Do nothing, i.e. trigger the normal return key behaviour,
         /// which is inserting a newline character
-        case None
+        case none
         
         /// Activate the next responder in the form
-        case ActivateNextResponder
+        case activateNextResponder
         
         /// Perform a custom action. The `String` parameter passed
         /// into the block is the current text contents of the
         /// text editor.
-        case Custom(String -> Void)
+        case custom((String) -> Void)
     }
     
     public let returnKeyAction: ReturnKeyAction
@@ -44,7 +44,7 @@ public struct TextEditorConfiguration {
      
      - returns: An initialized instance of the receiver
      */
-    public init(returnKeyAction: ReturnKeyAction = .ActivateNextResponder, continuouslyUpdatesValue: Bool = true, maximumLength: Int? = nil, shouldResignFirstResponderWhenFinished: Bool = true) {
+    public init(returnKeyAction: ReturnKeyAction = .activateNextResponder, continuouslyUpdatesValue: Bool = true, maximumLength: Int? = nil, shouldResignFirstResponderWhenFinished: Bool = true) {
         self.returnKeyAction = returnKeyAction
         self.continuouslyUpdatesValue = continuouslyUpdatesValue
         self.maximumLength = maximumLength

@@ -9,9 +9,9 @@
 import UIKit
 
 /// An element used to display a float label with input type as a picker view
-public class PickerField: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
+open class PickerField: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    public var items = [PickerValue]() {
+    open var items = [PickerValue]() {
         didSet {
             pickerView?.reloadAllComponents()
             if let selectedValue = selectedValue {
@@ -19,19 +19,19 @@ public class PickerField: FloatLabelTextField, UIPickerViewDataSource, UIPickerV
             }
         }
     }
-    public var selectedValue: FormValue<String>?
+    open var selectedValue: FormValue<String>?
 
-    private weak var pickerView: UIPickerView?
-    private weak var toolBar: UIToolbar?
+    fileprivate weak var pickerView: UIPickerView?
+    fileprivate weak var toolBar: UIToolbar?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: #selector(self.doneButtonAction))
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneButtonAction))
 
-        let toolBar = UIToolbar(frame: CGRectMake(0, 0, self.frame.width, 44))
-        toolBar.backgroundColor = UIColor.whiteColor()
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
+        toolBar.backgroundColor = UIColor.white
         toolBar.setItems([space, doneButton], animated: true)
         self.toolBar = toolBar
 
@@ -49,29 +49,29 @@ public class PickerField: FloatLabelTextField, UIPickerViewDataSource, UIPickerV
         fatalError("init(coder:) has not been implemented")
     }
 
-    func selectPickerValue(value: String) {
-        if let index = items.indexOf({$0.title > value}) {
+    func selectPickerValue(_ value: String) {
+        if let index = items.index(where: {$0.title > value}) {
             pickerView?.selectRow(index, inComponent: 0, animated: true)
         }
     }
 
     // UIPickerViewDataSource
 
-    @objc public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    @objc open func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
-    @objc public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    @objc open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return items.count
     }
 
     // UIPickerViewDelegate
 
-    @objc public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    @objc open func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        return items[row].title
     }
 
-    public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if self.items.count > row {
             selectedValue!.value = self.items[row].title
         }

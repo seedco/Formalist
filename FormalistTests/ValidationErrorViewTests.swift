@@ -17,7 +17,7 @@ class ValidationErrorViewTests: FBSnapshotTestCase {
     }
     
     func testRender() {
-        let view = ValidationErrorView(frame: CGRectZero)
+        let view = ValidationErrorView(frame: CGRect.zero)
         view.label.text = "Error message"
         
         let heightConstraint = NSLayoutConstraint(

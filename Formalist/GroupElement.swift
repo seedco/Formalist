@@ -19,7 +19,7 @@ public final class GroupElement: FormElement, Validatable {
             /// The default `separatorViewFactory` also does not create separators
             /// for this style, but separators can be added by setting a custom
             /// `separatorViewFactory`
-            case Plain
+            case plain
             
             /// Draws a background color behind the elements, specified by
             /// `backgroundColor`
@@ -28,17 +28,17 @@ public final class GroupElement: FormElement, Validatable {
             /// `SeparatorView` with a predefined default separator colors
             /// and separator thickness. These can be customized by specifying a
             /// custom `separatorViewFactory`
-            case Grouped(backgroundColor: UIColor)
+            case grouped(backgroundColor: UIColor)
         }
         
         /// Describes how each element in the group is laid out
         public struct Layout {
             public enum Mode {
                 /// Each element is fixed to a constant height
-                case ConstantHeight(CGFloat)
+                case constantHeight(CGFloat)
                 
                 /// The intrinsic content size of each element is used
-                case IntrinsicSize
+                case intrinsicSize
             }
             
             /// The layout mode used to determine the height to display the
@@ -48,7 +48,7 @@ public final class GroupElement: FormElement, Validatable {
             /// Edge insets to use for padding the element view
             public var edgeInsets: UIEdgeInsets
             
-            public init(mode: Mode = .IntrinsicSize, edgeInsets: UIEdgeInsets = UIEdgeInsetsZero) {
+            public init(mode: Mode = .intrinsicSize, edgeInsets: UIEdgeInsets = UIEdgeInsets.zero) {
                 self.mode = mode
                 self.edgeInsets = edgeInsets
             }
@@ -61,15 +61,15 @@ public final class GroupElement: FormElement, Validatable {
         /// The default `separatorViewFactory` implementation uses the `isBorder`
         /// parameter to determine whether the separator should be drawn with
         /// an inset or not.
-        public typealias SeparatorViewFactory = (style: Style, isBorder: Bool) -> UIView?
+        public typealias SeparatorViewFactory = (_ style: Style, _ isBorder: Bool) -> UIView?
         
-        private struct SeparatorDefaults {
+        fileprivate struct SeparatorDefaults {
             static let Inset: CGFloat = 15.0
             static let SeparatorColor = UIColor(white: 0.78, alpha: 1.0)
             static let Thickness: CGFloat = 1.0
         }
         
-        private struct ValidationErrorViewDefaults {
+        fileprivate struct ValidationErrorViewDefaults {
             static let Height: CGFloat = 30.0
         }
         
@@ -78,16 +78,16 @@ public final class GroupElement: FormElement, Validatable {
         /// `message` specifies the message text to display in the view. The default
         /// `validationErrorViewFactory` implementation provides a simple view
         /// that uses a label to display the message text.
-        public typealias ValidationErrorViewFactory = (message: String) -> UIView?
+        public typealias ValidationErrorViewFactory = (_ message: String) -> UIView?
         
         /// The grouping style to use. See the documentation for the `Style`
         /// enum for more information.
-        public var style = Style.Plain
+        public var style = Style.plain
         
         /// The block that creates separator views. See the documentation for
         /// the `SeparatorViewFactory` type for more information.
         public var separatorViewFactory: SeparatorViewFactory = { (style, isBorder) in
-            guard case let .Grouped(backgroundColor) = style else { return nil }
+            guard case let .grouped(backgroundColor) = style else { return nil }
             let separatorView = SeparatorView(axis: .Horizontal)
             separatorView.backgroundColor = backgroundColor
             separatorView.separatorInset = isBorder ? 0 : SeparatorDefaults.Inset
@@ -99,18 +99,18 @@ public final class GroupElement: FormElement, Validatable {
         /// The block that creates validation error views. See the documentation
         /// for the `ValidationErrorViewFactory` type for more information.
         public var validationErrorViewFactory: ValidationErrorViewFactory = { message in
-            let errorView = ValidationErrorView(frame: CGRectZero)
+            let errorView = ValidationErrorView(frame: CGRect.zero)
             errorView.label.text = message
             let heightConstraint = NSLayoutConstraint(
                 item: errorView,
-                attribute: .Height,
-                relatedBy: .Equal,
+                attribute: .height,
+                relatedBy: .equal,
                 toItem: nil,
-                attribute: .NotAnAttribute,
+                attribute: .notAnAttribute,
                 multiplier: 1.0,
                 constant: ValidationErrorViewDefaults.Height
             )
-            heightConstraint.active = true
+            heightConstraint.isActive = true
             return errorView
         }
         
@@ -119,27 +119,27 @@ public final class GroupElement: FormElement, Validatable {
         
         public init() {}
         
-        private func createSeparatorWithBorder(hasBorder: Bool) -> UIView? {
-            return separatorViewFactory(style: style, isBorder: hasBorder)
+        fileprivate func createSeparatorWithBorder(_ hasBorder: Bool) -> UIView? {
+            return separatorViewFactory(style, hasBorder)
         }
         
-        private func createValidationErrorViewWithMessage(message: String) -> UIView? {
-            return validationErrorViewFactory(message: message)
+        fileprivate func createValidationErrorViewWithMessage(_ message: String) -> UIView? {
+            return validationErrorViewFactory(message)
         }
         
-        private func arrangedSubviewForElementView(elementView: UIView) -> UIView {
+        fileprivate func arrangedSubviewForElementView(_ elementView: UIView) -> UIView {
             switch layout.mode {
-            case .IntrinsicSize: break
-            case let .ConstantHeight(height):
-                let heightConstraint = NSLayoutConstraint(item: elementView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: height)
-                heightConstraint.active = true
+            case .intrinsicSize: break
+            case let .constantHeight(height):
+                let heightConstraint = NSLayoutConstraint(item: elementView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height)
+                heightConstraint.isActive = true
             }
             
-            if layout.edgeInsets == UIEdgeInsetsZero {
+            if layout.edgeInsets == UIEdgeInsets.zero {
                 return elementView
             } else {
-                let containerView = UIView(frame: CGRectZero)
-                if case let .Grouped(backgroundColor) = style {
+                let containerView = UIView(frame: CGRect.zero)
+                if case let .grouped(backgroundColor) = style {
                     containerView.backgroundColor = backgroundColor
                 }
                 containerView.addSubview(elementView)
@@ -149,7 +149,7 @@ public final class GroupElement: FormElement, Validatable {
         }
     }
     
-    private let configuration: Configuration
+    fileprivate let configuration: Configuration
 
     /**
      The elements that make up the group.
@@ -190,17 +190,17 @@ public final class GroupElement: FormElement, Validatable {
         var subviews = [UIView]()
         var responderViews = [UIView]()
         
-        func addSeparator(isBorder isBorder: Bool) {
+        func addSeparator(isBorder: Bool) {
             if let separatorView = configuration.createSeparatorWithBorder(isBorder) {
                 subviews.append(separatorView)
             }
         }
         
-        func addChildElement(element: FormElement) -> Bool {
+        func addChildElement(_ element: FormElement) -> Bool {
             let elementView = element.render()
             subviews.append(configuration.arrangedSubviewForElementView(elementView))
 
-            if elementView.canBecomeFirstResponder() {
+            if elementView.canBecomeFirstResponder {
                 if let lastResponderView = responderViews.last {
                     lastResponderView.nextFormResponder = elementView
                 }
@@ -209,7 +209,7 @@ public final class GroupElement: FormElement, Validatable {
             
             if !(element is GroupElement),
                let validationResult = (element as? Validatable)?.validationResult,
-               case let .Invalid(message) = validationResult,
+               case let .invalid(message) = validationResult,
                let errorView = configuration.createValidationErrorViewWithMessage(message) {
                 
                 addSeparator(isBorder: true)
@@ -233,16 +233,16 @@ public final class GroupElement: FormElement, Validatable {
         return createContainerWithSubviews(subviews, responderViews: responderViews)
     }
     
-    private func createContainerWithSubviews(subviews: [UIView], responderViews: [UIView]) -> UIView {
+    fileprivate func createContainerWithSubviews(_ subviews: [UIView], responderViews: [UIView]) -> UIView {
         let containerView =
             ContainerView(initialFormResponderView: responderViews.first)
-        if case let .Grouped(backgroundColor) = configuration.style {
+        if case let .grouped(backgroundColor) = configuration.style {
             containerView.backgroundColor = backgroundColor
         }
         responderViews.last?.nextFormResponder = containerView
         
         let stackView = UIStackView(arrangedSubviews: subviews)
-        stackView.axis = .Vertical
+        stackView.axis = .vertical
         containerView.addSubview(stackView)
         stackView.activateSuperviewHuggingConstraints()
         
@@ -251,30 +251,30 @@ public final class GroupElement: FormElement, Validatable {
     
     // MARK: Validatable
     
-    public func validate(completionHandler: ValidationResult -> Void) {
+    public func validate(_ completionHandler: (ValidationResult) -> Void) {
         let validatables = elements.flatMap { $0 as? Validatable }
         validateObjects(validatables, completionHandler: completionHandler)
     }
     
     // MARK: ContainerView
     
-    private class ContainerView: UIView {
-        private let initialFormResponderView: UIView?
+    fileprivate class ContainerView: UIView {
+        fileprivate let initialFormResponderView: UIView?
         
         init(initialFormResponderView: UIView?) {
             self.initialFormResponderView = initialFormResponderView
-            super.init(frame: CGRectZero)
+            super.init(frame: CGRect.zero)
         }
         
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
         
-        private override func canBecomeFirstResponder() -> Bool {
+        fileprivate override var canBecomeFirstResponder : Bool {
             return true
         }
         
-        private override func becomeFirstResponder() -> Bool {
+        fileprivate override func becomeFirstResponder() -> Bool {
             var responderView = nextFormResponder
             while let containerView = responderView as? ContainerView {
                 responderView = containerView.initialFormResponderView

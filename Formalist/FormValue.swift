@@ -9,7 +9,7 @@
 /// A reference type that wraps a value used by a form element and allows for
 /// observation of changes to the value.
 public final class FormValue<ValueType: Equatable> {
-    private var observerTokens = [ObserverToken<ValueType>]()
+    fileprivate var observerTokens = [ObserverToken<ValueType>]()
     
     /// The underlying value.
     public var value: ValueType {
@@ -22,7 +22,7 @@ public final class FormValue<ValueType: Equatable> {
             }
         }
     }
-    private var _value: ValueType
+    fileprivate var _value: ValueType
     
     /**
      Initializes the receiver with an initial value
@@ -43,7 +43,7 @@ public final class FormValue<ValueType: Equatable> {
      
      - returns: A token that can be used to remove the added observer
      */
-    public func addObserver(observer: ValueType -> Void) -> ObserverToken<ValueType> {
+    public func addObserver(_ observer: @escaping (ValueType) -> Void) -> ObserverToken<ValueType> {
         let token = ObserverToken(observer: observer)
         observerTokens.append(token)
         return token
@@ -58,9 +58,9 @@ public final class FormValue<ValueType: Equatable> {
      which will be `true` if the token represented an existing observer, or `false`
      if not.
      */
-    public func removeObserverWithToken(token: ObserverToken<ValueType>) -> Bool {
-        if let index = observerTokens.indexOf(token) {
-            observerTokens.removeAtIndex(index)
+    public func removeObserverWithToken(_ token: ObserverToken<ValueType>) -> Bool {
+        if let index = observerTokens.index(of: token) {
+            observerTokens.remove(at: index)
             return true
         } else {
             return false
@@ -71,10 +71,10 @@ public final class FormValue<ValueType: Equatable> {
 /// A token that represents an observer. This is returned from `FormValue.addObserver(_:)`
 /// and passed into `FormValue.removeObserverWithToken(_:)`
 public final class ObserverToken<ValueType>: Equatable {
-    private typealias Observer = ValueType -> Void
-    private let observer: Observer
+    fileprivate typealias Observer = (ValueType) -> Void
+    fileprivate let observer: Observer
     
-    private init(observer: Observer) {
+    fileprivate init(observer: @escaping Observer) {
         self.observer = observer
     }
 }

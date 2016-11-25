@@ -26,7 +26,7 @@ class SegueElementTests: FBSnapshotTestCase {
     }
     
     func testRenderWithIcon() {
-        let icon = imageWithName("circle").imageWithRenderingMode(.AlwaysTemplate)
+        let icon = imageWithName("circle").withRenderingMode(.alwaysTemplate)
         let element = SegueElement(icon: icon, title: "Segue Element", viewConfigurator: {
             $0.imageView.tintColor = .orangeColor()
         }, action: {})

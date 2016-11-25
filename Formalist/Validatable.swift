@@ -11,7 +11,7 @@ import ObjectiveC
 /// The protocol that is implemented by all form elements that
 /// support validation of their values.
 public protocol Validatable: AnyObject {
-    func validate(completionHandler: ValidationResult -> Void)
+    func validate(_ completionHandler: (ValidationResult) -> Void)
 }
 
 public extension Validatable {
@@ -32,22 +32,22 @@ public extension Validatable {
  - parameter completionHandler: The completion handler to call when
  validation completes (success or failure)
  */
-public func validateObjects(objects: [Validatable], queue: dispatch_queue_t = dispatch_get_main_queue(), completionHandler: ValidationResult -> Void) {
+public func validateObjects(_ objects: [Validatable], queue: DispatchQueue = DispatchQueue.main, completionHandler: @escaping (ValidationResult) -> Void) {
     var remainingObjects = objects
-    var validateNext: Void -> Void = {}
+    var validateNext: (Void) -> Void = {}
     validateNext = {
-        dispatch_async(queue) {
+        queue.async {
             guard let nextObject = remainingObjects.first else {
-                completionHandler(.Valid)
+                completionHandler(.valid)
                 return
             }
             remainingObjects.removeFirst()
             nextObject.validateAndStoreResult { result in
                 switch result {
-                case .Valid:
+                case .valid:
                     validateNext()
-                case .Invalid, .Cancelled:
-                    dispatch_async(queue) { completionHandler(result) }
+                case .invalid, .cancelled:
+                    queue.async { completionHandler(result) }
                 }
             }
         }
@@ -81,9 +81,9 @@ private extension Validatable {
 }
 
 extension Validatable {
-    func validateAndStoreResult(queue queue: dispatch_queue_t = dispatch_get_main_queue(), completionHandler: ValidationResult -> Void) {
+    func validateAndStoreResult(queue: DispatchQueue = DispatchQueue.main, completionHandler: @escaping (ValidationResult) -> Void) {
         validate { result in
-            dispatch_async(queue) {
+            queue.async {
                 self._validationResult = result
                 completionHandler(result)
             }

@@ -14,14 +14,14 @@ public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: Tex
     public typealias ViewType = TextFieldType
     public typealias TextChangedObserver = (UITextFieldTextEditorAdapter<ViewType>, ViewType) -> Void
     
-    private let configuration: TextEditorConfiguration
+    fileprivate let configuration: TextEditorConfiguration
     
     public init(configuration: TextEditorConfiguration) {
         self.configuration = configuration
     }
     
-    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextFieldTextEditorAdapter<ViewType>>, textChangedObserver: TextChangedObserver) -> ViewType {
-        let textField = TextFieldType(frame: CGRectZero)
+    public func createViewWithCallbacks(_ callbacks: TextEditorAdapterCallbacks<UITextFieldTextEditorAdapter<ViewType>>, textChangedObserver: @escaping TextChangedObserver) -> ViewType {
+        let textField = TextFieldType(frame: CGRect.zero)
         let delegate = TextFieldDelegate(
             textField: textField,
             adapter: self,
@@ -31,16 +31,16 @@ public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: Tex
         )
         
         (textField as UITextField).delegate = delegate
-        textField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textField.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         objc_setAssociatedObject(textField, &ObjCTextFieldDelegateKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return textField
     }
     
-    public func getTextForView(view: ViewType) -> String {
+    public func getTextForView(_ view: ViewType) -> String {
         return view.text ?? ""
     }
     
-    public func setText(text: String, forView view: ViewType) {
+    public func setText(_ text: String, forView view: ViewType) {
         view.text = text
     }
 }
@@ -48,15 +48,15 @@ public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: Tex
 private var ObjCTextFieldDelegateKey: UInt8 = 0
 
 private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UITextFieldDelegate {
-    private typealias AdapterType = UITextFieldTextEditorAdapter<TextFieldType>
-    private typealias TextChangedObserver = (AdapterType, TextFieldType) -> Void
+    fileprivate typealias AdapterType = UITextFieldTextEditorAdapter<TextFieldType>
+    fileprivate typealias TextChangedObserver = (AdapterType, TextFieldType) -> Void
     
-    private let adapter: AdapterType
-    private let configuration: TextEditorConfiguration
-    private let callbacks: TextEditorAdapterCallbacks<AdapterType>
-    private let textChangedObserver: TextChangedObserver
+    fileprivate let adapter: AdapterType
+    fileprivate let configuration: TextEditorConfiguration
+    fileprivate let callbacks: TextEditorAdapterCallbacks<AdapterType>
+    fileprivate let textChangedObserver: TextChangedObserver
     
-    init(textField: TextFieldType, adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>, textChangedObserver: TextChangedObserver) {
+    init(textField: TextFieldType, adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>, textChangedObserver: @escaping TextChangedObserver) {
         self.adapter = adapter
         self.configuration = configuration
         self.callbacks = callbacks
@@ -64,28 +64,28 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(TextFieldDelegate.textFieldTextDidChange(_:)),
-            name: UITextFieldTextDidChangeNotification,
+            name: NSNotification.Name.UITextFieldTextDidChange,
             object: textField
         )
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: UITextFieldDelegate
     
-    @objc private func textFieldDidBeginEditing(textField: UITextField) {
+    @objc fileprivate func textFieldDidBeginEditing(_ textField: UITextField) {
         guard let textField = textField as? TextFieldType else {
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
         callbacks.textDidBeginEditing?(adapter, textField)
     }
     
-    @objc private func textFieldDidEndEditing(textField: UITextField) {
+    @objc fileprivate func textFieldDidEndEditing(_ textField: UITextField) {
         guard let textField = textField as? TextFieldType else {
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
@@ -95,7 +95,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         }
     }
     
-    @objc private func textFieldTextDidChange(notification: NSNotification) {
+    @objc fileprivate func textFieldTextDidChange(_ notification: Notification) {
         guard let textField = notification.object as? TextFieldType else {
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
@@ -105,12 +105,12 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         }
     }
     
-    private func notifyTextChangedObserverWithTextField(textField: UITextField) {
+    fileprivate func notifyTextChangedObserverWithTextField(_ textField: UITextField) {
         textField.shouldIgnoreFormValueChanges = true
     }
     
-    @objc private func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if let maximumLength = configuration.maximumLength, text = textField.text {
+    @objc fileprivate func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let maximumLength = configuration.maximumLength, let text = textField.text {
             let newLength = text.characters.count + string.characters.count - range.length
             return newLength <= maximumLength
         } else {
@@ -118,17 +118,17 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         }
     }
     
-    @objc private func textFieldShouldReturn(textField: UITextField) -> Bool {
+    @objc fileprivate func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch configuration.returnKeyAction {
-        case .None: return true
-        case .ActivateNextResponder:
+        case .none: return true
+        case .activateNextResponder:
             if !(textField.nextFormResponder?.becomeFirstResponder() ?? false) {
                 if configuration.shouldResignFirstResponderWhenFinished {
                     textField.resignFirstResponder()
                 }
             }
             return false
-        case let .Custom(action):
+        case let .custom(action):
             if configuration.shouldResignFirstResponderWhenFinished {
                 textField.resignFirstResponder()
             }

@@ -11,8 +11,8 @@ import StackViewController
 
 /// A view controller that displays and manages a set of form elements
 public final class FormViewController: UIViewController {
-    private let rootElement: FormElement
-    private lazy var autoscrollView = AutoScrollView(frame: CGRectZero)
+    fileprivate let rootElement: FormElement
+    fileprivate lazy var autoscrollView = AutoScrollView(frame: CGRect.zero)
     
     // MARK: Lifecycle
     
@@ -76,14 +76,14 @@ public final class FormViewController: UIViewController {
      - parameter completionHandler: The completion handler to call when
      validation succeeds, fails, or is cancelled.
      */
-    public func validate(completionHandler: ValidationResult -> Void) {
+    public func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
         if let validatableElement = rootElement as? Validatable {
             validatableElement.validateAndStoreResult { result in
                 self.reload()
                 completionHandler(result)
             }
         } else {
-            completionHandler(.Valid)
+            completionHandler(.valid)
         }
     }
 }

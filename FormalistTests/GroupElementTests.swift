@@ -11,8 +11,8 @@ import FBSnapshotTestCase
 @testable import Formalist
 
 class GroupElementTests: FBSnapshotTestCase {
-    private var validatableElement: EditableTextElement<UITextFieldTextEditorAdapter<UITextField>>!
-    private var childElements: [FormElement]!
+    fileprivate var validatableElement: EditableTextElement<UITextFieldTextEditorAdapter<UITextField>>!
+    fileprivate var childElements: [FormElement]!
     
     override func setUp() {
         super.setUp()

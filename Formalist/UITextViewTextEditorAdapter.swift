@@ -15,35 +15,35 @@ public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEd
     public typealias ViewType = TextViewType
     public typealias TextChangedObserver = (UITextViewTextEditorAdapter<ViewType>, ViewType) -> Void
     
-    private let configuration: TextEditorConfiguration
+    fileprivate let configuration: TextEditorConfiguration
     
     public init(configuration: TextEditorConfiguration) {
         self.configuration = configuration
     }
     
-    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<ViewType>>, textChangedObserver: TextChangedObserver) -> ViewType {
+    public func createViewWithCallbacks(_ callbacks: TextEditorAdapterCallbacks<UITextViewTextEditorAdapter<ViewType>>, textChangedObserver: @escaping TextChangedObserver) -> ViewType {
         let delegate = TextViewDelegate(
             adapter: self,
             configuration: configuration,
             callbacks: callbacks,
             textChangedObserver: textChangedObserver
         )
-        let textView = TextViewType(frame: CGRectZero, textContainer: nil)
+        let textView = TextViewType(frame: CGRect.zero, textContainer: nil)
         (textView as UITextView).delegate = delegate
-        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        textView.scrollEnabled = false
-        textView.textContainerInset = UIEdgeInsetsZero
+        textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        textView.isScrollEnabled = false
+        textView.textContainerInset = UIEdgeInsets.zero
         textView.textContainer.lineFragmentPadding = 0
-        textView.backgroundColor = .clearColor()
+        textView.backgroundColor = .clear
         objc_setAssociatedObject(textView, &ObjCTextViewDelegateKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return textView
     }
 
-    public func getTextForView(view: ViewType) -> String {
+    public func getTextForView(_ view: ViewType) -> String {
         return view.text
     }
 
-    public func setText(text: String, forView view: ViewType) {
+    public func setText(_ text: String, forView view: ViewType) {
         view.text = text
     }
 }
@@ -51,15 +51,15 @@ public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEd
 private var ObjCTextViewDelegateKey: UInt8 = 0
 
 private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UITextViewDelegate {
-    private typealias AdapterType = UITextViewTextEditorAdapter<TextViewType>
-    private typealias TextChangedObserver = (AdapterType, TextViewType) -> Void
+    fileprivate typealias AdapterType = UITextViewTextEditorAdapter<TextViewType>
+    fileprivate typealias TextChangedObserver = (AdapterType, TextViewType) -> Void
     
-    private let adapter: AdapterType
-    private let configuration: TextEditorConfiguration
-    private let callbacks: TextEditorAdapterCallbacks<AdapterType>
-    private let textChangedObserver: TextChangedObserver
+    fileprivate let adapter: AdapterType
+    fileprivate let configuration: TextEditorConfiguration
+    fileprivate let callbacks: TextEditorAdapterCallbacks<AdapterType>
+    fileprivate let textChangedObserver: TextChangedObserver
     
-    init(adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>, textChangedObserver: TextChangedObserver) {
+    init(adapter: AdapterType, configuration: TextEditorConfiguration, callbacks: TextEditorAdapterCallbacks<AdapterType>, textChangedObserver: @escaping TextChangedObserver) {
         self.adapter = adapter
         self.configuration = configuration
         self.callbacks = callbacks
@@ -68,14 +68,14 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
     
     // MARK: UITextViewDelegate
     
-    @objc private func textViewDidBeginEditing(textView: UITextView) {
+    @objc fileprivate func textViewDidBeginEditing(_ textView: UITextView) {
         guard let textView = textView as? TextViewType else {
             fatalError("Expected text view of type \(TextViewType.self)")
         }
         callbacks.textDidBeginEditing?(adapter, textView)
     }
     
-    @objc private func textViewDidEndEditing(textView: UITextView) {
+    @objc fileprivate func textViewDidEndEditing(_ textView: UITextView) {
         guard let textView = textView as? TextViewType else {
             fatalError("Expected text view of type \(TextViewType.self)")
         }
@@ -85,7 +85,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
         }
     }
     
-    @objc private func textViewDidChange(textView: UITextView) {
+    @objc fileprivate func textViewDidChange(_ textView: UITextView) {
         guard let textView = textView as? TextViewType else {
             fatalError("Expected text view of type \(TextViewType.self)")
         }
@@ -95,19 +95,19 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
         }
     }
     
-    @objc private func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    @objc fileprivate func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // http://stackoverflow.com/a/23779209
-        if let _ = text.rangeOfCharacterFromSet(NSCharacterSet.newlineCharacterSet(), options: NSStringCompareOptions.BackwardsSearch) where text.characters.count == 1 {
+        if let _ = text.rangeOfCharacter(from: CharacterSet.newlines, options: NSString.CompareOptions.backwards), text.characters.count == 1 {
             switch configuration.returnKeyAction {
-            case .None: return true
-            case .ActivateNextResponder:
+            case .none: return true
+            case .activateNextResponder:
                 if !(textView.nextFormResponder?.becomeFirstResponder() ?? false) {
                     if configuration.shouldResignFirstResponderWhenFinished {
                         textView.resignFirstResponder()
                     }
                 }
                 return false
-            case let .Custom(action):
+            case let .custom(action):
                 if configuration.shouldResignFirstResponderWhenFinished {
                     textView.resignFirstResponder()
                 }

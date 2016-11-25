@@ -8,18 +8,18 @@
 
 /// Adapts a `FloatLabel` to a generic interface used by
 /// form elements that perform text editing.
-public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapter where InnerAdapterType.ViewType: FloatLabelTextEntryView>: TextEditorAdapter {
+public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapter>: TextEditorAdapter where InnerAdapterType.ViewType: FloatLabelTextEntryView {
     public typealias ViewType = FloatLabel<InnerAdapterType>
     public typealias TextChangedObserver = (FloatLabelTextEditorAdapter<InnerAdapterType>, ViewType) -> Void
     
-    private let configuration: TextEditorConfiguration
-    private lazy var innerAdapter: InnerAdapterType = InnerAdapterType(configuration: self.configuration)
+    fileprivate let configuration: TextEditorConfiguration
+    fileprivate lazy var innerAdapter: InnerAdapterType = InnerAdapterType(configuration: self.configuration)
     
     public init(configuration: TextEditorConfiguration) {
         self.configuration = configuration
     }
     
-    public func createViewWithCallbacks(callbacks: TextEditorAdapterCallbacks<FloatLabelTextEditorAdapter<InnerAdapterType>>, textChangedObserver: TextChangedObserver) -> ViewType {
+    public func createViewWithCallbacks(_ callbacks: TextEditorAdapterCallbacks<FloatLabelTextEditorAdapter<InnerAdapterType>>, textChangedObserver: @escaping TextChangedObserver) -> ViewType {
         let floatLabel = FloatLabel(adapter: innerAdapter)
         
         floatLabel.textChangedObserver = { [unowned floatLabel] (adapter, view) in
@@ -43,11 +43,11 @@ public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapt
         return floatLabel
     }
     
-    public func getTextForView(view: ViewType) -> String {
+    public func getTextForView(_ view: ViewType) -> String {
         return innerAdapter.getTextForView(view.textEntryView)
     }
     
-    public func setText(text: String, forView view: ViewType) {
+    public func setText(_ text: String, forView view: ViewType) {
         innerAdapter.setText(text, forView: view.textEntryView)
     }
 }

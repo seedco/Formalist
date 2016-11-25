@@ -16,7 +16,7 @@ class SegmentElementTests: FBSnapshotTestCase {
         recordMode = false
     }
     
-    private func segmentElementWithSelectedIndex(index: Int, value: FormValue<Int> = FormValue(0)) -> SegmentElement<Int> {
+    fileprivate func segmentElementWithSelectedIndex(_ index: Int, value: FormValue<Int> = FormValue(0)) -> SegmentElement<Int> {
         let segments = [
             Segment(content: .Title("Segment 1"), value: 0),
             Segment(content: .Image(imageWithName("circle")), value: 1)

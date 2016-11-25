@@ -11,12 +11,12 @@ import FBSnapshotTestCase
 @testable import Formalist
 
 class PlaceholderTextViewTests: FBSnapshotTestCase {
-    private var textView: PlaceholderTextView!
+    fileprivate var textView: PlaceholderTextView!
     
     override func setUp() {
         super.setUp()
         recordMode = false
-        textView = PlaceholderTextView(frame: CGRectZero)
+        textView = PlaceholderTextView(frame: CGRect.zero)
         textView.scrollEnabled = false
     }
     

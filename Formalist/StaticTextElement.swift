@@ -10,10 +10,10 @@ import UIKit
 
 /// An element used to display static text
 public final class StaticTextElement: FormElement {
-    public typealias ViewConfigurator = UILabel -> Void
+    public typealias ViewConfigurator = (UILabel) -> Void
     
-    private let value: FormValue<String>
-    private let viewConfigurator: ViewConfigurator?
+    fileprivate let value: FormValue<String>
+    fileprivate let viewConfigurator: ViewConfigurator?
     
     /**
      Designated initializer
@@ -44,10 +44,10 @@ public final class StaticTextElement: FormElement {
     }
     
     public func render() -> UIView {
-        let label = UILabel(frame: CGRectZero)
+        let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         label.text = value.value
         value.addObserver { [weak label] in
             label?.text = $0

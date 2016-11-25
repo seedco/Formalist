@@ -11,12 +11,12 @@ import UIKit
 /// An element used to display a segmented control with configurable segments
 /// and a title displayed above it.
 public final class SegmentElement<ValueType: Equatable>: FormElement {
-    public typealias ViewConfigurator = SegmentElementView -> Void
+    public typealias ViewConfigurator = (SegmentElementView) -> Void
     
-    private let title: String
-    private let segments: [Segment<ValueType>]
-    private let selectedValue: FormValue<ValueType>
-    private let viewConfigurator: ViewConfigurator?
+    fileprivate let title: String
+    fileprivate let segments: [Segment<ValueType>]
+    fileprivate let selectedValue: FormValue<ValueType>
+    fileprivate let viewConfigurator: ViewConfigurator?
     
     /**
      Designated initializer
@@ -43,13 +43,13 @@ public final class SegmentElement<ValueType: Equatable>: FormElement {
         segmentView.segmentedControl.addTarget(
             self,
             action: #selector(SegmentElement.selectedSegmentChanged(_:)),
-            forControlEvents: .ValueChanged
+            for: .valueChanged
         )
-        let updateView: ValueType -> Void = { [weak segmentView, weak self] selectedValue in
-            guard let segmentView = segmentView, segments = self?.segments else { return }
+        let updateView: (ValueType) -> Void = { [weak segmentView, weak self] selectedValue in
+            guard let segmentView = segmentView, let segments = self?.segments else { return }
             if !segmentView.shouldIgnoreFormValueChanges {
                 segmentView.segmentedControl.selectedSegmentIndex = {
-                    for (index, value) in segments.map({ $0.value }).enumerate() {
+                    for (index, value) in segments.map({ $0.value }).enumerated() {
                         if (value == selectedValue) {
                             return index
                         }
@@ -64,7 +64,7 @@ public final class SegmentElement<ValueType: Equatable>: FormElement {
         return segmentView
     }
     
-    @objc private func selectedSegmentChanged(sender: UISegmentedControl) {
+    @objc fileprivate func selectedSegmentChanged(_ sender: UISegmentedControl) {
         selectedValue.value = segments[sender.selectedSegmentIndex].value
     }
 }

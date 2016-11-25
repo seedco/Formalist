@@ -11,22 +11,22 @@ import Foundation
 /// The result from validating a form value
 public enum ValidationResult: Equatable {
     /// The value is valid
-    case Valid
+    case valid
     
     /// The value is invalid for a reason specified by `message`
-    case Invalid(message: String)
+    case invalid(message: String)
     
     /// The user cancelled the validation action. For example, this can occur
     /// if a validator presents a user interface to accept a necessary change
     /// to the form value that the user rejects.
-    case Cancelled
+    case cancelled
 }
 
 public func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
     switch (lhs, rhs) {
-    case (.Valid, .Valid), (.Cancelled, .Cancelled):
+    case (.valid, .valid), (.cancelled, .cancelled):
         return true
-    case let (.Invalid(lhsMessage), .Invalid(rhsMessage)):
+    case let (.invalid(lhsMessage), .invalid(rhsMessage)):
         return lhsMessage == rhsMessage
     default:
         return false
@@ -37,7 +37,7 @@ private let EmailRegex: NSRegularExpression = {
     // Same regular expression used by Mail.app
     // From: http://stackoverflow.com/a/8863823
     let pattern = "^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*@[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$"
-    return try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+    return try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
 }()
 
 /// A validation rule for a value of type `ValueType`. This type is used to
@@ -49,9 +49,9 @@ public struct ValidationRule<ValueType> {
     public static var required: ValidationRule<String> {
         return ValidationRule<String> { str, completion in
             if str.isEmpty {
-                completion(.Invalid(message: NSLocalizedString("This field is required", comment: "Required field error message")))
+                completion(.invalid(message: NSLocalizedString("This field is required", comment: "Required field error message")))
             } else {
-                completion(.Valid)
+                completion(.valid)
             }
         }
     }
@@ -72,17 +72,17 @@ public struct ValidationRule<ValueType> {
      
      - returns: The validation rule
      */
-    public static func regex(regex: NSRegularExpression, matchingOptions: NSMatchingOptions = .Anchored, failureMessage: String) -> ValidationRule<String> {
+    public static func regex(_ regex: NSRegularExpression, matchingOptions: NSRegularExpression.MatchingOptions = .anchored, failureMessage: String) -> ValidationRule<String> {
         return ValidationRule<String> { str, completion in
             guard !str.isEmpty else {
-                completion(.Valid)
+                completion(.valid)
                 return
             }
             
-            if regex.firstMatchInString(str, options: matchingOptions, range: NSMakeRange(0, str.characters.count)) == nil {
-                completion(.Invalid(message: failureMessage))
+            if regex.firstMatch(in: str, options: matchingOptions, range: NSMakeRange(0, str.characters.count)) == nil {
+                completion(.invalid(message: failureMessage))
             } else {
-                completion(.Valid)
+                completion(.valid)
             }
         }
     }
@@ -97,14 +97,14 @@ public struct ValidationRule<ValueType> {
      
      - returns: The validation rule
      */
-    public static func characterSet(characterSet: NSCharacterSet) -> ValidationRule<String> {
+    public static func characterSet(_ characterSet: CharacterSet) -> ValidationRule<String> {
         return ValidationRule<String> { str, completion in
-            if let range = str.rangeOfCharacterFromSet(characterSet.invertedSet) {
+            if let range = str.rangeOfCharacter(from: characterSet.inverted) {
                 let errorFormat = NSLocalizedString("\"%@\" is not an allowed character", comment: "Invalid character error message")
-                let message = String(format: errorFormat, str.substringWithRange(range))
-                completion(.Invalid(message: message))
+                let message = String(format: errorFormat, str.substring(with: range))
+                completion(.invalid(message: message))
             } else {
-                completion(.Valid)
+                completion(.valid)
             }
         }
     }
@@ -117,13 +117,13 @@ public struct ValidationRule<ValueType> {
      
      - returns: The validation rule
      */
-    public static func maximumLength(length: Int) -> ValidationRule<String> {
+    public static func maximumLength(_ length: Int) -> ValidationRule<String> {
         return ValidationRule<String> { str, completion in
             if str.characters.count <= length {
-                completion(.Valid)
+                completion(.valid)
             } else {
                 let errorFormat = NSLocalizedString("Cannot exceed %d characters", comment: "Maximum length error message")
-                completion(.Invalid(message: String(format: errorFormat, length)))
+                completion(.invalid(message: String(format: errorFormat, length)))
             }
         }
     }
@@ -136,13 +136,13 @@ public struct ValidationRule<ValueType> {
      
      - returns: The validation rule
      */
-    public static func minimumLength(length: Int) -> ValidationRule<String> {
+    public static func minimumLength(_ length: Int) -> ValidationRule<String> {
         return ValidationRule<String> { str, completion in
             if str.characters.count >= length {
-                completion(.Valid)
+                completion(.valid)
             } else {
                 let errorFormat = NSLocalizedString("Must be at least %d characters long", comment: "Minimum length error message")
-                completion(.Invalid(message: String(format: errorFormat, length)))
+                completion(.invalid(message: String(format: errorFormat, length)))
             }
         }
     }
@@ -150,9 +150,9 @@ public struct ValidationRule<ValueType> {
     /// A validator for `ValueType`. The first parameter is the value to be
     /// validated, and the second parameter is a closure that the validator should
     /// call upon completion with the result of the validation.
-    public typealias Validator = (ValueType, (ValidationResult -> Void)) -> Void
+    public typealias Validator = (ValueType, ((ValidationResult) -> Void)) -> Void
     
-    private let validator: Validator
+    fileprivate let validator: Validator
     
     /**
      Designated initializer
@@ -161,7 +161,7 @@ public struct ValidationRule<ValueType> {
      
      - returns: An initialized instance of the receiver
      */
-    public init(_ validator: Validator) {
+    public init(_ validator: @escaping Validator) {
         self.validator = validator
     }
     
@@ -172,7 +172,7 @@ public struct ValidationRule<ValueType> {
      - parameter completionHandler: A completion handler that is called once
      the validation completes asynchronously
      */
-    public func validate(value: ValueType, completionHandler: ValidationResult -> Void) {
+    public func validate(_ value: ValueType, completionHandler: (ValidationResult) -> Void) {
         validator(value, completionHandler)
     }
     
@@ -189,22 +189,22 @@ public struct ValidationRule<ValueType> {
      validation ends (either by successfully validating all the rules, or
      encountering a failure or cancellation on one of the rules)
      */
-    public static func validateRules(rules: [ValidationRule], forValue value: ValueType, queue: dispatch_queue_t = dispatch_get_main_queue(), completionHandler: ValidationResult -> Void) {
+    public static func validateRules(_ rules: [ValidationRule], forValue value: ValueType, queue: DispatchQueue = DispatchQueue.main, completionHandler: @escaping (ValidationResult) -> Void) {
         var remainingRules = rules
-        var validateNext: Void -> Void = {}
+        var validateNext: (Void) -> Void = {}
         validateNext = {
-            dispatch_async(queue) {
+            queue.async {
                 guard let nextRule = remainingRules.first else {
-                    completionHandler(.Valid)
+                    completionHandler(.valid)
                     return
                 }
                 remainingRules.removeFirst()
                 nextRule.validate(value) { result in
                     switch result {
-                    case .Valid:
+                    case .valid:
                         validateNext()
-                    case .Invalid, .Cancelled:
-                        dispatch_async(queue) { completionHandler(result) }
+                    case .invalid, .cancelled:
+                        queue.async { completionHandler(result) }
                     }
                 }
             }

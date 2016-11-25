@@ -17,7 +17,7 @@
  
  - returns: A boolean element
  */
-public func toggle(title title: String, value: FormValue<Bool>, viewConfigurator: BooleanElement.ViewConfigurator? = nil) -> BooleanElement {
+public func toggle(title: String, value: FormValue<Bool>, viewConfigurator: BooleanElement.ViewConfigurator? = nil) -> BooleanElement {
     return BooleanElement(title: title, value: value, viewConfigurator: viewConfigurator)
 }
 
@@ -34,7 +34,7 @@ public func toggle(title title: String, value: FormValue<Bool>, viewConfigurator
  
  - returns: A segment element
  */
-public func segments<ValueType: Equatable>(title title: String,
+public func segments<ValueType: Equatable>(title: String,
                                                  segments: [Segment<ValueType>],
                                                  selectedValue: FormValue<ValueType>,
                                                  viewConfigurator: SegmentElement<ValueType>.ViewConfigurator? = nil)
@@ -57,7 +57,7 @@ public func segments<ValueType: Equatable>(title title: String,
  
  - returns: A static text form element
  */
-public func staticText(text: String, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
+public func staticText(_ text: String, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
     return StaticTextElement(text: text, viewConfigurator: viewConfigurator)
 }
 
@@ -71,7 +71,7 @@ public func staticText(text: String, viewConfigurator: StaticTextElement.ViewCon
  
  - returns: A static text form element
  */
-public func staticText(value: FormValue<String>, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
+public func staticText(_ value: FormValue<String>, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
     return StaticTextElement(value: value, viewConfigurator: viewConfigurator)
 }
 
@@ -87,10 +87,10 @@ public func staticText(value: FormValue<String>, viewConfigurator: StaticTextEle
  
  - returns: A segue element
  */
-public func segue(icon icon: UIImage?,
+public func segue(icon: UIImage?,
                        title: String,
                        viewConfigurator: SegueElement.ViewConfigurator? = nil,
-                       action: Void -> Void) -> SegueElement {
+                       action: (Void) -> Void) -> SegueElement {
     return SegueElement(
         icon: icon,
         title: title,
@@ -109,7 +109,7 @@ public func segue(icon icon: UIImage?,
  
  - returns: A spacer element
  */
-public func spacer(height height: CGFloat, viewConfigurator: SpacerElement.ViewConfigurator? = nil) -> SpacerElement {
+public func spacer(height: CGFloat, viewConfigurator: SpacerElement.ViewConfigurator? = nil) -> SpacerElement {
     return SpacerElement(height: height, viewConfigurator: viewConfigurator)
 }
 
@@ -123,7 +123,7 @@ public func spacer(height height: CGFloat, viewConfigurator: SpacerElement.ViewC
  
  - returns: A view element
  */
-public func customView<ValueType: Equatable>(value value: FormValue<ValueType>, viewConfigurator: ViewElement<ValueType>.ViewConfigurator) -> ViewElement<ValueType> {
+public func customView<ValueType: Equatable>(value: FormValue<ValueType>, viewConfigurator: ViewElement<ValueType>.ViewConfigurator) -> ViewElement<ValueType> {
     return ViewElement(value: value, viewConfigurator: viewConfigurator)
 }
 
@@ -137,7 +137,7 @@ public func customView<ValueType: Equatable>(value value: FormValue<ValueType>, 
  
  - returns: A group element
  */
-public func group(configuration configuration: GroupElement.Configuration = GroupElement.Configuration(), elements: [FormElement]) -> GroupElement {
+public func group(configuration: GroupElement.Configuration = GroupElement.Configuration(), elements: [FormElement]) -> GroupElement {
     return GroupElement(configuration: configuration, elements: elements)
 }
 
@@ -150,7 +150,7 @@ public func group(configuration configuration: GroupElement.Configuration = Grou
  
  - returns: A group element
  */
-public func group(configurator configurator: (inout GroupElement.Configuration) -> Void, elements: [FormElement]) -> GroupElement {
+public func group(configurator: (inout GroupElement.Configuration) -> Void, elements: [FormElement]) -> GroupElement {
     return GroupElement(configurator: configurator, elements: elements)
 }
 
@@ -162,7 +162,7 @@ public func group(configurator configurator: (inout GroupElement.Configuration) 
  
  - returns: A group element
  */
-public func inset(insets: UIEdgeInsets, elements: [FormElement]) -> GroupElement {
+public func inset(_ insets: UIEdgeInsets, elements: [FormElement]) -> GroupElement {
     return GroupElement(configurator: {
         $0.layout.edgeInsets = insets
     }, elements: elements)
@@ -179,10 +179,10 @@ public func inset(insets: UIEdgeInsets, elements: [FormElement]) -> GroupElement
  
  - returns: An editable text element
  */
-public func textField(value value: FormValue<String>,
+public func textField(value: FormValue<String>,
                             configuration: TextEditorConfiguration = TextEditorConfiguration(),
                             validationRules: [ValidationRule<String>] = [],
-                            viewConfigurator: (UITextField -> Void)? = nil)
+                            viewConfigurator: ((UITextField) -> Void)? = nil)
     -> EditableTextElement<UITextFieldTextEditorAdapter<UITextField>> {
     return EditableTextElement(
         value: value,
@@ -203,10 +203,10 @@ public func textField(value value: FormValue<String>,
  
  - returns: An editable text element
  */
-public func textView(value value: FormValue<String>,
-                           configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None),
+public func textView(value: FormValue<String>,
+                           configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .none),
                            validationRules: [ValidationRule<String>] = [],
-                           viewConfigurator: (PlaceholderTextView -> Void)? = nil)
+                           viewConfigurator: ((PlaceholderTextView) -> Void)? = nil)
     -> EditableTextElement<UITextViewTextEditorAdapter<PlaceholderTextView>> {
     return EditableTextElement(
         value: value,
@@ -229,13 +229,13 @@ public func textView(value value: FormValue<String>,
  - returns: An editable text elemen
  */
 public func floatLabel
-    <InnerAdapterType: TextEditorAdapter where InnerAdapterType.ViewType: FloatLabelTextEntryView>
-    (name name: String,
+    <InnerAdapterType: TextEditorAdapter>
+    (name: String,
           value: FormValue<String>,
           configuration: TextEditorConfiguration = TextEditorConfiguration(),
           validationRules: [ValidationRule<String>] = [],
-          viewConfigurator: (FloatLabel<InnerAdapterType> -> Void)? = nil)
-    -> EditableTextElement<FloatLabelTextEditorAdapter<InnerAdapterType>> {
+          viewConfigurator: ((FloatLabel<InnerAdapterType>) -> Void)? = nil)
+    -> EditableTextElement<FloatLabelTextEditorAdapter<InnerAdapterType>> where InnerAdapterType.ViewType: FloatLabelTextEntryView {
     return EditableTextElement(value: value,
                                configuration: configuration,
                                validationRules: validationRules) {
@@ -257,11 +257,11 @@ public func floatLabel
  
  - returns: An editable text elemen
  */
-public func singleLineFloatLabel(name name: String,
+public func singleLineFloatLabel(name: String,
                                       value: FormValue<String>,
                                       configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                       validationRules: [ValidationRule<String>] = [],
-                                      viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<FloatLabelTextField>> -> Void)? = nil)
+                                      viewConfigurator: ((FloatLabel<UITextFieldTextEditorAdapter<FloatLabelTextField>>) -> Void)? = nil)
     -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<FloatLabelTextField>>> {
     return floatLabel(
         name: name,
@@ -285,11 +285,11 @@ public func singleLineFloatLabel(name name: String,
  
  - returns: An editable text element
  */
-public func multiLineFloatLabel(name name: String,
+public func multiLineFloatLabel(name: String,
                                      value: FormValue<String>,
-                                     configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .None),
+                                     configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .none),
                                      validationRules: [ValidationRule<String>] = [],
-                                     viewConfigurator: (FloatLabel<UITextViewTextEditorAdapter<PlaceholderTextView>> -> Void)? = nil)
+                                     viewConfigurator: ((FloatLabel<UITextViewTextEditorAdapter<PlaceholderTextView>>) -> Void)? = nil)
     -> EditableTextElement<FloatLabelTextEditorAdapter<UITextViewTextEditorAdapter<PlaceholderTextView>>> {
     return floatLabel(
         name: name,
@@ -313,10 +313,10 @@ public func multiLineFloatLabel(name name: String,
  
  - returns: An editable text element
  */
-public func pickerField(name name: String, value: FormValue<String>, items: [PickerValue],
+public func pickerField(name: String, value: FormValue<String>, items: [PickerValue],
                                 configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                 validationRules: [ValidationRule<String>] = [],
-                                viewConfigurator: (FloatLabel<UITextFieldTextEditorAdapter<PickerField>> -> Void)? = nil)
+                                viewConfigurator: ((FloatLabel<UITextFieldTextEditorAdapter<PickerField>>) -> Void)? = nil)
     -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<PickerField>>> {
         return floatLabel(name: name,
                           value: value,
