@@ -316,17 +316,31 @@ public func multiLineFloatLabel(name: String,
  
  - returns: An editable text element
  */
-public func pickerField(name: String, value: FormValue<String>, items: [PickerValue],
+
+public func pickerField<ValueType: Equatable>(name: String, value: FormValue<ValueType>, items: [PickerValue<ValueType>],
                                 configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                 validationRules: [ValidationRule<String>] = [],
-                                viewConfigurator: ((FloatLabel<UITextFieldTextEditorAdapter<PickerField>>) -> Void)? = nil)
-    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<PickerField>>> {
+                                viewConfigurator: ((FloatLabel<UITextFieldTextEditorAdapter<PickerField<ValueType>>>) -> Void)? = nil)
+    -> EditableTextElement<FloatLabelTextEditorAdapter<UITextFieldTextEditorAdapter<PickerField<ValueType>>>> {
+        let valueString = FormValue("")
         return floatLabel(name: name,
-                          value: value,
+                          value: valueString,
                           configuration: configuration,
                           validationRules: validationRules) {
-                            $0.textEntryView.selectedValue = value
                             $0.textEntryView.items = items
+                            let textEntryView = $0.textEntryView
+                            textEntryView?.didSelectPickerValue = { pickerValue in
+                                valueString.value = pickerValue.title
+                                value.value = pickerValue.value
+                            }
+                            textEntryView?.items = items
+                            textEntryView?.selectValue(value.value)
+                            $0.adapterCallbacks?.textDidBeginEditing = { adapterType, viewType in
+                                viewType.updateSelectedValue()
+                            }
+                            $0.adapterCallbacks?.textDidEndEditing = { adapterType, viewType in
+                                viewType.updateSelectedValue()
+                            }
                             viewConfigurator?($0)
         }
 }

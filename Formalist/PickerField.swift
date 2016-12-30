@@ -9,50 +9,52 @@
 import UIKit
 
 /// An element used to display a float label with input type as a picker view
-open class PickerField: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
+open class PickerField<ValueType: Equatable>: FloatLabelTextField, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    open var items = [PickerValue]() {
+    open var items = [PickerValue<ValueType>]() {
         didSet {
-            pickerView?.reloadAllComponents()
-            if let selectedValue = selectedValue {
-                self.selectPickerValue(selectedValue.value)
-            }
+            pickerView.reloadAllComponents()
+            pickerView.selectedRow(inComponent: 0)
         }
     }
-    open var selectedValue: FormValue<String>?
-
-    fileprivate weak var pickerView: UIPickerView?
-    fileprivate weak var toolBar: UIToolbar?
+    fileprivate let pickerView: UIPickerView
+    open var didSelectPickerValue: ((_ value: PickerValue<ValueType>) -> Void)?
 
     override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneButtonAction))
-
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
-        toolBar.backgroundColor = UIColor.white
-        toolBar.setItems([space, doneButton], animated: true)
-        self.toolBar = toolBar
-
         let pickerView = UIPickerView()
         pickerView.showsSelectionIndicator = true
-        pickerView.dataSource = self
-        pickerView.delegate = self
         self.pickerView = pickerView
 
-        self.inputAccessoryView = toolBar
+        super.init(frame: frame)
+
+        pickerView.dataSource = self
+        pickerView.delegate = self
         self.inputView = pickerView
+
+        // hide the caret
+        tintColor = .clear
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func selectPickerValue(_ value: String) {
-        if let index = items.index(where: {$0.title > value}) {
-            pickerView?.selectRow(index, inComponent: 0, animated: true)
+    public func selectPickerValue(_ value: PickerValue<ValueType>) {
+        if let row = items.index(where: {$0 == value}) {
+            selectRow(row)
         }
+    }
+
+    public func selectValue(_ value: ValueType) {
+        if let row = items.index(where: {$0.value == value}) {
+            selectRow(row)
+        }
+    }
+
+    public func selectRow(_ row: Int) {
+        let pickerValue = items[row]
+        pickerView.selectRow(row, inComponent: 0, animated: true)
+        didSelectPickerValue?(pickerValue)
     }
 
     // UIPickerViewDataSource
@@ -67,34 +69,31 @@ open class PickerField: FloatLabelTextField, UIPickerViewDataSource, UIPickerVie
 
     // UIPickerViewDelegate
 
-    @objc open func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-       return items[row].title
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return items[row].title
     }
 
-    open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if self.items.count > row {
-            selectedValue!.value = self.items[row].title
-        }
-        resignTextView()
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectRow(row)
     }
 
-    func doneButtonAction() {
-        resignTextView()
-    }
-
-    func resignTextView() {
-        self.resignFirstResponder()
-        self.inputAccessoryView?.removeFromSuperview()
-        self.inputView?.removeFromSuperview()
+    public func updateSelectedValue() {
+        let row = pickerView.selectedRow(inComponent: 0)
+        selectRow(row)
     }
 }
 
-public struct PickerValue {
+public struct PickerValue<TypeValue: Equatable> {
     public let title: String
-    public let value: String
+    public let value: TypeValue
 
-    public init(title: String, value: String) {
+    public init(title: String, value: TypeValue) {
         self.title = title
         self.value = value
     }
+}
+
+public func == <TypeValue: Equatable>(lhs: PickerValue<TypeValue>, rhs: PickerValue<TypeValue>) -> Bool {
+    return lhs.title == rhs.title &&
+        lhs.value == rhs.value
 }
