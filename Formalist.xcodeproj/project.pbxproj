@@ -69,6 +69,7 @@
 		72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */; };
 		77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3050A1D7B6C7300F17EEF /* PickerField.swift */; };
 		A15176551E16760100E5CCBC /* InfoFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15176541E16760100E5CCBC /* InfoFieldElement.swift */; };
+		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,6 +233,7 @@
 		72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		77A3050A1D7B6C7300F17EEF /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		A15176541E16760100E5CCBC /* InfoFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoFieldElement.swift; sourceTree = "<group>"; };
+		A151765C1E16763200E5CCBC /* DividerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +387,7 @@
 		7285A7EA1D17D11200718D23 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				A151765C1E16763200E5CCBC /* DividerElement.swift */,
 				A15176541E16760100E5CCBC /* InfoFieldElement.swift */,
 				7285A7311D17CBCA00718D23 /* SpacerElement.swift */,
 				7285A7321D17CBCA00718D23 /* StaticTextElement.swift */,
@@ -723,6 +726,7 @@
 				7285A7581D17CBCA00718D23 /* ViewElement.swift in Sources */,
 				7285A7441D17CBCA00718D23 /* FormElement.swift in Sources */,
 				7285A7551D17CBCA00718D23 /* Validatable.swift in Sources */,
+				A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */,
 				7285A7481D17CBCA00718D23 /* PlaceholderTextView.swift in Sources */,
 				7285A74B1D17CBCA00718D23 /* SegmentElementView.swift in Sources */,
 				7285A7541D17CBCA00718D23 /* UIView+FormResponder.swift in Sources */,

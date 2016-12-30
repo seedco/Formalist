@@ -349,3 +349,6 @@ public func infoField(title: NSMutableAttributedString, subTitle: NSMutableAttri
     return InfoFieldElement(title: title, subTitle: subTitle, viewConfigurator: viewConfigurator)
 }
 
+public func divider(color: UIColor = .black, height: CGFloat = 1, viewConfigurator: ((UIView) -> Void)? = nil) -> DividerElement {
+    return DividerElement(color: color, height: height, viewConfigurator:  viewConfigurator)
+}
