@@ -239,7 +239,6 @@ public final class GroupElement: FormElement, Validatable {
         if case let .grouped(backgroundColor) = configuration.style {
             containerView.backgroundColor = backgroundColor
         }
-        responderViews.last?.nextFormResponder = containerView
         
         let stackView = UIStackView(arrangedSubviews: subviews)
         stackView.axis = .vertical
