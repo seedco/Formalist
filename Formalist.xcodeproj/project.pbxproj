@@ -70,6 +70,7 @@
 		77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3050A1D7B6C7300F17EEF /* PickerField.swift */; };
 		A15176551E16760100E5CCBC /* InfoFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15176541E16760100E5CCBC /* InfoFieldElement.swift */; };
 		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
+		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +235,7 @@
 		77A3050A1D7B6C7300F17EEF /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		A15176541E16760100E5CCBC /* InfoFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoFieldElement.swift; sourceTree = "<group>"; };
 		A151765C1E16763200E5CCBC /* DividerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerElement.swift; sourceTree = "<group>"; };
+		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +451,7 @@
 		7285A7F21D17D1C700718D23 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */,
 				7285A7221D17CBCA00718D23 /* Box.swift */,
 				7285A73C1D17CBCA00718D23 /* WeakBox.swift */,
 			);
@@ -741,6 +744,7 @@
 				7285A74E1D17CBCA00718D23 /* SpacerElement.swift in Sources */,
 				7285A7401D17CBCA00718D23 /* Convenience.swift in Sources */,
 				7285A74A1D17CBCA00718D23 /* SegmentElement.swift in Sources */,
+				A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */,
 				7285A7451D17CBCA00718D23 /* FormValue.swift in Sources */,
 				7285A7501D17CBCA00718D23 /* TextEditorAdapter.swift in Sources */,
 				7285A73E1D17CBCA00718D23 /* BooleanElementView.swift in Sources */,

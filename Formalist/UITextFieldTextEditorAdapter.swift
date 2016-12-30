@@ -83,6 +83,10 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
             fatalError("Expected text field of type \(TextFieldType.self)")
         }
         callbacks.textDidBeginEditing?(adapter, textField)
+
+        if configuration.showAccessoryViewToolbar {
+            appendToolbar(toTextField: textField)
+        }
     }
     
     @objc fileprivate func textFieldDidEndEditing(_ textField: UITextField) {
@@ -119,6 +123,9 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
     }
     
     @objc fileprivate func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        defer {
+            configuration.textEditorAction?(.returnKey)
+        }
         switch configuration.returnKeyAction {
         case .none: return true
         case .activateNextResponder:
@@ -128,12 +135,28 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
                 }
             }
             return false
-        case let .custom(action):
-            if configuration.shouldResignFirstResponderWhenFinished {
-                textField.resignFirstResponder()
-            }
-            action(textField.text ?? "")
-            return false
+        }
+    }
+
+    private func appendToolbar(toTextField textField: TextFieldType) {
+        var callbacks = AccessoryViewToolbarCallbacks()
+        callbacks.nextAction = { [weak self, weak textField] in
+            textField?.nextFormResponder?.becomeFirstResponder()
+            self?.configuration.textEditorAction?(.next)
+        }
+        callbacks.doneAction = { [weak self, weak textField] in
+            textField?.resignFirstResponder()
+            self?.configuration.textEditorAction?(.done)
+        }
+        let toolbar = AccessoryViewToolbar(frame: .zero)
+        toolbar.sizeToFit()
+        toolbar.callbacks = callbacks
+        textField.inputAccessoryView = toolbar
+
+        //Hide next button when nextFormResponder == nil.
+        if textField.nextFormResponder == nil {
+            toolbar.nextButtonItem.isEnabled = false
+            toolbar.nextButtonItem.title = ""
         }
     }
 }

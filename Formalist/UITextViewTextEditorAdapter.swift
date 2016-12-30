@@ -107,12 +107,6 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
                     }
                 }
                 return false
-            case let .custom(action):
-                if configuration.shouldResignFirstResponderWhenFinished {
-                    textView.resignFirstResponder()
-                }
-                action(textView.text)
-                return false
             }
         } else if let maximumLength = configuration.maximumLength {
             let newLength = textView.text.characters.count + text.characters.count - range.length

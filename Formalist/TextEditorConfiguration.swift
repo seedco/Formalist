@@ -15,24 +15,27 @@ public struct TextEditorConfiguration {
         /// Do nothing, i.e. trigger the normal return key behaviour,
         /// which is inserting a newline character
         case none
-        
+
         /// Activate the next responder in the form
         case activateNextResponder
-        
-        /// Perform a custom action. The `String` parameter passed
-        /// into the block is the current text contents of the
-        /// text editor.
-        case custom((String) -> Void)
     }
-    
+
+    public enum TextEditorAction {
+        case done
+        case next
+        case returnKey
+    }
+
     public let returnKeyAction: ReturnKeyAction
     public let continuouslyUpdatesValue: Bool
     public let maximumLength: Int?
     public let shouldResignFirstResponderWhenFinished: Bool
-    
+    public let showAccessoryViewToolbar: Bool
+    public let textEditorAction: ((TextEditorAction) -> Void)?
+
     /**
      Designated initializer
-     
+
      - parameter returnKeyAction:          The action to execute
      upon pressing the Return key on the keyboard
      - parameter continuouslyUpdatesValue: Whether the text changed
@@ -41,13 +44,22 @@ public struct TextEditorConfiguration {
      the text is finished editing
      - parameter maximumLength:            The maximum text length
      to restrict text input to
-     
+
      - returns: An initialized instance of the receiver
      */
-    public init(returnKeyAction: ReturnKeyAction = .activateNextResponder, continuouslyUpdatesValue: Bool = true, maximumLength: Int? = nil, shouldResignFirstResponderWhenFinished: Bool = true) {
+    public init(
+        returnKeyAction: ReturnKeyAction = .activateNextResponder,
+        continuouslyUpdatesValue: Bool = true,
+        maximumLength: Int? = nil,
+        shouldResignFirstResponderWhenFinished: Bool = true,
+        showAccessoryViewToolbar: Bool = false,
+        textEditorAction: ((TextEditorAction) -> Void)? = nil
+    ) {
         self.returnKeyAction = returnKeyAction
         self.continuouslyUpdatesValue = continuouslyUpdatesValue
         self.maximumLength = maximumLength
         self.shouldResignFirstResponderWhenFinished = shouldResignFirstResponderWhenFinished
+        self.showAccessoryViewToolbar = showAccessoryViewToolbar
+        self.textEditorAction = textEditorAction
     }
 }
