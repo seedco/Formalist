@@ -61,16 +61,16 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
     
     fileprivate lazy var labelShownConstraints: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.containerView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.containerView, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: self.textEntryView, attribute: .height, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.textEntryView, attribute: .top, relatedBy: .equal, toItem: self.containerView, attribute: .top, multiplier: 1.0, constant: Layout.TextInputYSpacing + Layout.TextInputTopShownSpacing),
-        NSLayoutConstraint(item: self.textEntryView, attribute: .bottom, relatedBy: .equal, toItem: self.containerView, attribute: .bottom, multiplier: 1.0, constant: -Layout.TextInputYSpacing + Layout.TextInputTopShownSpacing)
+        NSLayoutConstraint(item: self.textEntryView, attribute: .bottom, relatedBy: .equal, toItem: self.containerView, attribute: .bottom, multiplier: 1.0, constant: 0)
     ]
     
     fileprivate lazy var labelHiddenConstraints: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.containerView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.containerView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: self.containerView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.containerView, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: self.textEntryView, attribute: .height, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: self.textEntryView, attribute: .top, relatedBy: .equal, toItem: self.containerView, attribute: .top, multiplier: 1.0, constant: Layout.TextInputYSpacing),
         NSLayoutConstraint(item: self.textEntryView, attribute: .bottom, relatedBy: .equal, toItem: self.containerView, attribute: .bottom, multiplier: 1.0, constant: -Layout.TextInputYSpacing),
@@ -257,7 +257,6 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
 private struct Layout {
     static let TextInputYSpacing: CGFloat = 11
     static let TextInputTopShownSpacing: CGFloat = 10
-    static let TopSpacing: CGFloat = 16
 }
 
 enum State {
