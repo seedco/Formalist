@@ -344,3 +344,8 @@ public func pickerField<ValueType: Equatable>(name: String, value: FormValue<Val
                             viewConfigurator?($0)
         }
 }
+
+public func infoField(title: NSMutableAttributedString, subTitle: NSMutableAttributedString, viewConfigurator: ((UILabel, UILabel) -> Void)? = nil) -> InfoFieldElement {
+    return InfoFieldElement(title: title, subTitle: subTitle, viewConfigurator: viewConfigurator)
+}
+
