@@ -6,7 +6,7 @@
 //  Copyright © 2016 Seed Platform, Inc. All rights reserved.
 //
 
-/// Configuration options for text editors (`UITextField`, 
+/// Configuration options for text editors (`UITextField`,
 /// `UITextView`, etc.)
 public struct TextEditorConfiguration {
     /// An action to execute upon pressing the Return key on the
