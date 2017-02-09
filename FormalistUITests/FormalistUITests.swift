@@ -89,7 +89,7 @@ class FormalistUITests: XCTestCase {
         let pickerField = elementsQuery.textFields["pickerField"]
         
         pickerField.tap()
-        app.pickerWheels.element.adjustToPickerWheelValue("Value #3")
+        app.pickerWheels.element.adjust(toPickerWheelValue: "Value #3")
         
         guard let value = pickerField.value as? String else {
             return XCTAssert(false)
