@@ -15,6 +15,7 @@ public final class SegueElement: FormElement {
     
     fileprivate let icon: UIImage?
     fileprivate let title: String
+    fileprivate let accessoryIcon: UIImage?
     fileprivate let viewConfigurator: ViewConfigurator?
     fileprivate let action: (Void) -> Void
     
@@ -23,21 +24,23 @@ public final class SegueElement: FormElement {
      
      - parameter icon:             An optional icon to display
      - parameter title:            The title to display
+     - parameter accessoryIcon:        An optional icon to display in the accessory view
      - parameter viewConfigurator: An optional block used to configure the appearance
      of the view
      - parameter action:           The action to invoke when the view is tapped
      
      - returns: An initialized instance of the receiver
      */
-    public init(icon: UIImage?, title: String, viewConfigurator: ViewConfigurator? = nil, action: @escaping (Void) -> Void) {
+    public init(icon: UIImage?, title: String, accessoryIcon: UIImage?, viewConfigurator: ViewConfigurator? = nil, action: @escaping (Void) -> Void) {
         self.icon = icon
         self.title = title
+        self.accessoryIcon = accessoryIcon
         self.viewConfigurator = viewConfigurator
         self.action = action
     }
     
     public func render() -> UIView {
-        let view = SegueElementView(icon: icon, title: title)
+        let view = SegueElementView(icon: icon, title: title, accessoryIcon: accessoryIcon)
         viewConfigurator?(view)
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: self,

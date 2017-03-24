@@ -81,19 +81,24 @@ public func staticText(_ value: FormValue<String>, viewConfigurator: StaticTextE
  
  - parameter icon:             An optional icon to display
  - parameter title:            The title to display
+ - parameter accessoryIcon:        An optional icon to display in the accessory view
  - parameter viewConfigurator: An optional block used to configure the appearance
  of the view
  - parameter action:           The action to invoke when the view is tapped
  
  - returns: A segue element
  */
-public func segue(icon: UIImage?,
-                       title: String,
-                       viewConfigurator: SegueElement.ViewConfigurator? = nil,
-                       action: @escaping (Void) -> Void) -> SegueElement {
+public func segue(
+    icon: UIImage?,
+    title: String,
+    accessoryIcon: UIImage? = nil,
+    viewConfigurator: SegueElement.ViewConfigurator? = nil,
+    action: @escaping (Void) -> Void
+) -> SegueElement {
     return SegueElement(
         icon: icon,
         title: title,
+        accessoryIcon: accessoryIcon,
         viewConfigurator: viewConfigurator,
         action: action
     )
