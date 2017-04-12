@@ -16,8 +16,15 @@ class BooleanElementTests: FBSnapshotTestCase {
         recordMode = false
     }
     
-    func testRender() {
+    func testRenderWithoutIcon() {
         let element = BooleanElement(title: "Test Boolean Element", value: FormValue(false))
+        let elementView = renderElementForTesting(element)
+        FBSnapshotVerifyView(elementView)
+    }
+
+    func testRenderWithIcon() {
+        let icon = imageWithName("circle").withRenderingMode(.alwaysTemplate)
+        let element = BooleanElement(title: "Test Boolean Element", value: FormValue(false), icon: icon)
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
