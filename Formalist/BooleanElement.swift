@@ -14,21 +14,24 @@ public final class BooleanElement: FormElement {
     
     fileprivate let title: String
     fileprivate let value: FormValue<Bool>
+    fileprivate let icon: UIImage?
     fileprivate let viewConfigurator: ViewConfigurator?
-    
+
     /**
      Designated initializer
-     
-     - parameter title:            The title to display to the toggle
+
+     - parameter title:            The title to display
      - parameter value:            The form value to bind to the toggle
-     - parameter viewConfigurator: An optional closure that can configure the
-     element view, including the title `UILabel` and toggle `UISwitch`
-     
+     - parameter icon:             An optional icon to display beside the toggle
+     - parameter viewConfigurator: An optional block used to configure the appearance
+     of the view
+
      - returns: An initialized instance of the receiver
      */
-    public init(title: String, value: FormValue<Bool>, viewConfigurator: ViewConfigurator? = nil) {
+    public init(title: String, value: FormValue<Bool>, icon: UIImage? = nil, viewConfigurator: ViewConfigurator? = nil) {
         self.title = title
         self.value = value
+        self.icon = icon
         self.viewConfigurator = viewConfigurator
     }
     
