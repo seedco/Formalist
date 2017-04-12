@@ -12,13 +12,14 @@
  
  - parameter title:            The title to display to the toggle
  - parameter value:            The form value to bind to the toggle
+ - parameter icon:             An optional image to add beside the toggle
  - parameter viewConfigurator: An optional closure that can configure the
  element view, including the title `UILabel` and toggle `UISwitch`
  
  - returns: A boolean element
  */
-public func toggle(title: String, value: FormValue<Bool>, viewConfigurator: BooleanElement.ViewConfigurator? = nil) -> BooleanElement {
-    return BooleanElement(title: title, value: value, viewConfigurator: viewConfigurator)
+public func toggle(title: String, value: FormValue<Bool>, icon: UIImage? = nil, viewConfigurator: BooleanElement.ViewConfigurator? = nil) -> BooleanElement {
+    return BooleanElement(title: title, value: value, icon: icon, viewConfigurator: viewConfigurator)
 }
 
 /**
