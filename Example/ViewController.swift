@@ -45,7 +45,7 @@ class ViewController: UIViewController {
                 }
             ]),
             group(configuration: groupedConfiguration, elements: [
-                toggle(title: "Boolean Element", value: self.booleanValue),
+                toggle(title: "Boolean Element", value: self.booleanValue, icon: UIImage(named: "circle")!),
                 textView(value: self.textViewValue) {
                     $0.placeholder = "Text View Element"
                     $0.accessibilityIdentifier = "textView"
