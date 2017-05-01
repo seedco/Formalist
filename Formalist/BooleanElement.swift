@@ -36,7 +36,7 @@ public final class BooleanElement: FormElement {
     }
     
     public func render() -> UIView {
-        let booleanView = BooleanElementView(title: title)
+        let booleanView = BooleanElementView(title: title, icon: icon)
         booleanView.toggle.addTarget(
             self,
             action: #selector(BooleanElement.valueChanged(_:)),
