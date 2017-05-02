@@ -12,7 +12,7 @@ import StackViewController
 /// A view controller that displays and manages a set of form elements
 public final class FormViewController: UIViewController {
     fileprivate let rootElement: FormElement
-    fileprivate lazy var autoscrollView = AutoScrollView(frame: CGRect.zero)
+    public lazy var autoscrollView = AutoScrollView(frame: CGRect.zero)
     
     // MARK: Lifecycle
     
