@@ -16,20 +16,20 @@ class BooleanElementTests: FBSnapshotTestCase {
         recordMode = false
     }
     
-    func testRenderWithoutIcon() {
+    @objc func testRenderWithoutIcon() {
         let element = BooleanElement(title: "Test Boolean Element", value: FormValue(false))
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
 
-    func testRenderWithIcon() {
+    @objc func testRenderWithIcon() {
         let icon = imageWithName("circle").withRenderingMode(.alwaysTemplate)
         let element = BooleanElement(title: "Test Boolean Element", value: FormValue(false), icon: icon)
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
     
-    func testUpdateViewByUpdatingValue() {
+    @objc func testUpdateViewByUpdatingValue() {
         let value = FormValue(false)
         let element = BooleanElement(title: "Test Boolean Element", value: value)
         let elementView = element.render() as! BooleanElementView

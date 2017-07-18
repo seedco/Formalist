@@ -30,19 +30,19 @@ class SegmentElementTests: FBSnapshotTestCase {
         return element
     }
     
-    func testRenderWithFirstSegmentSelected() {
+    @objc func testRenderWithFirstSegmentSelected() {
         let element = segmentElementWithSelectedIndex(0)
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
     
-    func testRenderWithSecondSegmentSelected() {
+    @objc func testRenderWithSecondSegmentSelected() {
         let element = segmentElementWithSelectedIndex(1)
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
     
-    func testUpdateViewByUpdatingValue() {
+    @objc func testUpdateViewByUpdatingValue() {
         let value = FormValue(0)
         let element = segmentElementWithSelectedIndex(0, value: value)
         let elementView = element.render() as! SegmentElementView

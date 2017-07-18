@@ -16,7 +16,7 @@ class ValidationErrorViewTests: FBSnapshotTestCase {
         recordMode = false
     }
     
-    func testRender() {
+    @objc func testRender() {
         let view = ValidationErrorView(frame: CGRect.zero)
         view.label.text = "Error message"
         

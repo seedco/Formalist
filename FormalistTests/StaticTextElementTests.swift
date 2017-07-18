@@ -16,7 +16,7 @@ class StaticTextElementTests: FBSnapshotTestCase {
         recordMode = false
     }
     
-    func testRender() {
+    @objc func testRender() {
         let element = staticText("Static Text Element") {
             $0.textAlignment = .center
             $0.textColor = .red
@@ -25,7 +25,7 @@ class StaticTextElementTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(elementView)
     }
     
-    func testUpdateViewByUpdatingValue() {
+    @objc func testUpdateViewByUpdatingValue() {
         let value = FormValue("foo")
         let element = staticText(value)
         let elementView = element.render() as! UILabel

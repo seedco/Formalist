@@ -31,7 +31,7 @@ class GroupElementTests: FBSnapshotTestCase {
         ]
     }
     
-    func testRenderPlainStyle() {
+    @objc func testRenderPlainStyle() {
         var configuration = GroupElement.Configuration()
         configuration.style = .plain
         
@@ -40,7 +40,7 @@ class GroupElementTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(elementView)
     }
     
-    func testRenderGroupedStyleWithSeparators() {
+    @objc func testRenderGroupedStyleWithSeparators() {
         var configuration = GroupElement.Configuration()
         configuration.style = .grouped(backgroundColor: .white)
         
@@ -49,7 +49,7 @@ class GroupElementTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(elementView)
     }
     
-    func testRenderGroupedStyleWithoutSeparators() {
+    @objc func testRenderGroupedStyleWithoutSeparators() {
         var configuration = GroupElement.Configuration()
         configuration.style = .grouped(backgroundColor: .white)
         configuration.separatorViewFactory = { _,_  in return nil }
@@ -59,7 +59,7 @@ class GroupElementTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(elementView)
     }
     
-    func testRenderWithConstantHeights() {
+    @objc func testRenderWithConstantHeights() {
         var configuration = GroupElement.Configuration()
         configuration.layout.mode = .constantHeight(44)
         
@@ -68,7 +68,7 @@ class GroupElementTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(elementView)
     }
     
-    func testRenderWithConstantHeightsAndInsets() {
+    @objc func testRenderWithConstantHeightsAndInsets() {
         var configuration = GroupElement.Configuration()
         configuration.layout.mode = .constantHeight(44)
         configuration.layout.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
@@ -78,7 +78,7 @@ class GroupElementTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(elementView)
     }
     
-    func testRenderWithIntrinsicSizeAndInsets() {
+    @objc func testRenderWithIntrinsicSizeAndInsets() {
         var configuration = GroupElement.Configuration()
         configuration.layout.mode = .intrinsicSize
         configuration.layout.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
@@ -88,7 +88,7 @@ class GroupElementTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(elementView)
     }
     
-    func testRenderValidationErrorWithDefaultFactory() {
+    @objc func testRenderValidationErrorWithDefaultFactory() {
         let fieldExpectation = expectation(description: "Text field element validation")
 
         validatableElement.validateAndStoreResult { _ in
@@ -102,7 +102,7 @@ class GroupElementTests: FBSnapshotTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
-    func testRenderValidationErrorWithNoopFactory() {
+    @objc func testRenderValidationErrorWithNoopFactory() {
         let fieldExpectation = expectation(description: "Text field element validation")
         
         validatableElement.validateAndStoreResult { _ in

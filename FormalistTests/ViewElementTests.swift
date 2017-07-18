@@ -16,7 +16,7 @@ class ViewElementTests: FBSnapshotTestCase {
         recordMode = false
     }
     
-    func testRenderActivityIndicator() {
+    @objc func testRenderActivityIndicator() {
         let element = ViewElement(value: FormValue("")) { _ in
             let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             activityIndicator.color = .blue
