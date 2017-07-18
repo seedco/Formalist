@@ -292,7 +292,9 @@
 				7285A7B91D17CD0800718D23 /* FormalistUITests */,
 				7285A7071D17CB7000718D23 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		7285A7071D17CB7000718D23 /* Products */ = {
 			isa = PBXGroup;
