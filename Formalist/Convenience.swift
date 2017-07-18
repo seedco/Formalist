@@ -94,7 +94,7 @@ public func segue(
     title: String,
     accessoryIcon: UIImage? = nil,
     viewConfigurator: SegueElement.ViewConfigurator? = nil,
-    action: @escaping (Void) -> Void
+    action: @escaping () -> Void
 ) -> SegueElement {
     return SegueElement(
         icon: icon,

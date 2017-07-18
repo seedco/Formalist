@@ -232,7 +232,7 @@ public struct ValidationRule<ValueType> {
      */
     public static func validateRules(_ rules: [ValidationRule], forValue value: ValueType, queue: DispatchQueue = .main, completionHandler: @escaping (ValidationResult) -> Void) {
         var remainingRules = rules
-        var validateNext: (Void) -> Void = {}
+        var validateNext: () -> Void = {}
         validateNext = {
             queue.async {
                 guard let nextRule = remainingRules.first else {

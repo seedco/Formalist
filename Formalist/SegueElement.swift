@@ -17,7 +17,7 @@ public final class SegueElement: FormElement {
     fileprivate let title: String
     fileprivate let accessoryIcon: UIImage?
     fileprivate let viewConfigurator: ViewConfigurator?
-    fileprivate let action: (Void) -> Void
+    fileprivate let action: () -> Void
     
     /**
      Designated initializer
@@ -31,7 +31,7 @@ public final class SegueElement: FormElement {
      
      - returns: An initialized instance of the receiver
      */
-    public init(icon: UIImage?, title: String, accessoryIcon: UIImage?, viewConfigurator: ViewConfigurator? = nil, action: @escaping (Void) -> Void) {
+    public init(icon: UIImage?, title: String, accessoryIcon: UIImage?, viewConfigurator: ViewConfigurator? = nil, action: @escaping () -> Void) {
         self.icon = icon
         self.title = title
         self.accessoryIcon = accessoryIcon

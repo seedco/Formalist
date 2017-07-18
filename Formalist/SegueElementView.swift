@@ -27,7 +27,7 @@ open class SegueElementView: UIView {
     init(icon: UIImage?, title: String, accessoryIcon: UIImage?) {
         imageView = UIImageView(image: icon)
         imageView.isHidden = (icon == nil)
-        imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +42,7 @@ open class SegueElementView: UIView {
         accessoryButton = UIButton(type: .custom)
         accessoryButton.setImage(accessoryIcon, for: .normal)
         accessoryButton.isHidden = (accessoryIcon == nil)
-        accessoryButton.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
+        accessoryButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         super.init(frame: CGRect.zero)
 

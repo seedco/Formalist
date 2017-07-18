@@ -34,7 +34,7 @@ public extension Validatable {
  */
 public func validateObjects(_ objects: [Validatable], queue: DispatchQueue = DispatchQueue.main, completionHandler: @escaping (ValidationResult) -> Void) {
     var remainingObjects = objects
-    var validateNext: (Void) -> Void = {}
+    var validateNext: () -> Void = {}
     validateNext = {
         queue.async {
             guard let nextObject = remainingObjects.first else {

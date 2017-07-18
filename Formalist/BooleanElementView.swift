@@ -29,12 +29,12 @@ open class BooleanElementView: UIView {
         titleLabel = UILabel(frame: CGRect.zero)
         titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         titleLabel.text = title
-        titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        titleLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
         accessoryButton = UIButton(type: .custom)
         accessoryButton.setImage(icon, for: .normal)
         accessoryButton.isHidden = (icon == nil)
-        accessoryButton.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
+        accessoryButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         toggle = UISwitch(frame: CGRect.zero)
         

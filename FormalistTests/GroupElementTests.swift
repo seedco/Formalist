@@ -52,7 +52,7 @@ class GroupElementTests: FBSnapshotTestCase {
     func testRenderGroupedStyleWithoutSeparators() {
         var configuration = GroupElement.Configuration()
         configuration.style = .grouped(backgroundColor: .white)
-        configuration.separatorViewFactory = { _ in return nil }
+        configuration.separatorViewFactory = { _,_  in return nil }
         
         let element = GroupElement(configuration: configuration, elements: childElements)
         let elementView = renderElementForTesting(element)

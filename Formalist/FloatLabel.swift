@@ -181,7 +181,7 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
         self.transitionToState(state, animated: false)
     }
 
-    func containerViewDidTap() {
+    @objc func containerViewDidTap() {
         self.textEntryView.becomeFirstResponder()
     }
     
