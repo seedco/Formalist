@@ -145,7 +145,7 @@ class ValidationRuleTests: XCTestCase {
     
     func testCharacterSetRuleWithValidInput() {
         let expectation = self.expectation(description: "validate rule")
-        let rule = ValidationRule<String>.characterSet(.alphanumerics)
+        let rule = ValidationRule<String>.characterSet(CharacterSet.alphanumerics)
         rule.validate("abc123") { result in
             XCTAssert(result == .valid)
             expectation.fulfill()
@@ -155,7 +155,7 @@ class ValidationRuleTests: XCTestCase {
     
     func testCharacterSetRuleWithInvalidInput() {
         let expectation = self.expectation(description: "validate rule")
-        let rule = ValidationRule<String>.characterSet(.alphanumerics)
+        let rule = ValidationRule<String>.characterSet(CharacterSet.alphanumerics)
         rule.validate("$$$") { result in
             if case .invalid = result {
             } else {
@@ -210,5 +210,11 @@ class ValidationRuleTests: XCTestCase {
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0, handler: nil)
+    }
+}
+
+private extension ValidationRule {
+    init(_ validator: @escaping Validator) {
+        self.init(validator, identifier: "Test")
     }
 }

@@ -31,13 +31,13 @@ public final class FloatLabelTextEditorAdapter<InnerAdapterType: TextEditorAdapt
 
         floatLabel.adapterCallbacks = { [unowned floatLabel] in
             var innerCallbacks = TextEditorAdapterCallbacks<InnerAdapterType>()
-            innerCallbacks.textDidBeginEditing = { [unowned floatLabel] _ in
+            innerCallbacks.textDidBeginEditing = { [unowned floatLabel] _, _ in
                 callbacks.textDidBeginEditing?(self, floatLabel)
             }
-            innerCallbacks.textDidEndEditing = { [unowned floatLabel] _ in
+            innerCallbacks.textDidEndEditing = { [unowned floatLabel] _, _ in
                 callbacks.textDidEndEditing?(self, floatLabel)
             }
-            innerCallbacks.textDidChange = { [unowned floatLabel] _ in
+            innerCallbacks.textDidChange = { [unowned floatLabel] _, _ in
                 callbacks.textDidChange?(self, floatLabel)
             }
             return innerCallbacks

@@ -60,7 +60,7 @@ open class PlaceholderTextView: UITextView {
                 _placeholder = attributedPlaceholder.string
                 if attributedPlaceholder.length > 0 {
                     let attributes = attributedPlaceholder.attributes(at: 0, effectiveRange: nil)
-                    _placeholderColor = attributes[NSForegroundColorAttributeName] as? UIColor
+                    _placeholderColor = attributes[.foregroundColor] as? UIColor
                 } else {
                     _placeholderColor = nil
                 }
@@ -71,34 +71,32 @@ open class PlaceholderTextView: UITextView {
         }
     }
     
-    fileprivate var defaultTextAttributes: [String: AnyObject] {
+    fileprivate var defaultTextAttributes: [NSAttributedStringKey: Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = textAlignment
         paragraphStyle.lineSpacing = 8
-        var attributes: [String: AnyObject] = [
-            NSParagraphStyleAttributeName: paragraphStyle
-        ]
+        var attributes: [NSAttributedStringKey: Any] = [.paragraphStyle: paragraphStyle]
         if let textColor = super.textColor {
-            attributes[NSForegroundColorAttributeName] = textColor
+            attributes[.foregroundColor] = textColor
         }
         if let font = font {
-            attributes[NSFontAttributeName] = font
+            attributes[.font] = font
         }
         return attributes
     }
     
-    fileprivate var currentTextAttributes: [String: AnyObject] {
-        var attributes: [String: AnyObject]
+    fileprivate var currentTextAttributes: [NSAttributedStringKey: Any] {
+        var attributes: [NSAttributedStringKey: Any]
         if let attributedPlaceholder = attributedPlaceholder, attributedPlaceholder.length > 0 {
-            attributes = attributedPlaceholder.attributes(at: 0, effectiveRange: nil) as [String : AnyObject]
+            attributes = attributedPlaceholder.attributes(at: 0, effectiveRange: nil)
         } else {
             attributes = defaultTextAttributes
         }
-        attributes[NSForegroundColorAttributeName] = placeholderColor
+        attributes[.foregroundColor] = placeholderColor
         return attributes
     }
     
-    fileprivate var originalTextAttributes: [String: AnyObject]?
+    fileprivate var originalTextAttributes: [NSAttributedStringKey: Any]?
     fileprivate var editing: Bool = false {
         didSet { showPlaceholder = !editing && text.isEmpty }
     }
@@ -118,7 +116,7 @@ open class PlaceholderTextView: UITextView {
                 originalTextAttributes = defaultTextAttributes
                 super.attributedText = attributedPlaceholder
             } else {
-                super.textColor = originalTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+                super.textColor = originalTextAttributes?[.foregroundColor] as? UIColor
                 super.attributedText = NSAttributedString(string: "", attributes: originalTextAttributes ?? [:])
                 originalTextAttributes = nil
             }
@@ -153,14 +151,14 @@ open class PlaceholderTextView: UITextView {
     override open var textColor: UIColor? {
         get {
             if showPlaceholder {
-                return originalTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+                return originalTextAttributes?[.foregroundColor] as? UIColor
             } else {
                 return super.textColor
             }
         }
         set {
             if showPlaceholder {
-                originalTextAttributes?[NSForegroundColorAttributeName] = newValue
+                originalTextAttributes?[.foregroundColor] = newValue
             } else {
                 super.textColor = newValue
             }

@@ -30,8 +30,8 @@ class PlaceholderTextViewTests: FBSnapshotTestCase {
     
     func testShowsPlaceholderBySettingAttributedPlaceholder() {
         textView.attributedPlaceholder = NSAttributedString(string: "Placeholder", attributes: [
-            NSForegroundColorAttributeName: UIColor.red,
-            NSBackgroundColorAttributeName: UIColor.lightGray
+            .foregroundColor: UIColor.red,
+            .foregroundColor: UIColor.lightGray
         ])
         
         sizeViewForTesting(textView)
