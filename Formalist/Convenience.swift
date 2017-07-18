@@ -35,7 +35,7 @@ public func toggle(title: String, value: FormValue<Bool>, icon: UIImage? = nil, 
  
  - returns: A segment element
  */
-public func segments<ValueType: Equatable>(title: String,
+public func segments<ValueType>(title: String,
                                                  segments: [Segment<ValueType>],
                                                  selectedValue: FormValue<ValueType>,
                                                  viewConfigurator: SegmentElement<ValueType>.ViewConfigurator? = nil)
@@ -129,7 +129,7 @@ public func spacer(height: CGFloat, viewConfigurator: SpacerElement.ViewConfigur
  
  - returns: A view element
  */
-public func customView<ValueType: Equatable>(
+public func customView<ValueType>(
   value: FormValue<ValueType>,
   viewConfigurator: @escaping ViewElement<ValueType>.ViewConfigurator
 ) -> ViewElement<ValueType> {
@@ -238,13 +238,13 @@ public func textView(value: FormValue<String>,
  - returns: An editable text elemen
  */
 public func floatLabel
-    <InnerAdapterType: TextEditorAdapter>
+    <InnerAdapterType>
     (name: String,
           value: FormValue<String>,
           configuration: TextEditorConfiguration = TextEditorConfiguration(),
           validationRules: [ValidationRule<String>] = [],
           viewConfigurator: ((FloatLabel<InnerAdapterType>) -> Void)? = nil)
-    -> EditableTextElement<FloatLabelTextEditorAdapter<InnerAdapterType>> where InnerAdapterType.ViewType: FloatLabelTextEntryView {
+    -> EditableTextElement<FloatLabelTextEditorAdapter<InnerAdapterType>> {
     return EditableTextElement(value: value,
                                configuration: configuration,
                                validationRules: validationRules) {
@@ -323,7 +323,7 @@ public func multiLineFloatLabel(name: String,
  - returns: An editable text element
  */
 
-public func pickerField<ValueType: Equatable>(name: String, value: FormValue<ValueType>, items: [PickerValue<ValueType>],
+public func pickerField<ValueType>(name: String, value: FormValue<ValueType>, items: [PickerValue<ValueType>],
                                 configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                 validationRules: [ValidationRule<String>] = [],
                                 viewConfigurator: ((FloatLabel<UITextFieldTextEditorAdapter<PickerField<ValueType>>>) -> Void)? = nil)

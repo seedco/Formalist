@@ -93,7 +93,7 @@ public struct PickerValue<TypeValue: Equatable> {
     }
 }
 
-public func == <TypeValue: Equatable>(lhs: PickerValue<TypeValue>, rhs: PickerValue<TypeValue>) -> Bool {
+public func == <TypeValue>(lhs: PickerValue<TypeValue>, rhs: PickerValue<TypeValue>) -> Bool {
     return lhs.title == rhs.title &&
         lhs.value == rhs.value
 }
