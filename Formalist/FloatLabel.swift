@@ -45,13 +45,13 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
     /// Callbacks to call when the adapter for the text entry view receives
     /// a text editing event.
     open var adapterCallbacks: TextEditorAdapterCallbacks<AdapterType>?
-    
-    open override var nextFormResponder: UIView? {
+
+    @objc open override var nextFormResponder: UIView? {
         didSet {
-            textEntryView.nextFormResponder = nextFormResponder
+            textEntryView.nextFormResponder = self.nextFormResponder
         }
     }
-    
+
     public typealias TextChangedObserver = (AdapterType, AdapterType.ViewType) -> Void
     
     /// Callback to call when the text in the text entry view is changed

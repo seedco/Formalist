@@ -18,7 +18,7 @@ internal extension UIView {
     /// fields, for example. Calling `nextFormResponder?.becomeFirstResponder()`
     /// from a form view will make the view resign first responder and make
     /// the next form view the first responder (if it exists).
-    var nextFormResponder: UIView? {
+    @objc var nextFormResponder: UIView? {
         get {
             if let box = objc_getAssociatedObject(self, &ObjCNextFormResponderKey) as? WeakBox<UIView> {
                 return box.value
