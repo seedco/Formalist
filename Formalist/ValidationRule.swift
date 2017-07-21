@@ -106,7 +106,7 @@ public struct ValidationRule<ValueType> {
 
      - returns: The validation rule
      */
-    public static func characterSet(_ characterSet: NSCharacterSet) -> ValidationRule<String> {
+    public static func characterSet(_ characterSet: CharacterSet) -> ValidationRule<String> {
         return ValidationRule<String> ({ str, completion in
             if let range = str.rangeOfCharacter(from: characterSet.inverted) {
                 let errorFormat = NSLocalizedString("\"%@\" is not an allowed character", comment: "Invalid character error message")

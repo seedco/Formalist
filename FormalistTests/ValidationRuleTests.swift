@@ -20,15 +20,17 @@ class ValidationRuleTests: XCTestCase {
     }
     
     func testValidateWithAllValidRules() {
+
         var evaluated1 = false, evaluated2 = false
-        let rule1 = ValidationRule<String> { _, completion in
+        let rule1 = ValidationRule<String> ({ _, completion in
             evaluated1 = true
             completion(.valid)
-        }
-        let rule2 = ValidationRule<String> { _, completion in
+        }, identifier: "rule1")
+
+        let rule2 = ValidationRule<String> ( { _, completion in
             evaluated2 = true
             completion(.valid)
-        }
+        }, identifier: "rule2")
         
         let expectation = self.expectation(description: "validate rules")
         ValidationRule.validateRules([rule1, rule2], forValue: "") { result in
@@ -43,14 +45,14 @@ class ValidationRuleTests: XCTestCase {
     func testValidateWithOneInvalidRule() {
         var evaluated1 = false, evaluated2 = false
         let invalidResult = ValidationResult.invalid(message: "Validation failed")
-        let rule1 = ValidationRule<String> { _, completion in
+        let rule1 = ValidationRule<String> ({ _, completion in
             evaluated1 = true
             completion(invalidResult)
-        }
-        let rule2 = ValidationRule<String> { _, completion in
+        }, identifier: "rule1")
+        let rule2 = ValidationRule<String> ({ _, completion in
             evaluated2 = true
             completion(.valid)
-        }
+        }, identifier: "rule1")
         
         let expectation = self.expectation(description: "validate rules")
         ValidationRule.validateRules([rule1, rule2], forValue: "") { result in
@@ -64,14 +66,14 @@ class ValidationRuleTests: XCTestCase {
     
     func testValidateWithOneCancelledRule() {
         var evaluated1 = false, evaluated2 = false
-        let rule1 = ValidationRule<String> { _, completion in
+        let rule1 = ValidationRule<String> ({ _, completion in
             evaluated1 = true
             completion(.cancelled)
-        }
-        let rule2 = ValidationRule<String> { _, completion in
+        }, identifier: "rule1")
+        let rule2 = ValidationRule<String> ({ _, completion in
             evaluated2 = true
             completion(.valid)
-        }
+        }, identifier: "rule2")
         
         let expectation = self.expectation(description: "validate rules")
         ValidationRule.validateRules([rule1, rule2], forValue: "") { result in
