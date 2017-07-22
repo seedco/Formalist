@@ -68,6 +68,9 @@
 		7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */; };
 		77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3050A1D7B6C7300F17EEF /* PickerField.swift */; };
+		77CAA13C1F2188E400EA44AD /* FormNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CAA13B1F2188E400EA44AD /* FormNumberFormatter.swift */; };
+		77CAA14E1F227BBE00EA44AD /* FormNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CAA14D1F227BBE00EA44AD /* FormNumberFormatterTests.swift */; };
+		77CAA1501F23092400EA44AD /* Formattable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CAA14F1F23092400EA44AD /* Formattable.swift */; };
 		A15176551E16760100E5CCBC /* InfoFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15176541E16760100E5CCBC /* InfoFieldElement.swift */; };
 		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
 		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
@@ -233,6 +236,9 @@
 		7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StackViewController.xcodeproj; path = External/StackViewController/StackViewController.xcodeproj; sourceTree = "<group>"; };
 		72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		77A3050A1D7B6C7300F17EEF /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
+		77CAA13B1F2188E400EA44AD /* FormNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormNumberFormatter.swift; sourceTree = "<group>"; };
+		77CAA14D1F227BBE00EA44AD /* FormNumberFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormNumberFormatterTests.swift; sourceTree = "<group>"; };
+		77CAA14F1F23092400EA44AD /* Formattable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formattable.swift; sourceTree = "<group>"; };
 		A15176541E16760100E5CCBC /* InfoFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoFieldElement.swift; sourceTree = "<group>"; };
 		A151765C1E16763200E5CCBC /* DividerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerElement.swift; sourceTree = "<group>"; };
 		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
@@ -331,6 +337,7 @@
 				7285A7661D17CC1D00718D23 /* ValidationErrorViewTests.swift */,
 				7285A7671D17CC1D00718D23 /* ValidationRuleTests.swift */,
 				7285A7681D17CC1D00718D23 /* ViewElementTests.swift */,
+				77CAA14D1F227BBE00EA44AD /* FormNumberFormatterTests.swift */,
 			);
 			path = FormalistTests;
 			sourceTree = "<group>";
@@ -444,6 +451,8 @@
 				7285A72B1D17CBCA00718D23 /* PlaceholderTextView.swift */,
 				72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */,
 				77A3050A1D7B6C7300F17EEF /* PickerField.swift */,
+				77CAA13B1F2188E400EA44AD /* FormNumberFormatter.swift */,
+				77CAA14F1F23092400EA44AD /* Formattable.swift */,
 			);
 			name = "Editable Text";
 			sourceTree = "<group>";
@@ -735,6 +744,7 @@
 				7285A74B1D17CBCA00718D23 /* SegmentElementView.swift in Sources */,
 				7285A7541D17CBCA00718D23 /* UIView+FormResponder.swift in Sources */,
 				7285A74D1D17CBCA00718D23 /* SegueElementView.swift in Sources */,
+				77CAA13C1F2188E400EA44AD /* FormNumberFormatter.swift in Sources */,
 				77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */,
 				72239FEB1D25B9E800A157D9 /* UIView+ChangeObservation.swift in Sources */,
 				7285A7421D17CBCA00718D23 /* FloatLabel.swift in Sources */,
@@ -747,6 +757,7 @@
 				7285A74A1D17CBCA00718D23 /* SegmentElement.swift in Sources */,
 				A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */,
 				7285A7451D17CBCA00718D23 /* FormValue.swift in Sources */,
+				77CAA1501F23092400EA44AD /* Formattable.swift in Sources */,
 				7285A7501D17CBCA00718D23 /* TextEditorAdapter.swift in Sources */,
 				7285A73E1D17CBCA00718D23 /* BooleanElementView.swift in Sources */,
 				7285A7471D17CBCA00718D23 /* GroupElement.swift in Sources */,
@@ -764,6 +775,7 @@
 			files = (
 				7285A76B1D17CC1D00718D23 /* FloatLabelTests.swift in Sources */,
 				7285A7771D17CC1D00718D23 /* ViewElementTests.swift in Sources */,
+				77CAA14E1F227BBE00EA44AD /* FormNumberFormatterTests.swift in Sources */,
 				7285A7761D17CC1D00718D23 /* ValidationRuleTests.swift in Sources */,
 				7285A76E1D17CC1D00718D23 /* PlaceholderTextViewTests.swift in Sources */,
 				7285A7691D17CC1D00718D23 /* BooleanElementTests.swift in Sources */,
