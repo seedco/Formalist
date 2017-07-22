@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     fileprivate let floatLabelValue = FormValue("")
     fileprivate let multiLineFloatLabelValue = FormValue("")
     fileprivate let emailValue = FormValue("")
+    fileprivate let phoneValue = FormValue("")
     fileprivate let stringValue3 = FormValue("")
     fileprivate let pickerFieldValue = FormValue("")
     
@@ -32,7 +33,11 @@ class ViewController: UIViewController {
     
     fileprivate lazy var formViewController: FormViewController = {
         let edgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        
+
+        let numberFormatter = FormNumberFormatter(
+            type: .custom(pattern: "***-***-****", replaceCharacter: "*")
+        )
+
         var groupedConfiguration = GroupElement.Configuration()
         groupedConfiguration.style = .grouped(backgroundColor: .white)
         groupedConfiguration.layout.edgeInsets = edgeInsets
@@ -75,6 +80,19 @@ class ViewController: UIViewController {
                     $0.autocorrectionType = .no
                     $0.spellCheckingType = .no
                     $0.placeholder = "Text Field Element (Email)"
+                },
+                textField(
+                    value: self.phoneValue,
+                    configuration: TextEditorConfiguration(
+                        continuouslyUpdatesValue: true,
+                        formatter: numberFormatter
+                    ),
+                    validationRules: [.email])
+                {
+                    $0.autocapitalizationType = .none
+                    $0.autocorrectionType = .no
+                    $0.spellCheckingType = .no
+                    $0.placeholder = "Text formatter XXX-XXX-XXXX"
                 },
                 segue(icon: UIImage(named: "circle")!, title: "Segue Element", viewConfigurator: {
                     $0.accessibilityIdentifier = "segueView"
