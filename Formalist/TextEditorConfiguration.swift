@@ -32,6 +32,7 @@ public struct TextEditorConfiguration {
     public let shouldResignFirstResponderWhenFinished: Bool
     public let showAccessoryViewToolbar: Bool
     public let textEditorAction: ((TextEditorAction) -> Void)?
+    public let formatter: Formattable?
 
     /**
      Designated initializer
@@ -53,6 +54,7 @@ public struct TextEditorConfiguration {
         maximumLength: Int? = nil,
         shouldResignFirstResponderWhenFinished: Bool = true,
         showAccessoryViewToolbar: Bool = false,
+        formatter: Formattable? = nil,
         textEditorAction: ((TextEditorAction) -> Void)? = nil
     ) {
         self.returnKeyAction = returnKeyAction
@@ -60,6 +62,7 @@ public struct TextEditorConfiguration {
         self.maximumLength = maximumLength
         self.shouldResignFirstResponderWhenFinished = shouldResignFirstResponderWhenFinished
         self.showAccessoryViewToolbar = showAccessoryViewToolbar
+        self.formatter = formatter
         self.textEditorAction = textEditorAction
     }
 }

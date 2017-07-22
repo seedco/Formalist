@@ -16,7 +16,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
     fileprivate let value: FormValue<String>
     fileprivate let validationRules: [ValidationRule<String>]
     fileprivate let viewConfigurator: ViewConfigurator?
-    
+    fileprivate let configuration: TextEditorConfiguration
     /**
      Designated initializer
      
@@ -37,15 +37,31 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
         self.adapter = AdapterType(configuration: configuration)
         self.validationRules = validationRules
         self.viewConfigurator = viewConfigurator
+        self.configuration = configuration
     }
     
     // MARK: FormElement
     
     public func render() -> UIView {
         let view = adapter.createViewWithCallbacks(TextEditorAdapterCallbacks()) { [weak self] (adapter, view) in
+            guard let `self` = self else { return }
+
+            let text: String = {
+                let oldValue = self.value.value
+                let newValue = adapter.getTextForView(view)
+                if let formatter = self.configuration.formatter {
+                    return formatter.from(
+                        input: newValue,
+                        previousInput: oldValue
+                    )
+                } else {
+                    return newValue
+                }
+            }()
             view.shouldIgnoreFormValueChanges = true
-            self?.value.value = adapter.getTextForView(view)
+            self.value.value = text
             view.shouldIgnoreFormValueChanges = false
+            adapter.setText(text, forView: view)
         }
         let updateView: (String) -> Void = { [weak view, weak self] in
             guard let view = view, let adapter = self?.adapter else { return }
