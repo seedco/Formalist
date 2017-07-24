@@ -46,16 +46,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
         let view = adapter.createViewWithCallbacks(TextEditorAdapterCallbacks()) { [weak self] (adapter, view) in
             guard let `self` = self else { return }
 
-            let text: String = {
-                let newValue = adapter.getTextForView(view)
-                if let formatter = self.configuration.formatter {
-                    return formatter.from(
-                        input: newValue
-                    )
-                } else {
-                    return newValue
-                }
-            }()
+            let text = self.text(for: adapter.getTextForView(view))
             view.shouldIgnoreFormValueChanges = true
             self.value.value = text
             view.shouldIgnoreFormValueChanges = false
@@ -67,14 +58,26 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
                 adapter.setText($0, forView: view)
             }
         }
-        updateView(value.value)
+        updateView(
+            text(for: value.value)
+        )
         let _ = value.addObserver(updateView)
         viewConfigurator?(view)
         return view
     }
-    
+
+    private func text(for value: String) -> String {
+        if let formatter = configuration.formatter {
+            return formatter.from(
+                input: value
+            )
+        } else {
+            return value
+        }
+    }
+
     // MARK: Validatable
-    
+
     public func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
         ValidationRule.validateRules(validationRules, forValue: value.value,  completionHandler: completionHandler)
     }
