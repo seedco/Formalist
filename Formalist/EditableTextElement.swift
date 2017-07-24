@@ -47,12 +47,10 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
             guard let `self` = self else { return }
 
             let text: String = {
-                let oldValue = self.value.value
                 let newValue = adapter.getTextForView(view)
                 if let formatter = self.configuration.formatter {
                     return formatter.from(
-                        input: newValue,
-                        previousInput: oldValue
+                        input: newValue
                     )
                 } else {
                     return newValue

@@ -23,18 +23,16 @@ public struct FormNumberFormatter: Formattable {
         self.type = type
     }
 
-    public func from(input: String, previousInput: String = "") -> String {
+    public func from(input: String) -> String {
         let newValue = input.digits
         var result = ""
         let pattern = type.pattern
         let replaceCharacter = type.replaceCharacter
         var newValueIndex = newValue.startIndex
         var patternIndex = pattern.startIndex
-        let isRemoving = newValue.characters.count < previousInput.characters.count
 
         while patternIndex < pattern.endIndex && newValueIndex < newValue.endIndex  {
             let value = pattern[patternIndex]
-
             if value == replaceCharacter {
                 result.append(newValue[newValueIndex])
                 newValueIndex = newValue.index(newValueIndex, offsetBy: 1)
@@ -42,21 +40,6 @@ public struct FormNumberFormatter: Formattable {
                 result.append(value)
             }
             patternIndex = pattern.index(patternIndex, offsetBy: 1)
-
-            if newValueIndex == newValue.endIndex && patternIndex < pattern.endIndex && pattern[patternIndex] != replaceCharacter {
-                if isRemoving {
-                    if previousInput.characters.last != pattern[patternIndex] {
-                        result.append(pattern[patternIndex])
-                    } else {
-                        result = String(result.characters.dropLast())
-                    }
-                } else {
-                    while pattern[patternIndex] != replaceCharacter {
-                        result.append(pattern[patternIndex])
-                        patternIndex = pattern.index(patternIndex, offsetBy: 1)
-                    }
-                }
-            }
         }
         return result
     }

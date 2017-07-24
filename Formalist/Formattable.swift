@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol Formattable {
-    func from(input: String, previousInput: String) -> String
+    func from(input: String) -> String
 }
