@@ -54,9 +54,9 @@ class FormNumberFormatterTests: XCTestCase {
                 replaceCharacter: "X"
             )
         )
-        let value = "123"
+        let value = "1234"
 
-        XCTAssertEqual("123-", formatter.from(input: value))
+        XCTAssertEqual("123-4", formatter.from(input: value))
     }
 
     func testFormatting5() {
@@ -68,7 +68,7 @@ class FormNumberFormatterTests: XCTestCase {
         )
         let value = "123456"
 
-        XCTAssertEqual("123-456-", formatter.from(input: value))
+        XCTAssertEqual("123-456", formatter.from(input: value))
     }
 
     func testFormatting6() {
@@ -140,7 +140,7 @@ class FormNumberFormatterTests: XCTestCase {
         )
         let value = "123456"
 
-        XCTAssertEqual("123--456--", formatter.from(input: value))
+        XCTAssertEqual("123--456", formatter.from(input: value))
     }
 
     func testFormatting12() {
@@ -152,7 +152,7 @@ class FormNumberFormatterTests: XCTestCase {
         )
         let value = "123456"
 
-        XCTAssertEqual("!123-!-456-!-", formatter.from(input: value))
+        XCTAssertEqual("!123-!-456", formatter.from(input: value))
     }
 
     func testFormattingPhoneNumber1() {
