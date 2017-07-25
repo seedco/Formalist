@@ -35,7 +35,8 @@ class ViewController: UIViewController {
         let edgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 
         let numberFormatter = FormNumberFormatter(
-            type: .custom(pattern: "***-***-****", replaceCharacter: "*")
+            pattern: "***-***-****",
+            replaceCharacter: "*"
         )
 
         var groupedConfiguration = GroupElement.Configuration()
