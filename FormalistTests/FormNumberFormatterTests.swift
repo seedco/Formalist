@@ -13,10 +13,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting1() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = ""
 
@@ -25,10 +23,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting2() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "11"
 
@@ -37,10 +33,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting3() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "1234567890"
 
@@ -49,10 +43,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting4() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "1234"
 
@@ -61,10 +53,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting5() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "123456"
 
@@ -73,10 +63,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting6() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "12345678901111"
 
@@ -85,10 +73,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting7() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "123456789"
 
@@ -97,10 +83,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting8() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "",
-                replaceCharacter: "X"
-            )
+            pattern: "",
+            replaceCharacter: "X"
         )
         let value = "123"
 
@@ -109,10 +93,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting9() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "X",
-                replaceCharacter: "X"
-            )
+            pattern: "X",
+            replaceCharacter: "X"
         )
         let value = "123"
 
@@ -121,10 +103,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting10() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "SSS",
-                replaceCharacter: "X"
-            )
+            pattern: "SSS",
+            replaceCharacter: "X"
         )
         let value = "123"
 
@@ -133,10 +113,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting11() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX--XXX--XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX--XXX--XXXX",
+            replaceCharacter: "X"
         )
         let value = "123456"
 
@@ -145,10 +123,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormatting12() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "!XXX-!-XXX-!-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "!XXX-!-XXX-!-XXXX",
+            replaceCharacter: "X"
         )
         let value = "123456"
 
@@ -157,10 +133,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormattingPhoneNumber1() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "XXX-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "XXX-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "1234567890"
 
@@ -169,10 +143,8 @@ class FormNumberFormatterTests: XCTestCase {
 
     func testFormattingPhoneNumber2() {
         let formatter = FormNumberFormatter(
-            type: .custom(
-                pattern: "(XXX)-XXX-XXXX",
-                replaceCharacter: "X"
-            )
+            pattern: "(XXX)-XXX-XXXX",
+            replaceCharacter: "X"
         )
         let value = "1234567890"
 
@@ -180,21 +152,30 @@ class FormNumberFormatterTests: XCTestCase {
     }
 
     func testFormattingSocialSecurity() {
-        let formatter = FormNumberFormatter(type: .SSN)
+        let formatter = FormNumberFormatter(
+            pattern: "XXX-XX-XXXX",
+            replaceCharacter: "X"
+        )
         let value = "123456789"
 
         XCTAssertEqual("123-45-6789", formatter.from(input: value))
     }
 
     func testFormattingEIN() {
-        let formatter = FormNumberFormatter(type: .EIN)
+        let formatter = FormNumberFormatter(
+            pattern: "XX-XXXXXXX",
+            replaceCharacter: "X"
+        )
         let value = "123456789"
 
         XCTAssertEqual("12-3456789", formatter.from(input: value))
     }
 
     func testFormattingCreditCard() {
-        let formatter = FormNumberFormatter(type: .creditCard)
+        let formatter = FormNumberFormatter(
+            pattern: "XXXX XXXX XXXX XXXX",
+            replaceCharacter: "X"
+        )
         let value = "1234123412341234"
 
         XCTAssertEqual("1234 1234 1234 1234", formatter.from(input: value))
@@ -207,10 +188,8 @@ extension FormNumberFormatter {
         replaceCharacter: Character = "X"
     ) -> FormNumberFormatter {
         return FormNumberFormatter(
-            type: .custom(
-                pattern: pattern,
-                replaceCharacter: replaceCharacter
-            )
+            pattern: pattern,
+            replaceCharacter: replaceCharacter
         )
     }
 }

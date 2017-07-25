@@ -6,28 +6,22 @@
 //  Copyright © 2017 Seed Platform, Inc. All rights reserved.
 //
 
-public enum FormNumberType {
-    case EIN
-    case SSN
-    case creditCard
-    case custom(pattern: String, replaceCharacter: Character)
-}
-
 public struct FormNumberFormatter: Formattable {
 
-    let type: FormNumberType
+    let pattern: String
+    let replaceCharacter: Character
 
     public init(
-        type: FormNumberType
+        pattern: String,
+        replaceCharacter: Character
     ) {
-        self.type = type
+        self.pattern = pattern
+        self.replaceCharacter = replaceCharacter
     }
 
     public func from(input: String) -> String {
         let newValue = input.digits
         var result = ""
-        let pattern = type.pattern
-        let replaceCharacter = type.replaceCharacter
         var newValueIndex = newValue.startIndex
         var patternIndex = pattern.startIndex
 
@@ -50,29 +44,5 @@ extension String {
         return components(
             separatedBy: CharacterSet.decimalDigits.inverted
         ).joined()
-    }
-}
-
-private extension FormNumberType {
-    var pattern: String {
-        switch self {
-        case .EIN:
-            return "XX-XXXXXXX"
-        case .SSN:
-            return "XXX-XX-XXXX"
-        case .creditCard:
-            return "XXXX XXXX XXXX XXXX"
-        case .custom(let pattern, _):
-            return pattern
-        }
-    }
-
-    var replaceCharacter: Character {
-        switch self {
-        case .EIN, .SSN, .creditCard:
-            return "X"
-        case .custom(_, let replaceCharacter):
-            return replaceCharacter
-        }
     }
 }
