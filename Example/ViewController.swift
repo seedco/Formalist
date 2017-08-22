@@ -113,7 +113,11 @@ class ViewController: UIViewController {
                     activityIndicator.startAnimating()
                     return activityIndicator
                 }
-            ])
+            ]),
+            group(configuration: groupedConfiguration, elements: [
+                segue(icon: UIImage(named: "circle")!, title: "Short title", accessoryIcon: UIImage(named: "circle")!, viewConfigurator: nil) {},
+                segue(icon: UIImage(named: "circle")!, title: "This segue supports multiline title. As you can see here. ", accessoryIcon: UIImage(named: "circle")!, viewConfigurator: nil) {}
+            ]),
         ])
     }()
 
