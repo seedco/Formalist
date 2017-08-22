@@ -29,6 +29,11 @@ public final class FormViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    public var isScrollEnabled: Bool {
+        set { autoscrollView.isScrollEnabled = newValue }
+        get { return autoscrollView.isScrollEnabled }
+    }
+
     /**
      Convenience initializer for initializing using an array of elements,
      which automatically creates a `GroupElement` with the default
