@@ -14,24 +14,30 @@ open class SegueElementView: UIView {
     fileprivate struct Layout {
         static let IconLabelSpacing: CGFloat = 10.0
     }
-    
+
     /// The label used to display the title
     open let label: UILabel
-    
+
     /// The image view used to display the icon
     open let imageView: UIImageView
 
     /// The button used to display the right icon
     open let accessoryButton: UIButton
-    
+
     init(icon: UIImage?, title: String, accessoryIcon: UIImage?) {
-        label = UILabel(frame: CGRect.zero)
-        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-        label.text = title
-        
         imageView = UIImageView(image: icon)
         imageView.isHidden = (icon == nil)
         imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
+
+        label = UILabel(frame: CGRect.zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        label.text = title
+        label.numberOfLines = 0
+        label.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
+
+        let labelView = UIView()
+        labelView.addSubview(label)
 
         accessoryButton = UIButton(type: .custom)
         accessoryButton.setImage(accessoryIcon, for: .normal)
@@ -39,19 +45,20 @@ open class SegueElementView: UIView {
         accessoryButton.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
 
         super.init(frame: CGRect.zero)
-        
-        let stackView = UIStackView(arrangedSubviews: [imageView, label, accessoryButton])
+
+        let stackView = UIStackView(arrangedSubviews: [imageView, labelView, accessoryButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = Layout.IconLabelSpacing
-        
+
+        let _ = label.activateSuperviewHuggingConstraints()
+
         addSubview(stackView)
         let _ = stackView.activateSuperviewHuggingConstraints()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
