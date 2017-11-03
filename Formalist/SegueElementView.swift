@@ -38,6 +38,10 @@ open class SegueElementView: UIView {
 
         let labelView = UIView()
         labelView.addSubview(label)
+        
+        imageView = UIImageView(image: icon)
+        imageView.isHidden = (icon == nil)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         accessoryButton = UIButton(type: .custom)
         accessoryButton.setImage(accessoryIcon, for: .normal)
