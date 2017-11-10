@@ -59,7 +59,6 @@
 		7285A7AC1D17CCC300718D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AB1D17CCC300718D23 /* Assets.xcassets */; };
 		7285A7AF1D17CCC300718D23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AD1D17CCC300718D23 /* LaunchScreen.storyboard */; };
 		7285A7BB1D17CD0800718D23 /* FormalistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7BA1D17CD0800718D23 /* FormalistUITests.swift */; };
-		7285A7DE1D17CDB600718D23 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; };
 		7285A7DF1D17CDC200718D23 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; };
 		7285A7E01D17CDC200718D23 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7285A7E41D17CDFD00718D23 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7CB1D17CDA800718D23 /* FBSnapshotTestCase.framework */; };
@@ -74,6 +73,7 @@
 		A15176551E16760100E5CCBC /* InfoFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15176541E16760100E5CCBC /* InfoFieldElement.swift */; };
 		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
 		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
+		A19CF8F71FB5DE3900BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +242,7 @@
 		A15176541E16760100E5CCBC /* InfoFieldElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoFieldElement.swift; sourceTree = "<group>"; };
 		A151765C1E16763200E5CCBC /* DividerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerElement.swift; sourceTree = "<group>"; };
 		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
+		A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7285A7DE1D17CDB600718D23 /* StackViewController.framework in Frameworks */,
+				A19CF8F71FB5DE3900BB1E86 /* StackViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +292,7 @@
 				7285A7A31D17CCC300718D23 /* Example */,
 				7285A7B91D17CD0800718D23 /* FormalistUITests */,
 				7285A7071D17CB7000718D23 /* Products */,
+				A19CF8F51FB5DE3900BB1E86 /* Frameworks */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -493,6 +495,14 @@
 			name = Group;
 			sourceTree = "<group>";
 		};
+		A19CF8F51FB5DE3900BB1E86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -515,6 +525,7 @@
 				7285A7021D17CB7000718D23 /* Frameworks */,
 				7285A7031D17CB7000718D23 /* Headers */,
 				7285A7041D17CB7000718D23 /* Resources */,
+				A19CF8F81FB5DE3F00BB1E86 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -725,6 +736,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A19CF8F81FB5DE3F00BB1E86 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/StackViewController.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/StackViewController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7285A7011D17CB7000718D23 /* Sources */ = {
@@ -964,6 +994,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Formalist/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -985,6 +1019,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Formalist/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
