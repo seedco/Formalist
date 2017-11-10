@@ -59,8 +59,6 @@
 		7285A7AC1D17CCC300718D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AB1D17CCC300718D23 /* Assets.xcassets */; };
 		7285A7AF1D17CCC300718D23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AD1D17CCC300718D23 /* LaunchScreen.storyboard */; };
 		7285A7BB1D17CD0800718D23 /* FormalistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7BA1D17CD0800718D23 /* FormalistUITests.swift */; };
-		7285A7E41D17CDFD00718D23 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7CB1D17CDA800718D23 /* FBSnapshotTestCase.framework */; };
-		7285A7E51D17CDFD00718D23 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; };
 		7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */; };
 		77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3050A1D7B6C7300F17EEF /* PickerField.swift */; };
@@ -73,6 +71,8 @@
 		A19CF8F71FB5DE3900BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */; };
 		A19CF90E1FB5DF6500BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; };
 		A19CF90F1FB5DF6500BB1E86 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A19CF9101FB5DFA200BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; };
+		A19CF9121FB5DFA200BB1E86 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +236,7 @@
 		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
 		A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
 		A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
+		A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,8 +252,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7285A7E41D17CDFD00718D23 /* FBSnapshotTestCase.framework in Frameworks */,
-				7285A7E51D17CDFD00718D23 /* StackViewController.framework in Frameworks */,
+				A19CF9121FB5DFA200BB1E86 /* FBSnapshotTestCase.framework in Frameworks */,
+				A19CF9101FB5DFA200BB1E86 /* StackViewController.framework in Frameworks */,
 				7285A7111D17CB7000718D23 /* Formalist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +492,7 @@
 		A19CF8F51FB5DE3900BB1E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */,
 				A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */,
 			);
 			name = Frameworks;
@@ -536,6 +538,7 @@
 				7285A70C1D17CB7000718D23 /* Sources */,
 				7285A70D1D17CB7000718D23 /* Frameworks */,
 				7285A70E1D17CB7000718D23 /* Resources */,
+				A19DA4731FB5E090004D9FD5 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -741,6 +744,24 @@
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/StackViewController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		A19DA4731FB5E090004D9FD5 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/StackViewController.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSnapshotTestCase.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/StackViewController.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FBSnapshotTestCase.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1025,6 +1046,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FormalistTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.seed.FormalistTests;
@@ -1038,6 +1063,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FormalistTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.seed.FormalistTests;
