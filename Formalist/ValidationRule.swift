@@ -88,7 +88,7 @@ public struct ValidationRule<ValueType> {
                 return
             }
 
-            if regex.firstMatch(in: str, options: matchingOptions, range: NSMakeRange(0, str.characters.count)) == nil {
+            if regex.firstMatch(in: str, options: matchingOptions, range: NSMakeRange(0, str.count)) == nil {
                 completion(.invalid(message: failureMessage))
             } else {
                 completion(.valid)
@@ -110,7 +110,7 @@ public struct ValidationRule<ValueType> {
         return ValidationRule<String> ({ str, completion in
             if let range = str.rangeOfCharacter(from: characterSet.inverted) {
                 let errorFormat = NSLocalizedString("\"%@\" is not an allowed character", comment: "Invalid character error message")
-                let message = String(format: errorFormat, str.substring(with: range))
+                let message = String(format: errorFormat, String(str[range]))
                 completion(.invalid(message: message))
             } else {
                 completion(.valid)
@@ -128,7 +128,7 @@ public struct ValidationRule<ValueType> {
      */
     public static func maximumLength(_ length: Int) -> ValidationRule<String> {
         return ValidationRule<String> ({ str, completion in
-            if str.characters.count <= length {
+            if str.count <= length {
                 completion(.valid)
             } else {
                 let errorFormat = NSLocalizedString("Cannot exceed %d characters", comment: "Maximum length error message")
@@ -147,7 +147,7 @@ public struct ValidationRule<ValueType> {
      */
     public static func minimumLength(_ length: Int) -> ValidationRule<String> {
         return ValidationRule<String> ({ str, completion in
-            if str.characters.count >= length {
+            if str.count >= length {
                 completion(.valid)
             } else {
                 let errorFormat = NSLocalizedString("Must be at least %d characters long", comment: "Minimum length error message")
@@ -166,7 +166,7 @@ public struct ValidationRule<ValueType> {
         // https://gist.github.com/cwagdev/635ce973e8e86da0403a#gistcomment-1645026
         func luhnCheck(cardNumber: String) -> Bool {
             var sum = 0
-            let reversedCharacters = cardNumber.characters.reversed().map { String($0) }
+            let reversedCharacters = cardNumber.reversed().map { String($0) }
             for (idx, element) in reversedCharacters.enumerated() {
                 guard let digit = Int(element) else { return false }
                 switch ((idx % 2 == 1), digit) {

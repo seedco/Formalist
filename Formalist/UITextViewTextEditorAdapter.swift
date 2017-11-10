@@ -97,7 +97,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
     
     @objc fileprivate func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // http://stackoverflow.com/a/23779209
-        if let _ = text.rangeOfCharacter(from: CharacterSet.newlines, options: NSString.CompareOptions.backwards), text.characters.count == 1 {
+        if let _ = text.rangeOfCharacter(from: CharacterSet.newlines, options: NSString.CompareOptions.backwards), text.count == 1 {
             switch configuration.returnKeyAction {
             case .none: return true
             case .activateNextResponder:
@@ -109,7 +109,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
                 return false
             }
         } else if let maximumLength = configuration.maximumLength {
-            let newLength = textView.text.characters.count + text.characters.count - range.length
+            let newLength = textView.text.count + text.count - range.length
             return newLength <= maximumLength
         } else {
             return true

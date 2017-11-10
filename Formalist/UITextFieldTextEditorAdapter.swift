@@ -115,7 +115,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
     
     @objc fileprivate func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let maximumLength = configuration.maximumLength, let text = textField.text {
-            let newLength = text.characters.count + string.characters.count - range.length
+            let newLength = text.count + string.count - range.length
             return newLength <= maximumLength
         } else {
             return true

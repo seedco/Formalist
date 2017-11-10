@@ -34,7 +34,7 @@ open class SegueElementView: UIView {
         label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         label.text = title
         label.numberOfLines = 0
-        label.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         let labelView = UIView()
         labelView.addSubview(label)
