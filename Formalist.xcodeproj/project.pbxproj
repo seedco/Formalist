@@ -69,10 +69,9 @@
 		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
 		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
 		A19CF8F71FB5DE3900BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */; };
-		A19CF90E1FB5DF6500BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; };
-		A19CF90F1FB5DF6500BB1E86 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A19CF9101FB5DFA200BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; };
 		A19CF9121FB5DFA200BB1E86 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; };
+		A1A486B61FB5E224008979D6 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; };
+		A1A486B71FB5E224008979D6 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,55 +87,6 @@
 			containerPortal = 7285A6FD1D17CB7000718D23 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7285A7A11D17CCC300718D23;
-			remoteInfo = Example;
-		};
-		7285A7CA1D17CDA800718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B31987F01AB782D000B0A900;
-			remoteInfo = "FBSnapshotTestCase iOS";
-		};
-		7285A7CC1D17CDA800718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B31987FB1AB782D100B0A900;
-			remoteInfo = "FBSnapshotTestCase iOS Tests";
-		};
-		7285A7CE1D17CDA800718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8271377A1C63AB6F00354E42;
-			remoteInfo = "FBSnapshotTestCase tvOS";
-		};
-		7285A7D01D17CDA800718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 827137831C63AB7000354E42;
-			remoteInfo = "FBSnapshotTestCase tvOS Tests";
-		};
-		7285A7D81D17CDAC00718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 72D193E41CC3576A00645F83;
-			remoteInfo = StackViewController;
-		};
-		7285A7DA1D17CDAC00718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 72D193ED1CC3576A00645F83;
-			remoteInfo = StackViewControllerTests;
-		};
-		7285A7DC1D17CDAC00718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 72D1940B1CC357A100645F83;
 			remoteInfo = Example;
 		};
 		7285A7E81D17CF4F00718D23 /* PBXContainerItemProxy */ = {
@@ -155,7 +105,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A19CF90F1FB5DF6500BB1E86 /* StackViewController.framework in Embed Frameworks */,
+				A1A486B71FB5E224008979D6 /* StackViewController.framework in Embed Frameworks */,
 				7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -224,8 +174,6 @@
 		7285A7B81D17CD0800718D23 /* FormalistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormalistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7285A7BA1D17CD0800718D23 /* FormalistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormalistUITests.swift; sourceTree = "<group>"; };
 		7285A7BC1D17CD0800718D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBSnapshotTestCase.xcodeproj; path = External/FBSnapshotTestCase/FBSnapshotTestCase.xcodeproj; sourceTree = "<group>"; };
-		7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StackViewController.xcodeproj; path = External/StackViewController/StackViewController.xcodeproj; sourceTree = "<group>"; };
 		72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		77A3050A1D7B6C7300F17EEF /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		77CAA13B1F2188E400EA44AD /* FormNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormNumberFormatter.swift; sourceTree = "<group>"; };
@@ -235,8 +183,8 @@
 		A151765C1E16763200E5CCBC /* DividerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerElement.swift; sourceTree = "<group>"; };
 		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
 		A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
-		A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
 		A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
+		A1A486B51FB5E224008979D6 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A19CF9121FB5DFA200BB1E86 /* FBSnapshotTestCase.framework in Frameworks */,
-				A19CF9101FB5DFA200BB1E86 /* StackViewController.framework in Frameworks */,
 				7285A7111D17CB7000718D23 /* Formalist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,7 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A19CF90E1FB5DF6500BB1E86 /* StackViewController.framework in Frameworks */,
+				A1A486B61FB5E224008979D6 /* StackViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,8 +226,6 @@
 		7285A6FC1D17CB7000718D23 = {
 			isa = PBXGroup;
 			children = (
-				A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */,
-				7285A7C21D17CD9B00718D23 /* External */,
 				7285A7081D17CB7000718D23 /* Formalist */,
 				7285A7141D17CB7000718D23 /* FormalistTests */,
 				7285A7A31D17CCC300718D23 /* Example */,
@@ -359,36 +304,6 @@
 				7285A7BC1D17CD0800718D23 /* Info.plist */,
 			);
 			path = FormalistUITests;
-			sourceTree = "<group>";
-		};
-		7285A7C21D17CD9B00718D23 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */,
-				7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */,
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
-		7285A7C41D17CDA800718D23 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7285A7CB1D17CDA800718D23 /* FBSnapshotTestCase.framework */,
-				7285A7CD1D17CDA800718D23 /* FBSnapshotTestCase iOS Tests.xctest */,
-				7285A7CF1D17CDA800718D23 /* FBSnapshotTestCase.framework */,
-				7285A7D11D17CDA800718D23 /* FBSnapshotTestCase tvOS Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7285A7D31D17CDAC00718D23 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7285A7D91D17CDAC00718D23 /* StackViewController.framework */,
-				7285A7DB1D17CDAC00718D23 /* StackViewControllerTests.xctest */,
-				7285A7DD1D17CDAC00718D23 /* Example.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7285A7EA1D17D11200718D23 /* Elements */ = {
@@ -492,6 +407,7 @@
 		A19CF8F51FB5DE3900BB1E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1A486B51FB5E224008979D6 /* StackViewController.framework */,
 				A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */,
 				A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */,
 			);
@@ -626,16 +542,6 @@
 			mainGroup = 7285A6FC1D17CB7000718D23;
 			productRefGroup = 7285A7071D17CB7000718D23 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 7285A7C41D17CDA800718D23 /* Products */;
-					ProjectRef = 7285A7C31D17CDA800718D23 /* FBSnapshotTestCase.xcodeproj */;
-				},
-				{
-					ProductGroup = 7285A7D31D17CDAC00718D23 /* Products */;
-					ProjectRef = 7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				7285A7051D17CB7000718D23 /* Formalist */,
@@ -645,58 +551,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		7285A7CB1D17CDA800718D23 /* FBSnapshotTestCase.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FBSnapshotTestCase.framework;
-			remoteRef = 7285A7CA1D17CDA800718D23 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7285A7CD1D17CDA800718D23 /* FBSnapshotTestCase iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "FBSnapshotTestCase iOS Tests.xctest";
-			remoteRef = 7285A7CC1D17CDA800718D23 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7285A7CF1D17CDA800718D23 /* FBSnapshotTestCase.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FBSnapshotTestCase.framework;
-			remoteRef = 7285A7CE1D17CDA800718D23 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7285A7D11D17CDA800718D23 /* FBSnapshotTestCase tvOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "FBSnapshotTestCase tvOS Tests.xctest";
-			remoteRef = 7285A7D01D17CDA800718D23 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7285A7D91D17CDAC00718D23 /* StackViewController.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = StackViewController.framework;
-			remoteRef = 7285A7D81D17CDAC00718D23 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7285A7DB1D17CDAC00718D23 /* StackViewControllerTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = StackViewControllerTests.xctest;
-			remoteRef = 7285A7DA1D17CDAC00718D23 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7285A7DD1D17CDAC00718D23 /* Example.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Example.app;
-			remoteRef = 7285A7DC1D17CDAC00718D23 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7285A7041D17CB7000718D23 /* Resources */ = {
