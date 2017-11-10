@@ -59,11 +59,8 @@
 		7285A7AC1D17CCC300718D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AB1D17CCC300718D23 /* Assets.xcassets */; };
 		7285A7AF1D17CCC300718D23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AD1D17CCC300718D23 /* LaunchScreen.storyboard */; };
 		7285A7BB1D17CD0800718D23 /* FormalistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7BA1D17CD0800718D23 /* FormalistUITests.swift */; };
-		7285A7DF1D17CDC200718D23 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; };
-		7285A7E01D17CDC200718D23 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7285A7E41D17CDFD00718D23 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7CB1D17CDA800718D23 /* FBSnapshotTestCase.framework */; };
 		7285A7E51D17CDFD00718D23 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7D91D17CDAC00718D23 /* StackViewController.framework */; };
-		7285A7E61D17CF4F00718D23 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */; };
 		77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3050A1D7B6C7300F17EEF /* PickerField.swift */; };
@@ -74,6 +71,8 @@
 		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
 		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
 		A19CF8F71FB5DE3900BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */; };
+		A19CF90E1FB5DF6500BB1E86 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; };
+		A19CF90F1FB5DF6500BB1E86 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,13 +139,6 @@
 			remoteGlobalIDString = 72D1940B1CC357A100645F83;
 			remoteInfo = Example;
 		};
-		7285A7E11D17CDC200718D23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7285A7D21D17CDAC00718D23 /* StackViewController.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 72D193E31CC3576A00645F83;
-			remoteInfo = StackViewController;
-		};
 		7285A7E81D17CF4F00718D23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7285A6FD1D17CB7000718D23 /* Project object */;
@@ -163,8 +155,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A19CF90F1FB5DF6500BB1E86 /* StackViewController.framework in Embed Frameworks */,
 				7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */,
-				7285A7E01D17CDC200718D23 /* StackViewController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +235,7 @@
 		A151765C1E16763200E5CCBC /* DividerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerElement.swift; sourceTree = "<group>"; };
 		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
 		A19CF8F61FB5DE3900BB1E86 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
+		A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,8 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7285A7E61D17CF4F00718D23 /* Formalist.framework in Frameworks */,
-				7285A7DF1D17CDC200718D23 /* StackViewController.framework in Frameworks */,
+				A19CF90E1FB5DF6500BB1E86 /* StackViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +278,7 @@
 		7285A6FC1D17CB7000718D23 = {
 			isa = PBXGroup;
 			children = (
+				A19CF90D1FB5DF6500BB1E86 /* StackViewController.framework */,
 				7285A7C21D17CD9B00718D23 /* External */,
 				7285A7081D17CB7000718D23 /* Formalist */,
 				7285A7141D17CB7000718D23 /* FormalistTests */,
@@ -566,7 +559,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7285A7E21D17CDC200718D23 /* PBXTargetDependency */,
 				7285A7E91D17CF4F00718D23 /* PBXTargetDependency */,
 			);
 			name = Example;
@@ -853,11 +845,6 @@
 			target = 7285A7A11D17CCC300718D23 /* Example */;
 			targetProxy = 7285A7BD1D17CD0800718D23 /* PBXContainerItemProxy */;
 		};
-		7285A7E21D17CDC200718D23 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = StackViewController;
-			targetProxy = 7285A7E11D17CDC200718D23 /* PBXContainerItemProxy */;
-		};
 		7285A7E91D17CF4F00718D23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7285A7051D17CB7000718D23 /* Formalist */;
@@ -1064,6 +1051,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1078,6 +1069,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
