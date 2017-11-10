@@ -1,0 +1,11 @@
+framework module StackViewController {
+  umbrella header "StackViewController.h"
+
+  export *
+  module * { export * }
+}
+
+module StackViewController.Swift {
+    header "StackViewController-Swift.h"
+    requires objc
+}
