@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
     s.version = "0.2.0"
     s.license = { type: "MIT" }
     s.homepage = "https://github.com/seedco/Formalist"
-    s.authors = { "Indragie Karunaratne": "i@indragie.com" }
+    s.author = "Seed"
     s.summary = "Declarative form building framework for iOS"
     s.description = "Swift framework for building forms on iOS using a simple, declarative, and readable syntax"
     s.source = {
