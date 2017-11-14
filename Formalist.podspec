@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
     s.source_files = "Formalist/*.swift"
     s.ios.deployment_target = "9.0"
     s.frameworks = "UIKit"
-    s.dependency "SeedStackViewController", "~> 0.2.1"
+    s.dependency "SeedStackViewController", "~> 0.4.0"
 end
