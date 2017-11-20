@@ -1,11 +1,11 @@
 machine:
   xcode:
-    version: 8.1
+    version: 9.1
 
 dependencies:
   override:
     - sudo -H gem install xcpretty
-  
+
 test:
   override:
-    - make clean test
+    - make clean ci
