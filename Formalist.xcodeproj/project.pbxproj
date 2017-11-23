@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		72239FEB1D25B9E800A157D9 /* UIView+ChangeObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72239FEA1D25B9E800A157D9 /* UIView+ChangeObservation.swift */; };
 		7285A70A1D17CB7000718D23 /* Formalist.h in Headers */ = {isa = PBXBuildFile; fileRef = 7285A7091D17CB7000718D23 /* Formalist.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7285A7111D17CB7000718D23 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		7285A73D1D17CBCA00718D23 /* BooleanElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7201D17CBCA00718D23 /* BooleanElement.swift */; };
 		7285A73E1D17CBCA00718D23 /* BooleanElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7211D17CBCA00718D23 /* BooleanElementView.swift */; };
 		7285A73F1D17CBCA00718D23 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7221D17CBCA00718D23 /* Box.swift */; };
@@ -59,7 +58,6 @@
 		7285A7AC1D17CCC300718D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AB1D17CCC300718D23 /* Assets.xcassets */; };
 		7285A7AF1D17CCC300718D23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7285A7AD1D17CCC300718D23 /* LaunchScreen.storyboard */; };
 		7285A7BB1D17CD0800718D23 /* FormalistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7285A7BA1D17CD0800718D23 /* FormalistUITests.swift */; };
-		7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72C817F31D1F910F00BBD0C3 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C817F21D1F910F00BBD0C3 /* FloatLabelTextField.swift */; };
 		77A3050B1D7B6C7300F17EEF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A3050A1D7B6C7300F17EEF /* PickerField.swift */; };
 		77CAA13C1F2188E400EA44AD /* FormNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CAA13B1F2188E400EA44AD /* FormNumberFormatter.swift */; };
@@ -68,10 +66,15 @@
 		A15176551E16760100E5CCBC /* InfoFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15176541E16760100E5CCBC /* InfoFieldElement.swift */; };
 		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
 		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
-		A19CF9121FB5DFA200BB1E86 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; };
-		A1A486B61FB5E224008979D6 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; };
-		A1A486B71FB5E224008979D6 /* StackViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BF22BC931FC4DCCF0079E7A3 /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; };
+		BF2209BE1FC6379600CAFE89 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
+		BF2209C01FC637A500CAFE89 /* Formalist.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF96319A1FC629E700D7362F /* StackViewController.framework.dSYM in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9631981FC629E700D7362F /* StackViewController.framework.dSYM */; };
+		BF9631A21FC62C7100D7362F /* FBSnapshotTestCase.framework.dSYM in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9631991FC629E700D7362F /* FBSnapshotTestCase.framework.dSYM */; };
+		BF9631B31FC62DEE00D7362F /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
+		BF9631B41FC62E1C00D7362F /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; };
+		BF9631B91FC6301100D7362F /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; };
+		BF9631BA1FC6302A00D7362F /* StackViewController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF9631BB1FC6302A00D7362F /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +92,7 @@
 			remoteGlobalIDString = 7285A7A11D17CCC300718D23;
 			remoteInfo = Example;
 		};
-		7285A7E81D17CF4F00718D23 /* PBXContainerItemProxy */ = {
+		BF2209BC1FC6377700CAFE89 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7285A6FD1D17CB7000718D23 /* Project object */;
 			proxyType = 1;
@@ -99,16 +102,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7285A7E31D17CDC200718D23 /* Embed Frameworks */ = {
+		BF2209BF1FC6379900CAFE89 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A1A486B71FB5E224008979D6 /* StackViewController.framework in Embed Frameworks */,
-				7285A7E71D17CF4F00718D23 /* Formalist.framework in Embed Frameworks */,
+				BF2209C01FC637A500CAFE89 /* Formalist.framework in CopyFiles */,
 			);
-			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF9631B61FC62FB300D7362F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF9631BA1FC6302A00D7362F /* StackViewController.framework in CopyFiles */,
+				BF9631BB1FC6302A00D7362F /* FBSnapshotTestCase.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -184,38 +196,28 @@
 		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
 		A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		A1A486B51FB5E224008979D6 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
+		BF9631981FC629E700D7362F /* StackViewController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = StackViewController.framework.dSYM; path = Carthage/Build/iOS/StackViewController.framework.dSYM; sourceTree = "<group>"; };
+		BF9631991FC629E700D7362F /* FBSnapshotTestCase.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FBSnapshotTestCase.framework.dSYM; path = Carthage/Build/iOS/FBSnapshotTestCase.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7285A7021D17CB7000718D23 /* Frameworks */ = {
+		BF9631811FC61E0300D7362F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2209BE1FC6379600CAFE89 /* Formalist.framework in Frameworks */,
+				BF9631A21FC62C7100D7362F /* FBSnapshotTestCase.framework.dSYM in Frameworks */,
+				BF96319A1FC629E700D7362F /* StackViewController.framework.dSYM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7285A70D1D17CB7000718D23 /* Frameworks */ = {
+		BF9631B21FC62DE900D7362F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF22BC931FC4DCCF0079E7A3 /* StackViewController.framework in Frameworks */,
-				A19CF9121FB5DFA200BB1E86 /* FBSnapshotTestCase.framework in Frameworks */,
-				7285A7111D17CB7000718D23 /* Formalist.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7285A79F1D17CCC300718D23 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A1A486B61FB5E224008979D6 /* StackViewController.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7285A7B51D17CD0800718D23 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				BF9631B91FC6301100D7362F /* StackViewController.framework in Frameworks */,
+				BF9631B41FC62E1C00D7362F /* FBSnapshotTestCase.framework in Frameworks */,
+				BF9631B31FC62DEE00D7362F /* Formalist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +408,8 @@
 		A19CF8F51FB5DE3900BB1E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF9631991FC629E700D7362F /* FBSnapshotTestCase.framework.dSYM */,
+				BF9631981FC629E700D7362F /* StackViewController.framework.dSYM */,
 				A1A486B51FB5E224008979D6 /* StackViewController.framework */,
 				A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */,
 			);
@@ -431,10 +435,8 @@
 			buildConfigurationList = 7285A71A1D17CB7000718D23 /* Build configuration list for PBXNativeTarget "Formalist" */;
 			buildPhases = (
 				7285A7011D17CB7000718D23 /* Sources */,
-				7285A7021D17CB7000718D23 /* Frameworks */,
 				7285A7031D17CB7000718D23 /* Headers */,
 				7285A7041D17CB7000718D23 /* Resources */,
-				A19CF8F81FB5DE3F00BB1E86 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -450,9 +452,9 @@
 			buildConfigurationList = 7285A71D1D17CB7000718D23 /* Build configuration list for PBXNativeTarget "FormalistTests" */;
 			buildPhases = (
 				7285A70C1D17CB7000718D23 /* Sources */,
-				7285A70D1D17CB7000718D23 /* Frameworks */,
 				7285A70E1D17CB7000718D23 /* Resources */,
-				A19DA4731FB5E090004D9FD5 /* Copy Carthage Frameworks */,
+				BF9631B21FC62DE900D7362F /* Frameworks */,
+				BF9631B61FC62FB300D7362F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -469,14 +471,15 @@
 			buildConfigurationList = 7285A7B11D17CCC300718D23 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				7285A79E1D17CCC300718D23 /* Sources */,
-				7285A79F1D17CCC300718D23 /* Frameworks */,
 				7285A7A01D17CCC300718D23 /* Resources */,
-				7285A7E31D17CDC200718D23 /* Embed Frameworks */,
+				BF9631811FC61E0300D7362F /* Frameworks */,
+				BF96319C1FC62A0000D7362F /* ShellScript */,
+				BF2209BF1FC6379900CAFE89 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7285A7E91D17CF4F00718D23 /* PBXTargetDependency */,
+				BF2209BD1FC6377700CAFE89 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -488,7 +491,6 @@
 			buildConfigurationList = 7285A7BF1D17CD0800718D23 /* Build configuration list for PBXNativeTarget "FormalistUITests" */;
 			buildPhases = (
 				7285A7B41D17CD0800718D23 /* Sources */,
-				7285A7B51D17CD0800718D23 /* Frameworks */,
 				7285A7B61D17CD0800718D23 /* Resources */,
 			);
 			buildRules = (
@@ -585,23 +587,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A19CF8F81FB5DE3F00BB1E86 /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/StackViewController.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/StackViewController.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-		A19DA4731FB5E090004D9FD5 /* Copy Carthage Frameworks */ = {
+		BF96319C1FC62A0000D7362F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -610,14 +596,13 @@
 				"$(SRCROOT)/Carthage/Build/iOS/StackViewController.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSnapshotTestCase.framework",
 			);
-			name = "Copy Carthage Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/StackViewController.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FBSnapshotTestCase.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -718,10 +703,10 @@
 			target = 7285A7A11D17CCC300718D23 /* Example */;
 			targetProxy = 7285A7BD1D17CD0800718D23 /* PBXContainerItemProxy */;
 		};
-		7285A7E91D17CF4F00718D23 /* PBXTargetDependency */ = {
+		BF2209BD1FC6377700CAFE89 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7285A7051D17CB7000718D23 /* Formalist */;
-			targetProxy = 7285A7E81D17CF4F00718D23 /* PBXContainerItemProxy */;
+			targetProxy = BF2209BC1FC6377700CAFE89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -930,7 +915,6 @@
 		7285A7B21D17CCC300718D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -948,7 +932,6 @@
 		7285A7B31D17CCC300718D23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -966,6 +949,10 @@
 		7285A7C01D17CD0800718D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FormalistUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.seed.FormalistUITests;
@@ -978,6 +965,10 @@
 		7285A7C11D17CD0800718D23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FormalistUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.seed.FormalistUITests;
