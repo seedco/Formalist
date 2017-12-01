@@ -42,7 +42,7 @@ public final class EditableTextElement<AdapterType: TextEditorAdapter>: FormElem
     
     // MARK: FormElement
     
-    public func render() -> UIView {
+    public override func render() -> UIView {
         let view = adapter.createViewWithCallbacks(TextEditorAdapterCallbacks()) { [weak self] (adapter, view) in
             guard let `self` = self else { return }
 

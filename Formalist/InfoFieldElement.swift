@@ -39,7 +39,7 @@ public final class InfoFieldElement: FormElement {
         self.viewConfigurator = viewConfigurator
     }
 
-    public func render() -> UIView {
+    public override func render() -> UIView {
         let titleLabel = UILabel()
         titleLabel.attributedText = title
 

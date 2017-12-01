@@ -9,7 +9,7 @@
 import UIKit
 
 /// The protocol that all form element classes must conform to
-public protocol FormElement {
+public class FormElement {
     /// Renders the contents of the form as a `UIView`. This process typically
     /// involves the following steps:
     ///     1. Create the view
@@ -19,5 +19,7 @@ public protocol FormElement {
     ///        to the element.
     ///     4. Allow custom configuration using a block that can be optionally
     ///        passed in to the element initializer
-    func render() -> UIView
+    open func render() -> UIView {
+        fatalError("FormElement must be subclassed and subclasses must override render.")
+    }
 }

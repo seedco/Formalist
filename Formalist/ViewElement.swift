@@ -29,7 +29,7 @@ public final class ViewElement<ValueType: Equatable>: FormElement {
         self.viewConfigurator = viewConfigurator
     }
     
-    public func render() -> UIView {
+    public override func render() -> UIView {
         return viewConfigurator(value)
     }
 }

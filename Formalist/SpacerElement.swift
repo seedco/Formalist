@@ -31,7 +31,7 @@ public final class SpacerElement: FormElement {
     
     // MARK: FormElement
     
-    public func render() -> UIView {
+    public override func render() -> UIView {
         let view = UIView(frame: CGRect.zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         

@@ -32,7 +32,7 @@ public final class DividerElement: FormElement {
         self.viewConfigurator = viewConfigurator
     }
 
-    public func render() -> UIView {
+    public override func render() -> UIView {
         let view = UIView()
         view.backgroundColor = color
         let heightConstraint = NSLayoutConstraint(

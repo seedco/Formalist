@@ -43,7 +43,7 @@ public final class StaticTextElement: FormElement {
         self.init(value: FormValue(text), viewConfigurator: viewConfigurator)
     }
     
-    public func render() -> UIView {
+    public override func render() -> UIView {
         let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0

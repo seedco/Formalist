@@ -37,7 +37,7 @@ public final class SegmentElement<ValueType: Equatable>: FormElement {
         self.viewConfigurator = viewConfigurator
     }
     
-    public func render() -> UIView {
+    public override func render() -> UIView {
         let items = segments.map { $0.content }
         let segmentView = SegmentElementView(title: title, items: items)
         segmentView.segmentedControl.addTarget(

@@ -186,7 +186,7 @@ public final class GroupElement: FormElement, Validatable {
 
     // MARK: FormElement
     
-    public func render() -> UIView {
+    public override func render() -> UIView {
         var subviews = [UIView]()
         var responderViews = [UIView]()
         

@@ -39,7 +39,7 @@ public final class SegueElement: FormElement {
         self.action = action
     }
     
-    public func render() -> UIView {
+    public override func render() -> UIView {
         let view = SegueElementView(icon: icon, title: title, accessoryIcon: accessoryIcon)
         viewConfigurator?(view)
         let tapGestureRecognizer = UITapGestureRecognizer(
