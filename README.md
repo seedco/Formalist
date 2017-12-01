@@ -1,4 +1,5 @@
-# Formalist
+# Formalist [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg?style=flat-square)](https://github.com/Carthage/Carthage) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Formalist.svg)](https://img.shields.io/cocoapods/v/Formalist.svg)  
+
 ## Swift framework for building forms on iOS
 
 **Formalist** is a Swift framework for building forms on iOS using a simple, declarative, and readable syntax.
