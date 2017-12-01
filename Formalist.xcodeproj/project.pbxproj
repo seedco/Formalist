@@ -68,8 +68,6 @@
 		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
 		BF2209BE1FC6379600CAFE89 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		BF2209C01FC637A500CAFE89 /* Formalist.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BF96319A1FC629E700D7362F /* StackViewController.framework.dSYM in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9631981FC629E700D7362F /* StackViewController.framework.dSYM */; };
-		BF9631A21FC62C7100D7362F /* FBSnapshotTestCase.framework.dSYM in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9631991FC629E700D7362F /* FBSnapshotTestCase.framework.dSYM */; };
 		BF9631B31FC62DEE00D7362F /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		BF9631B41FC62E1C00D7362F /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; };
 		BF9631B91FC6301100D7362F /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; };
@@ -206,8 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF2209BE1FC6379600CAFE89 /* Formalist.framework in Frameworks */,
-				BF9631A21FC62C7100D7362F /* FBSnapshotTestCase.framework.dSYM in Frameworks */,
-				BF96319A1FC629E700D7362F /* StackViewController.framework.dSYM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +469,7 @@
 				7285A79E1D17CCC300718D23 /* Sources */,
 				7285A7A01D17CCC300718D23 /* Resources */,
 				BF9631811FC61E0300D7362F /* Frameworks */,
-				BF96319C1FC62A0000D7362F /* ShellScript */,
+				BF96319C1FC62A0000D7362F /* Copy Carthage Dependencies */,
 				BF2209BF1FC6379900CAFE89 /* CopyFiles */,
 			);
 			buildRules = (
@@ -588,7 +584,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BF96319C1FC62A0000D7362F /* ShellScript */ = {
+		BF96319C1FC62A0000D7362F /* Copy Carthage Dependencies */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -597,6 +593,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/StackViewController.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FBSnapshotTestCase.framework",
 			);
+			name = "Copy Carthage Dependencies";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/StackViewController.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FBSnapshotTestCase.framework",
