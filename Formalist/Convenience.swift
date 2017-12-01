@@ -18,6 +18,7 @@
  
  - returns: A boolean element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func toggle(title: String, value: FormValue<Bool>, icon: UIImage? = nil, viewConfigurator: BooleanElement.ViewConfigurator? = nil) -> BooleanElement {
     return BooleanElement(title: title, value: value, icon: icon, viewConfigurator: viewConfigurator)
 }
@@ -35,6 +36,7 @@ public func toggle(title: String, value: FormValue<Bool>, icon: UIImage? = nil, 
  
  - returns: A segment element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func segments<ValueType>(title: String,
                                                  segments: [Segment<ValueType>],
                                                  selectedValue: FormValue<ValueType>,
@@ -58,6 +60,7 @@ public func segments<ValueType>(title: String,
  
  - returns: A static text form element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func staticText(_ text: String, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
     return StaticTextElement(text: text, viewConfigurator: viewConfigurator)
 }
@@ -72,6 +75,7 @@ public func staticText(_ text: String, viewConfigurator: StaticTextElement.ViewC
  
  - returns: A static text form element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func staticText(_ value: FormValue<String>, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
     return StaticTextElement(value: value, viewConfigurator: viewConfigurator)
 }
@@ -89,6 +93,7 @@ public func staticText(_ value: FormValue<String>, viewConfigurator: StaticTextE
  
  - returns: A segue element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func segue(
     icon: UIImage?,
     title: String,
@@ -115,6 +120,7 @@ public func segue(
  
  - returns: A spacer element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func spacer(height: CGFloat, viewConfigurator: SpacerElement.ViewConfigurator? = nil) -> SpacerElement {
     return SpacerElement(height: height, viewConfigurator: viewConfigurator)
 }
@@ -129,6 +135,7 @@ public func spacer(height: CGFloat, viewConfigurator: SpacerElement.ViewConfigur
  
  - returns: A view element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func customView<ValueType>(
   value: FormValue<ValueType>,
   viewConfigurator: @escaping ViewElement<ValueType>.ViewConfigurator
@@ -146,6 +153,7 @@ public func customView<ValueType>(
  
  - returns: A group element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func group(configuration: GroupElement.Configuration = GroupElement.Configuration(), elements: [FormElement]) -> GroupElement {
     return GroupElement(configuration: configuration, elements: elements)
 }
@@ -159,6 +167,7 @@ public func group(configuration: GroupElement.Configuration = GroupElement.Confi
  
  - returns: A group element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func group(configurator: (inout GroupElement.Configuration) -> Void, elements: [FormElement]) -> GroupElement {
     return GroupElement(configurator: configurator, elements: elements)
 }
@@ -171,6 +180,7 @@ public func group(configurator: (inout GroupElement.Configuration) -> Void, elem
  
  - returns: A group element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func inset(_ insets: UIEdgeInsets, elements: [FormElement]) -> GroupElement {
     return GroupElement(configurator: {
         $0.layout.edgeInsets = insets
@@ -188,6 +198,7 @@ public func inset(_ insets: UIEdgeInsets, elements: [FormElement]) -> GroupEleme
  
  - returns: An editable text element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func textField(value: FormValue<String>,
                             configuration: TextEditorConfiguration = TextEditorConfiguration(),
                             validationRules: [ValidationRule<String>] = [],
@@ -212,6 +223,7 @@ public func textField(value: FormValue<String>,
  
  - returns: An editable text element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func textView(value: FormValue<String>,
                            configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .none),
                            validationRules: [ValidationRule<String>] = [],
@@ -237,6 +249,7 @@ public func textView(value: FormValue<String>,
  
  - returns: An editable text elemen
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func floatLabel
     <InnerAdapterType>
     (name: String,
@@ -266,6 +279,7 @@ public func floatLabel
  
  - returns: An editable text elemen
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func singleLineFloatLabel(name: String,
                                       value: FormValue<String>,
                                       configuration: TextEditorConfiguration = TextEditorConfiguration(),
@@ -294,6 +308,7 @@ public func singleLineFloatLabel(name: String,
  
  - returns: An editable text element
  */
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func multiLineFloatLabel(name: String,
                                      value: FormValue<String>,
                                      configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .none),
@@ -322,7 +337,7 @@ public func multiLineFloatLabel(name: String,
  
  - returns: An editable text element
  */
-
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func pickerField<ValueType>(name: String, value: FormValue<ValueType>, items: [PickerValue<ValueType>],
                                 configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                 validationRules: [ValidationRule<String>] = [],
@@ -351,10 +366,12 @@ public func pickerField<ValueType>(name: String, value: FormValue<ValueType>, it
         }
 }
 
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func infoField(title: NSMutableAttributedString, subTitle: NSMutableAttributedString, viewConfigurator: ((UILabel, UILabel) -> Void)? = nil) -> InfoFieldElement {
     return InfoFieldElement(title: title, subTitle: subTitle, viewConfigurator: viewConfigurator)
 }
 
+@available(*, deprecated, message: "The free functions have been deprecated. Use the static functions on FormElement instead.")
 public func divider(color: UIColor = .black, height: CGFloat = 1, viewConfigurator: ((UIView) -> Void)? = nil) -> DividerElement {
     return DividerElement(color: color, height: height, viewConfigurator:  viewConfigurator)
 }
