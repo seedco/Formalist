@@ -98,28 +98,22 @@ class FormalistUITests: XCTestCase {
         app.alerts.buttons["Dismiss"].tap()
     }
     
-    func testFailedValidation() {
+    func testValidation() {
         let app = XCUIApplication()
         let elementsQuery = app.scrollViews.otherElements
         let textField = elementsQuery.textFields["Text Field Element (Email)"]
         
         textField.tap()
-        app.typeText("foo")
+        app.typeText("test")
         app.buttons["Return"].tap()
         
-        app.navigationBars["foo"].buttons["Validate"].tap()
-        XCTAssert(app.staticTexts["The email address is invalid"].exists)
-    }
-    
-    func testSuccessfulValidation() {
-        let app = XCUIApplication()
-        let elementsQuery = app.scrollViews.otherElements
-        let textField = elementsQuery.textFields["Text Field Element (Email)"]
-        
+        app.navigationBars["test"].buttons["Validate"].tap()
+        XCTAssertTrue(app.staticTexts["The email address is invalid"].exists)
+
         textField.tap()
-        app.typeText("test@test.com")
-        
+        app.typeText("@test.com")
         app.navigationBars["test@test.com"].buttons["Validate"].tap()
-        app.alerts.buttons["Dismiss"].tap()
+
+        XCTAssertFalse(app.staticTexts["The email address is invalid"].exists)
     }
 }
