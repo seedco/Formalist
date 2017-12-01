@@ -44,45 +44,45 @@ class ViewController: UIViewController {
         groupedConfiguration.layout.edgeInsets = edgeInsets
         
         return FormViewController(elements: [
-            inset(edgeInsets, elements: [
-                staticText("Welcome to the Formalist Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
+            .inset(edgeInsets, elements: [
+                .staticText("Welcome to the Formalist Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
                     $0.textAlignment = .center
                     $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
                 }
             ]),
-            group(configuration: groupedConfiguration, elements: [
-                toggle(title: "Boolean Element", value: self.booleanValue, icon: UIImage(named: "circle")!),
-                textView(value: self.textViewValue) {
+            .group(configuration: groupedConfiguration, elements: [
+                .toggle(title: "Boolean Element", value: self.booleanValue, icon: UIImage(named: "circle")!),
+                .textView(value: self.textViewValue) {
                     $0.placeholder = "Text View Element"
                     $0.accessibilityIdentifier = "textView"
                 },
-                singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue) {
+                .singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue) {
                     $0.textEntryView.accessibilityIdentifier = "floatLabel"
                 },
-                multiLineFloatLabel(name: "Float MultiLine Element", value: self.multiLineFloatLabelValue) {
+                .multiLineFloatLabel(name: "Float MultiLine Element", value: self.multiLineFloatLabelValue) {
                     $0.textEntryView.accessibilityIdentifier = "multiLineFloatLabel"
                 },
-                pickerField(name: "Picker Field Element", value: self.pickerFieldValue, items: [
+                .pickerField(name: "Picker Field Element", value: self.pickerFieldValue, items: [
                     PickerValue(title: "Value #1", value: "value1"),
                     PickerValue(title: "Value #2", value: "value2"),
                     PickerValue(title: "Value #3", value: "value3")
                 ]) {
                     $0.textEntryView.accessibilityIdentifier = "pickerField"
                 },
-                segments(title: "Segment Element", segments: [
+                .segments(title: "Segment Element", segments: [
                     Segment(content: .title("Segment 1"), value: "Segment 1"),
                     Segment(content: .title("Segment 2"), value: "Segment 2")
                 ], selectedValue: self.segmentValue),
             ]),
-            spacer(height: 20.0),
-            group(configuration: groupedConfiguration, elements: [
-                textField(value: self.emailValue, configuration: TextEditorConfiguration(continuouslyUpdatesValue: true), validationRules: [.email]) {
+            .spacer(height: 20.0),
+            .group(configuration: groupedConfiguration, elements: [
+                .textField(value: self.emailValue, configuration: TextEditorConfiguration(continuouslyUpdatesValue: true), validationRules: [.email]) {
                     $0.autocapitalizationType = .none
                     $0.autocorrectionType = .no
                     $0.spellCheckingType = .no
                     $0.placeholder = "Text Field Element (Email)"
                 },
-                textField(
+                .textField(
                     value: self.phoneValue,
                     configuration: TextEditorConfiguration(
                         continuouslyUpdatesValue: true,
@@ -95,28 +95,28 @@ class ViewController: UIViewController {
                     $0.spellCheckingType = .no
                     $0.placeholder = "Text formatter XXX-XXX-XXXX"
                 },
-                segue(icon: UIImage(named: "circle")!, title: "Segue Element", viewConfigurator: {
+                .segue(icon: UIImage(named: "circle")!, title: "Segue Element", viewConfigurator: {
                     $0.accessibilityIdentifier = "segueView"
                 }) { [unowned self] in
                     self.displayAlertWithTitle("Segue Element", message: "Tapped the element.")
                 },
             ]),
-            inset(edgeInsets, elements: [
+            .inset(edgeInsets, elements: [
                 StaticTextElement(text: "Views can be easily wrapped to create custom form elements without subclassing, which is how this activity indicator is implemented.") {
                     $0.textAlignment = .center
                     $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
                 }
             ]),
-            group(configuration: groupedConfiguration, elements: [
-                customView(value: FormValue("")) { _ in
+            .group(configuration: groupedConfiguration, elements: [
+                .customView(value: FormValue("")) { _ in
                     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
                     activityIndicator.startAnimating()
                     return activityIndicator
                 }
             ]),
-            group(configuration: groupedConfiguration, elements: [
-                segue(icon: UIImage(named: "circle")!, title: "Short title", accessoryIcon: UIImage(named: "circle")!, viewConfigurator: nil) {},
-                segue(icon: UIImage(named: "circle")!, title: "This segue supports multiline title. As you can see here. ", accessoryIcon: UIImage(named: "circle")!, viewConfigurator: nil) {}
+            .group(configuration: groupedConfiguration, elements: [
+                .segue(icon: UIImage(named: "circle")!, title: "Short title", accessoryIcon: UIImage(named: "circle")!, viewConfigurator: nil) {},
+                .segue(icon: UIImage(named: "circle")!, title: "This segue supports multiline title. As you can see here. ", accessoryIcon: UIImage(named: "circle")!, viewConfigurator: nil) {}
             ]),
         ])
     }()
