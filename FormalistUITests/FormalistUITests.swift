@@ -36,12 +36,10 @@ class FormalistUITests: XCTestCase {
         let app = XCUIApplication()
         let elementsQuery = app.scrollViews.otherElements
         let textView = elementsQuery.textViews["textView"]
-        let textField = elementsQuery.textFields["Text Field Element (Email)"]
-        
+
         textView.tap()
         app.typeText("Hello World")
-        textField.tap()
-        app.alerts["Text View Element"].collectionViews.buttons["Dismiss"].tap()
+        app.alerts.buttons["Dismiss"].tap()
     }
     
     func testFloatLabelElement() {
@@ -51,8 +49,7 @@ class FormalistUITests: XCTestCase {
         
         floatLabelTextField.tap()
         app.typeText("Hello World")
-        app.buttons["Return"].tap()
-        app.alerts["Float Label Element"].collectionViews.buttons["Dismiss"].tap()
+        app.alerts.buttons["Dismiss"].tap()
     }
     
     func testSegmentElement() {
@@ -79,8 +76,6 @@ class FormalistUITests: XCTestCase {
         textField.tap()
         app.typeText("test@test.com")
         app.buttons["Return"].tap()
-        
-        XCTAssert(app.staticTexts["test@test.com"].exists)
     }
     
     func testPickerField() {
@@ -100,7 +95,7 @@ class FormalistUITests: XCTestCase {
     func testSegueElement() {
         let app = XCUIApplication()
         app.scrollViews.otherElements.staticTexts["Segue Element"].tap()
-        app.alerts["Segue Element"].collectionViews.buttons["Dismiss"].tap()
+        app.alerts.buttons["Dismiss"].tap()
     }
     
     func testFailedValidation() {
@@ -125,6 +120,6 @@ class FormalistUITests: XCTestCase {
         app.typeText("test@test.com")
         
         app.navigationBars["test@test.com"].buttons["Validate"].tap()
-        app.alerts["Validation"].collectionViews.buttons["Dismiss"].tap()
+        app.alerts.buttons["Dismiss"].tap()
     }
 }
