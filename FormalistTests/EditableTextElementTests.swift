@@ -17,7 +17,7 @@ class EditableTextElementTests: FBSnapshotTestCase {
     }
     
     @objc func testRenderTextFieldElement() {
-        let element = textField(value: FormValue("Text Field Element")) {
+        let element = FormElement.textField(value: FormValue("Text Field Element")) {
             $0.textColor = .red
             $0.textAlignment = .center
         }
@@ -26,7 +26,7 @@ class EditableTextElementTests: FBSnapshotTestCase {
     }
     
     @objc func testRenderTextViewElement() {
-        let element = textView(value: FormValue("Text View Element")) {
+        let element = FormElement.textView(value: FormValue("Text View Element")) {
             $0.textColor = .red
             $0.textAlignment = .center
         }
@@ -35,32 +35,32 @@ class EditableTextElementTests: FBSnapshotTestCase {
     }
     
     @objc func testRenderSingleLineFloatLabelElementWithEmptyValue() {
-        let element = singleLineFloatLabel(name: "Test", value: FormValue(""))
+        let element = FormElement.singleLineFloatLabel(name: "Test", value: FormValue(""))
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
     
     @objc func testRenderSingleLineFloatLabelElementWithNonEmptyValue() {
-        let element = singleLineFloatLabel(name: "Test", value: FormValue("Quam Amet Fringilla Purus Aenean"))
+        let element = FormElement.singleLineFloatLabel(name: "Test", value: FormValue("Quam Amet Fringilla Purus Aenean"))
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
     
     @objc func testRenderMultiLineFloatLabelElementWithEmptyValue() {
-        let element = multiLineFloatLabel(name: "Test", value: FormValue(""))
+        let element = FormElement.multiLineFloatLabel(name: "Test", value: FormValue(""))
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
     
     @objc func testRenderMultiLineFloatLabelElementWithNonEmptyValue() {
-        let element = multiLineFloatLabel(name: "Test", value: FormValue("Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla."))
+        let element = FormElement.multiLineFloatLabel(name: "Test", value: FormValue("Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla."))
         let elementView = renderElementForTesting(element)
         FBSnapshotVerifyView(elementView)
     }
     
     @objc func testUpdateTextFieldByUpdatingValue() {
         let value = FormValue("foo")
-        let element = textField(value: value)
+        let element = FormElement.textField(value: value)
         let elementView = element.render() as! UITextField
         
         value.value = "bar"
@@ -69,7 +69,7 @@ class EditableTextElementTests: FBSnapshotTestCase {
     
     @objc func testUpdateTextViewByUpdatingValue() {
         let value = FormValue("foo")
-        let element = textView(value: value)
+        let element = FormElement.textView(value: value)
         let elementView = element.render() as! UITextView
         
         value.value = "bar"
@@ -78,7 +78,7 @@ class EditableTextElementTests: FBSnapshotTestCase {
     
     @objc func testUpdateSingleLineFloatLabelByUpdatingValue() {
         let value = FormValue("foo")
-        let element = singleLineFloatLabel(name: "Float Label", value: value)
+        let element = FormElement.singleLineFloatLabel(name: "Float Label", value: value)
         let elementView = element.render() as! FloatLabel<UITextFieldTextEditorAdapter<FloatLabelTextField>>
         
         value.value = "bar"
@@ -87,7 +87,7 @@ class EditableTextElementTests: FBSnapshotTestCase {
     
     @objc func testUpdateMultiLineFloatLabelByUpdatingValue() {
         let value = FormValue("foo")
-        let element = multiLineFloatLabel(name: "Float Label", value: value)
+        let element = FormElement.multiLineFloatLabel(name: "Float Label", value: value)
         let elementView = element.render() as! FloatLabel<UITextViewTextEditorAdapter<PlaceholderTextView>>
         
         value.value = "bar"

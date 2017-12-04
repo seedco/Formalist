@@ -18,7 +18,7 @@ class GroupElementTests: FBSnapshotTestCase {
         super.setUp()
         recordMode = false
         
-        validatableElement = textField(value: FormValue("<invalid>"), validationRules: [.email]) { textField in
+        validatableElement = .textField(value: FormValue("<invalid>"), validationRules: [.email]) { textField in
             textField.placeholder = "Text Element 1"
         }
         childElements = [
