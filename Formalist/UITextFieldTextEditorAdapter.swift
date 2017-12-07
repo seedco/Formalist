@@ -148,7 +148,8 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
             textField?.resignFirstResponder()
             self?.configuration.textEditorAction?(.done)
         }
-        let toolbar = AccessoryViewToolbar(frame: .zero)
+
+        let toolbar = AccessoryViewToolbar(frame: .zero, doneButtonCustomTitle: configuration.doneButtonCustomTitle)
         toolbar.sizeToFit()
         toolbar.callbacks = callbacks
         textField.inputAccessoryView = toolbar
