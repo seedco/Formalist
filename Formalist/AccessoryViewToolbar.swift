@@ -21,11 +21,10 @@ class AccessoryViewToolbar: UIToolbar {
         return UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
     }()
 
-    private func doneButtonItem(customTitled title:String? = nil) -> UIBarButtonItem {
+    private func doneButtonItem(withCustomTitle title:String? = nil) -> UIBarButtonItem {
         if let title = title {
             return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(done))
         } else {
-
             return UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         }
     }
@@ -38,7 +37,7 @@ class AccessoryViewToolbar: UIToolbar {
         items = [
             nextButtonItem,
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            doneButtonItem(customTitled: doneButtonCustomTitle)
+            doneButtonItem(withCustomTitle: doneButtonCustomTitle)
         ]
     }
     

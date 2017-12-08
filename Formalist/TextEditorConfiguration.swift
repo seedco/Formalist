@@ -28,7 +28,7 @@ public struct TextEditorConfiguration {
 
     public enum DoneButtonStyle {
         case custom(title: String)
-        case builtIn
+        case `default`
     }
 
     public let returnKeyAction: ReturnKeyAction
@@ -44,7 +44,7 @@ public struct TextEditorConfiguration {
         switch doneButtonStyle {
         case .custom(let title):
             return title
-        case .builtIn:
+        case .default:
             return nil
         }
     }
@@ -72,7 +72,7 @@ public struct TextEditorConfiguration {
         shouldResignFirstResponderWhenFinished: Bool = true,
         showAccessoryViewToolbar: Bool = false,
         formatter: Formattable? = nil,
-        doneButtonStyle: DoneButtonStyle = .builtIn,
+        doneButtonStyle: DoneButtonStyle = .default,
         textEditorAction: ((TextEditorAction) -> Void)? = nil
     ) {
         self.returnKeyAction = returnKeyAction
