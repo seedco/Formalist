@@ -6,7 +6,7 @@
 //  Copyright © 2016 Seed Platform, Inc. All rights reserved.
 //
 
-extension FormElement {
+public extension FormElement {
     /**
      Creates a form element that displays a control to toggle a boolean value
      Convenience function for initializing a `BooleanElement`
