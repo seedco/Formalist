@@ -21,19 +21,23 @@ class AccessoryViewToolbar: UIToolbar {
         return UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextAction))
     }()
 
-    lazy var doneButtonItem: UIBarButtonItem = {
-        return UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-    }()
+    private func doneButtonItem(withCustomTitle title:String? = nil) -> UIBarButtonItem {
+        if let title = title {
+            return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(done))
+        } else {
+            return UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        }
+    }
 
     var callbacks: AccessoryViewToolbarCallbacks?
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, doneButtonCustomTitle: String? = nil) {
         super.init(frame: frame)
 
         items = [
             nextButtonItem,
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            doneButtonItem
+            doneButtonItem(withCustomTitle: doneButtonCustomTitle)
         ]
     }
     

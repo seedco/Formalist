@@ -26,6 +26,11 @@ public struct TextEditorConfiguration {
         case returnKey
     }
 
+    public enum DoneButtonStyle {
+        case custom(title: String)
+        case `default`
+    }
+
     public let returnKeyAction: ReturnKeyAction
     public let continuouslyUpdatesValue: Bool
     public let maximumLength: Int?
@@ -33,6 +38,16 @@ public struct TextEditorConfiguration {
     public let showAccessoryViewToolbar: Bool
     public let textEditorAction: ((TextEditorAction) -> Void)?
     public let formatter: Formattable?
+
+    private let doneButtonStyle: DoneButtonStyle
+    public var doneButtonCustomTitle: String? {
+        switch doneButtonStyle {
+        case .custom(let title):
+            return title
+        case .default:
+            return nil
+        }
+    }
 
     /**
      Designated initializer
@@ -45,6 +60,8 @@ public struct TextEditorConfiguration {
      the text is finished editing
      - parameter maximumLength:            The maximum text length
      to restrict text input to
+     - parameter doneButtonStyle:          The customization point
+     for the button associated with the `done` `TextEditorAction`
 
      - returns: An initialized instance of the receiver
      */
@@ -55,6 +72,7 @@ public struct TextEditorConfiguration {
         shouldResignFirstResponderWhenFinished: Bool = true,
         showAccessoryViewToolbar: Bool = false,
         formatter: Formattable? = nil,
+        doneButtonStyle: DoneButtonStyle = .default,
         textEditorAction: ((TextEditorAction) -> Void)? = nil
     ) {
         self.returnKeyAction = returnKeyAction
@@ -63,6 +81,7 @@ public struct TextEditorConfiguration {
         self.shouldResignFirstResponderWhenFinished = shouldResignFirstResponderWhenFinished
         self.showAccessoryViewToolbar = showAccessoryViewToolbar
         self.formatter = formatter
+        self.doneButtonStyle = doneButtonStyle
         self.textEditorAction = textEditorAction
     }
 }
