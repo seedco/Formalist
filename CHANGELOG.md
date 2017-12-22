@@ -1,5 +1,9 @@
 # [Unreleased]
 
+## Changed
+
+- Allow `FormViewController` to be subclassed ([@klaaspieter])
+
 # [0.4.1]
 
 ## Added
