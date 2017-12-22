@@ -10,7 +10,7 @@ import UIKit
 import StackViewController
 
 /// A view controller that displays and manages a set of form elements
-public final class FormViewController: UIViewController {
+open class FormViewController: UIViewController {
     fileprivate let rootElement: FormElement
     fileprivate lazy var autoscrollView = AutoScrollView(frame: CGRect.zero)
     
@@ -51,11 +51,11 @@ public final class FormViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func loadView() {
+    open override func loadView() {
         view = autoscrollView
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         reload()
     }
@@ -63,7 +63,7 @@ public final class FormViewController: UIViewController {
     // MARK: API
     
     /// Reloads the view by re-rendering the entire tree of form elements
-    public func reload() {
+    open func reload() {
         let rootElementView = rootElement.render()
         rootElementView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -81,7 +81,7 @@ public final class FormViewController: UIViewController {
      - parameter completionHandler: The completion handler to call when
      validation succeeds, fails, or is cancelled.
      */
-    public func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
+    open func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
         if let validatableElement = rootElement as? Validatable {
             validatableElement.validateAndStoreResult { result in
                 self.reload()
