@@ -43,8 +43,9 @@ open class FormViewController: UIViewController {
      
      - returns: An initialized instance of the receiver
      */
-    public convenience init(elements: [FormElement]) {
-        self.init(rootElement: GroupElement(elements: elements))
+    public init(elements: [FormElement]) {
+        self.rootElement = GroupElement(elements: elements)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
