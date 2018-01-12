@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate lazy var formViewController: FormViewController = {
+    fileprivate lazy var formViewController: Formalist.FormViewController = {
         let edgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 
         let numberFormatter = FormNumberFormatter(
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         groupedConfiguration.style = .grouped(backgroundColor: .white)
         groupedConfiguration.layout.edgeInsets = edgeInsets
         
-        return FormViewController(elements: [
+        return Formalist.FormViewController(elements: [
             .inset(edgeInsets, elements: [
                 .staticText("Welcome to the Formalist Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
                     $0.textAlignment = .center
@@ -98,7 +98,10 @@ class ViewController: UIViewController {
                 .segue(icon: UIImage(named: "circle")!, title: "Segue Element", viewConfigurator: {
                     $0.accessibilityIdentifier = "segueView"
                 }) { [unowned self] in
-                    self.displayAlertWithTitle("Segue Element", message: "Tapped the element.")
+                    self.navigationController?.pushViewController(
+                        FormViewController(),
+                        animated: true
+                    )
                 },
             ]),
             .inset(edgeInsets, elements: [

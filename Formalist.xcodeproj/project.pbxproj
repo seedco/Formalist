@@ -66,6 +66,7 @@
 		A15176551E16760100E5CCBC /* InfoFieldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15176541E16760100E5CCBC /* InfoFieldElement.swift */; };
 		A151765D1E16763200E5CCBC /* DividerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765C1E16763200E5CCBC /* DividerElement.swift */; };
 		A151765F1E1676E100E5CCBC /* AccessoryViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */; };
+		A1F1FEDE2008C91D00BA48F2 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1FEDD2008C91D00BA48F2 /* FormViewController.swift */; };
 		BF2209BE1FC6379600CAFE89 /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
 		BF2209C01FC637A500CAFE89 /* Formalist.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF9631B31FC62DEE00D7362F /* Formalist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7285A7061D17CB7000718D23 /* Formalist.framework */; };
@@ -194,6 +195,7 @@
 		A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryViewToolbar.swift; sourceTree = "<group>"; };
 		A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		A1A486B51FB5E224008979D6 /* StackViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StackViewController.framework; path = Carthage/Build/iOS/StackViewController.framework; sourceTree = "<group>"; };
+		A1F1FEDD2008C91D00BA48F2 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		BF9631981FC629E700D7362F /* StackViewController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = StackViewController.framework.dSYM; path = Carthage/Build/iOS/StackViewController.framework.dSYM; sourceTree = "<group>"; };
 		BF9631991FC629E700D7362F /* FBSnapshotTestCase.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FBSnapshotTestCase.framework.dSYM; path = Carthage/Build/iOS/FBSnapshotTestCase.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,6 +292,7 @@
 				7285A7AB1D17CCC300718D23 /* Assets.xcassets */,
 				7285A7AD1D17CCC300718D23 /* LaunchScreen.storyboard */,
 				7285A7B01D17CCC300718D23 /* Info.plist */,
+				A1F1FEDD2008C91D00BA48F2 /* FormViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F1FEDE2008C91D00BA48F2 /* FormViewController.swift in Sources */,
 				7285A7A71D17CCC300718D23 /* ViewController.swift in Sources */,
 				7285A7A51D17CCC300718D23 /* AppDelegate.swift in Sources */,
 			);
