@@ -95,7 +95,7 @@ class FormalistUITests: XCTestCase {
     func testSegueElement() {
         let app = XCUIApplication()
         app.scrollViews.otherElements.staticTexts["Segue Element"].tap()
-        app.alerts.buttons["Dismiss"].tap()
+        XCTAssertTrue(app.navigationBars["Example"].buttons["Example"].exists)
     }
     
     func testValidation() {
