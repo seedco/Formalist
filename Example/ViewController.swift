@@ -56,7 +56,11 @@ class ViewController: UIViewController {
                     $0.placeholder = "Text View Element"
                     $0.accessibilityIdentifier = "textView"
                 },
-                .singleLineFloatLabel(name: "Float Label Element", value: self.floatLabelValue) {
+                .singleLineFloatLabel(
+                    name: "Float Label Element",
+                    value: self.floatLabelValue,
+                    configuration: TextEditorConfiguration(showAccessoryViewToolbar: true)
+                ) {
                     $0.textEntryView.accessibilityIdentifier = "floatLabel"
                 },
                 .multiLineFloatLabel(name: "Float MultiLine Element", value: self.multiLineFloatLabelValue) {
