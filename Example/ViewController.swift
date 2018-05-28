@@ -63,7 +63,11 @@ class ViewController: UIViewController {
                 ) {
                     $0.textEntryView.accessibilityIdentifier = "floatLabel"
                 },
-                .multiLineFloatLabel(name: "Float MultiLine Element", value: self.multiLineFloatLabelValue) {
+                .multiLineFloatLabel(
+                    name: "Float MultiLine Element",
+                    value: self.multiLineFloatLabelValue,
+                    configuration: TextEditorConfiguration(showAccessoryViewToolbar: true)
+                ) {
                     $0.textEntryView.accessibilityIdentifier = "multiLineFloatLabel"
                 },
                 .pickerField(name: "Picker Field Element", value: self.pickerFieldValue, items: [
