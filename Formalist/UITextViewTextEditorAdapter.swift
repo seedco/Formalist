@@ -132,9 +132,10 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
         }
 
         let toolbar = AccessoryViewToolbar(frame: .zero, doneButtonCustomTitle: configuration.doneButtonCustomTitle)
-        toolbar.sizeToFit()
         toolbar.callbacks = callbacks
+        toolbar.sizeToFit()
         textView.inputAccessoryView = toolbar
+        textView.reloadInputViews()
 
         //Hide next button when nextFormResponder == nil.
         if textView.nextFormResponder == nil {
