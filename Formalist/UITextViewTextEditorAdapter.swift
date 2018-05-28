@@ -73,6 +73,10 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
             fatalError("Expected text view of type \(TextViewType.self)")
         }
         callbacks.textDidBeginEditing?(adapter, textView)
+
+        if configuration.showAccessoryViewToolbar {
+            appendToolbar(toTextView: textView)
+        }
     }
     
     @objc fileprivate func textViewDidEndEditing(_ textView: UITextView) {
@@ -115,4 +119,28 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
             return true
         }
     }
+
+    private func appendToolbar(toTextView textView: TextViewType) {
+        var callbacks = AccessoryViewToolbarCallbacks()
+        callbacks.nextAction = { [weak self, weak textView] in
+            textView?.nextFormResponder?.becomeFirstResponder()
+            self?.configuration.textEditorAction?(.next)
+        }
+        callbacks.doneAction = { [weak self, weak textView] in
+            textView?.resignFirstResponder()
+            self?.configuration.textEditorAction?(.done)
+        }
+
+        let toolbar = AccessoryViewToolbar(frame: .zero, doneButtonCustomTitle: configuration.doneButtonCustomTitle)
+        toolbar.sizeToFit()
+        toolbar.callbacks = callbacks
+        textView.inputAccessoryView = toolbar
+
+        //Hide next button when nextFormResponder == nil.
+        if textView.nextFormResponder == nil {
+            toolbar.nextButtonItem.isEnabled = false
+            toolbar.nextButtonItem.title = ""
+        }
+    }
+
 }
