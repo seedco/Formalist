@@ -251,7 +251,7 @@ public final class GroupElement: FormElement, Validatable {
     // MARK: Validatable
     
     public func validate(_ completionHandler: @escaping (ValidationResult) -> Void) {
-        let validatables = elements.flatMap { $0 as? Validatable }
+        let validatables = elements.compactMap { $0 as? Validatable }
         validateObjects(validatables, completionHandler: completionHandler)
     }
     
