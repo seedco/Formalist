@@ -85,7 +85,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         callbacks.textDidBeginEditing?(adapter, textField)
 
         if configuration.showAccessoryViewToolbar {
-            appendToolbar(toTextField: textField)
+            presentToolbar(with: textField, configuration: configuration)
         }
     }
     
@@ -135,29 +135,6 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
                 }
             }
             return false
-        }
-    }
-
-    private func appendToolbar(toTextField textField: TextFieldType) {
-        var callbacks = AccessoryViewToolbarCallbacks()
-        callbacks.nextAction = { [weak self, weak textField] in
-            textField?.nextFormResponder?.becomeFirstResponder()
-            self?.configuration.textEditorAction?(.next)
-        }
-        callbacks.doneAction = { [weak self, weak textField] in
-            textField?.resignFirstResponder()
-            self?.configuration.textEditorAction?(.done)
-        }
-
-        let toolbar = AccessoryViewToolbar(frame: .zero, doneButtonCustomTitle: configuration.doneButtonCustomTitle)
-        toolbar.sizeToFit()
-        toolbar.callbacks = callbacks
-        textField.inputAccessoryView = toolbar
-
-        //Hide next button when nextFormResponder == nil.
-        if textField.nextFormResponder == nil {
-            toolbar.nextButtonItem.isEnabled = false
-            toolbar.nextButtonItem.title = ""
         }
     }
 }
