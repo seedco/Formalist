@@ -8,6 +8,9 @@ protocol TextEditor: class {
     @discardableResult func resignFirstResponder() -> Bool
 }
 
+extension UITextField: TextEditor {}
+extension UITextView: TextEditor {}
+
 func presentToolbar(with editor: TextEditor, configuration: TextEditorConfiguration) {
     let toolbar = AccessoryViewToolbar(
         frame: .zero,
