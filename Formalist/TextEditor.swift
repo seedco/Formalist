@@ -6,6 +6,8 @@ protocol TextEditor: class {
     var inputAccessoryView: UIView? { get set }
 
     @discardableResult func resignFirstResponder() -> Bool
+
+    func reloadInputViews()
 }
 
 extension UITextField: TextEditor {}
@@ -28,6 +30,7 @@ func presentToolbar(with editor: TextEditor, configuration: TextEditorConfigurat
     )
     toolbar.sizeToFit()
     editor.inputAccessoryView = toolbar
+    editor.reloadInputViews()
 
     // Hide next button when nextFormResponder == nil.
     if editor.nextFormResponder == nil {
