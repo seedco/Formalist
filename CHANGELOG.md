@@ -3,6 +3,7 @@
 ## Changed
 
 - Allow `FormViewController` to be subclassed ([@klaaspieter])
+- Update to Swift 4.1 ([@klaaspieter])
 
 # [0.4.1]
 
