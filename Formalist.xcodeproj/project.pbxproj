@@ -74,6 +74,7 @@
 		BF9631B91FC6301100D7362F /* StackViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; };
 		BF9631BA1FC6302A00D7362F /* StackViewController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF9631BB1FC6302A00D7362F /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EBB9607C20BC51DD00AC12FF /* TextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9607B20BC51DD00AC12FF /* TextEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		A1F1FEDD2008C91D00BA48F2 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		BF9631981FC629E700D7362F /* StackViewController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = StackViewController.framework.dSYM; path = Carthage/Build/iOS/StackViewController.framework.dSYM; sourceTree = "<group>"; };
 		BF9631991FC629E700D7362F /* FBSnapshotTestCase.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FBSnapshotTestCase.framework.dSYM; path = Carthage/Build/iOS/FBSnapshotTestCase.framework.dSYM; sourceTree = "<group>"; };
+		EBB9607B20BC51DD00AC12FF /* TextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 				A151765E1E1676E100E5CCBC /* AccessoryViewToolbar.swift */,
 				7285A7221D17CBCA00718D23 /* Box.swift */,
 				7285A73C1D17CBCA00718D23 /* WeakBox.swift */,
+				EBB9607B20BC51DD00AC12FF /* TextEditor.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				7285A7421D17CBCA00718D23 /* FloatLabel.swift in Sources */,
 				7285A7511D17CBCA00718D23 /* TextEditorConfiguration.swift in Sources */,
 				7285A74F1D17CBCA00718D23 /* StaticTextElement.swift in Sources */,
+				EBB9607C20BC51DD00AC12FF /* TextEditor.swift in Sources */,
 				7285A7521D17CBCA00718D23 /* UITextFieldTextEditorAdapter.swift in Sources */,
 				7285A73F1D17CBCA00718D23 /* Box.swift in Sources */,
 				7285A74E1D17CBCA00718D23 /* SpacerElement.swift in Sources */,
