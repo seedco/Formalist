@@ -1,3 +1,8 @@
 #!/bin/sh
 
-carthage bootstrap --no-use-binaries --platform ios
+set -e
+
+if ! cmp -s Cartfile.resolved Carthage/Cartfile.resolved; then
+  carthage bootstrap --no-use-binaries --platform ios
+  cp Cartfile.resolved Carthage
+fi
