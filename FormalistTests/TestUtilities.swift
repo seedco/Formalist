@@ -23,7 +23,7 @@ func sizeViewForTesting(_ view: UIView) {
     
     view.layoutIfNeeded()
     let fittingSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-    view.frame = CGRect(origin: CGPoint.zero, size: fittingSize)
+    view.frame = CGRect(origin: CGPoint.zero, size: fittingSize).integral
 }
 
 func imageWithName(_ name: String) -> UIImage {
