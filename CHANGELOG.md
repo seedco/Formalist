@@ -1,5 +1,7 @@
 # [Unreleased]
 
+# [0.5.0]
+
 ## Added
 
 - Support for showing accessory toolbar with `multiLineFloatLabel` ([@klaaspieter])
@@ -32,8 +34,8 @@
 
 ## Fixed
 
-[Unreleased]: https://github.com/seedco/formalist/compare/0.4.1...HEAD
-[0.4.1]: https://github.com/seedco/formalist/compare/0.4.0...0.4.1
+[Unreleased]: https://github.com/seedco/formalist/compare/0.5.0...HEAD
+[0.4.1]: https://github.com/seedco/formalist/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/seedco/formalist/compare/0.3.3...0.4.0
 
 [@klaaspieter]: https://github.com/klaaspieter
