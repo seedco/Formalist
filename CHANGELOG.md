@@ -1,5 +1,9 @@
 # [Unreleased]
 
+## Added
+
+- Support for showing accessory toolbar with `multiLineFloatLabel` ([@klaaspieter])
+
 ## Changed
 
 - Allow `FormViewController` to be subclassed ([@klaaspieter])
@@ -10,7 +14,6 @@
 ## Added
 
 - Customization of `done` button title ([@lsavino])
-- Support for showing accessory toolbar with `multiLineFloatLabel` ([@klaaspieter])
 
 # [0.4.0]
 
