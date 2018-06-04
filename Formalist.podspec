@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = "Formalist"
-    s.version = "0.3.1"
+    s.version = "0.5.0"
     s.license = { type: "MIT" }
     s.homepage = "https://github.com/seedco/Formalist"
     s.author = "Seed"
