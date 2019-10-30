@@ -19,7 +19,7 @@ public extension FormElement {
 
      - returns: A boolean element
      */
-    public static func toggle(title: String, value: FormValue<Bool>, icon: UIImage? = nil, viewConfigurator: BooleanElement.ViewConfigurator? = nil) -> BooleanElement {
+    static func toggle(title: String, value: FormValue<Bool>, icon: UIImage? = nil, viewConfigurator: BooleanElement.ViewConfigurator? = nil) -> BooleanElement {
         return BooleanElement(title: title, value: value, icon: icon, viewConfigurator: viewConfigurator)
     }
 
@@ -36,7 +36,7 @@ public extension FormElement {
 
      - returns: A segment element
      */
-    public static func segments<ValueType>(title: String,
+    static func segments<ValueType>(title: String,
                                     segments: [Segment<ValueType>],
                                     selectedValue: FormValue<ValueType>,
                                     viewConfigurator: SegmentElement<ValueType>.ViewConfigurator? = nil)
@@ -59,7 +59,7 @@ public extension FormElement {
 
      - returns: A static text form element
      */
-    public static func staticText(_ text: String, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
+    static func staticText(_ text: String, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
         return StaticTextElement(text: text, viewConfigurator: viewConfigurator)
     }
 
@@ -73,7 +73,7 @@ public extension FormElement {
 
      - returns: A static text form element
      */
-    public static func staticText(_ value: FormValue<String>, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
+    static func staticText(_ value: FormValue<String>, viewConfigurator: StaticTextElement.ViewConfigurator? = nil) -> StaticTextElement {
         return StaticTextElement(value: value, viewConfigurator: viewConfigurator)
     }
 
@@ -90,7 +90,7 @@ public extension FormElement {
 
      - returns: A segue element
      */
-    public static func segue(
+    static func segue(
         icon: UIImage?,
         title: String,
         accessoryIcon: UIImage? = nil,
@@ -116,7 +116,7 @@ public extension FormElement {
 
      - returns: A spacer element
      */
-    public static func spacer(height: CGFloat, viewConfigurator: SpacerElement.ViewConfigurator? = nil) -> SpacerElement {
+    static func spacer(height: CGFloat, viewConfigurator: SpacerElement.ViewConfigurator? = nil) -> SpacerElement {
         return SpacerElement(height: height, viewConfigurator: viewConfigurator)
     }
 
@@ -130,7 +130,7 @@ public extension FormElement {
 
      - returns: A view element
      */
-    public static func customView<ValueType>(
+    static func customView<ValueType>(
         value: FormValue<ValueType>,
         viewConfigurator: @escaping ViewElement<ValueType>.ViewConfigurator
         ) -> ViewElement<ValueType> {
@@ -147,7 +147,7 @@ public extension FormElement {
 
      - returns: A group element
      */
-    public static func group(configuration: GroupElement.Configuration = GroupElement.Configuration(), elements: [FormElement]) -> GroupElement {
+    static func group(configuration: GroupElement.Configuration = GroupElement.Configuration(), elements: [FormElement]) -> GroupElement {
         return GroupElement(configuration: configuration, elements: elements)
     }
 
@@ -160,7 +160,7 @@ public extension FormElement {
 
      - returns: A group element
      */
-    public static func group(configurator: (inout GroupElement.Configuration) -> Void, elements: [FormElement]) -> GroupElement {
+    static func group(configurator: (inout GroupElement.Configuration) -> Void, elements: [FormElement]) -> GroupElement {
         return GroupElement(configurator: configurator, elements: elements)
     }
 
@@ -172,7 +172,7 @@ public extension FormElement {
 
      - returns: A group element
      */
-    public static func inset(_ insets: UIEdgeInsets, elements: [FormElement]) -> GroupElement {
+    static func inset(_ insets: UIEdgeInsets, elements: [FormElement]) -> GroupElement {
         return GroupElement(configurator: {
             $0.layout.edgeInsets = insets
         }, elements: elements)
@@ -189,7 +189,7 @@ public extension FormElement {
 
      - returns: An editable text element
      */
-    public static func textField(value: FormValue<String>,
+    static func textField(value: FormValue<String>,
                           configuration: TextEditorConfiguration = TextEditorConfiguration(),
                           validationRules: [ValidationRule<String>] = [],
                           viewConfigurator: ((UITextField) -> Void)? = nil)
@@ -213,7 +213,7 @@ public extension FormElement {
 
      - returns: An editable text element
      */
-    public static func textView(value: FormValue<String>,
+    static func textView(value: FormValue<String>,
                          configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .none),
                          validationRules: [ValidationRule<String>] = [],
                          viewConfigurator: ((PlaceholderTextView) -> Void)? = nil)
@@ -238,7 +238,7 @@ public extension FormElement {
 
      - returns: An editable text elemen
      */
-    public static func floatLabel
+    static func floatLabel
         <InnerAdapterType>
         (name: String,
          value: FormValue<String>,
@@ -267,7 +267,7 @@ public extension FormElement {
 
      - returns: An editable text elemen
      */
-    public static func singleLineFloatLabel(name: String,
+    static func singleLineFloatLabel(name: String,
                                      value: FormValue<String>,
                                      configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                      validationRules: [ValidationRule<String>] = [],
@@ -295,7 +295,7 @@ public extension FormElement {
 
      - returns: An editable text element
      */
-    public static func multiLineFloatLabel(name: String,
+    static func multiLineFloatLabel(name: String,
                                     value: FormValue<String>,
                                     configuration: TextEditorConfiguration = TextEditorConfiguration(returnKeyAction: .none),
                                     validationRules: [ValidationRule<String>] = [],
@@ -324,7 +324,7 @@ public extension FormElement {
      - returns: An editable text element
      */
 
-    public static func pickerField<ValueType>(name: String, value: FormValue<ValueType>, items: [PickerValue<ValueType>],
+    static func pickerField<ValueType>(name: String, value: FormValue<ValueType>, items: [PickerValue<ValueType>],
                                        configuration: TextEditorConfiguration = TextEditorConfiguration(),
                                        validationRules: [ValidationRule<String>] = [],
                                        viewConfigurator: ((FloatLabel<UITextFieldTextEditorAdapter<PickerField<ValueType>>>) -> Void)? = nil)
@@ -336,12 +336,12 @@ public extension FormElement {
                               validationRules: validationRules) {
                                 $0.textEntryView.items = items
                                 let textEntryView = $0.textEntryView
-                                textEntryView?.didSelectPickerValue = { pickerValue in
+                                textEntryView.didSelectPickerValue = { pickerValue in
                                     valueString.value = pickerValue.title
                                     value.value = pickerValue.value
                                 }
-                                textEntryView?.items = items
-                                textEntryView?.selectValue(value.value)
+                                textEntryView.items = items
+                                textEntryView.selectValue(value.value)
                                 $0.adapterCallbacks?.textDidBeginEditing = { adapterType, viewType in
                                     viewType.updateSelectedValue()
                                 }
@@ -352,11 +352,11 @@ public extension FormElement {
             }
     }
 
-    public static func infoField(title: NSMutableAttributedString, subTitle: NSMutableAttributedString, viewConfigurator: ((UILabel, UILabel) -> Void)? = nil) -> InfoFieldElement {
+    static func infoField(title: NSMutableAttributedString, subTitle: NSMutableAttributedString, viewConfigurator: ((UILabel, UILabel) -> Void)? = nil) -> InfoFieldElement {
         return InfoFieldElement(title: title, subTitle: subTitle, viewConfigurator: viewConfigurator)
     }
 
-    public static func divider(color: UIColor = .black, height: CGFloat = 1, viewConfigurator: ((UIView) -> Void)? = nil) -> DividerElement {
+    static func divider(color: UIColor = .black, height: CGFloat = 1, viewConfigurator: ((UIView) -> Void)? = nil) -> DividerElement {
         return DividerElement(color: color, height: height, viewConfigurator:  viewConfigurator)
     }
 
@@ -706,12 +706,12 @@ public func pickerField<ValueType>(name: String, value: FormValue<ValueType>, it
                           validationRules: validationRules) {
                             $0.textEntryView.items = items
                             let textEntryView = $0.textEntryView
-                            textEntryView?.didSelectPickerValue = { pickerValue in
+                            textEntryView.didSelectPickerValue = { pickerValue in
                                 valueString.value = pickerValue.title
                                 value.value = pickerValue.value
                             }
-                            textEntryView?.items = items
-                            textEntryView?.selectValue(value.value)
+                            textEntryView.items = items
+                            textEntryView.selectValue(value.value)
                             $0.adapterCallbacks?.textDidBeginEditing = { adapterType, viewType in
                                 viewType.updateSelectedValue()
                             }
