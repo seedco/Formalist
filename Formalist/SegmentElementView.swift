@@ -20,10 +20,10 @@ open class SegmentElementView: UIView {
     }
 
     /// The label that displays the title above the segmented control
-    open let titleLabel: UILabel
+    public let titleLabel: UILabel
 
     /// The segmented control that displays the segments
-    open let segmentedControl: UISegmentedControl
+    public let segmentedControl: UISegmentedControl
 
     open var layout: Layout {
         didSet {
@@ -37,7 +37,7 @@ open class SegmentElementView: UIView {
         self.layout = layout
 
         titleLabel = UILabel(frame: CGRect.zero)
-        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
         titleLabel.text = title
 
         segmentedControl = UISegmentedControl(items: items.map { $0.objectValue })

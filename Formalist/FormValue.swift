@@ -59,7 +59,7 @@ public final class FormValue<ValueType: Equatable> {
      if not.
      */
     public func removeObserverWithToken(_ token: ObserverToken<ValueType>) -> Bool {
-        if let index = observerTokens.index(of: token) {
+        if let index = observerTokens.firstIndex(of: token) {
             observerTokens.remove(at: index)
             return true
         } else {

@@ -17,8 +17,8 @@ open class FloatLabelTextField: UITextField {
         super.init(frame: frame)
         
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidBeginEditing(_:)), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: self)
-        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidEndEditing(_:)), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: self)
+        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidBeginEditing(_:)), name: UITextField.textDidBeginEditingNotification, object: self)
+        nc.addObserver(self, selector: #selector(FloatLabelTextField.textDidEndEditing(_:)), name: UITextField.textDidEndEditingNotification, object: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -16,13 +16,13 @@ open class SegueElementView: UIView {
     }
 
     /// The label used to display the title
-    open let label: UILabel
+    public let label: UILabel
 
     /// The image view used to display the icon
-    open let imageView: UIImageView
+    public let imageView: UIImageView
 
     /// The button used to display the right icon
-    open let accessoryButton: UIButton
+    public let accessoryButton: UIButton
 
     init(icon: UIImage?, title: String, accessoryIcon: UIImage?) {
         imageView = UIImageView(image: icon)
@@ -31,7 +31,7 @@ open class SegueElementView: UIView {
 
         label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         label.text = title
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)

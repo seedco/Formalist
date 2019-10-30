@@ -21,12 +21,12 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
   where AdapterType.ViewType: FloatLabelTextEntryView {
 
     /// The label used to display the field name
-    open let nameLabel: UILabel = {
+    public let nameLabel: UILabel = {
         let nameLabel = UILabel(frame: CGRect.zero)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.alpha = 0.0
         nameLabel.font = {
-            let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.footnote)
+            let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFont.TextStyle.footnote)
             let boldDescriptor = descriptor.withSymbolicTraits(.traitBold)
             return UIFont(descriptor: boldDescriptor!, size: 0)
         }()
@@ -34,7 +34,7 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
     }()
     
     /// The container view used for adding spacing to textEntryView.
-    open let containerView: UIView =  {
+    public let containerView: UIView =  {
         let containerView = UIView()
         return containerView
     }()
@@ -172,7 +172,7 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
      */
     open func recomputeMinimumHeight() {
         transitionToState(.labelShown, animated: false)
-        heightConstraint.constant = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        heightConstraint.constant = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         updateCurrentState()
     }
     
@@ -232,10 +232,10 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
         
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [opacityAnimation, positionAnimation]
-        animationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animationGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animationGroup.duration = 0.2
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.fillMode = kCAFillModeForwards
+        animationGroup.fillMode = .forwards
         animationGroup.speed = animation.speed
         animationGroup.delegate = self
         return animationGroup

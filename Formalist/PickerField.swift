@@ -40,13 +40,13 @@ open class PickerField<ValueType: Equatable>: FloatLabelTextField, UIPickerViewD
     }
 
     public func selectPickerValue(_ value: PickerValue<ValueType>) {
-        if let row = items.index(where: {$0 == value}) {
+        if let row = items.firstIndex(where: {$0 == value}) {
             selectRow(row)
         }
     }
 
     public func selectValue(_ value: ValueType) {
-        if let row = items.index(where: {$0.value == value}) {
+        if let row = items.firstIndex(where: {$0.value == value}) {
             selectRow(row)
         }
     }

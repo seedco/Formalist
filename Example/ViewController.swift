@@ -47,7 +47,7 @@ class ViewController: UIViewController {
             .inset(edgeInsets, elements: [
                 .staticText("Welcome to the Formalist Catalog app. This text is an example of a StaticTextElement. Other kinds of elements are showcased below.") {
                     $0.textAlignment = .center
-                    $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
+                    $0.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
                 }
             ]),
             .group(configuration: groupedConfiguration, elements: [
@@ -115,12 +115,12 @@ class ViewController: UIViewController {
             .inset(edgeInsets, elements: [
                 StaticTextElement(text: "Views can be easily wrapped to create custom form elements without subclassing, which is how this activity indicator is implemented.") {
                     $0.textAlignment = .center
-                    $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
+                    $0.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
                 }
             ]),
             .group(configuration: groupedConfiguration, elements: [
                 .customView(value: FormValue("")) { _ in
-                    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                    let activityIndicator = UIActivityIndicatorView(style: .gray)
                     activityIndicator.startAnimating()
                     return activityIndicator
                 }
@@ -136,10 +136,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .groupTableViewBackground
 
-        addChildViewController(formViewController)
+        addChild(formViewController)
         view.addSubview(formViewController.view)
         let _ = formViewController.view.activateSuperviewHuggingConstraints()
-        formViewController.didMove(toParentViewController: self)
+        formViewController.didMove(toParent: self)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Validate", style: .plain, target: self, action: #selector(ViewController.validateForm(_:)))
         

@@ -17,17 +17,17 @@ open class BooleanElementView: UIView {
     }
 
     /// The label used to display the title
-    open let titleLabel: UILabel
+    public let titleLabel: UILabel
 
     /// The button used to display the icon
-    open let accessoryButton: UIButton
+    public let accessoryButton: UIButton
 
     /// The toggle used to change the boolean value
-    open let toggle: UISwitch
+    public let toggle: UISwitch
     
     init(title: String, icon: UIImage? = nil) {
         titleLabel = UILabel(frame: CGRect.zero)
-        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         titleLabel.text = title
         titleLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
 

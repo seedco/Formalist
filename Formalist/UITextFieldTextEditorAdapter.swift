@@ -31,7 +31,7 @@ public final class UITextFieldTextEditorAdapter<TextFieldType: UITextField>: Tex
         )
         
         (textField as UITextField).delegate = delegate
-        textField.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        textField.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         objc_setAssociatedObject(textField, &ObjCTextFieldDelegateKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return textField
     }
@@ -67,7 +67,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(TextFieldDelegate.textFieldTextDidChange(_:)),
-            name: NSNotification.Name.UITextFieldTextDidChange,
+            name: UITextField.textDidChangeNotification,
             object: textField
         )
     }
