@@ -38,7 +38,7 @@ class FormalistUITests: XCTestCase {
         let textView = elementsQuery.textViews["textView"]
 
         textView.tap()
-        app.typeText("Hello World")
+        app.typeText("H")
         app.alerts.buttons["Dismiss"].tap()
     }
     
@@ -48,7 +48,7 @@ class FormalistUITests: XCTestCase {
         let floatLabelTextField = elementsQuery.textFields["floatLabel"]
         
         floatLabelTextField.tap()
-        app.typeText("Hello World")
+        app.typeText("H")
         app.alerts.buttons["Dismiss"].tap()
     }
     
