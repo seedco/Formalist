@@ -71,7 +71,7 @@ class GroupElementTests: FBSnapshotTestCase {
     @objc func testRenderWithConstantHeightsAndInsets() {
         var configuration = GroupElement.Configuration()
         configuration.layout.mode = .constantHeight(44)
-        configuration.layout.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+        configuration.layout.edgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         
         let element = GroupElement(configuration: configuration, elements: childElements)
         let elementView = renderElementForTesting(element)
@@ -81,7 +81,7 @@ class GroupElementTests: FBSnapshotTestCase {
     @objc func testRenderWithIntrinsicSizeAndInsets() {
         var configuration = GroupElement.Configuration()
         configuration.layout.mode = .intrinsicSize
-        configuration.layout.edgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+        configuration.layout.edgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         
         let element = GroupElement(configuration: configuration, elements: childElements)
         let elementView = renderElementForTesting(element)
