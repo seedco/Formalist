@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = "Formalist"
-    s.version = "0.5.0"
+    s.version = "0.6.0"
     s.license = { type: "MIT" }
     s.homepage = "https://github.com/seedco/Formalist"
     s.author = "Seed"
@@ -13,5 +13,6 @@ Pod::Spec.new do |s|
     s.source_files = "Formalist/*.swift"
     s.ios.deployment_target = "9.0"
     s.frameworks = "UIKit"
-    s.dependency "SeedStackViewController", "~> 0.4.0"
+    s.dependency "SeedStackViewController", "~> 0.5.0"
+    s.swift_versions = "5.0"
 end
