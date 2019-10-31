@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build-and-test:
+
+    macos:
+      xcode: 11.1.0
+
+    steps:
+      - checkout
+      - run: make clean ci
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build-and-test
+
