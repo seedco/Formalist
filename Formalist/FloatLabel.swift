@@ -21,12 +21,12 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
   where AdapterType.ViewType: FloatLabelTextEntryView {
 
     /// The label used to display the field name
-    open let nameLabel: UILabel = {
+    public let nameLabel: UILabel = {
         let nameLabel = UILabel(frame: CGRect.zero)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.alpha = 0.0
         nameLabel.font = {
-            let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFontTextStyle.footnote)
+            let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: UIFont.TextStyle.footnote)
             let boldDescriptor = descriptor.withSymbolicTraits(.traitBold)
             return UIFont(descriptor: boldDescriptor!, size: 0)
         }()
@@ -34,13 +34,37 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
     }()
     
     /// The container view used for adding spacing to textEntryView.
-    open let containerView: UIView =  {
+    public let containerView: UIView =  {
         let containerView = UIView()
         return containerView
     }()
 
     /// The text view that contains the field's body text
-    open fileprivate(set) var textEntryView: AdapterType.ViewType!
+    open fileprivate(set) lazy var textEntryView: AdapterType.ViewType = {
+        var callbacks = TextEditorAdapterCallbacks<AdapterType>()
+        callbacks.textDidBeginEditing = { [unowned self] (adapter, view) in
+            self.editing = true
+            self.transitionToState(.labelShown, animated: true)
+            self.adapterCallbacks?.textDidBeginEditing?(adapter, view)
+        }
+        callbacks.textDidEndEditing = { [unowned self] (adapter, view) in
+            self.editing = false
+            if adapter.getTextForView(view).isEmpty {
+                self.transitionToState(.labelHidden, animated: true)
+            }
+            self.adapterCallbacks?.textDidEndEditing?(adapter, view)
+        }
+        callbacks.textDidChange = { [unowned self] (adapter, view) in
+            if !self.editing {
+                self.updateCurrentState()
+            }
+            self.adapterCallbacks?.textDidChange?(adapter, view)
+        }
+        
+        return adapter.createViewWithCallbacks(callbacks, textChangedObserver: { [weak self] (adapter, view) in
+            self?.textChangedObserver?(adapter, view)
+        })
+    }()
     
     /// Callbacks to call when the adapter for the text entry view receives
     /// a text editing event.
@@ -92,7 +116,6 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
         containerView.addGestureRecognizer(tapGesture)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
-        textEntryView = createTextEntryView()
         textEntryView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerView)
         containerView.addSubview(nameLabel)
@@ -107,36 +130,10 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
         recomputeMinimumHeight()
     }
     
-    fileprivate func createTextEntryView() -> AdapterType.ViewType {
-        var callbacks = TextEditorAdapterCallbacks<AdapterType>()
-        callbacks.textDidBeginEditing = { [unowned self] (adapter, view) in
-            self.editing = true
-            self.transitionToState(.labelShown, animated: true)
-            self.adapterCallbacks?.textDidBeginEditing?(adapter, view)
-        }
-        callbacks.textDidEndEditing = { [unowned self] (adapter, view) in
-            self.editing = false
-            if adapter.getTextForView(view).isEmpty {
-                self.transitionToState(.labelHidden, animated: true)
-            }
-            self.adapterCallbacks?.textDidEndEditing?(adapter, view)
-        }
-        callbacks.textDidChange = { [unowned self] (adapter, view) in
-            if !self.editing {
-                self.updateCurrentState()
-            }
-            self.adapterCallbacks?.textDidChange?(adapter, view)
-        }
-        
-        return adapter.createViewWithCallbacks(callbacks, textChangedObserver: { [weak self] (adapter, view) in
-            self?.textChangedObserver?(adapter, view)
-        })
-    }
-    
     fileprivate func setupConstraints() {
         heightConstraint.isActive = true
         
-        let views = ["nameLabel": nameLabel, "textEntryView": textEntryView, "containerView": containerView]
+        let views: [String: Any] = ["nameLabel": nameLabel, "textEntryView": textEntryView, "containerView": containerView]
         let nameLabelHConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[nameLabel]", options: [], metrics: nil, views: views)
         NSLayoutConstraint.activate(nameLabelHConstraints)
         
@@ -172,7 +169,7 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
      */
     open func recomputeMinimumHeight() {
         transitionToState(.labelShown, animated: false)
-        heightConstraint.constant = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        heightConstraint.constant = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         updateCurrentState()
     }
     
@@ -232,10 +229,10 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
         
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [opacityAnimation, positionAnimation]
-        animationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animationGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animationGroup.duration = 0.2
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.fillMode = kCAFillModeForwards
+        animationGroup.fillMode = .forwards
         animationGroup.speed = animation.speed
         animationGroup.delegate = self
         return animationGroup

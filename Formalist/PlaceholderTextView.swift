@@ -71,11 +71,11 @@ open class PlaceholderTextView: UITextView {
         }
     }
     
-    fileprivate var defaultTextAttributes: [NSAttributedStringKey: Any] {
+    fileprivate var defaultTextAttributes: [NSAttributedString.Key: Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = textAlignment
         paragraphStyle.lineSpacing = 8
-        var attributes: [NSAttributedStringKey: Any] = [.paragraphStyle: paragraphStyle]
+        var attributes: [NSAttributedString.Key: Any] = [.paragraphStyle: paragraphStyle]
         if let textColor = super.textColor {
             attributes[.foregroundColor] = textColor
         }
@@ -85,8 +85,8 @@ open class PlaceholderTextView: UITextView {
         return attributes
     }
     
-    fileprivate var currentTextAttributes: [NSAttributedStringKey: Any] {
-        var attributes: [NSAttributedStringKey: Any]
+    fileprivate var currentTextAttributes: [NSAttributedString.Key: Any] {
+        var attributes: [NSAttributedString.Key: Any]
         if let attributedPlaceholder = attributedPlaceholder, attributedPlaceholder.length > 0 {
             attributes = attributedPlaceholder.attributes(at: 0, effectiveRange: nil)
         } else {
@@ -96,7 +96,7 @@ open class PlaceholderTextView: UITextView {
         return attributes
     }
     
-    fileprivate var originalTextAttributes: [NSAttributedStringKey: Any]?
+    fileprivate var originalTextAttributes: [NSAttributedString.Key: Any]?
     fileprivate var editing: Bool = false {
         didSet { showPlaceholder = !editing && text.isEmpty }
     }
@@ -179,8 +179,8 @@ open class PlaceholderTextView: UITextView {
     
     fileprivate func commonInit() {
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidBeginEditing(_:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
-        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidEndEditing(_:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
+        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidBeginEditing(_:)), name: UITextView.textDidBeginEditingNotification, object: self)
+        nc.addObserver(self, selector: #selector(PlaceholderTextView.textDidEndEditing(_:)), name: UITextView.textDidEndEditingNotification, object: self)
 
         showPlaceholder = true
     }

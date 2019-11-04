@@ -14,7 +14,7 @@ public extension UIView {
     /// This flag is set inside `FormElement` implementations in order to break
     /// a potential infinite loop when `FormValue.value` is set while there is
     /// an observer on that value that updates the value on the view.
-    public var shouldIgnoreFormValueChanges: Bool {
+    var shouldIgnoreFormValueChanges: Bool {
         get {
             if let box = objc_getAssociatedObject(self, &ObjCShouldIgnoreFormValueChangesKey) as? Box<Bool> {
                 return box.value

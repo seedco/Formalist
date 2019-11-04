@@ -1,4 +1,7 @@
 # [Unreleased]
+# [0.6.0]
+## Changed
+- Update to Swift 5.0 ([@mckaskle])
 
 # [0.5.0]
 
@@ -34,11 +37,13 @@
 
 ## Fixed
 
-[Unreleased]: https://github.com/seedco/formalist/compare/0.5.0...HEAD
+[Unreleased]: https://github.com/seedco/formalist/compare/0.6.0...HEAD
+[0.6.0]: https://github.com/seedco/formalist/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/seedco/formalist/compare/0.4.1...0.5.0
 [0.4.1]: https://github.com/seedco/formalist/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/seedco/formalist/compare/0.3.3...0.4.0
 
 [@klaaspieter]: https://github.com/klaaspieter
 [@lsavino]: https://github.com/lsavino
+[@mckaskle]: https://github.com/mckaskle
 [@vikmeup]: https://github.com/vikmeup

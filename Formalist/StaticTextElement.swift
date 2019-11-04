@@ -47,7 +47,7 @@ public final class StaticTextElement: FormElement {
         let label = UILabel(frame: CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         label.text = value.value
         let _ = value.addObserver { [weak label] in
             label?.text = $0

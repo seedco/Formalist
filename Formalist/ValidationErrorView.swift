@@ -16,13 +16,13 @@ open class ValidationErrorView: UIView {
     }
     
     /// The label used to display the message
-    open let label: UILabel
+    public let label: UILabel
     
     public override init(frame: CGRect) {
         label = UILabel(frame: CGRect.zero)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption1)
+        label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.caption1)
         label.textColor = Appearance.TextColor
         
         super.init(frame: frame)

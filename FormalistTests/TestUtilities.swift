@@ -22,7 +22,7 @@ func sizeViewForTesting(_ view: UIView) {
     widthConstraint.isActive = true
     
     view.layoutIfNeeded()
-    let fittingSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+    let fittingSize = view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     view.frame = CGRect(origin: CGPoint.zero, size: fittingSize).integral
 }
 

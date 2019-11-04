@@ -65,7 +65,7 @@ public protocol TextEditorAdapter: AnyObject {
 }
 
 public extension TextEditorAdapter {
-    public typealias TextChangedObserver = (Self, ViewType) -> Void
+    typealias TextChangedObserver = (Self, ViewType) -> Void
 }
 
 /// Contains callback functions that are executed when a text editing

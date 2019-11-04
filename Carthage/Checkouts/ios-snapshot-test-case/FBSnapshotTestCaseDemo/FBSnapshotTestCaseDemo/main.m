@@ -1,20 +1,19 @@
 /*
- *  Copyright (c) 2013, Facebook, Inc.
- *  All rights reserved.
+ *  Copyright (c) 2017-2018, Uber Technologies, Inc.
+ *  Copyright (c) 2013-2018, Facebook, Inc.
  *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
+ *  This source code is licensed under the MIT license found in the
+ *  LICENSE file in the root directory of this source tree.
  *
  */
- 
+
 #import <UIKit/UIKit.h>
 
 #import "FBAppDelegate.h"
 
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
-  @autoreleasepool {
-      return UIApplicationMain(argc, argv, nil, NSStringFromClass([FBAppDelegate class]));
-  }
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([FBAppDelegate class]));
+    }
 }

@@ -30,7 +30,7 @@ public final class UITextViewTextEditorAdapter<TextViewType: UITextView>: TextEd
         )
         let textView = TextViewType(frame: CGRect.zero, textContainer: nil)
         (textView as UITextView).delegate = delegate
-        textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        textView.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets.zero
         textView.textContainer.lineFragmentPadding = 0
