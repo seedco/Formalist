@@ -184,32 +184,21 @@ public final class GroupElement: FormElement, Validatable {
         self.init(configuration: configuration, elements: elements)
     }
 
+    private var responderViewsFromLastRender: [UIView] = []
+
     // MARK: FormElement
     
     public override func render() -> UIView {
-        var responderViews: [UIView] = []
-        return groupRender(responderViews: &responderViews)
-    }
-
-    // Pulling the body of `render()` out into this method so that responderViews can be shared between this group and
-    // all child groups. Without this, the responder views are segregated and a chain between all responder views cannot
-    // be formed.
-    private func groupRender(responderViews: inout [UIView]) -> UIView {
         var subviews = [UIView]()
-        
+        var responderViews = [UIView]()
+
         func addSeparator(isBorder: Bool) {
             if let separatorView = configuration.createSeparatorWithBorder(isBorder) {
                 subviews.append(separatorView)
             }
         }
-        
-        func addChildElement(_ element: FormElement) -> Bool {
-            if let groupElement = element as? GroupElement {
-                let groupView = groupElement.groupRender(responderViews: &responderViews)
-                subviews.append(groupView)
-                return true
-            }
 
+        func addChildElement(_ element: FormElement) -> Bool {
             let elementView = element.render()
             subviews.append(configuration.arrangedSubviewForElementView(elementView))
 
@@ -219,11 +208,16 @@ public final class GroupElement: FormElement, Validatable {
                 }
                 responderViews.append(elementView)
             }
-            
-            if let validationResult = (element as? Validatable)?.validationResult,
-               case let .invalid(message) = validationResult,
-               let errorView = configuration.createValidationErrorViewWithMessage(message) {
-                
+
+            if let groupElement = element as? GroupElement {
+                responderViews.append(contentsOf: groupElement.responderViewsFromLastRender)
+            }
+
+            if !(element is GroupElement),
+                let validationResult = (element as? Validatable)?.validationResult,
+                case let .invalid(message) = validationResult,
+                let errorView = configuration.createValidationErrorViewWithMessage(message) {
+
                 addSeparator(isBorder: true)
                 subviews.append(errorView)
                 return false
@@ -241,7 +235,8 @@ public final class GroupElement: FormElement, Validatable {
             let _ = addChildElement(lastElement)
             addSeparator(isBorder: true)
         }
-        
+
+        responderViewsFromLastRender = responderViews
         return createContainerWithSubviews(subviews, responderViews: responderViews)
     }
     
