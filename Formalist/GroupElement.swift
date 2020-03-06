@@ -210,6 +210,7 @@ public final class GroupElement: FormElement, Validatable {
             }
 
             if let groupElement = element as? GroupElement {
+                // Grab any nested responder views and pull them up to this group's level.
                 responderViews.append(contentsOf: groupElement.responderViewsFromLastRender)
             }
 
