@@ -191,13 +191,13 @@ public final class GroupElement: FormElement, Validatable {
     public override func render() -> UIView {
         var subviews = [UIView]()
         var responderViews = [UIView]()
-
+        
         func addSeparator(isBorder: Bool) {
             if let separatorView = configuration.createSeparatorWithBorder(isBorder) {
                 subviews.append(separatorView)
             }
         }
-
+        
         func addChildElement(_ element: FormElement) -> Bool {
             let elementView = element.render()
             subviews.append(configuration.arrangedSubviewForElementView(elementView))
@@ -215,10 +215,10 @@ public final class GroupElement: FormElement, Validatable {
             }
 
             if !(element is GroupElement),
-                let validationResult = (element as? Validatable)?.validationResult,
-                case let .invalid(message) = validationResult,
-                let errorView = configuration.createValidationErrorViewWithMessage(message) {
-
+               let validationResult = (element as? Validatable)?.validationResult,
+               case let .invalid(message) = validationResult,
+               let errorView = configuration.createValidationErrorViewWithMessage(message) {
+                
                 addSeparator(isBorder: true)
                 subviews.append(errorView)
                 return false
