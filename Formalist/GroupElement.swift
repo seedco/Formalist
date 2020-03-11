@@ -269,12 +269,6 @@ public final class GroupElement: FormElement, Validatable {
             fatalError("init(coder:) has not been implemented")
         }
 
-        @objc open override var nextFormResponder: UIView? {
-            didSet {
-                initialFormResponderView?.nextFormResponder = nextFormResponder
-            }
-        }
-
         fileprivate override var canBecomeFirstResponder : Bool {
           initialFormResponderView?.canBecomeFirstResponder ?? false
         }

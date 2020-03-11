@@ -105,7 +105,7 @@ private final class TextViewDelegate<TextViewType: UITextView>: NSObject, UIText
             switch configuration.returnKeyAction {
             case .none: return true
             case .activateNextResponder:
-                if !(textView.nextFormResponder?.becomeFirstResponder() ?? false) {
+                if !(textView.resolvedNextFormResponder?.becomeFirstResponder() ?? false) {
                     if configuration.shouldResignFirstResponderWhenFinished {
                         textView.resignFirstResponder()
                     }
