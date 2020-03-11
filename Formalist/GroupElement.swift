@@ -184,8 +184,6 @@ public final class GroupElement: FormElement, Validatable {
         self.init(configuration: configuration, elements: elements)
     }
 
-    private var responderViewsFromLastRender: [UIView] = []
-
     // MARK: FormElement
     
     public override func render() -> UIView {
@@ -207,11 +205,6 @@ public final class GroupElement: FormElement, Validatable {
                     lastResponderView.nextFormResponder = elementView
                 }
                 responderViews.append(elementView)
-            }
-
-            if let groupElement = element as? GroupElement {
-                // Grab any nested responder views and pull them up to this group's level.
-                responderViews.append(contentsOf: groupElement.responderViewsFromLastRender)
             }
 
             if !(element is GroupElement),
@@ -237,7 +230,6 @@ public final class GroupElement: FormElement, Validatable {
             addSeparator(isBorder: true)
         }
 
-        responderViewsFromLastRender = responderViews
         return createContainerWithSubviews(subviews, responderViews: responderViews)
     }
     
@@ -276,18 +268,19 @@ public final class GroupElement: FormElement, Validatable {
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-        
+
+        @objc open override var nextFormResponder: UIView? {
+            didSet {
+                initialFormResponderView?.nextFormResponder = nextFormResponder
+            }
+        }
+
         fileprivate override var canBecomeFirstResponder : Bool {
-            return true
+          initialFormResponderView?.canBecomeFirstResponder ?? false
         }
         
         fileprivate override func becomeFirstResponder() -> Bool {
-            var responderView = nextFormResponder
-            while let containerView = responderView as? ContainerView {
-                responderView = containerView.initialFormResponderView
-            }
-            responderView?.becomeFirstResponder()
-            return false
+          initialFormResponderView?.becomeFirstResponder() ?? false
         }
     }
 }
