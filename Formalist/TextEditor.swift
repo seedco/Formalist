@@ -1,11 +1,7 @@
 import UIKit
 
-protocol TextEditor: class {
-    var nextFormResponder: UIView? { get }
-
+protocol TextEditor: UIView {
     var inputAccessoryView: UIView? { get set }
-
-    @discardableResult func resignFirstResponder() -> Bool
 
     func reloadInputViews()
 }
@@ -20,7 +16,7 @@ func presentToolbar(with editor: TextEditor, configuration: TextEditorConfigurat
     )
     toolbar.callbacks = AccessoryViewToolbarCallbacks(
         nextAction: { [weak editor] in
-            editor?.nextFormResponder?.becomeFirstResponder()
+            editor?.resolvedNextFormResponder?.becomeFirstResponder()
             configuration.textEditorAction?(.next)
         },
         doneAction: { [weak editor] in
@@ -32,8 +28,8 @@ func presentToolbar(with editor: TextEditor, configuration: TextEditorConfigurat
     editor.inputAccessoryView = toolbar
     editor.reloadInputViews()
 
-    // Hide next button when nextFormResponder == nil.
-    if editor.nextFormResponder == nil {
+    // Hide next button when resolvedNextFormResponder == nil.
+    if editor.resolvedNextFormResponder == nil {
         toolbar.nextButtonItem.isEnabled = false
         toolbar.nextButtonItem.title = ""
     }

@@ -129,7 +129,7 @@ private final class TextFieldDelegate<TextFieldType: UITextField>: NSObject, UIT
         switch configuration.returnKeyAction {
         case .none: return true
         case .activateNextResponder:
-            if !(textField.nextFormResponder?.becomeFirstResponder() ?? false) {
+            if !(textField.resolvedNextFormResponder?.becomeFirstResponder() ?? false) {
                 if configuration.shouldResignFirstResponderWhenFinished {
                     textField.resignFirstResponder()
                 }
