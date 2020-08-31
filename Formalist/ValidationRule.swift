@@ -33,13 +33,6 @@ public func ==(lhs: ValidationResult, rhs: ValidationResult) -> Bool {
     }
 }
 
-private let EmailRegex: NSRegularExpression = {
-    // Same regular expression used by Mail.app
-    // From: http://stackoverflow.com/a/8863823
-    let pattern = "^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*@[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$"
-    return try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-}()
-
 extension ValidationRule: Equatable {}
 
 public func ==<T>(lhs: ValidationRule<T>, rhs: ValidationRule<T>) -> Bool {
@@ -68,7 +61,63 @@ public struct ValidationRule<ValueType> {
     /// A string validation rule to check whether the string is
     /// a valid email address
     public static var email: ValidationRule<String> {
-        return regex(EmailRegex, failureMessage: NSLocalizedString("The email address is invalid", comment: "Invalid email error message"))
+        return ValidationRule<String> ({ str, completion in
+            guard !str.isEmpty else {
+                completion(.valid)
+                return
+            }
+            
+            let message = NSLocalizedString("The email address is invalid", comment: "Invalid email error message")
+            
+            // The goal is to evaluate against the same regular expression used by Mail.app
+            // From: http://stackoverflow.com/a/8863823
+            // ^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*@[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$
+            // However, there are certain, complex strings that cannot be evaluated easily by this pattern (see SEEDIOS-62:
+            // https://crossriverbank.atlassian.net/browse/SEEDIOS-62). To workaround this issue, I'm breaking up the regex
+            // into 2 separate patterns: one before the "@" and one after. This simplification of the pattern allows NSRegularExpression
+            // to work in more circumstances.
+            
+            // Enforce that there is at least 1 "@".
+            let nsStr = str as NSString
+            let forwardsRange = nsStr.range(of: "@")
+            guard forwardsRange.location != NSNotFound else {
+                completion(.invalid(message: message))
+                return
+            }
+            
+            let backwardsRange = nsStr.range(of: "@", options: .backwards)
+            // Ensure there is only 1 "@".
+            guard forwardsRange.location == backwardsRange.location else {
+                completion(.invalid(message: message))
+                return
+            }
+            
+            var wholeRange = NSRangeFromString(str)
+            
+            // Note: include the "@" in both patterns to ensure the first and second patterns combined are searching the whole string.
+            let firstPattern = "^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*@"
+            var firstRange = wholeRange
+            firstRange.length = forwardsRange.location
+            let secondPattern = "@[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$"
+            var secondRange = wholeRange
+            secondRange.location = forwardsRange.location + 1
+            secondRange.length -= secondRange.location
+            
+            for (pattern, range) in [(firstPattern, firstRange), (secondPattern, secondRange)] {
+                do {
+                    let regex = try NSRegularExpression(pattern: pattern, options: .anchorsMatchLines)
+                    guard regex.firstMatch(in: str, options: [], range: range) != nil else {
+                        completion(.invalid(message: message))
+                        return
+                    }
+                } catch {
+                    completion(.invalid(message: message))
+                    return
+                }
+            }
+            
+            completion(.valid)
+        }, identifier: "email")
     }
 
     /**
