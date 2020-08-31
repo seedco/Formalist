@@ -92,15 +92,15 @@ public struct ValidationRule<ValueType> {
                 return
             }
             
-            var wholeRange = NSRangeFromString(str)
+            let wholeRange = NSRange(location: 0, length: nsStr.length)
             
             // Note: include the "@" in both patterns to ensure the first and second patterns combined are searching the whole string.
-            let firstPattern = "^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*@"
+            let firstPattern = "^[[:alnum:]!#$%&'*+/=?^_`{|}~-]+((\\.?)[[:alnum:]!#$%&'*+/=?^_`{|}~-]+)*"
             var firstRange = wholeRange
             firstRange.length = forwardsRange.location
-            let secondPattern = "@[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$"
+            let secondPattern = "[[:alnum:]-]+(\\.[[:alnum:]-]+)*(\\.[[:alpha:]]+)+$"
             var secondRange = wholeRange
-            secondRange.location = forwardsRange.location + 1
+            secondRange.location = forwardsRange.upperBound
             secondRange.length -= secondRange.location
             
             for (pattern, range) in [(firstPattern, firstRange), (secondPattern, secondRange)] {
