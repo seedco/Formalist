@@ -192,13 +192,17 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
     func transitionToState(_ state: State, animated: Bool) {
         guard state != self.state else { return }
         
-        let animation = Animation(state: state)
-        if animated {
-            animateLabel(animation)
-        } else {
-            nameLabel.layer.removeAllAnimations()
-            nameLabel.alpha = animation.labelOpacity
-        }
+        UIView.animate(
+            withDuration: animated ? 0.2 : 0,
+            delay: 0,
+            options: [.beginFromCurrentState, .curveEaseInOut],
+            animations: {
+                self.nameLabel.alpha = state.labelOpacity
+                self.nameLabel.transform = state.labelTransform(nameLabel: self.nameLabel)
+            },
+            completion: nil
+        )
+        
         switch state {
         case .labelShown:
             NSLayoutConstraint.deactivate(labelHiddenConstraints)
@@ -207,42 +211,9 @@ open class FloatLabel<AdapterType: TextEditorAdapter>: UIView, CAAnimationDelega
             NSLayoutConstraint.deactivate(labelShownConstraints)
             NSLayoutConstraint.activate(labelHiddenConstraints)
         }
+        
         self.state = state
     }
-    
-    fileprivate func createLabelAnimation(_ animation: Animation) -> CAAnimation {
-        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
-        opacityAnimation.fromValue = 0.0
-        opacityAnimation.toValue = 1.0
-        
-        let positionAnimation = CABasicAnimation(keyPath: "position")
-        var startingPosition = nameLabel.layer.position
-        startingPosition.y += floor(nameLabel.bounds.height / 2.0)
-        positionAnimation.fromValue = NSValue(cgPoint: startingPosition)
-        positionAnimation.toValue = NSValue(cgPoint: nameLabel.layer.position)
-        
-        let animationGroup = CAAnimationGroup()
-        animationGroup.animations = [opacityAnimation, positionAnimation]
-        animationGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        animationGroup.duration = 0.2
-        animationGroup.isRemovedOnCompletion = false
-        animationGroup.fillMode = .forwards
-        animationGroup.speed = animation.speed
-        animationGroup.delegate = self
-        return animationGroup
-    }
-    
-    fileprivate func animateLabel(_ animation: Animation) {
-        guard nameLabel.alpha != animation.labelOpacity else { return }
-        nameLabel.layer.add(createLabelAnimation(animation), forKey: animation.key)
-    }
-
-  open func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-    if let presentationLayer = nameLabel.layer.presentation(), flag {
-      nameLabel.layer.opacity = presentationLayer.opacity
-    }
-    nameLabel.layer.removeAllAnimations()
-  }
 }
 
 private struct Layout {
@@ -253,39 +224,18 @@ private struct Layout {
 enum State {
     case labelHidden
     case labelShown
-}
-
-private enum Animation {
-    case forward
-    case reverse
     
-    init(state: State) {
-        switch state {
-        case .labelShown:
-            self = .forward
-        case .labelHidden:
-            self = .reverse
+    fileprivate var labelOpacity: CGFloat {
+        switch self {
+        case .labelHidden: return 0
+        case .labelShown: return 1
         }
     }
     
-    var speed: Float {
+    fileprivate func labelTransform(nameLabel: UILabel) -> CGAffineTransform {
         switch self {
-        case .forward: return 1.0
-        case .reverse: return -1.0
-        }
-    }
-    
-    var labelOpacity: CGFloat {
-        switch self {
-        case .forward: return 1.0
-        case .reverse: return 0.0
-        }
-    }
-    
-    var key: String {
-        switch self {
-        case .forward: return "ForwardLabelAnimation"
-        case .reverse: return "ReverseLabelAnimation"
+        case .labelHidden: return CGAffineTransform(translationX: 0, y: nameLabel.frame.height / 2)
+        case .labelShown: return .identity
         }
     }
 }
