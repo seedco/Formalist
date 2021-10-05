@@ -1,0 +1,6 @@
+framework module Pods_Formalist_FormalistTests {
+  umbrella header "Pods-Formalist-FormalistTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
