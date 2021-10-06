@@ -8,15 +8,6 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-          key: 1-carthage-{{checksum "Cartfile.resolved" }}
-
-      - run: bin/setup
-
-      - save_cache:
-          key: 1-carthage-{{ checksum "Cartfile.resolved" }}
-          paths: Carthage
-
       - run: bin/test
 
 workflows:
