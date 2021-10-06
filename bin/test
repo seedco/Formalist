@@ -5,13 +5,13 @@ set -e -o pipefail
 xcrun xcodebuild \
   -project Formalist.xcodeproj \
   -scheme Formalist \
-  -destination "platform=iOS Simulator,name=iPhone 12" \
+  -destination "platform=iOS Simulator,name=iPhone 11" \
   test \
   | xcpretty --color
 
 xcrun xcodebuild \
   -project Formalist.xcodeproj \
   -scheme Example \
-  -destination "platform=iOS Simulator,name=iPhone 12" \
+  -destination "platform=iOS Simulator,name=iPhone 11" \
   test \
   | xcpretty --color
