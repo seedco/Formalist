@@ -76,6 +76,7 @@
 		BF9631BA1FC6302A00D7362F /* StackViewController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A1A486B51FB5E224008979D6 /* StackViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF9631BB1FC6302A00D7362F /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1EC4FF26B9D30B818D6037D /* Pods_Formalist_FormalistTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF1A5F3A3E7DF74A15E1A88 /* Pods_Formalist_FormalistTests.framework */; };
+		CC9CC780CCA584B2F1775642 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE09A17CBCC4E767F7A9386 /* Pods_Example.framework */; };
 		EBB9607C20BC51DD00AC12FF /* TextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9607B20BC51DD00AC12FF /* TextEditor.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,8 +129,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0BE09A17CBCC4E767F7A9386 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AC325FF0B0E33B6407546C /* Pods-Formalist-FormalistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formalist-FormalistTests.debug.xcconfig"; path = "Target Support Files/Pods-Formalist-FormalistTests/Pods-Formalist-FormalistTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A746262745FE11538237AED /* Pods_Formalist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formalist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30CB82E98AE0D3363F053BF9 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4566FD73662DE698E745B9E0 /* Pods-Formalist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formalist.debug.xcconfig"; path = "Target Support Files/Pods-Formalist/Pods-Formalist.debug.xcconfig"; sourceTree = "<group>"; };
 		72239FEA1D25B9E800A157D9 /* UIView+ChangeObservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ChangeObservation.swift"; sourceTree = "<group>"; };
 		7285A7061D17CB7000718D23 /* Formalist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Formalist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +209,7 @@
 		ADF1A5F3A3E7DF74A15E1A88 /* Pods_Formalist_FormalistTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formalist_FormalistTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9631981FC629E700D7362F /* StackViewController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = StackViewController.framework.dSYM; path = Carthage/Build/iOS/StackViewController.framework.dSYM; sourceTree = "<group>"; };
 		BF9631991FC629E700D7362F /* FBSnapshotTestCase.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FBSnapshotTestCase.framework.dSYM; path = Carthage/Build/iOS/FBSnapshotTestCase.framework.dSYM; sourceTree = "<group>"; };
+		CD5228EF02F1F170952E3092 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		EBB9607B20BC51DD00AC12FF /* TextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditor.swift; sourceTree = "<group>"; };
 		F7ABFC79D85DFE24D3D68436 /* Pods-Formalist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formalist.release.xcconfig"; path = "Target Support Files/Pods-Formalist/Pods-Formalist.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF2209BE1FC6379600CAFE89 /* Formalist.framework in Frameworks */,
+				CC9CC780CCA584B2F1775642 /* Pods_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +260,8 @@
 				F7ABFC79D85DFE24D3D68436 /* Pods-Formalist.release.xcconfig */,
 				12AC325FF0B0E33B6407546C /* Pods-Formalist-FormalistTests.debug.xcconfig */,
 				ABB3B20B1030805BB437E8A0 /* Pods-Formalist-FormalistTests.release.xcconfig */,
+				30CB82E98AE0D3363F053BF9 /* Pods-Example.debug.xcconfig */,
+				CD5228EF02F1F170952E3092 /* Pods-Example.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 				A19CF9111FB5DFA200BB1E86 /* FBSnapshotTestCase.framework */,
 				1A746262745FE11538237AED /* Pods_Formalist.framework */,
 				ADF1A5F3A3E7DF74A15E1A88 /* Pods_Formalist_FormalistTests.framework */,
+				0BE09A17CBCC4E767F7A9386 /* Pods_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -514,10 +522,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7285A7B11D17CCC300718D23 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
+				DCC8168D2FDC6ABD0B10B128 /* [CP] Check Pods Manifest.lock */,
 				7285A79E1D17CCC300718D23 /* Sources */,
 				7285A7A01D17CCC300718D23 /* Resources */,
 				BF9631811FC61E0300D7362F /* Frameworks */,
 				BF2209BF1FC6379900CAFE89 /* CopyFiles */,
+				84BF0ACFE05ED78D300B2871 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -674,6 +684,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Formalist-FormalistTests/Pods-Formalist-FormalistTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84BF0ACFE05ED78D300B2871 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SeedStackViewController/StackViewController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StackViewController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C34D8CB343DA69A3F3D2BC51 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -690,6 +718,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Formalist-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCC8168D2FDC6ABD0B10B128 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1020,12 +1070,10 @@
 		};
 		7285A7B21D17CCC300718D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30CB82E98AE0D3363F053BF9 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1038,12 +1086,10 @@
 		};
 		7285A7B31D17CCC300718D23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD5228EF02F1F170952E3092 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
