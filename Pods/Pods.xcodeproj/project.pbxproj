@@ -11,7 +11,8 @@
 		0E7753A2291A593EFCE676967156A368 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D727B9E4B1FC6E84C50F4D9A5756B00 /* StackViewController.swift */; };
 		144F29212101A4D03109E989BE0A4F92 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A98BBE06D6B77B0089A0489097FA9A2 /* FBSnapshotTestController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1825C48DDE11E0AEFD5A1DBF4C787285 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85563CA2E922739B8899767B0AE173A7 /* SwiftSupport.swift */; };
-		257252BA2CD4E965C9C024E9DEF11D1F /* Pods-Formalist-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F9F9FB58D948F45E07640440FFE28753 /* Pods-Formalist-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B16DAB422184D5F7F07D5A966A51E1F /* Pods-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF96C7BB396247910B45649E58F2431F /* Pods-Example-dummy.m */; };
+		257252BA2CD4E965C9C024E9DEF11D1F /* Pods-Formalist-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F58A35701FB64973C5C5D6AF37DAF698 /* Pods-Formalist-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		259A8245AE3E5BDF1BA0CEFBE22EA049 /* FBSnapshotTestController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BD8602994A0F3381C4D55B263E7F107 /* FBSnapshotTestController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2643963F8600F16366AF89ABF6D91F82 /* UIImage+Compare.h in Headers */ = {isa = PBXBuildFile; fileRef = 309B2B17616491FF02D8E8D4B42A2AEF /* UIImage+Compare.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2A9D1C5540A263BFC166331A4D56D34A /* StackViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EB6D56FF43B3B9ACB2054E47647FE656 /* StackViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,7 +22,7 @@
 		3CE95FD1D722818A524677118DF557BA /* UIImage+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = F91CC1F5E07828994907B90FEA7B3749 /* UIImage+Snapshot.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3E059CCA8BBD3FB3BC6B67AFB20FC239 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E3AF3CFA48B799EA8193A96A98F498E /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51077182C1343AFC17F3424EF3108CE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FB2F9BF0AD9E9C05F9C98CBA51D9B5 /* Foundation.framework */; };
-		5D85C398E7317C37339F81C728285181 /* Pods-Formalist-FormalistTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 411781BBF2DE273AB5EC64BAD2275DB4 /* Pods-Formalist-FormalistTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D85C398E7317C37339F81C728285181 /* Pods-Formalist-FormalistTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B910E7D2D4973F4527A74621C869C427 /* Pods-Formalist-FormalistTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67927D388DC621395333E51749CD001A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CCE42A69837A23C090F29AD42755F7 /* UIKit.framework */; };
 		722B0E48F87FCC63984A28ACBD9D69AB /* AutoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114E772F06DD210E383BA587362D5A16 /* AutoScrollView.swift */; };
 		779201E8D71A233CB2DD81DD28CCB0F7 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44AFE43D32AEF23444C7A359F3F2B91 /* SeparatorView.swift */; };
@@ -31,10 +32,12 @@
 		8B9547FD57D3D4C5FB6F4F984841BE60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FB2F9BF0AD9E9C05F9C98CBA51D9B5 /* Foundation.framework */; };
 		95A907BA9DDFDEC9C1EEBF327746301B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CCE42A69837A23C090F29AD42755F7 /* UIKit.framework */; };
 		97F75B96103369BE6F6040DFD8BC2910 /* iOSSnapshotTestCase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C80390D9B079AE9AA37C9FD6118969D /* iOSSnapshotTestCase-dummy.m */; };
+		9A878BB712930FF1667A83B173161FFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FB2F9BF0AD9E9C05F9C98CBA51D9B5 /* Foundation.framework */; };
 		9D9440D5FBB242B6A9153CA59F1309A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5FB2F9BF0AD9E9C05F9C98CBA51D9B5 /* Foundation.framework */; };
 		A2DF2053A890C10FE0B6ADA21A5A0FED /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF0C9C7513A09546B3B626198F22E2E /* UIImage+Compare.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A3F926EAE751370EECEAEE103B53FC51 /* Pods-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BBC1B71F4CA84DDD2D3227DB4BC4629 /* Pods-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA2A80FACDE8BCA52EFF8948A50C070B /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C29FEE22258CDA7F5F43E759DAEA36C /* UIImage+Diff.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B8DEE0F7B8A8BFA73ED31D4368819147 /* Pods-Formalist-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F04B669689DDB62A154995D1E9ECB98F /* Pods-Formalist-dummy.m */; };
+		B8DEE0F7B8A8BFA73ED31D4368819147 /* Pods-Formalist-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AD38B6F5296653C7D5A809D03C7B75 /* Pods-Formalist-dummy.m */; };
 		C930BCB1B395E19ABBE9D4D491867353 /* iOSSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A0E617EC1EF9637DA5EE46DCD1271DF0 /* iOSSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9E1F1A48507326B8AF0EFDBE3C0EC75 /* FBSnapshotTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31923498E3A7D3289DCC8A66E86D7B /* FBSnapshotTestCase.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CEDBFC328F443772C7D212A25ED29C54 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D785D4B5B0581702FEB63D26E7C45E /* XCTest.framework */; };
@@ -42,12 +45,19 @@
 		D6C6A0CDEAF0F10E66BF94D5B9B716A0 /* StackViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98480C331D73BA851114CABDF912A9 /* StackViewItem.swift */; };
 		E362A6E2DFB1AA235EABA9A1878448C0 /* SeedStackViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 61B3AF10428147A5CCA3A0F20EDEC014 /* SeedStackViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAC1544AADA392F95DEF08C5C89DAA93 /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = FF391B4DD2099784CFA3972B6CDA0366 /* FBSnapshotTestCasePlatform.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		F0D3F5242BC055EDFF901E34A3AF3D66 /* Pods-Formalist-FormalistTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B03EEDF96BBE75A9A23048E5088490 /* Pods-Formalist-FormalistTests-dummy.m */; };
+		F0D3F5242BC055EDFF901E34A3AF3D66 /* Pods-Formalist-FormalistTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BC2B90E1EC2F8C4050C84CEF7EE9DC /* Pods-Formalist-FormalistTests-dummy.m */; };
 		F839CB318E194D7E779DD0F72D411750 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264507D64793B8AA56330BA7CD8BB6B8 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		283D932A0842512DDB0F5D68E761C4D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F7D8604A243A9BE79D0940A976B26F0;
+			remoteInfo = SeedStackViewController;
+		};
+		6445B4BA2DBF6BA405383E9A895E6CA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -72,66 +82,76 @@
 
 /* Begin PBXFileReference section */
 		00E09D9BD0084895A127B3247D1CF111 /* SeedStackViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SeedStackViewController.modulemap; sourceTree = "<group>"; };
-		08B44DAC9E195C845E3A28340BABF438 /* Pods-Formalist-FormalistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist-FormalistTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0D727B9E4B1FC6E84C50F4D9A5756B00 /* StackViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackViewController.swift; path = StackViewController/StackViewController.swift; sourceTree = "<group>"; };
 		114E772F06DD210E383BA587362D5A16 /* AutoScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutoScrollView.swift; path = StackViewController/AutoScrollView.swift; sourceTree = "<group>"; };
 		14D785D4B5B0581702FEB63D26E7C45E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		1E132162F7C6092134EBBFBE75B6797F /* Pods-Formalist-FormalistTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-FormalistTests-Info.plist"; sourceTree = "<group>"; };
+		1F50A6BEDB9FD7C8AA71E6CCEAD05084 /* Pods-Formalist-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-Info.plist"; sourceTree = "<group>"; };
+		1F667CC0E19EAF34E5A4119E2121F585 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA1D2CB9B239265211AAB78C45337F9 /* iOSSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		264507D64793B8AA56330BA7CD8BB6B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		2A98BBE06D6B77B0089A0489097FA9A2 /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
+		2BBC1B71F4CA84DDD2D3227DB4BC4629 /* Pods-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-umbrella.h"; sourceTree = "<group>"; };
+		2BD24130C42C67FA9F10BCB547A6AE48 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		2C80390D9B079AE9AA37C9FD6118969D /* iOSSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
 		2E3AF3CFA48B799EA8193A96A98F498E /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/Public/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		309B2B17616491FF02D8E8D4B42A2AEF /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
 		30DAA04F75F86A31D0DD2BBE1D4BE853 /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/Public/FBSnapshotTestCase.h; sourceTree = "<group>"; };
 		34F27537D7AD8E008942E95159D13327 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIStackViewExtensions.swift; path = StackViewController/UIStackViewExtensions.swift; sourceTree = "<group>"; };
-		411781BBF2DE273AB5EC64BAD2275DB4 /* Pods-Formalist-FormalistTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formalist-FormalistTests-umbrella.h"; sourceTree = "<group>"; };
-		43C9107A8626883614A619621A1D17F9 /* Pods-Formalist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist.release.xcconfig"; sourceTree = "<group>"; };
+		37AD38B6F5296653C7D5A809D03C7B75 /* Pods-Formalist-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formalist-dummy.m"; sourceTree = "<group>"; };
 		4406469B815D3E4FBEE287D2B78A279F /* StackViewContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackViewContainer.swift; path = StackViewController/StackViewContainer.swift; sourceTree = "<group>"; };
+		48B6A901F95581EA1161794A75D1E816 /* Pods-Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-Info.plist"; sourceTree = "<group>"; };
 		48E2AF715567191B330798090D0E14D2 /* SeedStackViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SeedStackViewController-Info.plist"; sourceTree = "<group>"; };
-		4ACB8E37A732A2271EC16EE9E700AC7D /* Pods-Formalist-FormalistTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-FormalistTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		4C29FEE22258CDA7F5F43E759DAEA36C /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
+		4C3B8019B21FD5A729752A084528CF91 /* Pods-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-frameworks.sh"; sourceTree = "<group>"; };
 		4CF0C9C7513A09546B3B626198F22E2E /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
+		4E3D609C5B73364A9A5DBB90DE43B5FC /* Pods-Formalist-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formalist-acknowledgements.markdown"; sourceTree = "<group>"; };
+		52596AC59B178BEEE5BC3735EE1E23EB /* Pods-Formalist-FormalistTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formalist-FormalistTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		52597A2076860C49016D4E4F3EA58F7B /* Pods_Formalist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formalist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D0AC3F8DF57EB242B2591A96BE97B0C /* Pods-Formalist.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formalist.modulemap"; sourceTree = "<group>"; };
+		567F46A7FB5BD17133BD644B6C2E8DEA /* Pods-Formalist-FormalistTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-FormalistTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5CAD8AD987350F8C1F57801F9CBC0252 /* Pods-Formalist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist.release.xcconfig"; sourceTree = "<group>"; };
 		5E2955DA99AA4E92D5C99A31C5DF674F /* StackViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StackViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		618E57802346D2E25BA7A684F4789CA5 /* SeedStackViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SeedStackViewController.release.xcconfig; sourceTree = "<group>"; };
 		61B3AF10428147A5CCA3A0F20EDEC014 /* SeedStackViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SeedStackViewController-umbrella.h"; sourceTree = "<group>"; };
 		6215C02D66845C4E71744C64DEE865DF /* Pods_Formalist_FormalistTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formalist_FormalistTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7005B3FCA25A6F5FB069A4E5D4F6D27B /* Pods-Formalist-FormalistTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formalist-FormalistTests-frameworks.sh"; sourceTree = "<group>"; };
+		77BC2B90E1EC2F8C4050C84CEF7EE9DC /* Pods-Formalist-FormalistTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formalist-FormalistTests-dummy.m"; sourceTree = "<group>"; };
 		7BD8602994A0F3381C4D55B263E7F107 /* FBSnapshotTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestController.h; path = FBSnapshotTestCase/Public/FBSnapshotTestController.h; sourceTree = "<group>"; };
 		7E31923498E3A7D3289DCC8A66E86D7B /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
 		82498329CBB1B69D853A30A6C63A2934 /* iOSSnapshotTestCase-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "iOSSnapshotTestCase-Info.plist"; sourceTree = "<group>"; };
-		83E0DB57727B7054108D86C39AABE691 /* Pods-Formalist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist.debug.xcconfig"; sourceTree = "<group>"; };
 		85563CA2E922739B8899767B0AE173A7 /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = FBSnapshotTestCase/Support/SwiftSupport.swift; sourceTree = "<group>"; };
 		85864CF1E08EEFC4D9E6CAB8E7915AD1 /* SeedStackViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SeedStackViewController-prefix.pch"; sourceTree = "<group>"; };
-		8F59113536360413FBC1FF74878A617E /* Pods-Formalist-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-Info.plist"; sourceTree = "<group>"; };
+		8B6632E0E23AC5C74846D5F3AE74B01B /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		90617B2DE4889665CBA76924ED8958EA /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
-		92C91E207D6F9FE45E214EBF01598373 /* Pods-Formalist-FormalistTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formalist-FormalistTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		99181A379DF99E8B094213EF44953FF0 /* Pods-Formalist-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-acknowledgements.plist"; sourceTree = "<group>"; };
 		9C356C9607D2FDAB0ADF461237B13AF4 /* iOSSnapshotTestCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSSnapshotTestCase.debug.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E35EBB5F1091E7026510009FC3A1CA8 /* Pods-Formalist-FormalistTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formalist-FormalistTests-frameworks.sh"; sourceTree = "<group>"; };
 		A0E617EC1EF9637DA5EE46DCD1271DF0 /* iOSSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		A43EE3337A286CAC5ECADFC3D297034A /* UIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = StackViewController/UIViewExtensions.swift; sourceTree = "<group>"; };
-		A79917D9D0044585F751C52014F241AD /* Pods-Formalist-FormalistTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist-FormalistTests.release.xcconfig"; sourceTree = "<group>"; };
-		AC61A729E5EEBC92000985A95D7DB4F4 /* Pods-Formalist-FormalistTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formalist-FormalistTests.modulemap"; sourceTree = "<group>"; };
+		AF96C7BB396247910B45649E58F2431F /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
 		B8735F0EA4E5E699E80923FA291DCD40 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
+		B910E7D2D4973F4527A74621C869C427 /* Pods-Formalist-FormalistTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formalist-FormalistTests-umbrella.h"; sourceTree = "<group>"; };
 		B91B00F8BE943329D633234BD67AE0AC /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB1A9274DC0A5EC9708D031B1FAC0DBC /* Pods-Formalist-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formalist-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BABF099DE7BA758CE1CC1FF04BE5F2D1 /* Pods-Formalist-FormalistTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formalist-FormalistTests.modulemap"; sourceTree = "<group>"; };
+		BBCF860A5856DF0A743DEE0D3DCE5F75 /* Pods-Formalist.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formalist.modulemap"; sourceTree = "<group>"; };
+		BF1E73960EFF6E9EBC99137A883DE3BB /* Pods-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C2583703F490E14911FD9B05CD01E221 /* Pods-Formalist-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-acknowledgements.plist"; sourceTree = "<group>"; };
 		C59A9B70401EA41D4E201118EBE79297 /* SeedStackViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SeedStackViewController.debug.xcconfig; sourceTree = "<group>"; };
 		C5FB2F9BF0AD9E9C05F9C98CBA51D9B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C684BE07B567438CB90CFF7428B1D764 /* iOSSnapshotTestCase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSSnapshotTestCase.release.xcconfig; sourceTree = "<group>"; };
+		CA41342627F08C3E99D603184A00C68F /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		CB98480C331D73BA851114CABDF912A9 /* StackViewItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackViewItem.swift; path = StackViewController/StackViewItem.swift; sourceTree = "<group>"; };
+		D6DF4388273A71FEFDD0002A69340DCC /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
 		DB8F4FEA45D05CCE3C0402D2B946496D /* SeedStackViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SeedStackViewController-dummy.m"; sourceTree = "<group>"; };
+		DE033A868F413F5165AC1CFC40F605E3 /* Pods-Formalist-FormalistTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist-FormalistTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E44AFE43D32AEF23444C7A359F3F2B91 /* SeparatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SeparatorView.swift; path = StackViewController/SeparatorView.swift; sourceTree = "<group>"; };
 		E52080F71CF51043DE77734A2807BB50 /* iOSSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
-		E6B03EEDF96BBE75A9A23048E5088490 /* Pods-Formalist-FormalistTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formalist-FormalistTests-dummy.m"; sourceTree = "<group>"; };
+		E98B4CA95BA0A4E88BB00884C16086D0 /* Pods-Formalist-FormalistTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist-FormalistTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB6D56FF43B3B9ACB2054E47647FE656 /* StackViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StackViewController.h; path = StackViewController/StackViewController.h; sourceTree = "<group>"; };
-		F04B669689DDB62A154995D1E9ECB98F /* Pods-Formalist-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formalist-dummy.m"; sourceTree = "<group>"; };
 		F1CCE42A69837A23C090F29AD42755F7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F56C45DF2FEC500A4D9C048EB1E69FF8 /* Pods-Formalist-FormalistTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-FormalistTests-Info.plist"; sourceTree = "<group>"; };
+		F58A35701FB64973C5C5D6AF37DAF698 /* Pods-Formalist-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formalist-umbrella.h"; sourceTree = "<group>"; };
 		F91CC1F5E07828994907B90FEA7B3749 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
-		F9F9FB58D948F45E07640440FFE28753 /* Pods-Formalist-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formalist-umbrella.h"; sourceTree = "<group>"; };
 		FF391B4DD2099784CFA3972B6CDA0366 /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
+		FFC7A4175E2A3CA05FB5D4E28940DAA0 /* Pods-Formalist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +169,14 @@
 			files = (
 				9D9440D5FBB242B6A9153CA59F1309A4 /* Foundation.framework in Frameworks */,
 				67927D388DC621395333E51749CD001A /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67621E36F3A44FC872CF18B48FEDB338 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A878BB712930FF1667A83B173161FFE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,15 +208,6 @@
 				85563CA2E922739B8899767B0AE173A7 /* SwiftSupport.swift */,
 			);
 			name = SwiftSupport;
-			sourceTree = "<group>";
-		};
-		280F11062D0EC01025676C4E3B950EDA /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7F7191A4C9B9124D9BFA32E9067D70CC /* Pods-Formalist */,
-				93A5B3283BDD5609B7B9B8CFD24F7402 /* Pods-Formalist-FormalistTests */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		50D74476C11203B3AFE445160090AF0C /* Support Files */ = {
@@ -225,6 +244,18 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		6BB8EF08516D18DCE23E80CAEDABC7ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B91B00F8BE943329D633234BD67AE0AC /* FBSnapshotTestCase.framework */,
+				1F667CC0E19EAF34E5A4119E2121F585 /* Pods_Example.framework */,
+				52597A2076860C49016D4E4F3EA58F7B /* Pods_Formalist.framework */,
+				6215C02D66845C4E71744C64DEE865DF /* Pods_Formalist_FormalistTests.framework */,
+				5E2955DA99AA4E92D5C99A31C5DF674F /* StackViewController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		777AD52E8D7094BEE482F34D7BCC34B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,20 +265,37 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		7F7191A4C9B9124D9BFA32E9067D70CC /* Pods-Formalist */ = {
+		84565E10F13FE08ED64CEDD2564F6744 /* Pods-Formalist */ = {
 			isa = PBXGroup;
 			children = (
-				5D0AC3F8DF57EB242B2591A96BE97B0C /* Pods-Formalist.modulemap */,
-				BB1A9274DC0A5EC9708D031B1FAC0DBC /* Pods-Formalist-acknowledgements.markdown */,
-				99181A379DF99E8B094213EF44953FF0 /* Pods-Formalist-acknowledgements.plist */,
-				F04B669689DDB62A154995D1E9ECB98F /* Pods-Formalist-dummy.m */,
-				8F59113536360413FBC1FF74878A617E /* Pods-Formalist-Info.plist */,
-				F9F9FB58D948F45E07640440FFE28753 /* Pods-Formalist-umbrella.h */,
-				83E0DB57727B7054108D86C39AABE691 /* Pods-Formalist.debug.xcconfig */,
-				43C9107A8626883614A619621A1D17F9 /* Pods-Formalist.release.xcconfig */,
+				BBCF860A5856DF0A743DEE0D3DCE5F75 /* Pods-Formalist.modulemap */,
+				4E3D609C5B73364A9A5DBB90DE43B5FC /* Pods-Formalist-acknowledgements.markdown */,
+				C2583703F490E14911FD9B05CD01E221 /* Pods-Formalist-acknowledgements.plist */,
+				37AD38B6F5296653C7D5A809D03C7B75 /* Pods-Formalist-dummy.m */,
+				1F50A6BEDB9FD7C8AA71E6CCEAD05084 /* Pods-Formalist-Info.plist */,
+				F58A35701FB64973C5C5D6AF37DAF698 /* Pods-Formalist-umbrella.h */,
+				FFC7A4175E2A3CA05FB5D4E28940DAA0 /* Pods-Formalist.debug.xcconfig */,
+				5CAD8AD987350F8C1F57801F9CBC0252 /* Pods-Formalist.release.xcconfig */,
 			);
 			name = "Pods-Formalist";
 			path = "Target Support Files/Pods-Formalist";
+			sourceTree = "<group>";
+		};
+		86FBEA0ED7DC4A34919F87E610C3A83E /* Pods-Formalist-FormalistTests */ = {
+			isa = PBXGroup;
+			children = (
+				BABF099DE7BA758CE1CC1FF04BE5F2D1 /* Pods-Formalist-FormalistTests.modulemap */,
+				52596AC59B178BEEE5BC3735EE1E23EB /* Pods-Formalist-FormalistTests-acknowledgements.markdown */,
+				567F46A7FB5BD17133BD644B6C2E8DEA /* Pods-Formalist-FormalistTests-acknowledgements.plist */,
+				77BC2B90E1EC2F8C4050C84CEF7EE9DC /* Pods-Formalist-FormalistTests-dummy.m */,
+				9E35EBB5F1091E7026510009FC3A1CA8 /* Pods-Formalist-FormalistTests-frameworks.sh */,
+				F56C45DF2FEC500A4D9C048EB1E69FF8 /* Pods-Formalist-FormalistTests-Info.plist */,
+				B910E7D2D4973F4527A74621C869C427 /* Pods-Formalist-FormalistTests-umbrella.h */,
+				DE033A868F413F5165AC1CFC40F605E3 /* Pods-Formalist-FormalistTests.debug.xcconfig */,
+				E98B4CA95BA0A4E88BB00884C16086D0 /* Pods-Formalist-FormalistTests.release.xcconfig */,
+			);
+			name = "Pods-Formalist-FormalistTests";
+			path = "Target Support Files/Pods-Formalist-FormalistTests";
 			sourceTree = "<group>";
 		};
 		881D99135A4422407CEE00C7302203F3 /* Support Files */ = {
@@ -281,21 +329,21 @@
 			path = SeedStackViewController;
 			sourceTree = "<group>";
 		};
-		93A5B3283BDD5609B7B9B8CFD24F7402 /* Pods-Formalist-FormalistTests */ = {
+		96B06E82C6CD5B6FF0C9E795C96203F4 /* Pods-Example */ = {
 			isa = PBXGroup;
 			children = (
-				AC61A729E5EEBC92000985A95D7DB4F4 /* Pods-Formalist-FormalistTests.modulemap */,
-				92C91E207D6F9FE45E214EBF01598373 /* Pods-Formalist-FormalistTests-acknowledgements.markdown */,
-				4ACB8E37A732A2271EC16EE9E700AC7D /* Pods-Formalist-FormalistTests-acknowledgements.plist */,
-				E6B03EEDF96BBE75A9A23048E5088490 /* Pods-Formalist-FormalistTests-dummy.m */,
-				7005B3FCA25A6F5FB069A4E5D4F6D27B /* Pods-Formalist-FormalistTests-frameworks.sh */,
-				1E132162F7C6092134EBBFBE75B6797F /* Pods-Formalist-FormalistTests-Info.plist */,
-				411781BBF2DE273AB5EC64BAD2275DB4 /* Pods-Formalist-FormalistTests-umbrella.h */,
-				08B44DAC9E195C845E3A28340BABF438 /* Pods-Formalist-FormalistTests.debug.xcconfig */,
-				A79917D9D0044585F751C52014F241AD /* Pods-Formalist-FormalistTests.release.xcconfig */,
+				D6DF4388273A71FEFDD0002A69340DCC /* Pods-Example.modulemap */,
+				BF1E73960EFF6E9EBC99137A883DE3BB /* Pods-Example-acknowledgements.markdown */,
+				CA41342627F08C3E99D603184A00C68F /* Pods-Example-acknowledgements.plist */,
+				AF96C7BB396247910B45649E58F2431F /* Pods-Example-dummy.m */,
+				4C3B8019B21FD5A729752A084528CF91 /* Pods-Example-frameworks.sh */,
+				48B6A901F95581EA1161794A75D1E816 /* Pods-Example-Info.plist */,
+				2BBC1B71F4CA84DDD2D3227DB4BC4629 /* Pods-Example-umbrella.h */,
+				8B6632E0E23AC5C74846D5F3AE74B01B /* Pods-Example.debug.xcconfig */,
+				2BD24130C42C67FA9F10BCB547A6AE48 /* Pods-Example.release.xcconfig */,
 			);
-			name = "Pods-Formalist-FormalistTests";
-			path = "Target Support Files/Pods-Formalist-FormalistTests";
+			name = "Pods-Example";
+			path = "Target Support Files/Pods-Example";
 			sourceTree = "<group>";
 		};
 		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
@@ -312,20 +360,9 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
 				777AD52E8D7094BEE482F34D7BCC34B5 /* Pods */,
-				D0D68D742D4E8F4C8A3A20ADCC78B20F /* Products */,
-				280F11062D0EC01025676C4E3B950EDA /* Targets Support Files */,
+				6BB8EF08516D18DCE23E80CAEDABC7ED /* Products */,
+				D9A0616A87C11DDC7151A68A554D3B31 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D0D68D742D4E8F4C8A3A20ADCC78B20F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B91B00F8BE943329D633234BD67AE0AC /* FBSnapshotTestCase.framework */,
-				52597A2076860C49016D4E4F3EA58F7B /* Pods_Formalist.framework */,
-				6215C02D66845C4E71744C64DEE865DF /* Pods_Formalist_FormalistTests.framework */,
-				5E2955DA99AA4E92D5C99A31C5DF674F /* StackViewController.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D1EBE331F75D6C897FECFE4C7340C257 /* iOS */ = {
@@ -337,6 +374,16 @@
 				14D785D4B5B0581702FEB63D26E7C45E /* XCTest.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		D9A0616A87C11DDC7151A68A554D3B31 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				96B06E82C6CD5B6FF0C9E795C96203F4 /* Pods-Example */,
+				84565E10F13FE08ED64CEDD2564F6744 /* Pods-Formalist */,
+				86FBEA0ED7DC4A34919F87E610C3A83E /* Pods-Formalist-FormalistTests */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		E1CCBF745DCE71E15DB29D03FD2239F3 /* iOSSnapshotTestCase */ = {
@@ -352,6 +399,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		607DDD548B6FF7BF388843FFC8F885B4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3F926EAE751370EECEAEE103B53FC51 /* Pods-Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		924287D640CBF61C1042F24729D68A19 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,6 +449,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0AEE99A309977BD12A049FF48AF9BA4B /* Pods-Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C75CC1BA6C955CEF1E3DE127CA87B445 /* Build configuration list for PBXNativeTarget "Pods-Example" */;
+			buildPhases = (
+				607DDD548B6FF7BF388843FFC8F885B4 /* Headers */,
+				FBA6547421223C27F268136C9537DDA0 /* Sources */,
+				67621E36F3A44FC872CF18B48FEDB338 /* Frameworks */,
+				DFD5BB1037847BE7982DEFB49C0BB180 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA666C06B9D30C3C853C60F8410078EA /* PBXTargetDependency */,
+			);
+			name = "Pods-Example";
+			productName = "Pods-Example";
+			productReference = 1F667CC0E19EAF34E5A4119E2121F585 /* Pods_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		2F8C7CA7BE577CF0AA6C91F47C3D843E /* Pods-Formalist */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBA74651D56F2F6D0ECC7B47A79024DD /* Build configuration list for PBXNativeTarget "Pods-Formalist" */;
@@ -487,11 +561,12 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = D0D68D742D4E8F4C8A3A20ADCC78B20F /* Products */;
+			productRefGroup = 6BB8EF08516D18DCE23E80CAEDABC7ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				C393038B0BEF088C1B93E6528005862D /* iOSSnapshotTestCase */,
+				0AEE99A309977BD12A049FF48AF9BA4B /* Pods-Example */,
 				2F8C7CA7BE577CF0AA6C91F47C3D843E /* Pods-Formalist */,
 				E49C37309094B149DAAA48E914FE1D9E /* Pods-Formalist-FormalistTests */,
 				4F7D8604A243A9BE79D0940A976B26F0 /* SeedStackViewController */,
@@ -515,6 +590,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B8848E61F4166ABF3DCCE39D45C21A1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFD5BB1037847BE7982DEFB49C0BB180 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -577,6 +659,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FBA6547421223C27F268136C9537DDA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B16DAB422184D5F7F07D5A966A51E1F /* Pods-Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -598,12 +688,18 @@
 			target = C393038B0BEF088C1B93E6528005862D /* iOSSnapshotTestCase */;
 			targetProxy = 66324E8CFE663D70AA6D8C7D6EDC80BB /* PBXContainerItemProxy */;
 		};
+		FA666C06B9D30C3C853C60F8410078EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SeedStackViewController;
+			target = 4F7D8604A243A9BE79D0940A976B26F0 /* SeedStackViewController */;
+			targetProxy = 6445B4BA2DBF6BA405383E9A895E6CA8 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		14E7C05CE784DCDD9661B7F0709480E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08B44DAC9E195C845E3A28340BABF438 /* Pods-Formalist-FormalistTests.debug.xcconfig */;
+			baseConfigurationReference = DE033A868F413F5165AC1CFC40F605E3 /* Pods-Formalist-FormalistTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -732,7 +828,7 @@
 		};
 		361AD7BD612AE8AB5E1FDD0EBB30A8F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A79917D9D0044585F751C52014F241AD /* Pods-Formalist-FormalistTests.release.xcconfig */;
+			baseConfigurationReference = E98B4CA95BA0A4E88BB00884C16086D0 /* Pods-Formalist-FormalistTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -856,9 +952,42 @@
 			};
 			name = Release;
 		};
+		7186C6221DF5954B60E41B790C3BD857 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B6632E0E23AC5C74846D5F3AE74B01B /* Pods-Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Example/Pods-Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Example/Pods-Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		93AF2CC1631719FB1DDFF614A1F8613C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83E0DB57727B7054108D86C39AABE691 /* Pods-Formalist.debug.xcconfig */;
+			baseConfigurationReference = FFC7A4175E2A3CA05FB5D4E28940DAA0 /* Pods-Formalist.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -889,9 +1018,43 @@
 			};
 			name = Debug;
 		};
+		A335540D39BDD124AB1F348660E80BCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BD24130C42C67FA9F10BCB547A6AE48 /* Pods-Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Example/Pods-Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Example/Pods-Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CEFE5C656B5A86AC04D3628C2E309949 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43C9107A8626883614A619621A1D17F9 /* Pods-Formalist.release.xcconfig */;
+			baseConfigurationReference = 5CAD8AD987350F8C1F57801F9CBC0252 /* Pods-Formalist.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1021,6 +1184,15 @@
 			buildConfigurations = (
 				D4880F603ED7CB2E64D28FC9087035AE /* Debug */,
 				F52940A64253DC965C4AEFE962AFD401 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C75CC1BA6C955CEF1E3DE127CA87B445 /* Build configuration list for PBXNativeTarget "Pods-Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7186C6221DF5954B60E41B790C3BD857 /* Debug */,
+				A335540D39BDD124AB1F348660E80BCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
