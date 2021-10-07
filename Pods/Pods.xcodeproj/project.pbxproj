@@ -92,12 +92,12 @@
 		4ACB8E37A732A2271EC16EE9E700AC7D /* Pods-Formalist-FormalistTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-FormalistTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		4C29FEE22258CDA7F5F43E759DAEA36C /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		4CF0C9C7513A09546B3B626198F22E2E /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
-		52597A2076860C49016D4E4F3EA58F7B /* Pods_Formalist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Formalist.framework; path = "Pods-Formalist.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52597A2076860C49016D4E4F3EA58F7B /* Pods_Formalist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formalist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0AC3F8DF57EB242B2591A96BE97B0C /* Pods-Formalist.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formalist.modulemap"; sourceTree = "<group>"; };
-		5E2955DA99AA4E92D5C99A31C5DF674F /* StackViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = StackViewController.framework; path = SeedStackViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E2955DA99AA4E92D5C99A31C5DF674F /* StackViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StackViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		618E57802346D2E25BA7A684F4789CA5 /* SeedStackViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SeedStackViewController.release.xcconfig; sourceTree = "<group>"; };
 		61B3AF10428147A5CCA3A0F20EDEC014 /* SeedStackViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SeedStackViewController-umbrella.h"; sourceTree = "<group>"; };
-		6215C02D66845C4E71744C64DEE865DF /* Pods_Formalist_FormalistTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Formalist_FormalistTests.framework; path = "Pods-Formalist-FormalistTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6215C02D66845C4E71744C64DEE865DF /* Pods_Formalist_FormalistTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formalist_FormalistTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7005B3FCA25A6F5FB069A4E5D4F6D27B /* Pods-Formalist-FormalistTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formalist-FormalistTests-frameworks.sh"; sourceTree = "<group>"; };
 		7BD8602994A0F3381C4D55B263E7F107 /* FBSnapshotTestController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestController.h; path = FBSnapshotTestCase/Public/FBSnapshotTestController.h; sourceTree = "<group>"; };
 		7E31923498E3A7D3289DCC8A66E86D7B /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
@@ -110,13 +110,13 @@
 		92C91E207D6F9FE45E214EBF01598373 /* Pods-Formalist-FormalistTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formalist-FormalistTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		99181A379DF99E8B094213EF44953FF0 /* Pods-Formalist-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formalist-acknowledgements.plist"; sourceTree = "<group>"; };
 		9C356C9607D2FDAB0ADF461237B13AF4 /* iOSSnapshotTestCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSSnapshotTestCase.debug.xcconfig; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0E617EC1EF9637DA5EE46DCD1271DF0 /* iOSSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		A43EE3337A286CAC5ECADFC3D297034A /* UIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = StackViewController/UIViewExtensions.swift; sourceTree = "<group>"; };
 		A79917D9D0044585F751C52014F241AD /* Pods-Formalist-FormalistTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formalist-FormalistTests.release.xcconfig"; sourceTree = "<group>"; };
 		AC61A729E5EEBC92000985A95D7DB4F4 /* Pods-Formalist-FormalistTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formalist-FormalistTests.modulemap"; sourceTree = "<group>"; };
 		B8735F0EA4E5E699E80923FA291DCD40 /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
-		B91B00F8BE943329D633234BD67AE0AC /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = iOSSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B91B00F8BE943329D633234BD67AE0AC /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1A9274DC0A5EC9708D031B1FAC0DBC /* Pods-Formalist-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formalist-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C59A9B70401EA41D4E201118EBE79297 /* SeedStackViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SeedStackViewController.debug.xcconfig; sourceTree = "<group>"; };
 		C5FB2F9BF0AD9E9C05F9C98CBA51D9B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -278,7 +278,6 @@
 				A43EE3337A286CAC5ECADFC3D297034A /* UIViewExtensions.swift */,
 				881D99135A4422407CEE00C7302203F3 /* Support Files */,
 			);
-			name = SeedStackViewController;
 			path = SeedStackViewController;
 			sourceTree = "<group>";
 		};
@@ -347,7 +346,6 @@
 				50D74476C11203B3AFE445160090AF0C /* Support Files */,
 				23090C94F6DEB106971509B77A255174 /* SwiftSupport */,
 			);
-			name = iOSSnapshotTestCase;
 			path = iOSSnapshotTestCase;
 			sourceTree = "<group>";
 		};
@@ -478,7 +476,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -608,7 +606,6 @@
 			baseConfigurationReference = 08B44DAC9E195C845E3A28340BABF438 /* Pods-Formalist-FormalistTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -641,7 +638,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C59A9B70401EA41D4E201118EBE79297 /* SeedStackViewController.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -653,7 +649,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SeedStackViewController/SeedStackViewController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SeedStackViewController/SeedStackViewController-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SeedStackViewController/SeedStackViewController.modulemap";
 				PRODUCT_MODULE_NAME = StackViewController;
@@ -739,7 +735,6 @@
 			baseConfigurationReference = A79917D9D0044585F751C52014F241AD /* Pods-Formalist-FormalistTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -773,7 +768,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 618E57802346D2E25BA7A684F4789CA5 /* SeedStackViewController.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -785,7 +779,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SeedStackViewController/SeedStackViewController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SeedStackViewController/SeedStackViewController-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SeedStackViewController/SeedStackViewController.modulemap";
 				PRODUCT_MODULE_NAME = StackViewController;
@@ -856,8 +850,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -868,7 +861,6 @@
 			baseConfigurationReference = 83E0DB57727B7054108D86C39AABE691 /* Pods-Formalist.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -902,7 +894,6 @@
 			baseConfigurationReference = 43C9107A8626883614A619621A1D17F9 /* Pods-Formalist.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -936,7 +927,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C356C9607D2FDAB0ADF461237B13AF4 /* iOSSnapshotTestCase.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -949,7 +939,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase.modulemap";
 				PRODUCT_MODULE_NAME = FBSnapshotTestCase;
@@ -968,7 +958,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C684BE07B567438CB90CFF7428B1D764 /* iOSSnapshotTestCase.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -981,7 +970,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase.modulemap";
 				PRODUCT_MODULE_NAME = FBSnapshotTestCase;
