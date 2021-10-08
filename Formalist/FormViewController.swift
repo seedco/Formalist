@@ -54,6 +54,7 @@ open class FormViewController: UIViewController {
     
     open override func loadView() {
         view = autoscrollView
+        autoscrollView.horizontallyRegularContentWidth = .matchReadableContentGuideWidth
     }
     
     open override func viewDidLoad() {
@@ -69,7 +70,7 @@ open class FormViewController: UIViewController {
         rootElementView.translatesAutoresizingMaskIntoConstraints = false
         
         autoscrollView.contentView = rootElementView
-        let widthConstraint = NSLayoutConstraint(item: autoscrollView, attribute: .width, relatedBy: .equal, toItem: rootElementView, attribute: .width, multiplier: 1.0, constant: 0.0)
+        let widthConstraint = NSLayoutConstraint(item: autoscrollView.contentViewLayoutGuide, attribute: .width, relatedBy: .equal, toItem: rootElementView, attribute: .width, multiplier: 1.0, constant: 0.0)
         widthConstraint.isActive = true
     }
     

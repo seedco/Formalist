@@ -4,11 +4,11 @@ PODS:
   - iOSSnapshotTestCase/Core (7.0.0)
   - iOSSnapshotTestCase/SwiftSupport (7.0.0):
     - iOSSnapshotTestCase/Core
-  - SeedStackViewController (0.5.1)
+  - SeedStackViewController (0.6.0)
 
 DEPENDENCIES:
   - iOSSnapshotTestCase
-  - SeedStackViewController
+  - SeedStackViewController (~> 0.6.0)
 
 SPEC REPOS:
   trunk:
@@ -17,8 +17,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   iOSSnapshotTestCase: 63402a5707db9c4103b6cc3f04c76e981fff7952
-  SeedStackViewController: 4d37c51ec4b0a47daf563ce8f692fde2b703955b
+  SeedStackViewController: 92021a0cc72028fa40cd55b4c97628f11579814d
 
-PODFILE CHECKSUM: 9fed4dc635dd129a0ea99112f852377dd0082847
+PODFILE CHECKSUM: caea9f2c4aa8f72105f896826d47e8cf498a9dc4
 
 COCOAPODS: 1.10.1

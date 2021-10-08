@@ -3,11 +3,11 @@ use_frameworks!
 inhibit_all_warnings!
 
 target "Example" do
-  pod 'SeedStackViewController'
+  pod 'SeedStackViewController', '~> 0.6.0'
 end
 
 target "Formalist" do
-  pod 'SeedStackViewController'
+  pod 'SeedStackViewController', '~> 0.6.0'
   
   target "FormalistTests" do
     pod 'iOSSnapshotTestCase'
