@@ -8,7 +8,6 @@
 
 import UIKit
 import Formalist
-import StackViewController
 
 class ViewController: UIViewController {
     fileprivate let segmentValue = FormValue("Segment 1")

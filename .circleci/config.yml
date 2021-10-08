@@ -3,19 +3,10 @@ jobs:
   build-and-test:
 
     macos:
-      xcode: 11.1.0
+      xcode: 13.0.0
 
     steps:
       - checkout
-
-      - restore_cache:
-          key: 1-carthage-{{checksum "Cartfile.resolved" }}
-
-      - run: bin/setup
-
-      - save_cache:
-          key: 1-carthage-{{ checksum "Cartfile.resolved" }}
-          paths: Carthage
 
       - run: bin/test
 
