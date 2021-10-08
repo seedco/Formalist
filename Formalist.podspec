@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
       tag: s.version.to_s
     }
     s.source_files = "Formalist/*.swift"
-    s.ios.deployment_target = "9.0"
+    s.ios.deployment_target = "12.0"
     s.frameworks = "UIKit"
     s.dependency "SeedStackViewController", "~> 0.6.0"
     s.swift_versions = "5.0"
